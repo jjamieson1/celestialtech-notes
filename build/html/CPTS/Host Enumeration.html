@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Host Based Enumeration &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dnsenum" href="../tools/dnsenum.html" />
+    <link rel="prev" title="Infrastructure Based Enumeration" href="Infrastructure%20Enumeration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Host Based Enumeration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ftp">FTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-notes">General Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ftp-nmap-scan">FTP nmap Scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ftp-bounce-attack-with-nmap">FTP Bounce attack with nmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-connection-with-nc">Manual Connection with nc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-with-a-browser">Connect with a browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-netexec">Examples using netexec</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#smb">SMB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enumerating-version-with-nmap">Enumerating version with nmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-scripts-with-nmap">Using scripts with nmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anonymous-authentication">Anonymous Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-rpcclient">Using rpcclient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smbmap-enumeration">SMBMap Enumeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-netexec">Using netexec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumeration-with-enum4linux-ng">Enumeration with enum4linux-ng</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nfs">NFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dns">DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smtp">SMTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/smtp-user-enum.html">smtp-user-enum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Host Based Enumeration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CPTS/Host Enumeration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="host-based-enumeration">
+<h1>Host Based Enumeration<a class="headerlink" href="#host-based-enumeration" title="Link to this heading"></a></h1>
+<p>Status: draft</p>
+<p>Date: 2024-11-09 14:48</p>
+<p>Tags: doc: <cite>Fierce &lt;tools/fierce&gt;</cite></p>
+<section id="ftp">
+<h2>FTP<a class="headerlink" href="#ftp" title="Link to this heading"></a></h2>
+<section id="general-notes">
+<h3>General Notes<a class="headerlink" href="#general-notes" title="Link to this heading"></a></h3>
+<p>Always try anonymous login if it is available:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ftp</span> <span class="mf">172.16.10.10</span>
+<span class="n">Username</span><span class="p">:</span> <span class="n">anonymous</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">anonymous</span> <span class="p">(</span><span class="ow">or</span> <span class="n">keys</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">put</span> <span class="ow">in</span><span class="o">.</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ftp-nmap-scan">
+<h3>FTP nmap Scan<a class="headerlink" href="#ftp-nmap-scan" title="Link to this heading"></a></h3>
+<p>Listing all the possible scripts that can be run in nmap</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -lh /usr/share/nmap/scripts/ | grep ftp
+-rw-r--r-- 1 root root 4.5K Oct 12 09:29 ftp-anon.nse
+-rw-r--r-- 1 root root 3.2K Oct 12 09:29 ftp-bounce.nse
+-rw-r--r-- 1 root root 3.1K Oct 12 09:29 ftp-brute.nse
+-rw-r--r-- 1 root root 3.2K Oct 12 09:29 ftp-libopie.nse
+-rw-r--r-- 1 root root 3.3K Oct 12 09:29 ftp-proftpd-backdoor.nse
+-rw-r--r-- 1 root root 3.7K Oct 12 09:29 ftp-syst.nse
+-rw-r--r-- 1 root root 5.9K Oct 12 09:29 ftp-vsftpd-backdoor.nse
+-rw-r--r-- 1 root root 5.8K Oct 12 09:29 ftp-vuln-cve2010-4221.nse
+-rw-r--r-- 1 root root 5.7K Oct 12 09:29 tftp-enum.nse
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmap</span> <span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span><span class="n">p</span> <span class="mi">21</span> <span class="o">-</span><span class="n">sV</span> <span class="o">--</span><span class="n">script</span><span class="o">=</span><span class="n">exampleScript1</span><span class="o">.</span><span class="n">nse</span><span class="p">,</span><span class="n">exampleScript2</span><span class="o">.</span><span class="n">nse</span>
+</pre></div>
+</div>
+</section>
+<section id="ftp-bounce-attack-with-nmap">
+<h3>FTP Bounce attack with nmap<a class="headerlink" href="#ftp-bounce-attack-with-nmap" title="Link to this heading"></a></h3>
+<p>By exploiting FTP we can scan another target on the same network that is not connected to the public internet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmap</span> <span class="o">-</span><span class="n">Pn</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p80</span> <span class="n">anonymous</span><span class="p">:</span><span class="n">password</span><span class="o">@</span><span class="mf">10.10.110.213</span> <span class="mf">172.17.0.2</span>
+</pre></div>
+</div>
+</section>
+<section id="manual-connection-with-nc">
+<h3>Manual Connection with nc<a class="headerlink" href="#manual-connection-with-nc" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nc</span> <span class="o">-</span><span class="n">vn</span> <span class="mf">172.16.10.10</span> <span class="mi">21</span>
+</pre></div>
+</div>
+</section>
+<section id="connect-with-a-browser">
+<h3>Connect with a browser<a class="headerlink" href="#connect-with-a-browser" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="mf">172.16.10.10</span>
+</pre></div>
+</div>
+</section>
+<section id="examples-using-netexec">
+<h3>Examples using netexec<a class="headerlink" href="#examples-using-netexec" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netexec</span> <span class="n">ftp</span> <span class="mf">172.21.0.0</span>
+<span class="n">netexec</span> <span class="n">ftp</span> <span class="mf">172.21.0.0</span> <span class="o">-</span><span class="n">u</span> <span class="s1">&#39;a&#39;</span> <span class="o">-</span><span class="n">p</span> <span class="s1">&#39;&#39;</span>
+<span class="n">netexec</span> <span class="n">ftp</span> <span class="mf">172.21.0.0</span> <span class="o">-</span><span class="n">u</span> <span class="s1">&#39;anonymous&#39;</span> <span class="o">-</span><span class="n">p</span> <span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="smb">
+<h2>SMB<a class="headerlink" href="#smb" title="Link to this heading"></a></h2>
+<section id="enumerating-version-with-nmap">
+<h3>Enumerating version with nmap<a class="headerlink" href="#enumerating-version-with-nmap" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nmap</span> <span class="mf">10.129.14.128</span> <span class="o">-</span><span class="n">sV</span> <span class="o">-</span><span class="n">sC</span> <span class="o">-</span><span class="n">p139</span><span class="p">,</span><span class="mi">445</span>
+</pre></div>
+</div>
+</section>
+<section id="using-scripts-with-nmap">
+<h3>Using scripts with nmap<a class="headerlink" href="#using-scripts-with-nmap" title="Link to this heading"></a></h3>
+<p>listing all scripts:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jjamieso@fatmex:/usr/share/nmap/scripts$ ls -l smb*
+-rw-r--r-- 1 root root  3753 Apr  1  2024 smb2-capabilities.nse
+-rw-r--r-- 1 root root  2689 Apr  1  2024 smb2-security-mode.nse
+-rw-r--r-- 1 root root  1408 Apr  1  2024 smb2-time.nse
+-rw-r--r-- 1 root root  5269 Apr  1  2024 smb2-vuln-uptime.nse
+-rw-r--r-- 1 root root 45061 Apr  1  2024 smb-brute.nse
+-rw-r--r-- 1 root root  5289 Apr  1  2024 smb-double-pulsar-backdoor.nse
+-rw-r--r-- 1 root root  4840 Apr  1  2024 smb-enum-domains.nse
+-rw-r--r-- 1 root root  5971 Apr  1  2024 smb-enum-groups.nse
+-rw-r--r-- 1 root root  8043 Apr  1  2024 smb-enum-processes.nse
+-rw-r--r-- 1 root root 27274 Apr  1  2024 smb-enum-services.nse
+-rw-r--r-- 1 root root 12017 Apr  1  2024 smb-enum-sessions.nse
+-rw-r--r-- 1 root root  6923 Apr  1  2024 smb-enum-shares.nse
+-rw-r--r-- 1 root root 12527 Apr  1  2024 smb-enum-users.nse
+-rw-r--r-- 1 root root  4418 Apr  1  2024 smb-flood.nse
+-rw-r--r-- 1 root root  7471 Apr  1  2024 smb-ls.nse
+-rw-r--r-- 1 root root  8758 Apr  1  2024 smb-mbenum.nse
+-rw-r--r-- 1 root root  8220 Apr  1  2024 smb-os-discovery.nse
+-rw-r--r-- 1 root root  4982 Apr  1  2024 smb-print-text.nse
+-rw-r--r-- 1 root root  1833 Apr  1  2024 smb-protocols.nse
+-rw-r--r-- 1 root root 63596 Apr  1  2024 smb-psexec.nse
+-rw-r--r-- 1 root root  5190 Apr  1  2024 smb-security-mode.nse
+-rw-r--r-- 1 root root  2424 Apr  1  2024 smb-server-stats.nse
+-rw-r--r-- 1 root root 14159 Apr  1  2024 smb-system-info.nse
+-rw-r--r-- 1 root root  7524 Apr  1  2024 smb-vuln-conficker.nse
+-rw-r--r-- 1 root root  6402 Apr  1  2024 smb-vuln-cve2009-3103.nse
+-rw-r--r-- 1 root root 23154 Apr  1  2024 smb-vuln-cve-2017-7494.nse
+-rw-r--r-- 1 root root  6545 Apr  1  2024 smb-vuln-ms06-025.nse
+-rw-r--r-- 1 root root  5386 Apr  1  2024 smb-vuln-ms07-029.nse
+-rw-r--r-- 1 root root  5688 Apr  1  2024 smb-vuln-ms08-067.nse
+-rw-r--r-- 1 root root  5647 Apr  1  2024 smb-vuln-ms10-054.nse
+-rw-r--r-- 1 root root  7214 Apr  1  2024 smb-vuln-ms10-061.nse
+-rw-r--r-- 1 root root  7344 Apr  1  2024 smb-vuln-ms17-010.nse
+-rw-r--r-- 1 root root  4400 Apr  1  2024 smb-vuln-regsvc-dos.nse
+-rw-r--r-- 1 root root  6586 Apr  1  2024 smb-vuln-webexec.nse
+-rw-r--r-- 1 root root  5084 Apr  1  2024 smb-webexec-exploit.nse
+</pre></div>
+</div>
+<p>Using scripts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmap</span> <span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span><span class="n">p139</span><span class="p">,</span><span class="mi">445</span> <span class="o">-</span><span class="n">sV</span> <span class="o">--</span><span class="n">script</span><span class="o">=</span><span class="n">exampleScript1</span><span class="o">.</span><span class="n">nse</span><span class="p">,</span><span class="n">exampleScript2</span><span class="o">.</span><span class="n">nse</span>
+</pre></div>
+</div>
+</section>
+<section id="anonymous-authentication">
+<h3>Anonymous Authentication<a class="headerlink" href="#anonymous-authentication" title="Link to this heading"></a></h3>
+<p>Example 1:  Listing shares
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">L</span> <span class="o">//</span><span class="mf">10.10.10.10</span>
+</pre></div>
+</div>
+<p>Example 2: Connecting anonymously
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">//</span><span class="mf">10.10.10.10</span><span class="o">/</span><span class="n">notes</span>
+</pre></div>
+</div>
+</section>
+<section id="using-rpcclient">
+<h3>Using rpcclient<a class="headerlink" href="#using-rpcclient" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpcclient</span> <span class="o">-</span><span class="n">U</span> <span class="s2">&quot;%&quot;</span> <span class="mf">10.10.10.10</span>
+</pre></div>
+</div>
+<p>Once connected in the rpcclient shell, use help to see all the available commands that can be run.</p>
+</section>
+<section id="smbmap-enumeration">
+<h3>SMBMap Enumeration<a class="headerlink" href="#smbmap-enumeration" title="Link to this heading"></a></h3>
+<p>Example 1: enumeration
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> smbmap -H 10.129.14.128
+
+[+] Finding open SMB ports....
+[+] User SMB session established on 10.129.14.128...
+[+] IP: 10.129.14.128:445       Name: 10.129.14.128
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        print$                                                  NO ACCESS       Printer Drivers
+        home                                                    NO ACCESS       INFREIGHT Samba
+        dev                                                     NO ACCESS       DEVenv
+        notes                                                   NO ACCESS       CheckIT
+        IPC$                                                    NO ACCESS       IPC Service (DEVSM)
+</pre></div>
+</div>
+<p>Example 2: recursive listing of files
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbmap</span> <span class="o">-</span><span class="n">H</span> <span class="mf">10.10.10.10</span> <span class="o">-</span><span class="n">r</span> <span class="o">&lt;</span><span class="n">sharename</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Example 3: Downloading files
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbmap</span> <span class="o">-</span><span class="n">h</span> <span class="mf">10.10.10.10</span> <span class="o">--</span><span class="n">download</span> <span class="s2">&quot;notes/note.txt&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-netexec">
+<h3>Using netexec<a class="headerlink" href="#using-netexec" title="Link to this heading"></a></h3>
+<p>Example 1:  Enumeration
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>crackmapexec smb 10.129.248.196 --shares -u &#39;alex&#39; -p &#39;lol123!mD&#39; -d &#39;WINMEDIUM&#39;
+
+SMB         10.129.248.196  445    WINMEDIUM        [*] Windows 10.0 Build 17763 x64 (name:WINMEDIUM) (domain:WINMEDIUM) (signing:False) (SMBv1:False)
+SMB         10.129.248.196  445    WINMEDIUM        [+] WINMEDIUM\alex:lol123!mD
+SMB         10.129.248.196  445    WINMEDIUM        [*] Enumerated shares
+SMB         10.129.248.196  445    WINMEDIUM        Share           Permissions     Remark
+SMB         10.129.248.196  445    WINMEDIUM        -----           -----------     ------
+SMB         10.129.248.196  445    WINMEDIUM        ADMIN$                          Remote Admin
+SMB         10.129.248.196  445    WINMEDIUM        C$                              Default share
+SMB         10.129.248.196  445    WINMEDIUM        devshare        READ,WRITE
+SMB         10.129.248.196  445    WINMEDIUM        IPC$            READ            Remote IPC
+SMB         10.129.248.196  445    WINMEDIUM        Users           READ
+</pre></div>
+</div>
+</section>
+<section id="enumeration-with-enum4linux-ng">
+<h3>Enumeration with enum4linux-ng<a class="headerlink" href="#enumeration-with-enum4linux-ng" title="Link to this heading"></a></h3>
+<p>Example 1: Anonymous enumeration
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">enum4linux</span><span class="o">-</span><span class="n">ng</span><span class="o">.</span><span class="n">py</span> <span class="mf">10.10.10.10</span> <span class="o">-</span><span class="n">A</span> <span class="o">-</span><span class="n">C</span>
+</pre></div>
+</div>
+<p>Example 2: With credentials
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">enum4linux</span><span class="o">-</span><span class="n">ng</span><span class="o">.</span><span class="n">py</span> <span class="mf">10.10.11.42</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span> <span class="o">-</span><span class="n">p</span> <span class="s1">&#39;password&#39;</span> <span class="o">-</span><span class="n">oY</span> <span class="n">out</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="nfs">
+<h2>NFS<a class="headerlink" href="#nfs" title="Link to this heading"></a></h2>
+<p>Example 1:  nmap scan
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nmap</span> <span class="mf">10.129.14.128</span> <span class="o">-</span><span class="n">p111</span><span class="p">,</span><span class="mi">2049</span> <span class="o">-</span><span class="n">sV</span> <span class="o">-</span><span class="n">sC</span>
+</pre></div>
+</div>
+<p>Example 2: Using an NFS script
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jjamieso@fatmex:/usr/share/nmap/scripts$ ls -l nfs*
+-rw-r--r-- 1 root root 14534 Apr  1  2024 nfs-ls.nse
+-rw-r--r-- 1 root root  2714 Apr  1  2024 nfs-showmount.nse
+-rw-r--r-- 1 root root  9947 Apr  1  2024 nfs-statfs.nse
+
+sudo nmap --script nfs*.nse 10.129.14.128 -sV -p111,2049
+</pre></div>
+</div>
+<p>Example 3: Listing shares on an NFS server
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">showmount</span> <span class="o">-</span><span class="n">e</span> <span class="mf">10.129.14.128</span>
+
+<span class="c1"># Then to mount the share</span>
+
+<span class="n">mkdir</span> <span class="n">target</span><span class="o">-</span><span class="n">NFS</span>
+<span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">nfs</span> <span class="mf">10.129.14.128</span><span class="p">:</span><span class="o">/</span> <span class="o">./</span><span class="n">target</span><span class="o">-</span><span class="n">NFS</span><span class="o">/</span> <span class="o">-</span><span class="n">o</span> <span class="n">nolock</span>
+<span class="n">cd</span> <span class="n">target</span><span class="o">-</span><span class="n">NFS</span>
+
+<span class="c1">## Unmount the share</span>
+<span class="n">cd</span> <span class="o">/</span>
+<span class="n">sudo</span> <span class="n">umount</span> <span class="o">/</span><span class="n">target</span><span class="o">-</span><span class="n">NFS</span>
+</pre></div>
+</div>
+</section>
+<section id="dns">
+<h2>DNS<a class="headerlink" href="#dns" title="Link to this heading"></a></h2>
+<p>Example 1: Enumerating and looking for zone transfers</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fierce</span> <span class="o">--</span><span class="n">domain</span> <span class="n">xyz</span><span class="o">.</span><span class="n">com</span> <span class="o">--</span><span class="n">dns</span><span class="o">-</span><span class="n">servers</span> <span class="mf">1.1.1.1</span>
+</pre></div>
+</div>
+<p>Example 2: Other DNS servers</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dig</span> <span class="n">ns</span> <span class="n">inlanefreight</span><span class="o">.</span><span class="n">htb</span> <span class="o">@</span><span class="mf">10.129.14.128</span>
+</pre></div>
+</div>
+<p>Example 3:  Sometime you can get the version information with the CHAOS query and TXT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dig</span> <span class="n">CH</span> <span class="n">TXT</span> <span class="n">version</span><span class="o">.</span><span class="n">bind</span> <span class="mf">10.129.120.85</span>
+</pre></div>
+</div>
+<p>Example 4: Zone transfer request</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dig</span> <span class="n">axfr</span> <span class="n">inlanefreight</span><span class="o">.</span><span class="n">htb</span> <span class="o">@</span><span class="mf">10.129.14.128</span>
+</pre></div>
+</div>
+<p>Example 5:Going after internal machines</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dig</span> <span class="n">axfr</span> <span class="n">internal</span><span class="o">.</span><span class="n">inlanefreight</span><span class="o">.</span><span class="n">htb</span> <span class="o">@</span><span class="mf">10.129.14.128</span>
+</pre></div>
+</div>
+<p>Example 6: Brute forcing sub-domains (using a wordlist  and loop)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v &#39;;\|SOA&#39; | sed -r &#39;/^\s*$/d&#39; | grep $sub | tee -a subdomains.txt;done
+</pre></div>
+</div>
+<p>Example 7: Using using <a class="reference internal" href="../tools/dnsenum.html"><span class="doc">dnsenum</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dnsenum</span> <span class="o">--</span><span class="n">dnsserver</span> <span class="mf">10.129.73.113</span> <span class="o">--</span><span class="n">enum</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span> <span class="o">-</span><span class="n">s</span> <span class="mi">0</span> <span class="o">-</span><span class="n">o</span> <span class="n">subdomains</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">f</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjamieso</span><span class="o">/</span><span class="n">HTB</span><span class="o">/</span><span class="n">wordlists</span><span class="o">/</span><span class="n">SecLists</span><span class="o">/</span><span class="n">Discovery</span><span class="o">/</span><span class="n">DNS</span><span class="o">/</span><span class="n">subdomains</span><span class="o">-</span><span class="n">top1million</span><span class="o">-</span><span class="mf">110000.</span><span class="n">txt</span> <span class="n">inlanefreight</span><span class="o">.</span><span class="n">htb</span>
+</pre></div>
+</div>
+<p>Example 7: using <a class="reference internal" href="../tools/dnsrecon.html"><span class="doc">dnsrecon</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dnsrecon</span> <span class="o">-</span><span class="n">d</span> <span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">dnsrecon</span> <span class="o">-</span><span class="n">d</span> <span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">t</span> <span class="n">axfr</span>
+<span class="n">dnsrecon</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;startIP-endIP&quot;</span>
+<span class="n">dnsrecon</span> <span class="o">-</span><span class="n">d</span> <span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">D</span> <span class="s2">&quot;namelist&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">brt</span>
+</pre></div>
+</div>
+<p>Example 8: Using <a class="reference internal" href="../tools/dnsx.html"><span class="doc">dnsX</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dnsx</span> <span class="o">-</span><span class="n">l</span> <span class="n">domains</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">resp</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">aaaa</span> <span class="o">-</span><span class="n">cname</span> <span class="o">-</span><span class="n">mx</span> <span class="o">-</span><span class="n">ns</span> <span class="o">-</span><span class="n">soa</span> <span class="o">-</span><span class="n">txt</span>
+<span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">seclists</span><span class="o">/</span><span class="n">Discovery</span><span class="o">/</span><span class="n">DNS</span><span class="o">/</span><span class="n">dns</span><span class="o">-</span><span class="n">Jhaddix</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Example 9: using <a class="reference internal" href="../tools/subfinder.html"><span class="doc">subfinder</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subfinder</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span>
+<span class="n">subfinder</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">resp</span>
+<span class="n">subfinder</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">resp</span><span class="o">-</span><span class="n">only</span>
+<span class="n">subfinder</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">cname</span> <span class="o">-</span><span class="n">resp</span>
+<span class="n">subfinder</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">d</span> <span class="n">megacorpone</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">dnsx</span> <span class="o">-</span><span class="n">silent</span> <span class="o">-</span><span class="n">asn</span>
+</pre></div>
+</div>
+<p>Example 10: Using nmap and scripts</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -lh /usr/share/nmap/scripts/ | grep dns
+-rw-r--r-- 1 root root 1.5K Nov  1  2023 broadcast-dns-service-discovery.nse
+-rw-r--r-- 1 root root 5.3K Nov  1  2023 dns-blacklist.nse
+-rw-r--r-- 1 root root 9.9K Nov  1  2023 dns-brute.nse
+-rw-r--r-- 1 root root 6.5K Nov  1  2023 dns-cache-snoop.nse
+-rw-r--r-- 1 root root  15K Nov  1  2023 dns-check-zone.nse
+-rw-r--r-- 1 root root  15K Nov  1  2023 dns-client-subnet-scan.nse
+-rw-r--r-- 1 root root  10K Nov  1  2023 dns-fuzz.nse
+-rw-r--r-- 1 root root 3.8K Nov  1  2023 dns-ip6-arpa-scan.nse
+-rw-r--r-- 1 root root  13K Nov  1  2023 dns-nsec3-enum.nse
+-rw-r--r-- 1 root root  11K Nov  1  2023 dns-nsec-enum.nse
+-rw-r--r-- 1 root root 3.4K Nov  1  2023 dns-nsid.nse
+-rw-r--r-- 1 root root 4.3K Nov  1  2023 dns-random-srcport.nse
+-rw-r--r-- 1 root root 4.3K Nov  1  2023 dns-random-txid.nse
+-rw-r--r-- 1 root root 1.5K Nov  1  2023 dns-recursion.nse
+-rw-r--r-- 1 root root 2.2K Nov  1  2023 dns-service-discovery.nse
+-rw-r--r-- 1 root root 5.6K Nov  1  2023 dns-srv-enum.nse
+-rw-r--r-- 1 root root 5.7K Nov  1  2023 dns-update.nse
+-rw-r--r-- 1 root root 2.1K Nov  1  2023 dns-zeustracker.nse
+-rw-r--r-- 1 root root  26K Nov  1  2023 dns-zone-transfer.nse
+-rw-r--r-- 1 root root 3.9K Nov  1  2023 fcrdns.nse
+
+nmap x.x.x.x -v -p 53 --script=exampleScript1.nse,exampleScript2.nse
+</pre></div>
+</div>
+</section>
+<section id="smtp">
+<h2>SMTP<a class="headerlink" href="#smtp" title="Link to this heading"></a></h2>
+<p>Nowadays it is known as ESMTP (enhanced smtp) using TLS</p>
+<p>Example 1: using nmap to get the version</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nmap</span> <span class="mf">10.129.14.128</span> <span class="o">-</span><span class="n">sC</span> <span class="o">-</span><span class="n">sV</span> <span class="o">-</span><span class="n">p25</span>
+</pre></div>
+</div>
+<p>Example 2: using nmap and scripts</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jjamieso@fatmex:/usr/share/nmap/scripts$ ls -l smtp*
+-rw-r--r-- 1 root root  4309 Apr  1  2024 smtp-brute.nse
+-rw-r--r-- 1 root root  4957 Apr  1  2024 smtp-commands.nse
+-rw-r--r-- 1 root root 12006 Apr  1  2024 smtp-enum-users.nse
+-rw-r--r-- 1 root root  5873 Apr  1  2024 smtp-ntlm-info.nse
+-rw-r--r-- 1 root root 10148 Apr  1  2024 smtp-open-relay.nse
+-rw-r--r-- 1 root root   716 Apr  1  2024 smtp-strangeport.nse
+-rw-r--r-- 1 root root 14781 Apr  1  2024 smtp-vuln-cve2010-4344.nse
+-rw-r--r-- 1 root root  7719 Apr  1  2024 smtp-vuln-cve2011-1720.nse
+-rw-r--r-- 1 root root  7603 Apr  1  2024 smtp-vuln-cve2011-1764.nse
+
+sudo nmap 10.129.200.67 -p25 --script smtp-* -v
+</pre></div>
+</div>
+<p>Example 3: :doc: <cite>smtp-user-enum &lt;../tools/smtp-user-enum&gt;</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">smtp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">enum</span><span class="o">.</span><span class="n">pl</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjamieso</span><span class="o">/</span><span class="n">HTB</span><span class="o">/</span><span class="n">footprinting</span><span class="o">-</span><span class="n">wordlist</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">t</span> <span class="mf">10.129.200.67</span> <span class="o">-</span><span class="n">t</span> <span class="mi">15</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://academy.hackthebox.com/module/112/section/1065">https://academy.hackthebox.com/module/112/section/1065</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/112/section/1062">https://academy.hackthebox.com/module/112/section/1062</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/112/section/1061">https://academy.hackthebox.com/module/112/section/1061</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/112/section/1061">https://academy.hackthebox.com/module/112/section/1061</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/112/section/1067">https://academy.hackthebox.com/module/112/section/1067</a>
+<a class="reference external" href="https://github.com/cddmp/enum4linux-ng">https://github.com/cddmp/enum4linux-ng</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/116/section/1512">https://academy.hackthebox.com/module/116/section/1512</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Infrastructure%20Enumeration.html" class="btn btn-neutral float-left" title="Infrastructure Based Enumeration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tools/dnsenum.html" class="btn btn-neutral float-right" title="dnsenum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

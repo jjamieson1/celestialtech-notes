@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infrastructure Based Enumeration &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Host Based Enumeration" href="Host%20Enumeration.html" />
+    <link rel="prev" title="Footprinting" href="Footprinting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Infrastructure Based Enumeration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#domain-information">Domain information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#staff">Staff</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Host%20Enumeration.html">Host Based Enumeration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/fierce.html">fierce</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Infrastructure Based Enumeration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CPTS/Infrastructure Enumeration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="infrastructure-based-enumeration">
+<h1>Infrastructure Based Enumeration<a class="headerlink" href="#infrastructure-based-enumeration" title="Link to this heading"></a></h1>
+<p>Status: draft</p>
+<p>Date: 2024-11-09 14:48</p>
+<p>Tags:</p>
+<section id="domain-information">
+<h2>Domain information<a class="headerlink" href="#domain-information" title="Link to this heading"></a></h2>
+<p>The start of the enumeration is to see if there is a public website.</p>
+<ol class="arabic simple">
+<li><p>Document what services/software they sell/promote.</p></li>
+<li><p>Document the company structure</p></li>
+</ol>
+<p>Looking at the SSL certificate can tell often help us with Sub-domains.
+There is a good tool at <a class="reference external" href="https://crt.sh/">crt.sh</a> that allows
+inspection of a certificate.</p>
+<p>This information can be retrieved via the command line and formated to
+JSON with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://crt.sh/<span class="se">\?</span>q<span class="se">\=</span>inlanefreight.com<span class="se">\&amp;</span>output<span class="se">\=</span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</pre></div>
+</div>
+<p>If needed you can filter the sub-domain with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://crt.sh/<span class="se">\?</span>q<span class="se">\=</span>inlanefreight.com<span class="se">\&amp;</span>output<span class="se">\=</span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s2">&quot;:&quot;</span><span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;CN=&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">&#39;&quot;&#39;</span><span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{gsub(/\\n/,&quot;\n&quot;);}1;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span>&gt;<span class="w"> </span>subdomainlist
+</pre></div>
+</div>
+<p><strong>Company Hosted Servers</strong> To see which hosts have an IP address from
+that list use this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>subdomainlist<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span>host<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;has address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inlanefreight.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1,4<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+<p>Install Shodan command line tools with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-shodan
+shodan<span class="w"> </span>init<span class="w"> </span>&lt;api<span class="w"> </span>key&gt;
+</pre></div>
+</div>
+<p>Shodan IP List</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>subdomainlist<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span>host<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;has address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inlanefreight.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f4<span class="w"> </span>&gt;&gt;<span class="w"> </span>ip-addresses.txt<span class="p">;</span><span class="k">done</span>
+Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>ip-addresses.txt<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span>shodan<span class="w"> </span>host<span class="w"> </span><span class="nv">$i</span><span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">dig</span></code> to get DNS records</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dig<span class="w"> </span>any<span class="w"> </span>inlanefreight.com
+</pre></div>
+</div>
+</section>
+<section id="cloud-resource-enumeration">
+<h2>Cloud Resource Enumeration<a class="headerlink" href="#cloud-resource-enumeration" title="Link to this heading"></a></h2>
+<p>Listing of cloud resources can be found from 1. Using Google and
+leveraging the inurl: and intext <code class="docutils literal notranslate"><span class="pre">dorks</span></code> to find blob storage hosted
+in the cloud 2. Using the webpage source code to look for any references
+pointing to cloud storage.</p>
+</section>
+<section id="online-tools-to-gather-information-about-a-domain">
+<h2>Online Tools to gather information about a domain<a class="headerlink" href="#online-tools-to-gather-information-about-a-domain" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Domain.Glass</strong> A url that can provide a ton of information on a
+domain name.</p></li>
+<li><p><a class="reference external" href="https://buckets.grayhatwarfare.com/">GrayHatWarfare</a> A URL that
+can find storage buckets for a domain.</p></li>
+</ol>
+</section>
+<section id="staff">
+<h2>Staff<a class="headerlink" href="#staff" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Searching LinkedIn and searching for Staff blogs to get an insight on
+the technology used.</p></li>
+<li><p>Looking at job postings to see what skills are being requested</p></li>
+<li><p>Searching Github for any public repositories</p></li>
+<li><p>Looking at the staffs skill set to see how experienced they are.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Footprinting.html" class="btn btn-neutral float-left" title="Footprinting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Host%20Enumeration.html" class="btn btn-neutral float-right" title="Host Based Enumeration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

