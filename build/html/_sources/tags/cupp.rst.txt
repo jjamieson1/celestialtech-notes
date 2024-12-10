@@ -13,7 +13,7 @@ information.
 Installation
 *************
 
-.. code-block:: bash
+.. code-block:: console
 
    git clone https://github.com/Mebus/cupp
 
@@ -24,10 +24,11 @@ Installation
 Usage
 ********
 
-.. code:: bash
+.. code-block:: console
 
    python3 cupp.py -i
 
+************
 References
 ************
 https://github.com/Mebus/cupp

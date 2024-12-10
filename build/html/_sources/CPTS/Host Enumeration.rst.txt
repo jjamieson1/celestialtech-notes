@@ -309,13 +309,13 @@ Example 6: Brute forcing sub-domains (using a wordlist  and loop)
 
     for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
 
-Example 7: Using using :doc:`dnsenum <../tools/dnsenum>`
+Example 7: Using using :doc:`dnsenum <../tags/dnsenum>`
 
 .. code-block::
 
     dnsenum --dnsserver 10.129.73.113 --enum -p 0 -s 0 -o subdomains.txt -f  /home/jjamieso/HTB/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt inlanefreight.htb
 
-Example 7: using :doc:`dnsrecon <../tools/dnsrecon>`
+Example 7: using :doc:`dnsrecon <../tags/dnsrecon>`
 
 .. code-block::
 
@@ -324,14 +324,14 @@ Example 7: using :doc:`dnsrecon <../tools/dnsrecon>`
     dnsrecon -d "startIP-endIP"
     dnsrecon -d www.example.com -D "namelist" -t brt
 
-Example 8: Using :doc:`dnsX <../tools/dnsx>`
+Example 8: Using :doc:`dnsX <../tags/dnsx>`
 
 .. code-block::
 
     dnsx -l domains.txt -resp -a -aaaa -cname -mx -ns -soa -txt
     dnsx -silent -d megacorpone.com -w /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt
 
-Example 9: using :doc:`subfinder <../tools/subfinder>`
+Example 9: using :doc:`subfinder <../tags/subfinder>`
 
 .. code-block::
 

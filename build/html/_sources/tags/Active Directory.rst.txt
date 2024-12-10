@@ -12,17 +12,15 @@ Tags:
 Types of attacks
 ************************
 
-`responder <responder>`__
+:any:'responder'
 
-`kerberoasting <kerberoasting>`__
+:any:'kerberoasting'
 
-` bloodhound  < bloodhound >`__
+:any:'LLMNR poisioning'
 
-`LLMNR poisioning <LLMNR poisioning>`__
+:any:'SMB Relay'
 
-`SMB Relay <SMB Relay>`__
-
-`MITM6 <MITM6>`__
+:any:'MITM6'
 
 ************
 References

@@ -31,7 +31,7 @@ Risk Management Process
 5. Monitor the risk
   
   
-  .. mermaid:: mmd/risk-management-process.mmd
+.. mermaid:: mmd/risk-management-process.mmd
 
 
 Red Team 

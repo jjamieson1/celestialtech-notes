@@ -19,13 +19,22 @@ Celestial Tech Red Team Documentation
    :maxdepth: 1
    :caption: Reconnaissance
 
-   CPTS/Penetration Testing Overview
-   CPTS/Network Enumeration with nmap
-   CPTS/Footprinting
-   CPTS/Infrastructure Enumeration
-   CPTS/Host Enumeration
+   CPTS/Reconnaissance/Penetration Testing Overview
+   CPTS/Reconnaissance/Network Enumeration with nmap
+   CPTS/Reconnaissance/Footprinting
+   CPTS/Reconnaissance/Infrastructure Enumeration
+   CPTS/Reconnaissance/Host Enumeration
+   CPTS/Reconnaissance/fingerprinting
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Initial Access
+
+   CPTS/Initial Access/File Inclusion
+   CPTS/Initial Access/SSH Forwarding
+   CPTS/Initial Access/Dynamic Port Forwarding with SSH and SOCKS Tunneling
+   CPTS/Initial Access/Remote-Reverse Port Forwarding with SSH
 
 .. toctree:: 
    :maxdepth: 1
@@ -45,9 +54,30 @@ Celestial Tech Red Team Documentation
    tags/crunch
    tags/cupp
    tags/CVSS
+   tags/DKIM
+   tags/DMARC
+   tags/DNS
    tags/dnsenum
    tags/dnsrecon
    tags/dnsx
+   tags/ettercap
+   tags/evil-winrm
+   tags/fail2ban
+   tags/ffuf
    tags/fierce
+   tags/File Encryption on Linux
+   tags/File Encryption Windows
+   tags/finalRecon
+   tags/Firefox Decrypt
+   tags/FTP
+   tags/git
+   tags/gobuster
+   tags/hashcat
+   tags/hydra
+   tags/impacket
+   tags/invoke-TheHash
+   tags/netstat
    tags/subfinder
    tags/smtp-user-enum
+   tags/winrm
+ 

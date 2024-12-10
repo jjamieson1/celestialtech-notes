@@ -16,7 +16,7 @@ This package contains a subdomain discovery tool that discovers valid subdomains
 Installation
 **************
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install subfinder
 
@@ -26,7 +26,7 @@ Usage
 
 Example: 
 
-.. code-block::
+.. code-block:: console
     
     subfinder -silent -d megacorpone.com | dnsx -silent
     subfinder -silent -d megacorpone.com | dnsx -silent -a -resp

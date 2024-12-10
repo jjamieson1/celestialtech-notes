@@ -13,7 +13,7 @@ Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
 Installation
 **************
 
-.. code:: bash
+.. code:: console
 
    sudo apt install bettercap
 

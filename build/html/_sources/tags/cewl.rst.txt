@@ -19,7 +19,7 @@ passwords associated with the content they write or operate on
 Usage
 ***********
 
-.. code-block::
+.. code-block:: console
 
     cewl -d <depth to spider> -m <minimum word length> -w <output wordlist> <url of website
 

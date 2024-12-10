@@ -14,7 +14,7 @@ Description
 
 A utility used to spray passwords ## Installation
 
-.. code-block:: bash
+.. code-block:: console
 
    git clone https://github.com/galkan/crowbar
    cd crowbar
@@ -26,10 +26,10 @@ Usage
 *****************
 
 Example 1: Attacking RDP
-.. code-block::
+
+.. code-block:: console 
 
    crowbar -b rdp -s 192.168.220.142/32 -U users.txt -c 'password123'
-
 
 *****************
 References

@@ -11,7 +11,7 @@ Tags:
 Installation
 **************
 
-.. code-block::
+.. code-block:: console
 
     git clone https://github.com/mschwager/fierce
 

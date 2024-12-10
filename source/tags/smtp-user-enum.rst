@@ -17,7 +17,7 @@ Use the VRFY method (-M VRFY) to search for the specified user (-u root) on the 
 Installation
 **************
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install smtp-user-enum
 
@@ -25,7 +25,7 @@ Installation
 Usage
 *****
 
-.. code-block::
+.. code-block:: console
 
     smtp-user-enum -M VRFY -u root -t 192.168.1.25
 

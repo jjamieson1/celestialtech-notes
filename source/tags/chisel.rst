@@ -12,7 +12,7 @@ Tags:
 Installation
 *************
 
-.. code-block:: bash
+.. code-block:: console
 
    Temen@htb[/htb]$ wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz
    Temen@htb[/htb]$ gzip -d chisel_1.7.7_linux_amd64.gz
@@ -25,13 +25,15 @@ Usage
 ************
 
 Example 1: Run a server on port 1080
-.. code-block:: 
+
+.. code-block:: console
 
    sudo chisel server --port 1080 --reverse
 
 
 Example 2: Run a client to connect to the server
-.. code-block:: 
+
+.. code-block::  console
 
    c:\tools\chisel.exe client <attack-host>:1080 R:socks
 

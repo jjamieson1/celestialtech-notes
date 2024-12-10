@@ -12,7 +12,7 @@ Tags:
 Installation
 **************
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install dnsx
 
@@ -22,7 +22,7 @@ Usage
 
 Example: 
 
-.. code-block::
+.. code-block:: console
     
     dnsx -l domains.txt -resp -a -aaaa -cname -mx -ns -soa -txt
     dnsx -silent -d megacorpone.com -w /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt

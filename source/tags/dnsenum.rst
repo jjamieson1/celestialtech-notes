@@ -13,7 +13,7 @@ Tags:
 Installation
 ************
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install dnsenum
 
@@ -23,7 +23,7 @@ Installation
 Usage
 *****
 
-.. code-block::
+.. code-block:: console
 
     dnsenum --enum --dnsserver 10.10.10.10 10.10.10.23
 

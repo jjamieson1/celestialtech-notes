@@ -25,7 +25,7 @@ Searching CT logs
 
 Example 1: using curl at the crt.sh web site
 
-.. code-block:: 
+.. code-block:: console
 
    curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]
     | select(.name_value | contains("dev")) | .name_value' | sort -u

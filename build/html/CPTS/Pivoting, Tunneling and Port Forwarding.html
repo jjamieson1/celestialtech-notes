@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pivoting, Tunneling and Port Forwarding &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fingerprinting.html">fingerprinting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="File%20Inclusion.html">File Inclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Bash.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/File%20Encryption%20Windows.html">File Encryption on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/finalRecon.html">Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/finalRecon.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/finalRecon.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pivoting, Tunneling and Port Forwarding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CPTS/Pivoting, Tunneling and Port Forwarding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pivoting-tunneling-and-port-forwarding">
+<h1>Pivoting, Tunneling and Port Forwarding<a class="headerlink" href="#pivoting-tunneling-and-port-forwarding" title="Link to this heading"></a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The process of using various methods outlined in this note to access hosts, networks and services not normally accessible from the public network.</p>
+</section>
+<section id="port-forwarding-with-ssh">
+<h2>Port forwarding with SSH<a class="headerlink" href="#port-forwarding-with-ssh" title="Link to this heading"></a></h2>
+<p>After scanning a host, we notice that the Mysql port is closed, and is only accessible from the localhost.  By leveraging our access to SSH we can forward requests via an SSH tunnel.</p>
+<p>Example 1:  Creating a tunnel with local port access
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">1234</span><span class="p">:</span><span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span> <span class="n">ubuntu</span><span class="o">@</span><span class="mf">10.129.202.64</span>
+</pre></div>
+</div>
+<p>Connect to the port with Mysql:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">P</span> <span class="mi">1234</span>
+</pre></div>
+</div>
+<section id="forwarding-multiple-ports">
+<h3>Forwarding Multiple Ports<a class="headerlink" href="#forwarding-multiple-ports" title="Link to this heading"></a></h3>
+<p>Example:  Forwarding ports 3306 and 80 back to 1234, 8080
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">1234</span><span class="p">:</span><span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8080</span><span class="p">:</span><span class="n">localhost</span><span class="p">:</span><span class="mi">80</span> <span class="n">ubuntu</span><span class="o">@</span><span class="mf">10.129.202.64</span>
+</pre></div>
+</div>
+</section>
+<section id="ssh-tunnel-over-socks-proxy">
+<h3>SSH Tunnel over SOCKS Proxy<a class="headerlink" href="#ssh-tunnel-over-socks-proxy" title="Link to this heading"></a></h3>
+<p>Step 1: Create a connection using dynamic port forwarding with:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">D</span> <span class="mi">9050</span> <span class="n">ubuntu</span><span class="o">@</span><span class="mf">10.129.202.64</span>
+</pre></div>
+</div>
+<p>Step 2: Configure proxychains to use the tunnel.  Add the port association with the socks4 entry
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Temen@htb[/htb]$ tail -4 /etc/proxychains.conf
+
+# meanwile
+# defaults set to &quot;tor&quot;
+socks4       127.0.0.1 9050
+</pre></div>
+</div>
+<p>Step 3:  When you start the nmap with proxychains, the packets will route through the 9050 port locally to the ubuntu server.
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxychains</span> <span class="n">nmap</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">sn</span> <span class="mf">172.16.5.1</span><span class="o">-</span><span class="mi">200</span>
+</pre></div>
+</div>
+<p><strong>Important Note</strong> proxychains does not understant half open connections like a SYN scan.  It will only error on this.  You will need to do full connect scans using Proxychains.</p>
+</section>
+<section id="using-metasploit-and-proxychains">
+<h3>Using Metasploit and Proxychains<a class="headerlink" href="#using-metasploit-and-proxychains" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

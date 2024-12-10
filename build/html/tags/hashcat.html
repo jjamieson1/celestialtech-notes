@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hashcat &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="hydra" href="hydra.html" />
+    <link rel="prev" title="gobuster" href="gobuster.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bash.html">console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File%20Encryption%20Windows.html">File Encryption on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gobuster.html">gobuster</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">hashcat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rules">Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mask-attack">Mask Attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hybrid-attack">Hybrid attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-attacks">Advanced Attacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loopback">Loopback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raking">Raking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cewl">cewl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hashcat-utils">hashcat-utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hashid">hashid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="winrm.html">winrm</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">hashcat</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tags/hashcat.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hashcat">
+<h1>hashcat<a class="headerlink" href="#hashcat" title="Link to this heading"></a></h1>
+<p>2024-11-23 10:28</p>
+<p>Status:</p>
+<p>Tags: <a class="reference external" href="CertifiedPenetrationTester">Certified Penetration Tester</a>
+<a class="reference external" href="PasswordCracking">Password Cracking</a>
+<a class="reference external" href="PasswordAttacks">Password Attacks</a></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A hash cracking utility utilizing word lists and rules</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Example 1: installation</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install hashcat</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">-a is the mode.</div>
+<div class="line">* 0 is straight mode * 1 is combination more</div>
+</div>
+<p>-m is the hash type. You can use <a class="reference external" href="hashid">hashid</a> to help identify
+this</p>
+<p><strong>create a SHA1 hash to test with</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo -n &#39;St@r5h1p2019&#39; | sha1sum | awk &#39;{print $1}&#39; | tee hash</span>
+</pre></div>
+</div>
+</section>
+<section id="rules">
+<h2>Rules<a class="headerlink" href="#rules" title="Link to this heading"></a></h2>
+<p>Example 1: Append 2020 to the end of all attempts</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &#39;c so0 si1 se3 ss5 sa@ $2 $0 $2 $0&#39; &gt; rule.txt</span>
+</pre></div>
+</div>
+<p>The first letter word is capitalized with the <code class="docutils literal notranslate"><span class="pre">c</span></code> function. Then rule
+uses the substitute function <code class="docutils literal notranslate"><span class="pre">s</span></code> to replace <code class="docutils literal notranslate"><span class="pre">o</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">i</span></code>
+with <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">e</span></code> with <code class="docutils literal notranslate"><span class="pre">3</span></code> and a with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. At the end, the year
+<code class="docutils literal notranslate"><span class="pre">2020</span></code> is appended to it.</p>
+<p>Example 2 : Debuging the rule</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -r rule.txt test.txt --stdout</span>
+</pre></div>
+</div>
+<p>Example 3: using a hashcat rule</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a 0 -m 1000 hash.txt ../wordlists/rockyou.txt -r /usr/share/hashcat/rules/d3ad0ne.rule</span>
+</pre></div>
+</div>
+</section>
+<section id="mask-attack">
+<h2>Mask Attack<a class="headerlink" href="#mask-attack" title="Link to this heading"></a></h2>
+<p>Example</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a 3 -m 0 &lt;hash&gt; -1 01 &#39;ILFREIGHT?l?l?l?l?l20?1?d&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="hybrid-attack">
+<h2>Hybrid attack<a class="headerlink" href="#hybrid-attack" title="Link to this heading"></a></h2>
+<p>Example 1:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a 7 -m 0 hybrid_hash_prefix -1 01 &#39;20?1?d&#39; ~/HTB/wordlists/rockyou.txt</span>
+</pre></div>
+</div>
+<p>Example 2:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a6 hashfile.txt rockyou.txt ?d?d?d</span>
+</pre></div>
+</div>
+<p>Example 3: Hybrid attack with masks and increment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a6 hasfile.txt rockyou.txt -i ?u?l?l?l??d?d?s</span>
+</pre></div>
+</div>
+<p>Example 4: Classic hybrid attack the other way around with a mask:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a7 ?d?d?d hashfile.txt rockyou.txt</span>
+</pre></div>
+</div>
+<p>Example 5: Classic hybrid attack the other way around with mask and
+increment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a7 -i ?d?d?d hashfile.txt rockyou.txt</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-attacks">
+<h2>Advanced Attacks<a class="headerlink" href="#advanced-attacks" title="Link to this heading"></a></h2>
+<section id="loopback">
+<h3>Loopback<a class="headerlink" href="#loopback" title="Link to this heading"></a></h3>
+<p>Password that have been cracked before are added to the dictionary until
+no new passwords are found.</p>
+<p>Example 1: Loopback</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashcat -a 0 &lt;hash&gt; wordlist/rockyou.txt  --loopback -r rule.txt</span>
+</pre></div>
+</div>
+</section>
+<section id="raking">
+<h3>Raking<a class="headerlink" href="#raking" title="Link to this heading"></a></h3>
+<p>Raking will generate random rules and running them over the hashes. This
+is useful if you have run out of success with standard measures.</p>
+<p>Example 1: Adding -g to generate random rules
+<code class="docutils literal notranslate"><span class="pre">Example</span> <span class="pre">2:</span> <span class="pre">Raking</span> <span class="pre">hashat</span> <span class="pre">-a</span> <span class="pre">0</span> <span class="pre">&lt;hash&gt;</span> <span class="pre">wordlist/rockyou.txt</span>&#160; <span class="pre">--loopback</span> <span class="pre">-g</span></code></p>
+<p>Example 2: Raking and saving random rules to a file for analysis</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hashat -a 0 &lt;hash&gt; wordlist/rockyou.txt  --loopback -g --debug-mode=1 --debug-file=matched.rule</span>
+</pre></div>
+</div>
+</section>
+<section id="cewl">
+<h3><a class="reference external" href="cewl">cewl</a><a class="headerlink" href="#cewl" title="Link to this heading"></a></h3>
+<p>For generating custom word lists based off a website.</p>
+</section>
+<section id="hashcat-utils">
+<h3>hashcat-utils<a class="headerlink" href="#hashcat-utils" title="Link to this heading"></a></h3>
+<p><strong>Installation</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">Temen@htb[/htb]$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hashcat/hashcat-utils.git
+<span class="gp">Temen@htb[/htb]$ </span><span class="nb">cd</span><span class="w"> </span>hashcat-utils/src
+<span class="gp">Temen@htb[/htb]$ </span>make
+</pre></div>
+</div>
+</section>
+<section id="hashid">
+<h3>hashid<a class="headerlink" href="#hashid" title="Link to this heading"></a></h3>
+<p>Identifies the type of hash.
+.. code-block:: console</p>
+<blockquote>
+<div><p>pip install hashid</p>
+</div></blockquote>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://www.prosec-networks.com/en/blog/password-cracking/">https://www.prosec-networks.com/en/blog/password-cracking/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gobuster.html" class="btn btn-neutral float-left" title="gobuster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hydra.html" class="btn btn-neutral float-right" title="hydra" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

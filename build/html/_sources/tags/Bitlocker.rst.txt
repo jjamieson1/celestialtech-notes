@@ -14,7 +14,7 @@ Cracking Bitlocker
 
 Example 1: Using John to extract the hash
 
-.. code-block:: bash
+.. code-block:: console
 
    Temen@htb[/htb]$ bitlocker2john -i Backup.vhd > backup.hashes
    Temen@htb[/htb]$ grep "bitlocker\$0" backup.hashes > backup.hash
@@ -22,7 +22,7 @@ Example 1: Using John to extract the hash
 
 Using hashcat to crack the password:
 
-.. code-block:: bash
+.. code-block:: console
 
    hashcat -m 22100 backup.hash /opt/useful/seclists/Passwords/Leaked-Databases/rockyou.txt -o backup.cracked
 

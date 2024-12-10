@@ -13,7 +13,7 @@ Tags:
 Installation
 ************
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install dnsrecon
 
@@ -21,7 +21,7 @@ Installation
 Usage
 *****
 
-.. code-block::
+.. code-block:: console
 
     dnsrecon -d www.example.com -a 
     dnsrecon -d www.example.com -t axfr
