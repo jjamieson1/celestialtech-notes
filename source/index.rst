@@ -42,6 +42,8 @@ Celestial Tech Red Team Documentation
    CPTS/Initial Access/SSH Pivoting with Sshuttle
    CPTS/Initial Access/Web Server Pivoting with Rpivot
    CPTS/Initial Access/Port Forwarding with Windows Netsh
+   CPTS/Initial Access/DNS Tunneling with Dnscat2
+   CPTS/Initial Access/SOCKS5 Tunneling with Chisel
    
 .. toctree:: 
    :maxdepth: 1

