@@ -6,7 +6,7 @@ File Inclusion
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
+Tags: 
 
 
 *****************

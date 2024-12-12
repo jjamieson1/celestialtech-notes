@@ -35,7 +35,14 @@ Celestial Tech Red Team Documentation
    CPTS/Initial Access/SSH Forwarding
    CPTS/Initial Access/Dynamic Port Forwarding with SSH and SOCKS Tunneling
    CPTS/Initial Access/Remote-Reverse Port Forwarding with SSH
-
+   CPTS/Initial Access/Meterpreter Tunneling and Port Forwarding
+   CPTS/Initial Access/Socat Redirection with a Reverse Shell
+   CPTS/Initial Access/Socat Redirection with a Bind Shell
+   CPTS/Initial Access/SSH for Windows: plink.exe
+   CPTS/Initial Access/SSH Pivoting with Sshuttle
+   CPTS/Initial Access/Web Server Pivoting with Rpivot
+   CPTS/Initial Access/Port Forwarding with Windows Netsh
+   
 .. toctree:: 
    :maxdepth: 1
    :caption: Tools

