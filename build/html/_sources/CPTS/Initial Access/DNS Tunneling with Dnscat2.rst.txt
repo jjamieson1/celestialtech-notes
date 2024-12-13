@@ -80,3 +80,8 @@ Interacting with the tunnel
 
     C:\Windows\system32>
     exec (OFFICEMANAGER) 1>
+
+
+References
+**********
+https://academy.hackthebox.com/module/158/section/1436

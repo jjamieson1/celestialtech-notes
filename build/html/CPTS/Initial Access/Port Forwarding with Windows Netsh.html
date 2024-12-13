@@ -74,10 +74,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Port Forwarding with Windows Netsh</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tools</span></p>
 <ul>
@@ -158,6 +160,26 @@
 2. Viewing firewall configs
 3. Adding proxies
 4. Creating port forwarding rules</p>
+<p><strong>Example</strong> of port forwarding using netsh</p>
+<p>Given the pivot host at 10.129.15.15 we need to get to an address on the otherwise inaccessible 172.16.5 network</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">C:\Windows\system32&gt; netsh.exe interface portproxy add v4tov4 listenport=8080 listenaddress=10.129.15.150 connectport=3389 connectaddress=172.16.5.25</span>
+</pre></div>
+</div>
+<p>To verify this is running you can check with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">C:\Windows\system32&gt; netsh.exe interface portproxy show v4tov4</span>
+
+<span class="go">Listen on ipv4:             Connect to ipv4:</span>
+
+<span class="go">Address         Port        Address         Port</span>
+<span class="go">--------------- ----------  --------------- ----------</span>
+<span class="go">10.129.42.198   8080        172.16.5.25     3389</span>
+</pre></div>
+</div>
+<p>Now on our attack host we can pivot through the pivot host and get to the 172.16 network.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://academy.hackthebox.com/module/158/section/1435">https://academy.hackthebox.com/module/158/section/1435</a></p>
 </section>
 </section>
 

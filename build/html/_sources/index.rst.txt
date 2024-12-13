@@ -44,6 +44,7 @@ Celestial Tech Red Team Documentation
    CPTS/Initial Access/Port Forwarding with Windows Netsh
    CPTS/Initial Access/DNS Tunneling with Dnscat2
    CPTS/Initial Access/SOCKS5 Tunneling with Chisel
+   CPTS/Initial Access/ICMP Tunneling with SOCKS
    
 .. toctree:: 
    :maxdepth: 1

