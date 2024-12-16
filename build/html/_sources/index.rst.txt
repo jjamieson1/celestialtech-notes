@@ -25,7 +25,8 @@ Celestial Tech Red Team Documentation
    CPTS/Reconnaissance/Infrastructure Enumeration
    CPTS/Reconnaissance/Host Enumeration
    CPTS/Reconnaissance/fingerprinting
-
+   CPTS/Reconnaissance/Initial Enumeration of a AD Domain
+   CPTS/Reconnaissance/External Recon and Enumeration Principles
 
 .. toctree::
    :maxdepth: 1
@@ -45,6 +46,8 @@ Celestial Tech Red Team Documentation
    CPTS/Initial Access/DNS Tunneling with Dnscat2
    CPTS/Initial Access/SOCKS5 Tunneling with Chisel
    CPTS/Initial Access/ICMP Tunneling with SOCKS
+   CPTS/Initial Access/RDP and SOCKS Tunneling with SocksOverRDP
+   CPTS/Initial Access/LLMNR NBT-NS Poisoning from Linux
    
 .. toctree:: 
    :maxdepth: 1
@@ -85,8 +88,32 @@ Celestial Tech Red Team Documentation
    tags/hashcat
    tags/hydra
    tags/impacket
+   tags/inveigh
    tags/invoke-TheHash
+   tags/john
+   tags/kwprocessor
+   tags/lazagne
+   tags/linkatz
+   tags/Linux local password attacks
+   tags/Linux Mount
+   tags/kerbrute
+   tags/metasploit
+   tags/medusa
+   tags/Microsoft DREAD
+   tags/mimikatz
+   tags/msfvenom
+   tags/nessus
+   tags/netcat
+   tags/nikto
+   tags/nmap
    tags/netstat
+   tags/O365spray
+   tags/PowerShell Web Uploads
+   tags/princeprocessor
+   tags/psexec
+   tags/PTES
+   tags/pyenv
+   tags/responder
    tags/subfinder
    tags/smtp-user-enum
    tags/winrm
