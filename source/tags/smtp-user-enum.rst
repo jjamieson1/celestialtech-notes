@@ -1,36 +1,25 @@
-###############
-smtp-user-enum
-###############
+smtp-user-enum 
+***************
 
-Status: draft
+Date: 2024-11-30 14:58
 
-Date: 2024-11-09 14:48
+Status: #mail
 
-Tags: 
-
-*************
-Description
-*************
-Use the VRFY method (-M VRFY) to search for the specified user (-u root) on the target server (-t 192.168.1.25):
-
-**************
 Installation
-**************
-
+****************
 .. code-block:: console
 
-    sudo apt install smtp-user-enum
-
+   git clone https://github.com/pentestmonkey/smtp-user-enum
 
 Usage
-*****
+******
+
+Example 1: username hunting
 
 .. code-block:: console
 
-    smtp-user-enum -M VRFY -u root -t 192.168.1.25
+   smtp-user-enum -M RCPT -U userlist.txt -D inlanefreight.htb -t 10.129.203.7
 
-
-***********
 References
-***********
-https://www.kali.org/tools/smtp-user-enum/
+**********
+https://academy.hackthebox.com/module/116/section/1173

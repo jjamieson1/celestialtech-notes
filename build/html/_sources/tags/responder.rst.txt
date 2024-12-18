@@ -1,15 +1,12 @@
-2024-11-21 11:02
+responder
+##########
+
+Date: 2024-11-21 11:02
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Active Directory <Active Directory>`__
-
-responder
-=========
-
 Description
------------
+***************
 
 This package contains Responder/MultiRelay, an LLMNR, NBT-NS and MDNS
 poisoner. It will answer to specific NBT-NS (NetBIOS Name Service)
@@ -24,23 +21,23 @@ NBT-NS behavior. You can set the -r option via command line if you want
 to answer to the Workstation Service request name suffix.
 
 Installation
-------------
+**************
 
-.. code:: bash
+.. code-block:: console
 
    git clone https://github.com/lgandx/Responder
 
 Configuration
--------------
+**************
 
-.. code:: bash
+.. code-block:: console
 
    cat Responder.conf
 
 Usage
------
+*********
 
-.. code:: bash
+.. code-block:: console
 
    pyenv activate htb
    python responder -I {network iface}
@@ -48,6 +45,6 @@ Usage
 -I to specify the network interface.
 
 References
-==========
+***********
 https://pentestlab.blog/2017/12/13/smb-share-scf-file-attacks/
 https://www.kali.org/tools/responder/

@@ -1,12 +1,15 @@
+Bash
 #######
-console
-#######
-2024-11-28 22:20
+
+Date: 2024-11-28 22:20
 
 Status:
 
 Tags: 
 
+Description
+**************
+A shell common to the Linux operating system.
 
 Example 1: You can use console to download a file
 
@@ -33,7 +36,6 @@ Example 2: Finding files with a certain string
 
    grep -rn /mnt/Finance/ -ie cred
 
-**************
 References
 **************
 https://academy.hackthebox.com/module/116/section/1140

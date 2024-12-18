@@ -1,42 +1,26 @@
 subfinder
 ###########
 
-Status: draft
+Date: 2024-11-30 13:14
 
-Date: 2024-11-09 14:48
+Status:
 
-Tags: 
-
-Description
-************
-
-This package contains a subdomain discovery tool that discovers valid subdomains for websites by using passive online sources. It has a simple modular architecture and is optimized for speed. subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well.
-
-**************
 Installation
-**************
+*************
 
 .. code-block:: console
 
-    sudo apt install subfinder
+   go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
-*********
 Usage
-*********
+****** 
 
-Example: 
+Example 1: enumeration
 
 .. code-block:: console
-    
-    subfinder -silent -d megacorpone.com | dnsx -silent
-    subfinder -silent -d megacorpone.com | dnsx -silent -a -resp
-    subfinder -silent -d megacorpone.com | dnsx -silent -a -resp-only
-    subfinder -silent -d megacorpone.com | dnsx -silent -cname -resp
-    subfinder -silent -d megacorpone.com | dnsx -silent -asn 
 
+   ./subfinder -d inlanefreight.com -v
 
-
-************
 References
-************
-https://www.kali.org/tools/subfinder/
+***********
+https://academy.hackthebox.com/module/116/section/1512

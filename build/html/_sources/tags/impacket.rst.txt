@@ -1,24 +1,18 @@
-############
 imapacket
 ############
 
-2024-11-23 11:44
+Date: 2024-11-23 11:44
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Password Attacks <Password Attacks>`__
-`Windows Lateral Movement <Windows Lateral Movement>`__
 
+impacket Description
+**********************
 
-*****************
-Description
-*****************
 A utility package 
 
-******************
-Installation
-******************
+impacket installation
+***********************
 
 .. code-block:: console 
 
@@ -30,13 +24,11 @@ Installation
     pip install impacket
     pip install pycryptodome
 
-*****************
-Usage
+impacket usage
 *****************
 
-===============
-ntlmrelayx
-===============
+impacket-ntlmrelayx
+=====================
 
 Example 1:  Default will dump the SAM database
 
@@ -52,16 +44,15 @@ Example 2: Running a powershell payload (requires a listener and revshells.com)
 
 
 
+impacket-psexec
 ===============
-psexec
-===============
+
 Example:  impacket-psexec
 
 .. code-block:: console
     
     impacket-psexec administrator:'Password123!'@10.10.110.17
 
-*****************
 References
 *****************
 https://academy.hackthebox.com/module/147/section/1638

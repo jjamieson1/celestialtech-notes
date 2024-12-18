@@ -5,15 +5,15 @@ Date: 2024-11-09 14:48
 
 Status:
 
-Description
-**************
+nmap Description
+*****************
 
 Versatile network scanner that can be used for various reconnaissance
 tasks, including service and OS fingerprinting. ## Features Can be used
 with scripts (NSE) to perform more specialised fingerprinting.
 
-Options
-************
+nmap Options
+**************
 
 Returning RST flag means the port is closed. target port responds with
 an ``SYN-ACK`` packet and closed if it responds with an ``RST``\ packet.
@@ -37,8 +37,8 @@ Example 3: You can update the nmap database with:
 
    sudo nmap --script-updatedb
 
-Ping Sweep
-***********
+nmap Ping Sweep
+****************
 .. code-block:: console
 
    nmap -sn 10.0.0.0/24
@@ -46,8 +46,8 @@ Ping Sweep
 Adding –script-trace to the nmap command will show which scripts are
 running during the scan
 
-Checking for a SMTP open-relay
-*********************************
+nmap Checking for a SMTP open-relay
+*************************************
 
 .. code-block:: console
 

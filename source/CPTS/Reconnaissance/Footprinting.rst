@@ -1,4 +1,3 @@
-################################
 Footprinting
 ################################
 
@@ -8,7 +7,6 @@ Date: 2024-11-09 14:48
 
 Tags: 
 
-****************************
 Enumeration Principals
 ****************************
 
@@ -25,5 +23,7 @@ Consider the following:
 6. What reasons can there he that we do not see 
 7. What image results for us from what we can not see 
 
+References
+************
 See :doc:`Active Scanning <../../OFSEC/recon/Active Scanning>` for information about OSINT and passive measures.
 
