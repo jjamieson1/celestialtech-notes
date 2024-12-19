@@ -12,7 +12,8 @@ industry exams, and I also use them as references during engagements.
    :maxdepth: 1
    :caption: Hack the Box Certifications
 
-   CPTS/index/Certified Penetration Tester
+   CPTS/Certified Penetration Tester
+   CDSA/Certified Defensive Security Analyst
 
 .. toctree::
    :maxdepth: 1

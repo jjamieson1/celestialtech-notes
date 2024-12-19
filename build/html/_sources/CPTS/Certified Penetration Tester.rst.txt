@@ -1,0 +1,85 @@
+Certified Penetration Tester
+###############################
+
+.. image:: ../img/cpts.webp
+    :width: 100%
+    :alt: CPTS Banner image
+   
+
+Date: 2024-11-06 08:19
+
+Status: #Inprogress
+
+Tags: #security
+
+CPTS Description
+*****************
+The Penetration Tester Job Role Path is for newcomers to information security who aspire to become professional penetration testers. This path covers core security assessment concepts and provides a deep understanding of the specialized tools, attack tactics, and methodology used during penetration testing. Armed with the necessary theoretical background and multiple practical exercises, students will go through all penetration testing stages, from reconnaissance and enumeration to documentation and reporting. Upon completing this job role path, you will have obtained the practical skills and mindset necessary to perform professional security assessments against enterprise-level infrastructure at an intermediate level. The Information Security Foundations skill path can be considered prerequisite knowledge to be successful while working through this job role path.
+
+Modules
+*********
+
+.. toctree::
+   :maxdepth: 1
+   :caption: CPTS Modules
+
+   Overview/Penetration Testing Overview
+   Reconnaissance/Network Enumeration with Nmap
+   Reconnaissance/Footprinting
+   Reconnaissance/Information Gathering
+   Lateral Movement/File Transfers
+   Initial Access/Shells and Payloads
+   Initial Access/Using the Metasploit Framework
+   Initial Access/Password Attacks
+   Initial Access/Attacking Common services
+   Lateral Movement/Pivoting-Tunneling and Port Forwarding
+   Initial Access/Active Directory Enumeration Attacks
+
+
+Using Web Proxies
+=================
+
+Attacking Web Applications with :ref:`ffuf`
+===============================================
+
+Login Brute Forcing
+===================
+
+SQL Injection Fundamentals
+==========================
+
+SQLMap essentials
+=================
+
+Cross site scripting (XSS)
+==========================
+
+:ref:`File Inclusion`
+===================================
+
+File Upload Attacks
+===================
+
+Command Injection
+=================
+
+Web Attacks
+===========
+
+Attacking Common Applications
+=============================
+
+Linux Privilege Escalation
+==========================
+
+Windows Privilege Escalation
+============================
+
+Documentation and Reporting
+===========================
+
+Attacking Enterprise Networks
+=============================
+
+References
+************

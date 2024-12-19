@@ -1,0 +1,28 @@
+Certified Defensive Security Analyst
+####################################
+
+CDSA Description
+*******************
+The SOC Analyst Job Role Path is for newcomers to information security who aspire to become professional SOC analysts. This path covers core security monitoring and security analysis concepts and provides a deep understanding of the specialized tools, attack tactics, and methodology used by adversaries. Armed with the necessary theoretical background and multiple practical exercises, students will go through all security analysis stages, from traffic analysis and SIEM monitoring to DFIR activities and reporting. Upon completing this job role path, you will have obtained the practical skills and mindset necessary to monitor enterprise-level infrastructure and detect intrusions at an intermediate level. The SOC Analyst Prerequisites skill path can be considered prerequisite knowledge to be successful while working through this job role path.
+
+
+
+CDSA Modules
+**************
+
+
+1. :ref:`Incident Handling Process`
+2. :ref:`Security Monitoring and SIEM Fundamentals`
+3. :ref:`Windows Event Logs and Finding Evil`
+4. Introduction to Threat Hunting & Hunting With Elastic
+5. Understanding Log Sources & Investigating with Splunk
+6. Windows Attacks & Defense
+7. Intro to Network Traffic Analysis
+8. Intermediate Network Traffic Analysis
+9. Working with IDS/IPS
+10. Introduction to Malware Analysis
+11. :ref:`JavaScript Deobfuscation`
+12. YARA & Sigma for SOC Analysts
+13. Introduction to Digital Forensics
+14. Detecting Windows Attacks with Splunk
+15. Security Incident Reporting
