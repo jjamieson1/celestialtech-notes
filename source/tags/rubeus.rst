@@ -5,6 +5,11 @@ Date: 2024-11-25 19:35
 
 Status:
 
+Description
+***********
+
+Rubeus is a C# tool built for Kerberos Abuse.
+
 Dumping tickets
 ********************
 

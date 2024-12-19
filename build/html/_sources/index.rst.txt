@@ -25,6 +25,7 @@ industry exams, and I also use them as references during engagements.
    :maxdepth: 1 
    :caption: Overview 
 
+   CPTS/Overview/Introduction to Active Directory
    CPTS/Overview/Penetration Testing Overview
    CPTS/Overview/Types of Penetration testing
    CPTS/Overview/Vulnerability Assessment
@@ -63,6 +64,7 @@ industry exams, and I also use them as references during engagements.
    CPTS/Initial Access/ICMP Tunneling with SOCKS
    CPTS/Initial Access/RDP and SOCKS Tunneling with SocksOverRDP
    CPTS/Initial Access/LLMNR NBT-NS Poisoning from Linux
+   CPTS/Initial Access/LLMNR NBT-NS Poisoning from Windows
    CPTS/Initial Access/Password Attacks
    CPTS/Initial Access/Remote Password Attacks
    CPTS/Initial Access/Using the Metasploit Framework
@@ -84,9 +86,12 @@ industry exams, and I also use them as references during engagements.
 
 .. toctree:: 
    :maxdepth: 1
-   :caption: Tools
+   :caption: Glossary
 
    tags/Active Directory
+   tags/Active Directory Explorer
+   tags/ADRecon
+   tags/adidnsdump
    tags/apache nutch
    tags/Application Testing
    tags/Attacking AD and NTDS.dit
@@ -97,6 +102,7 @@ industry exams, and I also use them as references during engagements.
    tags/bettercap
    tags/Bitlocker
    tags/Black box Testing
+   tags/bloodhound
    tags/bloodhound.py
    tags/builtwith
    tags/burp suite
@@ -109,8 +115,11 @@ industry exams, and I also use them as references during engagements.
    tags/crowbar
    tags/crunch
    tags/cupp
+   tags/CVE-2021-1675.py
    tags/CVSS
+   tags/d3ad0ne
    tags/DKIM
+   tags/domainPasswordSpray
    tags/DMARC
    tags/DNS
    tags/dnsenum
@@ -121,6 +130,7 @@ industry exams, and I also use them as references during engagements.
    tags/Evasive testing
    tags/evil-winrm
    tags/extent
+   tags/GetNPUsers.py
    tags/fail2ban
    tags/ffuf
    tags/fierce
@@ -129,9 +139,14 @@ industry exams, and I also use them as references during engagements.
    tags/finalRecon
    tags/Firefox Decrypt
    tags/FTP
+   tags/gettgtpkinit.py
+   tags/getnthash.py
+   tags/getuserspns.py
    tags/git
    tags/gobuster
+   tags/gpp-decrypt
    tags/Grey Box Testing
+   tags/Group3r
    tags/hashcat
    tags/hippa
    tags/Hybrid evasive
@@ -146,11 +161,14 @@ industry exams, and I also use them as references during engagements.
    tags/keytab
    tags/keytabextract.py
    tags/kwprocessor
+   tags/ldapsearch
    tags/lazagne
    tags/laps
+   tags/LAPSToolkit
    tags/linkatz
    tags/Linux local password attacks
    tags/Linux Mount
+   tags/lookupsid.py
    tags/kerbrute
    tags/md5sum
    tags/metasploit
@@ -161,6 +179,7 @@ industry exams, and I also use them as references during engagements.
    tags/msfvenom
    tags/MSSQL
    tags/MySQL
+   tags/mssqlclient.py
    tags/nessus
    tags/netcat
    tags/netcraft
@@ -170,6 +189,7 @@ industry exams, and I also use them as references during engagements.
    tags/NFS
    tags/nikto
    tags/nmap
+   tags/nopac.py
    tags/netstat
    tags/Non-evasive testing
    tags/O365spray
@@ -180,15 +200,20 @@ industry exams, and I also use them as references during engagements.
    tags/OWASP
    tags/owasp-zap
    tags/pentest
+   tags/petitpotam.py
    tags/pci-dss
    tags/Physical Testing
+   tags/PingCastle
    tags/powershell
+   tags/powerview
    tags/PowerShell Web Uploads
    tags/princeprocessor
    tags/proxychains
    tags/psexec
+   tags/psexec.py
    tags/PTES
    tags/pyenv
+   tags/raiseChild.py
    tags/r-services
    tags/rdp
    tags/recon-ng
@@ -197,18 +222,26 @@ industry exams, and I also use them as references during engagements.
    tags/rpc
    tags/rsync
    tags/rpcclient
+   tags/rpcinfo
+   tags/rcpdump.py
    tags/rubeus
    tags/S3 Buckets
+   tags/shadow credentials abusing
+   tags/sharpHound
+   tags/sharpview
    tags/smb
    tags/smbserver.py
    tags/scrappy
    tags/sc.exe
+   tags/secretsdump.py
+   tags/setspn.exe
    tags/shells
    tags/smbmap
    tags/SMTP
    tags/smtp-user-enum
    tags/SNMP
    tags/SQL Injection
+   tags/snaffler
    tags/Social Engineering Testing
    tags/ssh
    tags/spf
@@ -224,6 +257,7 @@ industry exams, and I also use them as references during engagements.
    tags/Symmetrical Encryption
    tags/targetedKerberoast.py
    tags/theharvester
+   tags/ticketer.py
    tags/Transfer with Code
    tags/Transferring File with GfxDownloadWrapper.exe
    tags/tscon.exe
@@ -243,6 +277,7 @@ industry exams, and I also use them as references during engagements.
    tags/whatweb
    tags/White Box Testing
    tags/whois
+   tags/windapsearch
    tags/Windows CMD
    tags/Windows Lateral Movement
    tags/Windows Local Password Attacks
@@ -251,6 +286,7 @@ industry exams, and I also use them as references during engagements.
    tags/Windows Passwords
    tags/winrm
    tags/WMI
+   tags/wmiexec.py
    tags/wpscan 
    tags/xfreerdp
    tags/xxd

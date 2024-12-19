@@ -54,10 +54,10 @@
 <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html">Introduction to Active Directory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Overview/Types%20of%20Penetration%20testing.html">Types of Penetration testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Overview/Vulnerability%20Assessment.html">Vulnerability Assessment</a></li>
@@ -101,7 +101,21 @@
 <li class="toctree-l1"><a class="reference internal" href="Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Shells%20and%20Payloads.html">Shells and Payloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Attacking%20Common%20Services.html">Attacking Common Services</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Active Directory Enumeration Attacks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Active Directory Enumeration Attacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-recon-and-enumeration-principles"><span class="xref std std-ref">External Recon and Enumeration Principles</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-enumeration-of-a-ad-domain"><span class="xref std std-ref">Initial Enumeration of a AD Domain</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#llmnr-nbt-ns-poisoning-from-linux"><span class="xref std std-ref">LLMNR/NBT-NS Poisoning - from Linux</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#llmnr-nbt-ns-poisoning-from-windows"><span class="xref std std-ref">LLMNR/NBT-NS Poisoning - from Windows</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-of-the-trade">Tools of the trade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stories-from-the-field">Stories from the field</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scenario-1-waiting-on-an-admin">Scenario 1: Waiting on An Admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scenario-2-spraying-the-night-away">Scenario 2: Spraying the night away</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scenario-3-fighting-in-the-dark">Scenario 3: Fighting in the Dark</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
 <ul>
@@ -113,9 +127,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Linux%20Pass%20the%20Ticket.html">Linux Pass the Ticket</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory%20Explorer.html">Active Directory Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html">ADRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/adidnsdump.html">adidnsdump</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/apache%20nutch.html">apache nutch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Application%20Testing.html">Application Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20AD%20and%20NTDS.dit.html">Attacking AD and NTDS.dit</a></li>
@@ -126,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Black%20box%20Testing.html">Black box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.html">bloodhound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/builtwith.html">builtwith</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/burp%20suite.html">burp suite</a></li>
@@ -139,8 +159,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVE-2021-1675.py.html">CVE-2021-1675.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/d3ad0ne.html">d3ad0ne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/domainPasswordSpray.html">domainPasswordSpray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
@@ -151,6 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Evasive%20testing.html">Evasive Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/extent.html">extent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/GetNPUsers.py.html">GetNPUsers.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
@@ -159,9 +183,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gettgtpkinit.py.html">gettgtpkinit.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getnthash.py.html">getnthash.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getuserspns.py.html">getuserspns.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gpp-decrypt.html">gpp-decrypt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Grey%20Box%20Testing.html">Grey Box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Group3r.html">Group3r</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/hippa.html">hippa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Hybrid%20evasive.html">Hybrid evasive</a></li>
@@ -176,11 +205,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/keytab.html">keytab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/keytabextract.py.html">keytabextract.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/kwprocessor.html">kwprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ldapsearch.html">ldapsearch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/lazagne.html">lazagne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/laps.html">laps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/LAPSToolkit.html">LAPSToolkit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/linkatz.html">Linikatz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20local%20password%20attacks.html">Linux local password attacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20Mount.html">Linux Mount</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/lookupsid.py.html">lookupsid.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/kerbrute.html">kerbrute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/md5sum.html">md5sum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/metasploit.html">metasploit</a></li>
@@ -191,6 +223,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/msfvenom.html">msfvenom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/MSSQL.html">MSSQL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/MySQL.html">MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mssqlclient.py.html">mssqlclient.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/nessus.html">nessus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/netcat.html">netcat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/netcraft.html">netcraft</a></li>
@@ -200,6 +233,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/NFS.html">NFS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/nikto.html">nikto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/nmap.html">nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nopac.py.html">nopac.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Non-evasive%20testing.html">Non-evasive testing</a></li>
@@ -211,15 +245,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/OWASP.html">OWASP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/owasp-zap.html">owasp-zap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/pentest.html">pentest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/petitpotam.py.html">petitpotam.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/pci-dss.html">pci-dss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Physical%20Testing.html">Physical Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PingCastle.html">PingCastle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/powershell.html">powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/powerview.html">powerview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/PowerShell%20Web%20Uploads.html">PowerShell Web Uploads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/princeprocessor.html">princeprocessor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/proxychains.html">proxychains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.html">psexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.py.html">psexec.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/PTES.html">PTES</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/pyenv.html">pyenv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/raiseChild.py.html">raiseChild.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/r-services.html">r-services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rdp.html">rdp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/recon-ng.html">recon-ng</a></li>
@@ -231,14 +270,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html#footprinting">Footprinting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html#references">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rpcclient.html">rpcclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpcinfo.html">rpcinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rcpdump.py.html">rcpdump.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rubeus.html">rubeus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/S3%20Buckets.html">S3 Buckets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/shadow%20credentials%20abusing.html">shadow credentials abusing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpHound.html">sharpHound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpview.html">sharpview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smb.html">smb</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smbserver.py.html">smbserver.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/scrappy.html">scrappy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html">sc.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#description">Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/secretsdump.py.html">secretsdump.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/setspn.exe.html">setspn.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/shells.html">shells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smbmap.html">smbmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/SMTP.html">SMTP</a></li>
@@ -248,6 +294,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#references">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/SNMP.html">SNMP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Injection.html">SQL Injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/snaffler.html">snaffler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Social%20Engineering%20Testing.html">Social Engineering Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/ssh.html">ssh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/spf.html">spf</a></li>
@@ -263,6 +310,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Symmetrical%20Encryption.html">Symmetrical Encryption</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/targetedKerberoast.py.html">targetedKerberoast.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/theharvester.html">theharvester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ticketer.py.html">ticketer.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Transfer%20with%20Code.html">Transfer with Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Transferring%20File%20with%20GfxDownloadWrapper.exe.html">Transferring File with GfxDownloadWrapper.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/tscon.exe.html">tscon.exe</a></li>
@@ -282,6 +330,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/whatweb.html">whatweb</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/White%20Box%20Testing.html">White Box Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/whois.html">whois</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/windapsearch.html">windapsearch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20CMD.html">Windows CMD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Lateral%20Movement.html">Windows Lateral Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Local%20Password%20Attacks.html">Windows Local Password Attacks</a></li>
@@ -290,6 +339,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Passwords.html">Windows Passwords</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/WMI.html">WMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wmiexec.py.html">wmiexec.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/wpscan.html">wpscan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/xfreerdp.html">xfreerdp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/xxd.html">xxd</a></li>
@@ -322,6 +372,102 @@
              
   <section id="active-directory-enumeration-attacks">
 <h1>Active Directory Enumeration Attacks<a class="headerlink" href="#active-directory-enumeration-attacks" title="Link to this heading"></a></h1>
+<p>Date: 2024-12-19 12:54:04</p>
+<p>Status: #in-progress</p>
+<p>Tags: <a class="reference internal" href="../Certified%20Penetration%20Tester.html#certified-penetration-tester"><span class="std std-ref">Certified Penetration Tester</span></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Active directory came out in 2000 with the release of Windows Server 2000.  Active Directory (AD) is based
+on the x.500 protocol.  AD provides structures for:</p>
+<ul class="simple">
+<li><p>Users</p></li>
+<li><p>Groups</p></li>
+<li><p>Network Devices</p></li>
+<li><p>File shares</p></li>
+<li><p>Policies</p></li>
+<li><p>devices and trusts</p></li>
+</ul>
+<p>AD provides authentication, accounting and authorization within a Windows enterprise.</p>
+<p>See more on AD in the module:  <a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html#introduction-to-active-directory"><span class="std std-ref">Introduction to Active Directory</span></a></p>
+</section>
+<section id="external-recon-and-enumeration-principles">
+<h2><a class="reference internal" href="../Reconnaissance/External%20Recon%20and%20Enumeration%20Principles.html#external-recon-and-enumeration-principles"><span class="std std-ref">External Recon and Enumeration Principles</span></a><a class="headerlink" href="#external-recon-and-enumeration-principles" title="Link to this heading"></a></h2>
+</section>
+<section id="initial-enumeration-of-a-ad-domain">
+<h2><a class="reference internal" href="../Reconnaissance/Initial%20Enumeration%20of%20a%20AD%20Domain.html#initial-enumeration-of-a-ad-domain"><span class="std std-ref">Initial Enumeration of a AD Domain</span></a><a class="headerlink" href="#initial-enumeration-of-a-ad-domain" title="Link to this heading"></a></h2>
+</section>
+<section id="llmnr-nbt-ns-poisoning-from-linux">
+<h2><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Linux.html#llmnr-nbt-ns-poisoning-from-linux"><span class="std std-ref">LLMNR/NBT-NS Poisoning - from Linux</span></a><a class="headerlink" href="#llmnr-nbt-ns-poisoning-from-linux" title="Link to this heading"></a></h2>
+</section>
+<section id="llmnr-nbt-ns-poisoning-from-windows">
+<h2><span class="xref std std-ref">LLMNR/NBT-NS Poisoning - from Windows</span><a class="headerlink" href="#llmnr-nbt-ns-poisoning-from-windows" title="Link to this heading"></a></h2>
+</section>
+<section id="tools-of-the-trade">
+<h2>Tools of the trade<a class="headerlink" href="#tools-of-the-trade" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a> A PowerShell tool and a .NET port of the same used to gain situational awareness in AD. These tools can be used as replacements for various Windows net* commands and more. PowerView and SharpView can help us gather much of the data that BloodHound does, but it requires more work to make meaningful relationships among all of the data points. These tools are great for checking what additional access we may have with a new set of credentials, targeting specific users or computers, or finding some “quick wins” such as users that can be attacked via Kerberoasting or ASREPRoasting.</p></li>
+<li><p><a class="reference internal" href="../../tags/sharpview.html#sharpview"><span class="std std-ref">sharpview</span></a> see above</p></li>
+<li><p><a class="reference internal" href="../../tags/sharpHound.html#sharphound"><span class="std std-ref">sharpHound</span></a> The C# data collector to gather information from Active Directory about varying AD objects such as users, groups, computers, ACLs, GPOs, user and computer attributes, user sessions, and more. The tool produces JSON files which can then be ingested into the BloodHound GUI tool for analysis.</p></li>
+<li><p><a class="reference internal" href="../../tags/bloodhound.py.html#bloodhound-py"><span class="std std-ref">bloodhound.py</span></a> Used to visually map out AD relationships and help plan attack paths that may otherwise go unnoticed. Uses the SharpHound PowerShell or C# ingestor to gather data to later be imported into the BloodHound JavaScript (Electron) application with a Neo4j database for graphical analysis of the AD environment.</p></li>
+<li><p><a class="reference internal" href="../Reconnaissance/Initial%20Enumeration%20of%20a%20AD%20Domain.html#kerberute"><span class="std std-ref">Kerberute</span></a> A tool written in Go that uses Kerberos Pre-Authentication to enumerate Active Directory accounts, perform password spraying, and brute-forcing.</p></li>
+<li><p><a class="reference internal" href="../../tags/impacket.html#impacket"><span class="std std-ref">impacket</span></a>       A collection of tools written in Python for interacting with network protocols. The suite of tools contains various scripts for enumerating and attacking Active Directory.</p></li>
+<li><p><a class="reference internal" href="../../tags/responder.html#responder"><span class="std std-ref">responder</span></a> Responder is a purpose-built tool to poison LLMNR, NBT-NS, and MDNS, with many different functions.</p></li>
+<li><p><a class="reference internal" href="../../tags/inveigh.html#inveigh"><span class="std std-ref">inveigh</span></a> Similar to Responder, a PowerShell tool for performing various network spoofing and poisoning attacks.</p></li>
+<li><p><a class="reference internal" href="../../tags/rpcinfo.html#rpcinfo"><span class="std std-ref">rpcinfo</span></a> The rpcinfo utility is used to query the status of an RPC program or enumerate the list of available RPC services on a remote host. The “-p” option is used to specify the target host. For example the command “rpcinfo -p 10.0.0.1” will return a list of all the RPC services available on the remote host, along with their program number, version number, and protocol. Note that this command must be run with sufficient privileges.</p></li>
+<li><p><a class="reference internal" href="../../tags/crackmapexec.html#crackmapexec"><span class="std std-ref">crackmapexec</span></a> CME is an enumeration, attack, and post-exploitation toolkit which can help us greatly in enumeration and performing attacks with the data we gather. CME attempts to “live off the land” and abuse built-in AD features and protocols like SMB, WMI, WinRM, and MSSQL.</p></li>
+<li><p><a class="reference internal" href="../../tags/rubeus.html#rubeus"><span class="std std-ref">rubeus</span></a> Rubeus is a C# tool built for Kerberos Abuse.</p></li>
+<li><p><a class="reference internal" href="../../tags/rpcclient.html#rpcclient"><span class="std std-ref">rpcclient</span></a> A part of the Samba suite on Linux distributions that can be used to perform a variety of Active Directory enumeration tasks via the remote RPC service.</p></li>
+<li><p><a class="reference internal" href="../../tags/getuserspns.py.html#getuserspns-py"><span class="std std-ref">getuserspns.py</span></a>  Another Impacket module geared towards finding Service Principal names tied to normal users.</p></li>
+<li><p><a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a> A great hash cracking and password recovery tool.</p></li>
+<li><p><a class="reference internal" href="../../tags/enum4linux-ng.html#enum4linux-ng"><span class="std std-ref">enum4linux-ng</span></a> A rework of the original Enum4linux tool that works a bit differently.</p></li>
+<li><p><a class="reference internal" href="../../tags/ldapsearch.html#ldapsearch"><span class="std std-ref">ldapsearch</span></a> Built-in interface for interacting with the LDAP protocol.</p></li>
+<li><p><a class="reference internal" href="../../tags/windapsearch.html#windapsearch"><span class="std std-ref">windapsearch</span></a> A Python script used to enumerate AD users, groups, and computers using LDAP queries. Useful for automating custom LDAP queries.</p></li>
+<li><p><a class="reference internal" href="../../tags/domainPasswordSpray.html#domainpasswordspray"><span class="std std-ref">domainPasswordSpray</span></a> DomainPasswordSpray is a tool written in PowerShell to perform a password spray attack against users of a domain.</p></li>
+<li><p><a class="reference internal" href="../../tags/LAPSToolkit.html#lapstoolkit"><span class="std std-ref">LAPSToolkit</span></a> The toolkit includes functions written in PowerShell that leverage PowerView to audit and attack Active Directory environments that have deployed Microsoft’s Local Administrator Password Solution (LAPS).</p></li>
+<li><p><a class="reference internal" href="../../tags/smbmap.html#smbmap"><span class="std std-ref">smbmap</span></a> SMB share enumeration across a domain.</p></li>
+<li><p><a class="reference internal" href="../../tags/psexec.py.html#psexec-py"><span class="std std-ref">psexec.py</span></a> Part of the Impacket toolkit, it provides us with Psexec-like functionality in the form of a semi-interactive shell.</p></li>
+<li><p><a class="reference internal" href="../../tags/wmiexec.py.html#wmiexec-py"><span class="std std-ref">wmiexec.py</span></a> Part of the Impacket toolkit, it provides the capability of command execution over WMI</p></li>
+<li><p><a class="reference internal" href="../../tags/snaffler.html#snaffler"><span class="std std-ref">snaffler</span></a> Useful for finding information (such as credentials) in Active Directory on computers with accessible file shares.</p></li>
+<li><p><a class="reference internal" href="../../tags/smbserver.py.html#smbserver-py"><span class="std std-ref">smbserver.py</span></a> Simple SMB server execution for interaction with Windows hosts. Easy way to transfer files within a network.</p></li>
+<li><p><a class="reference internal" href="../../tags/setspn.exe.html#setspn-exe"><span class="std std-ref">setspn.exe</span></a> Adds, reads, modifies and deletes the Service Principal Names (SPN) directory property for an Active Directory service account.</p></li>
+<li><p><a class="reference internal" href="../../tags/mimikatz.html#mimikatz"><span class="std std-ref">mimikatz</span></a> Performs many functions. Notably, pass-the-hash attacks, extracting plaintext passwords, and Kerberos ticket extraction from memory on a host.</p></li>
+<li><p><a class="reference internal" href="../../tags/secretsdump.py.html#secretsdump-py"><span class="std std-ref">secretsdump.py</span></a> Remotely dump SAM and LSA secrets from a host.</p></li>
+<li><p><a class="reference internal" href="../../tags/evil-winrm.html#evil-winrm"><span class="std std-ref">evil-winrm</span></a> Provides us with an interactive shell on a host over the WinRM protocol.</p></li>
+<li><p><a class="reference internal" href="../../tags/mssqlclient.py.html#mssqlclient-py"><span class="std std-ref">mssqlclient.py</span></a> art of the Impacket toolkit, it provides the ability to interact with MSSQL databases.</p></li>
+<li><p><a class="reference internal" href="../../tags/nopac.py.html#nopac-py"><span class="std std-ref">nopac.py</span></a> Exploit combo using CVE-2021-42278 and CVE-2021-42287 to impersonate DA from standard domain user.</p></li>
+<li><p><a class="reference internal" href="../../tags/rcpdump.py.html#rcpdump-py"><span class="std std-ref">rcpdump.py</span></a> Part of the Impacket toolset, RPC endpoint mapper.</p></li>
+<li><p><a class="reference internal" href="../../tags/CVE-2021-1675.py.html#cve-2021-1675-py"><span class="std std-ref">CVE-2021-1675.py</span></a> Printnightmare PoC in python.</p></li>
+<li><p><a class="reference internal" href="../../tags/impacket.html#impacket-ntlmrelayx"><span class="std std-ref">impacket-ntlmrelayx</span></a> Part of the Impacket toolset, it performs SMB relay attacks.</p></li>
+<li><p><a class="reference internal" href="../../tags/petitpotam.py.html#petitpotam-py"><span class="std std-ref">petitpotam.py</span></a> PoC tool for CVE-2021-36942 to coerce Windows hosts to authenticate to other machines via MS-EFSRPC EfsRpcOpenFileRaw or other functions.</p></li>
+<li><p><a class="reference internal" href="../../tags/gettgtpkinit.py.html#gettgtpkinit-py"><span class="std std-ref">gettgtpkinit.py</span></a> Tool for manipulating certificates and TGTs.</p></li>
+<li><p><a class="reference internal" href="../../tags/getnthash.py.html#getnthash-py"><span class="std std-ref">getnthash.py</span></a> This tool will use an existing TGT to request a PAC for the current user using U2U.</p></li>
+<li><p><a class="reference internal" href="../../tags/adidnsdump.html#adidnsdump"><span class="std std-ref">adidnsdump</span></a> A tool for enumerating and dumping DNS records from a domain. Similar to performing a DNS Zone transfer.</p></li>
+<li><p><a class="reference internal" href="../../tags/gpp-decrypt.html#gpp-decrypt"><span class="std std-ref">gpp-decrypt</span></a> Extracts usernames and passwords from Group Policy preferences files.</p></li>
+<li><p><a class="reference internal" href="../../tags/GetNPUsers.py.html#getnpusers-py"><span class="std std-ref">GetNPUsers.py</span></a> Part of the Impacket toolkit. Used to perform the ASREPRoasting attack to list and obtain AS-REP hashes for users with the ‘Do not require Kerberos preauthentication’ set. These hashes are then fed into a tool such as Hashcat for attempts at offline password cracking.</p></li>
+<li><p><a class="reference internal" href="../../tags/lookupsid.py.html#lookupsid-py"><span class="std std-ref">lookupsid.py</span></a> SID bruteforcing tool.c</p></li>
+<li><p><a class="reference internal" href="../../tags/ticketer.py.html#ticketer-py"><span class="std std-ref">ticketer.py</span></a> A tool for creation and customization of TGT/TGS tickets. It can be used for Golden Ticket creation, child to parent trust attacks, etc.</p></li>
+<li><p><a class="reference internal" href="../../tags/raiseChild.py.html#raisechild-py"><span class="std std-ref">raiseChild.py</span></a> Part of the Impacket toolkit, It is a tool for automated child to parent domain privilege escalation.</p></li>
+<li><p><a class="reference internal" href="../../tags/Active%20Directory%20Explorer.html#active-directory-explorer"><span class="std std-ref">Active Directory Explorer</span></a> Active Directory Explorer (AD Explorer) is an AD viewer and editor. It can be used to navigate an AD database and view object properties and attributes. It can also be used to save a snapshot of an AD database for offline analysis. When an AD snapshot is loaded, it can be explored as a live version of the database. It can also be used to compare two AD database snapshots to see changes in objects, attributes, and security permissions.</p></li>
+<li><p><a class="reference internal" href="../../tags/PingCastle.html#pingcastle"><span class="std std-ref">PingCastle</span></a> Used for auditing the security level of an AD environment based on a risk assessment and maturity framework (based on CMMI adapted to AD security).</p></li>
+<li><p><a class="reference internal" href="../../tags/Group3r.html#group3r"><span class="std std-ref">Group3r</span></a> Group3r is useful for auditing and finding security misconfigurations in AD Group Policy Objects (GPO).</p></li>
+<li><p><a class="reference internal" href="../../tags/ADRecon.html#adrecon"><span class="std std-ref">ADRecon</span></a> A tool used to extract various data from a target AD environment. The data can be output in Microsoft Excel format with summary views and analysis to assist with analysis and paint a picture of the environment’s overall security state.</p></li>
+</ul>
+</section>
+<section id="stories-from-the-field">
+<h2>Stories from the field<a class="headerlink" href="#stories-from-the-field" title="Link to this heading"></a></h2>
+<section id="scenario-1-waiting-on-an-admin">
+<h3>Scenario 1: Waiting on An Admin<a class="headerlink" href="#scenario-1-waiting-on-an-admin" title="Link to this heading"></a></h3>
+<p>During this engagement, I compromised a single host and gained SYSTEM level access. Because this was a domain-joined host, I was able to use this access to enumerate the domain. I went through all of the standard enumeration, but did not find much. There were Service Principal Names (SPNs) present within the environment, and I was able to perform a Kerberoasting attack and retrieve TGS tickets for a few accounts. I attempted to crack these with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a> and some of my standard wordlists and rules, but was unsuccessful at first. I ended up leaving a cracking job running overnight with a very large wordlist combined with the <a class="reference internal" href="../../tags/d3ad0ne.html#d3ad0ne"><span class="std std-ref">d3ad0ne</span></a> rule that ships with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a>. The next morning I had a hit on one ticket and retrieved the cleartext password for a user account. This account did not give me significant access, but it did give me write access on certain file shares. I used this access to drop SCF files around the shares and left Responder going. After a while, I got a single hit, the NetNTLMv2 hash of a user. I checked through the BloodHound output and noticed that this user was actually a domain admin! Easy day from here.</p>
+</section>
+<section id="scenario-2-spraying-the-night-away">
+<h3>Scenario 2: Spraying the night away<a class="headerlink" href="#scenario-2-spraying-the-night-away" title="Link to this heading"></a></h3>
+<p>Password spraying can be an extremely effective way to gain a foothold in a domain, but we must exercise great care not to lock out user accounts in the process. On one engagement, I found an SMB NULL session using the <a class="reference internal" href="../../tags/enum4linux-ng.html#enum4linux-ng"><span class="std std-ref">enum4linux-ng</span></a> tool and retrieved both a listing of all users from the domain, and the domain password policy. Knowing the password policy was crucial because I could ensure that I was staying within the parameters to not lock out any accounts and also knew that the policy was a minimum eight-character password and password complexity was enforced (meaning that a user’s password required 3/4 of special character, number, uppercase, or lower case number, i.e., Welcome1). I tried several common weak passwords such as Welcome1, Password1, Password123, Spring2018, etc. but did not get any hits. Finally, I made an attempt with <a class="reference external" href="mailto:Spring&#37;&#52;&#48;18">Spring<span>&#64;</span>18</a> and got a hit! Using this account, I ran <a class="reference internal" href="../../tags/bloodhound.html#bloodhound"><span class="std std-ref">bloodhound</span></a> and found several hosts where this user had local admin access. I noticed that a domain admin account had an active session on one of these hosts. I was able to use the Rubeus tool and extract the Kerberos TGT ticket for this domain user. From there, I was able to perform a pass-the-ticket attack and authenticate as this domain admin user. As a bonus, I was able to take over the trusting domain as well because the Domain Administrators group for the domain that I took over was a part of the Administrators group in the trusting domain via nested group membership, meaning I could use the same set of credentials to authenticate to the other domain with full administrative level access.</p>
+</section>
+<section id="scenario-3-fighting-in-the-dark">
+<h3>Scenario 3: Fighting in the Dark<a class="headerlink" href="#scenario-3-fighting-in-the-dark" title="Link to this heading"></a></h3>
+<p>I had tried all of my standard ways to obtain a foothold on this third engagement, and nothing had worked. I decided that I would use the <a class="reference internal" href="../../tags/kerbrute.html#kerbrute"><span class="std std-ref">kerbrute</span></a> tool to attempt to enumerate valid usernames and then, if I found any, attempt a targeted password spraying attack since I did not know the password policy and did not want to lock any accounts out. I used the linkedin2username tool (<a class="reference external" href="https://github.com/initstring/linkedin2username">https://github.com/initstring/linkedin2username</a>) to first mashup potential usernames from the company’s LinkedIn page. I combined this list with several username lists from the statistically-likely-usernames GitHub repo (<a class="reference external" href="https://github.com/insidetrust/statistically-likely-usernames">https://github.com/insidetrust/statistically-likely-usernames</a>) and, after using the userenum feature of <a class="reference internal" href="../../tags/kerbrute.html#kerbrute"><span class="std std-ref">kerbrute</span></a>, ended up with 516 valid users. I knew I had to tread carefully with password spraying, so I tried with the password Welcome2021 and got a single hit! Using this account, I ran the Python version of BloodHound from my attack host and found that all domain users had RDP access to a single box. I logged into this host and used the PowerShell tool DomainPasswordSpray to spray again. I was more confident this time around because I could a) view the password policy and b) the DomainPasswordSpray tool will remove accounts close to lockout from the target list. Being that I was authenticated within the domain, I could now spray with all domain users, which gave me significantly more targets. I tried again with the common password Fall2021 and got several hits, all for users not in my initial wordlist. I checked the rights for each of these accounts and found that one was in the Help Desk group, which had GenericAll rights over the Enterprise Key Admins group (<a class="reference external" href="https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#genericall">https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#genericall</a>). The Enterprise Key Admins group had GenericAll privileges over a domain controller, so I added the account I controlled to this group, authenticated again, and inherited these privileges. Using these rights, I performed the <a class="reference internal" href="../../tags/shadow%20credentials%20abusing.html#shadow-credentials-abusing"><span class="std std-ref">shadow credentials abusing</span></a> attack and retrieved the NT hash for the domain controller machine account. With this NT hash, I was then able to perform a DCSync attack and retrieve the NTLM password hashes for all users in the domain because a domain controller can perform replication, which is required for DCSync.</p>
+</section>
+</section>
 </section>
 
 
