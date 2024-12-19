@@ -3,8 +3,7 @@ Celestial Security Documentation
 
 .. image:: img/hacker_cover.jpeg
    
-Description
-***********
+
 These are my personal notes that are a perpetual work in progress.  I use these notes to study for various 
 industry exams, and I also use them as references during engagements.
 
@@ -20,7 +19,7 @@ industry exams, and I also use them as references during engagements.
    :caption: Offensive Methods
 
    OFSEC/recon/Active Scanning
-   OFSEC/evasion/Evading EDR and AntiVirus
+
 
 .. toctree::
    :maxdepth: 1 
@@ -88,13 +87,19 @@ industry exams, and I also use them as references during engagements.
    :caption: Tools
 
    tags/Active Directory
+   tags/apache nutch
    tags/Application Testing
+   tags/Attacking AD and NTDS.dit
+   tags/Attacking LSASS
+   tags/Attacking the SAM
    tags/Base64
    tags/Bash
    tags/bettercap
    tags/Bitlocker
    tags/Black box Testing
    tags/bloodhound.py
+   tags/builtwith
+   tags/burp suite
    tags/Certificates
    tags/cewl
    tags/chisel
@@ -115,6 +120,7 @@ industry exams, and I also use them as references during engagements.
    tags/enum4linux-ng
    tags/Evasive testing
    tags/evil-winrm
+   tags/extent
    tags/fail2ban
    tags/ffuf
    tags/fierce
@@ -127,20 +133,26 @@ industry exams, and I also use them as references during engagements.
    tags/gobuster
    tags/Grey Box Testing
    tags/hashcat
+   tags/hippa
    tags/Hybrid evasive
    tags/hydra
    tags/IMAP-POP3
    tags/impacket
    tags/IPMP
+   tags/iso-27001
    tags/inveigh
    tags/invoke-TheHash
    tags/john
+   tags/keytab
+   tags/keytabextract.py
    tags/kwprocessor
    tags/lazagne
+   tags/laps
    tags/linkatz
    tags/Linux local password attacks
    tags/Linux Mount
    tags/kerbrute
+   tags/md5sum
    tags/metasploit
    tags/medusa
    tags/Microsoft DREAD
@@ -151,7 +163,10 @@ industry exams, and I also use them as references during engagements.
    tags/MySQL
    tags/nessus
    tags/netcat
+   tags/netcraft
+   tags/net-webclient
    tags/Network Testing
+   tags/NIST
    tags/NFS
    tags/nikto
    tags/nmap
@@ -161,6 +176,11 @@ industry exams, and I also use them as references during engagements.
    tags/openssl
    tags/Oracle TNS
    tags/OSINT Framework
+   tags/OSSTMM
+   tags/OWASP
+   tags/owasp-zap
+   tags/pentest
+   tags/pci-dss
    tags/Physical Testing
    tags/powershell
    tags/PowerShell Web Uploads
@@ -180,7 +200,9 @@ industry exams, and I also use them as references during engagements.
    tags/rubeus
    tags/S3 Buckets
    tags/smb
+   tags/smbserver.py
    tags/scrappy
+   tags/sc.exe
    tags/shells
    tags/smbmap
    tags/SMTP
@@ -196,6 +218,7 @@ industry exams, and I also use them as references during engagements.
    tags/sqlcmd
    tags/sqsh
    tags/subbrute
+   tags/sudo
    tags/subfinder
    tags/Subverting SQL Query Logic
    tags/Symmetrical Encryption

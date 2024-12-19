@@ -72,7 +72,7 @@ Detection and Analyses Part 1
 
    -  \|\ ``Date``\ \|\ ``Time of the event``\ \|\ ``hostname``\ \|\ ``event description``\ \|\ ``data source``
 
--  Identify severity and `extent <extent>`__ questions
+-  Identify severity and :ref:`extent <extent>` questions
 -  Incident confidentiality and communication
 
 Detection and Analyses Part 2

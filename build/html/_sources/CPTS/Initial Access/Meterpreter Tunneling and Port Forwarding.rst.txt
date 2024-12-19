@@ -1,6 +1,5 @@
-########################################
 Meterpreter Tunneling and Port Forwarding
-########################################
+############################################
 
 Date: 2024-11-02 14:33
 
@@ -13,7 +12,6 @@ Description
 
 There are situation where you may want to drop a shell on the pivot host instead of using SSH
 
-*************************************
 Creating a shell on the pivot host
 *************************************
 
@@ -68,7 +66,6 @@ Now that we are connected to the pivot host via the created shell, we can scan t
     [*] Performing ping sweep for IP range 172.16.5.0/23
 
 
-************************************** 
 Configuring MSF's SOCKS Proxy
 **************************************
 
@@ -161,7 +158,7 @@ It is also possible to add routes with `autoroute` by running autoroute from the
 
 
 Listing active routes with Autoroute
-========================================
+****************************************
 
 .. code-block:: console 
 
@@ -180,7 +177,7 @@ Listing active routes with Autoroute
     172.16.5.0         255.255.254.0      Session 1
 
 Testing the proxychain config
-=================================
+**************************************
 
 .. code-block:: console
 
@@ -253,7 +250,7 @@ Step 2: Configure and starting multi/handler
 We can now create a reverse shell payload that will send a connection back to our Ubuntu server on 172.16.5.129:1234 when executed on our Windows host. Once our Ubuntu server receives this connection, it will forward that to attack host's ip:8081 that we configured.
 
 Generating the Windows payload
-================================
+**************************************
 
 .. code-block:: console
 

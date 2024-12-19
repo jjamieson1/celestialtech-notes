@@ -2,16 +2,16 @@
 
 Status:
 
-Tags: `Vulnerability Assessment <Vulnerability Assessment>`__
+Tags: :ref:`Vulnerability Assessment <Vulnerability Assessment>`
 
 Compliance Standards
 ====================
 
-`PCI-DSS <PCI-DSS>`__
+:ref:`PCI-DSS <PCI-DSS>`
 
-`HIPPA <HIPPA>`__
+:ref:`HIPPA <HIPPA>`
 
-`ISO-27001 <ISO-27001>`__
+:ref:`iso-27001 <iso-27001>`
 
 References
 ==========

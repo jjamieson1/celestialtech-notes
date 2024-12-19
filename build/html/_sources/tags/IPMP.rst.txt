@@ -6,7 +6,7 @@ Date: 2024-11-11 14:48
 Status:
 
 
-:doc:`Intelligent Platform Management Interface <https://www.thomas-krenn.com/en/wiki/IPMI_Basics>`
+Intelligent Platform Management Interface <https://www.thomas-krenn.com/en/wiki/IPMI_Basics
 
 A remote management of hardware (ILO)
 

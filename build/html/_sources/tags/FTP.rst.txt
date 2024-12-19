@@ -1,7 +1,7 @@
 FTP
 ############
 
-2024-11-02 17:28
+Date: 2024-11-02 17:28
 
 Status:
 
@@ -30,7 +30,7 @@ Interesting commands:
 
 -  ``ls -R`` Show recursive listings
 
-Using `wget <wget>`__ to download all FTP files:
+Using :ref:`wget <wget>` to download all FTP files:
 
 .. code-block:: console
 
@@ -69,7 +69,7 @@ To enable the write option you need to add:
 
    sudo python3 -m pyftpdlib --port 21 --write
 
-On Windows you can leverage the `Net-Webclient <Net-Webclient>`__
+On Windows you can leverage the :ref:`Net-Webclient <Net-Webclient>`
 program as a client with
 
 .. code-block:: console

@@ -55,7 +55,7 @@ you see\ ``Pwn3d!`` on the output, this means the user is a local
 administrator.
 
 Often the same local administrator password is used on all servers, if
-this is found you can recommend a `LAPS <LAPS>`__ solution to create
+this is found you can recommend a :ref:`LAPS <LAPS>` solution to create
 random passwords.
 
 Attacking SMB

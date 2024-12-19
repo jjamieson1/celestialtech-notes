@@ -10,7 +10,7 @@ Configuration
 
 The shares are defined in the /etc/exports file
 
-**Note**: NFSv4 can use authenitcation methods, which NFSv4< use GID/UID
+**Note**: NFSv4 can use authentication methods, which NFSv4< use GID/UID
 mappings
 
 Example: To create a file share on an NFS server

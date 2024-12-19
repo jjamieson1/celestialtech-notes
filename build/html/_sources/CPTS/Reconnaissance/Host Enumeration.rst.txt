@@ -6,7 +6,7 @@ Status: draft
 
 Date: 2024-11-09 14:48
 
-Tags: doc: `Fierce <../../tools/fierce>`
+Tags: "ref":`fierce <fierce>`
 
 ******
 FTP
@@ -321,13 +321,13 @@ Example 6: Brute forcing sub-domains (using a wordlist  and loop)
 
     for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
 
-Example 7: Using using :doc:`dnsenum <../../tags/dnsenum>`
+Example 7: Using using :ref:`dnsenum <dnsenum>`
 
 .. code-block:: console
 
     dnsenum --dnsserver 10.129.73.113 --enum -p 0 -s 0 -o subdomains.txt -f  /home/jjamieso/HTB/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt inlanefreight.htb
 
-Example 7: using :doc:`dnsrecon <../../tags/dnsrecon>`
+Example 7: using :ref:`dnsrecon <dnsrecon>`
 
 .. code-block:: console
 
@@ -336,14 +336,14 @@ Example 7: using :doc:`dnsrecon <../../tags/dnsrecon>`
     dnsrecon -d "startIP-endIP"
     dnsrecon -d www.example.com -D "namelist" -t brt
 
-Example 8: Using :doc:`dnsX <../../tags/dnsx>`
+Example 8: Using :ref:`dnsX <dnsx>`
 
 .. code-block:: console
 
     dnsx -l domains.txt -resp -a -aaaa -cname -mx -ns -soa -txt
     dnsx -silent -d megacorpone.com -w /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt
 
-Example 9: using :doc:`subfinder <../../tags/subfinder>`
+Example 9: using :ref:`subfinder <subfinder>`
 
 .. code-block:: console
 
@@ -410,7 +410,7 @@ Example 2: using nmap and scripts
 
     sudo nmap 10.129.200.67 -p25 --script smtp-* -v
 
-Example 3: :doc: `smtp-user-enum <../tools/smtp-user-enum>`
+Example 3: :ref:`smtp-user-enum <smtp-user-enum>`
 
 .. code-block:: console
 

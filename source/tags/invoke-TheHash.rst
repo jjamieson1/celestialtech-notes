@@ -6,9 +6,11 @@ Invoke-TheHash
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Password Attacks <Password Attacks>`__
-`Windows Lateral Movement <Windows Lateral Movement>`__
+Tags: 
+
+:ref:`Certified Penetration Tester <Certified Penetration Tester>`
+:ref:`Password Attacks <Password Attacks>`
+:ref:`Windows Lateral Movement <Windows Lateral Movement>`
 
 *****************
 Description
@@ -44,7 +46,7 @@ Example 1: Running a command on a server
 Example 2: Creating a reverse shell
 ===========================================
 
-step 1: Using the site `revshells <https://www.revshells.com/>`__ create
+step 1: Using the site revshells <https://www.revshells.com/ create
 a payload for your listener step 2: Use Invoke-TheHash to run the shell
 payload
 

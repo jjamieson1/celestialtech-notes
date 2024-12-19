@@ -11,7 +11,7 @@ Tags:
 Description
 *********************
 Common Vulnerability Scoring System This system is often used with the
-`Microsoft DREAD <Microsoft DREAD>`__ system developed by MicroSoft
+:ref:`Microsoft DREAD <Microsoft DREAD>` system developed by MicroSoft
 
 CVSS Consists of:
 

@@ -144,7 +144,7 @@ Using VIM
 
    vim -c ':!/bin/sh'
 
-Checking what `sudo <sudo>`__ permission a user has:
+Checking what :ref:`sudo <sudo>` permission a user has:
 
 .. code-block:: console
 

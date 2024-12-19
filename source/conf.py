@@ -7,18 +7,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Celestial Security Reference'
-copyright = '2024, James Jamieson'
-author = 'James Jamieson'
+copyright = '2024, CelestialTech.ca'
+author = '<redacted>'
 release = 'R1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx_rtd_dark_mode','sphinxcontrib.mermaid','sphinx.ext.autosectionlabel']
+extensions = ['sphinx_rtd_dark_mode','sphinxcontrib.mermaid','sphinx.ext.autosectionlabel','myst_parser']
 pygments_style = ('solarized-dark')
 templates_path = ['_templates']
 exclude_patterns = []
-
 
 
 # -- Options for HTML output -------------------------------------------------

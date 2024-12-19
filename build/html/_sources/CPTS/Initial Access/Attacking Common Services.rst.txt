@@ -71,7 +71,7 @@ Attacking SQL
 
 - xp_cmdshell on :ref:`MSSQL <MSSQL>`
 
-- Writing files/shells in :ref:`MySQL Dropping shells, writing files <MySQL Dropping shells, writing files>`
+- Writing files/shells in :ref:`MySQL Dropping shells and writing files <MySQL Dropping shells and writing files>`
 
 - Writing/Reading files with :ref:`MSSQL Writing files <MSSQL Writing files>`
 

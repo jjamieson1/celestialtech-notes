@@ -1,4 +1,3 @@
-*********************************
 Infrastructure Based Enumeration
 *********************************
 
@@ -8,9 +7,10 @@ Date: 2024-11-09 14:48
 
 Tags: 
 
--------------------
+
 Domain information
--------------------
+******************
+
 
 The start of the enumeration is to see if there is a public website. 
 
@@ -19,10 +19,10 @@ The start of the enumeration is to see if there is a public website.
 
 
 Looking at the SSL certificate can tell often help us with Sub-domains.
-There is a good tool at `crt.sh <https://crt.sh/>`__ that allows
+There is a good tool at crt.sh <https://crt.sh/ that allows
 inspection of a certificate.
 
-This information can be retrieved via the command line and formated to
+This information can be retrieved via the command line and formatted to
 JSON with:
 
 .. code-block::  console
@@ -69,28 +69,29 @@ Using ``dig`` to get DNS records
 
    dig any inlanefreight.com
 
----------------------------
+
 Cloud Resource Enumeration
----------------------------
+*****************************
 
 Listing of cloud resources can be found from 1. Using Google and
 leveraging the inurl: and intext ``dorks`` to find blob storage hosted
 in the cloud 2. Using the webpage source code to look for any references
 pointing to cloud storage.
 
---------------------------------------------------
+
 Online Tools to gather information about a domain
---------------------------------------------------
+*************************************************
+
 
 1. **Domain.Glass** A url that can provide a ton of information on a
    domain name.
 
-2. `GrayHatWarfare <https://buckets.grayhatwarfare.com/>`__ A URL that
+2. GrayHatWarfare https://buckets.grayhatwarfare.com/ A URL that
    can find storage buckets for a domain.
 
-------
+
 Staff
-------
+**************
 
 1. Searching LinkedIn and searching for Staff blogs to get an insight on
    the technology used.

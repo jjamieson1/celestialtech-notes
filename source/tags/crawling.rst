@@ -43,13 +43,13 @@ This directory can contain access processes.
 Tools
 ********************
 
-` burp suite < burp suite>`__
+:ref:`burp suite <burp suite>`
 
-` OWASP Zap < OWASP Zap>`__
+:ref:`owasp-zap <owasp-zap>`
 
-`Scrappy <Scrappy>`__
+:ref:`Scrappy <Scrappy>`
 
-`Apache Nutch <Apache Nutch>`__ 
+:ref:`Apache Nutch <Apache Nutch>` 
 
 ********************
 References

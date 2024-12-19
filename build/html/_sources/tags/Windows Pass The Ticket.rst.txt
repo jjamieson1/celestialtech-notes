@@ -15,17 +15,15 @@ Types of tickets
 **TGT**: Ticket granting ticket. Can be used to grant additional
 tickets. **TGS**: Ticket granting service.
 
-Using `mimikatz <mimikatz>`_
+Using :ref:`mimikatz <mimikatz>`
 ********************************
 
-to export Kerberose tickets
-`mimikatz#Harvest All Kerberose Tickets <mimikatz#Harvest All Kerberose Tickets>`_
+to export Kerberose tickets harvest All Kerberose Tickets 
 
-Using mimikatz to
-`mimikatz#Pass the Ticket for lateral movement <mimikatz#Pass the Ticket for lateral movement>`_
+Using mimikatz to Pass the Ticket for lateral movement
 
-Using `rubeus <rubeus>`_ to dump tickets
-`rubeus#Dumping tickets <rubeus#Dumping tickets>`__
+Using :ref:`rubeus <rubeus>` to dump tickets
+
 
 References
 ****************

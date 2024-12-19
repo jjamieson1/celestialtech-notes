@@ -48,11 +48,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Hack the Box Certifications</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../CPTS/index/Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CDSA/Certified%20Defensive%20Security%20Analyst.html">Certified Defensive Security Analyst</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning (T5195)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../OFSEC/evasion/Evading%20EDR%20and%20AntiVirus.html">Evading EDR and AntiVirus</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
@@ -67,6 +68,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Footprinting.html">Footprinting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html#domain-information">Domain information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Infrastructure%20Enumeration.html#staff">Staff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/fingerprinting.html">fingerprinting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Reconnaissance/Initial%20Enumeration%20of%20a%20AD%20Domain.html">Initial Enumeration of a AD Domain</a></li>
@@ -111,13 +116,19 @@
 <p class="caption" role="heading"><span class="caption-text">Tools</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apache%20nutch.html">apache nutch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Application%20Testing.html">Application Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attacking%20AD%20and%20NTDS.dit.html">Attacking AD and NTDS.dit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attacking%20LSASS.html">Attacking LSASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attacking%20the%20SAM.html">Attacking the SAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Base64.html">Base64</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bash.html">Bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bettercap.html">bettercap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bitlocker.html">Bitlocker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Black%20box%20Testing.html">Black box Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtwith.html">builtwith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="burp%20suite.html">burp suite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Certificates.html">Certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cewl.html">cewl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chisel.html">chisel</a></li>
@@ -139,6 +150,7 @@
 <li class="toctree-l1"><a class="reference internal" href="enum4linux-ng.html">enum4linux-ng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evasive%20testing.html">Evasive Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extent.html">extent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fail2ban.html">fail2ban</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffuf.html">ffuf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fierce.html">fierce</a></li>
@@ -151,20 +163,26 @@
 <li class="toctree-l1"><a class="reference internal" href="gobuster.html">gobuster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Grey%20Box%20Testing.html">Grey Box Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hippa.html">hippa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hybrid%20evasive.html">Hybrid evasive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydra.html">hydra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IMAP-POP3.html">IMAP-POP3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impacket.html">imapacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impacket.html">impacket</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IPMP.html">IPMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iso-27001.html">iso-27001</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inveigh.html">inveigh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="invoke-TheHash.html">Invoke-TheHash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="john.html">john</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keytab.html">keytab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keytabextract.py.html">keytabextract.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kwprocessor.html">kwprocessor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lazagne.html">lazagne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="laps.html">laps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linkatz.html">Linikatz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Linux%20local%20password%20attacks.html">Linux local password attacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Linux%20Mount.html">Linux Mount</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kerbrute.html">kerbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md5sum.html">md5sum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metasploit.html">metasploit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.html">medusa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Microsoft%20DREAD.html">Microsoft DREAD</a></li>
@@ -175,7 +193,10 @@
 <li class="toctree-l1"><a class="reference internal" href="MySQL.html">MySQL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nessus.html">nessus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="netcat.html">netcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="netcraft.html">netcraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net-webclient.html">net-webclient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Network%20Testing.html">Network Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NIST.html">NIST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NFS.html">NFS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nikto.html">nikto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nmap.html">nmap</a></li>
@@ -195,6 +216,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="OSINT%20Framework.html">OSINT Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSSTMM.html">OSSTMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OWASP.html">OWASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="owasp-zap.html">owasp-zap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pentest.html">pentest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci-dss.html">pci-dss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Physical%20Testing.html">Physical Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="powershell.html">powershell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PowerShell%20Web%20Uploads.html">PowerShell Web Uploads</a></li>
@@ -217,7 +243,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rubeus.html">rubeus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="S3%20Buckets.html">S3 Buckets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="smb.html">smb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smbserver.py.html">smbserver.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrappy.html">scrappy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sc.exe.html">sc.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sc.exe.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sc.exe.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shells.html">shells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="smbmap.html">smbmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SMTP.html">SMTP</a></li>
@@ -236,6 +266,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sqlcmd.html">sqlcmd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sqsh.html">sqsh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subbrute.html">subbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sudo.html">sudo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subfinder.html">subfinder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Subverting%20SQL%20Query%20Logic.html">Subverting SQL Query Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Symmetrical%20Encryption.html">Symmetrical Encryption</a></li>
@@ -413,7 +444,7 @@ password hashes</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, James Jamieson.</p>
+    <p>&#169; Copyright 2024, CelestialTech.ca.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

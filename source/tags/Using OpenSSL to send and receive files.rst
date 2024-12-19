@@ -5,7 +5,7 @@ Date: 2024-11-04 10:54
 
 Status:
 
-Tags: `File Transfers <File Transfers>`__
+Tags: :ref:`File Transfers <File Transfers>`
 
 Description
 **************

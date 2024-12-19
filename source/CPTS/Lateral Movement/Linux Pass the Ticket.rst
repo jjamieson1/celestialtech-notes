@@ -103,9 +103,9 @@ to your ``/etc/proxychains.conf`` file
    socks5 127.0.0.1 1080
 
 Step 2:
-:ref:`chisel#Example 1 Run a server on port 1080`
+:ref:`chisel` #Example 1 Run a server on port 1080
 Step 3:
-:ref:`chisel#Example 2 Run a client to connect to the server`
+:ref:`chisel` Example 2 Run a client to connect to the server
 Step 4: set your KRB5CCNAME env
 
 .. code-block:: console
@@ -135,7 +135,7 @@ The configuration for this program is ``/etc/krb5.conf`` Example:
        }
 
 Step 5: Using evil-winrm and kerberos authentication
-:ref:`evil-winrm#Using Kerberos authentication`
+:ref:`evil-winrm` Using Kerberos authentication
 
 :ref:`proxychains`
 

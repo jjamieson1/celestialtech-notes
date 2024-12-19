@@ -281,7 +281,7 @@ The by requesting the log with:
 Automated Scanning
 =====================
 
-Using `ffuf <../tools/ffuf>`__ to find parameters
+Using :ref:`ffuf <ffuf>` to find parameters
 
 
 Looking for parameter names to use with your RFI/LFI attacks
@@ -297,7 +297,7 @@ LFI Word lists
 Download here:
 https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt
 
-Using it with `ffuf <../tools/ffuf>`__
+Using it with :ref:`ffuf <ffuf>`
 
 .. code-block:: console
 

@@ -12,7 +12,7 @@ Tags:
 *****************
 Description
 *****************
-A tool to interactively communicate with the service  :any:`winrm`
+A tool to interactively communicate with the service  :ref:`winrm`
 
 
 *************

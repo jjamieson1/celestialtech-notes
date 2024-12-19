@@ -24,14 +24,15 @@ Modules
    :caption: CPTS Modules
 
    Overview/Penetration Testing Overview
-   Reconnaissance/Network Enumeration with Nmap
+   Overview/Penetration Testing Standards
+   Reconnaissance/Network Enumeration with nmap
    Reconnaissance/Footprinting
    Reconnaissance/Information Gathering
    Lateral Movement/File Transfers
    Initial Access/Shells and Payloads
    Initial Access/Using the Metasploit Framework
    Initial Access/Password Attacks
-   Initial Access/Attacking Common services
+   Initial Access/Attacking Common Services
    Lateral Movement/Pivoting-Tunneling and Port Forwarding
    Initial Access/Active Directory Enumeration Attacks
 

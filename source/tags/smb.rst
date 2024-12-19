@@ -21,15 +21,15 @@ The version can be enumerated with:
    sudo nmap 10.129.14.128 -sV -sC -p139,445
 
 If more information is needed, there is a tool called
-`rpcclient <rpcclient>`__
+:ref:`rpcclient <rpcclient>`
 
 Other useful tools for enumeration:
 
--  `SMBMap <SMBMap>`__
+-  :ref:`SMBMap <SMBMap>`
 
--  `CrackMapExec <CrackMapExec>`__
+-  :ref:`CrackMapExec <CrackMapExec>`
 
--  `enum4linux-ng <enum4linux-ng>`__
+-  :ref:`enum4linux-ng <enum4linux-ng>`
 
 smbclient
 *********
@@ -58,7 +58,7 @@ Simulating SMB with Python
 
 There is a small package written in python that creates a simple SMB
 service from impacket called
-`smbserver.py <https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbserver.py>`__
+https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbserver.py
 
 From the Windows powershell you can use the builtin client to send
 files:
@@ -79,6 +79,5 @@ Example 1: Using a script scan
 
 References
 ****************
-`python smb
-server <https://academy.hackthebox.com/module/24/section/160#questionsDiv>`__
+https://academy.hackthebox.com/module/24/section/160#questionsDiv
 https://academy.hackthebox.com/module/112/section/1067

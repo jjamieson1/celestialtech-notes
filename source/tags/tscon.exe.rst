@@ -13,7 +13,7 @@ Hijacking a user session
 
 Say you are on a Win server and you are admin, and you wish to take over
 a session of an RDP logged in user. If you don’t have admin, consider
-using `psexec <psexec>`__ or `mimikatz <mimikatz>`__ to escalate.
+using :ref:`psexec <psexec>` or :ref:`mimikatz <mimikatz>` to escalate.
 
 Find users:
 
@@ -33,7 +33,7 @@ Use tscon to connect to the session
 
 Option 2 : No admin privileges
 
-Create a privileged service with `sc.exe <sc.exe>`__
+Create a privileged service with :ref:`sc.exe <sc.exe>`
 
 .. code-block:: console
 

@@ -25,4 +25,4 @@ of a threat or vulnerability based on five main factors:
 References
 ***************
 https://en.wikipedia.org/wiki/DREAD\_(risk_assessment_model)
-`CVSS <CVSS>`__
+:ref:`CVSS <CVSS>`

@@ -21,7 +21,7 @@ Smaller payloads that are sent as is, smaller means less traffic. ##
 Examples
 
 Other examples:
-`Using the Metasploit Framework <Using the Metasploit Framework>`__
+:ref:`Using the Metasploit Framework <Using the Metasploit Framework>`
 
 example 1: Listing all payloads
 

@@ -7,8 +7,10 @@ ffuf
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Information Gathering <Information Gathering>`__
+Tags: 
+
+:ref:`Certified Penetration Tester <Certified Penetration Tester>`
+:ref:`Information Gathering <Information Gathering>`
 
 *****************
 Description

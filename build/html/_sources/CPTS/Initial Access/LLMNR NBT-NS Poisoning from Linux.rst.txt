@@ -16,7 +16,7 @@ If LLMNR `(port 5355/udp)` fails, the client will fall back to NBT-NS `(Port 137
 
 The hack
 *********
-Since any host can respond to these requests, our :ref: `../../tags/responder` can be used to poison the requests.
+Since any host can respond to these requests, our :ref: `responder` can be used to poison the requests.
 
 Example
 ========
@@ -31,9 +31,9 @@ Example
 Tools for poisoning
 ====================
 
-1. :ref: `../../tags/responder`
-2. :ref: `../../tags/inveigh`
-3. :ref: `../../tags/metasploit`
+1. :ref:`responder`
+2. :ref:`inveigh`
+3. :ref:`metasploit`
 
 References
 ***********

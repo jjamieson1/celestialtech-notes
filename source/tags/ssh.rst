@@ -33,7 +33,7 @@ Example: installing and using the tool
 
 Example 2: Specifying the password to brute force
 
-.. code-cblock:: console
+.. code-block:: console
 
    ssh -v cry0l1t3@10.129.14.132 -o PreferredAuthentications=password
 

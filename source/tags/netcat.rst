@@ -33,4 +33,4 @@ And then send it to the target:
 
 References
 *****************
-`Hack the box <https://academy.hackthebox.com/module/24/section/161>`__
+Hack the box https://academy.hackthebox.com/module/24/section/161

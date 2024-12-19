@@ -9,7 +9,7 @@ Description
 **************
 
 Command-line tool specifically designed for identifying Web Application
-Firewalls (:ref:`waf`). ## Features Helps determine if a WAF is
+Firewalls (:ref:`waf <waf>`). ## Features Helps determine if a WAF is
 present and, if so, its type and configuration.
 
 Installation

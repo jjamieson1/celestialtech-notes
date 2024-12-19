@@ -11,7 +11,7 @@ Description
 This package contains Responder/MultiRelay, an LLMNR, NBT-NS and MDNS
 poisoner. It will answer to specific NBT-NS (NetBIOS Name Service)
 queries based on their name suffix
-(see: `http://support.microsoft.com/kb/163409) <http://support.microsoft.com/kb/163409>`__).
+(see: http://support.microsoft.com/kb/163409).
 By default, the tool will only answer to File Server Service request,
 which is for SMB.
 

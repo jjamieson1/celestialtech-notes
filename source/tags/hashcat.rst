@@ -1,20 +1,20 @@
-############
 hashcat
 ############
 2024-11-23 10:28
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Password Cracking <Password Cracking>`__
-`Password Attacks <Password Attacks>`__
+Tags: 
 
-*****************
+:ref:`Certified Penetration Tester <Certified Penetration Tester>`
+:ref:`Password Attacks <Password Attacks>`
+
+
 Description
 *****************
 A hash cracking utility utilizing word lists and rules
 
-******************
+
 Installation
 ******************
 
@@ -25,14 +25,14 @@ Example 1: installation
    sudo apt install hashcat
 
 
-*****************
+
 Usage
 *****************
 
 | -a is the mode.
 | \* 0 is straight mode \* 1 is combination more
 
--m is the hash type. You can use `hashid <hashid>`__ to help identify
+-m is the hash type. You can use :ref:`hashid <hashid>` to help identify
 this
 
 **create a SHA1 hash to test with**
@@ -41,7 +41,7 @@ this
 
    echo -n 'St@r5h1p2019' | sha1sum | awk '{print $1}' | tee hash
 
-*****************
+
 Rules
 *****************
 
@@ -68,7 +68,7 @@ Example 3: using a hashcat rule
 
    hashcat -a 0 -m 1000 hash.txt ../wordlists/rockyou.txt -r /usr/share/hashcat/rules/d3ad0ne.rule
 
-*****************
+
 Mask Attack
 *****************
 
@@ -78,7 +78,7 @@ Example
 
    hashcat -a 3 -m 0 <hash> -1 01 'ILFREIGHT?l?l?l?l?l20?1?d'
 
-*****************
+
 Hybrid attack
 *****************
 
@@ -113,10 +113,12 @@ increment:
 
    hashcat -a7 -i ?d?d?d hashfile.txt rockyou.txt
 
-*****************
+
 Advanced Attacks
 *****************
-===========
+
+
+
 Loopback
 ===========
 
@@ -129,7 +131,7 @@ Example 1: Loopback
 
    hashcat -a 0 <hash> wordlist/rockyou.txt  --loopback -r rule.txt
 
-===========
+
 Raking
 ===========
 
@@ -145,13 +147,13 @@ Example 2: Raking and saving random rules to a file for analysis
 
    hashat -a 0 <hash> wordlist/rockyou.txt  --loopback -g --debug-mode=1 --debug-file=matched.rule
 
-======================
-`cewl <cewl>`__
+
+:ref:`cewl <cewl>`
 ======================
 
 For generating custom word lists based off a website.
 
-======================
+
 hashcat-utils
 ======================
 
@@ -163,7 +165,7 @@ hashcat-utils
    Temen@htb[/htb]$ cd hashcat-utils/src
    Temen@htb[/htb]$ make
 
-========
+
 hashid
 ========
 
@@ -172,7 +174,7 @@ Identifies the type of hash.
 
    pip install hashid
 
-****************
+
 References
 ****************
 https://www.prosec-networks.com/en/blog/password-cracking/

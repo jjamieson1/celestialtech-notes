@@ -6,8 +6,9 @@ Firefox Decrypt
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Password Attacks <Password Attacks>`__
+Tags: 
+:ref:`Certified Penetration Tester <Certified Penetration Tester>`
+:ref:`Password Attacks <Password Attacks>`
 
 ******************
 Installation

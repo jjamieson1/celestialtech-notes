@@ -7,8 +7,7 @@ fingerprinting
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Information Gathering <Information Gathering>`__
+Tags:
 
 *****************
 Description
@@ -66,25 +65,25 @@ Example 2: Pinging a MacOSX host
    64 bytes from 192.168.86.161: icmp_seq=4 ttl=32 time=565 ms
 
 The TTL can help us identify an OS. Here is a `table of
-codes <https://subinsb.com/default-device-ttl-values/>`__
+codes https://subinsb.com/default-device-ttl-values/
 
 *******************
 Tools
 *******************
 
-`wappalyzer <wappalyzer>`__
+:ref:`wappalyzer <wappalyzer>`
 
-`BuiltWith <BuiltWith>`__
+:ref:`BuiltWith <BuiltWith>`
 
-`whatweb <whatweb>`__
+:ref:`whatweb <whatweb>`
 
-`nmap <nmap>`__
+:ref:`nmap <nmap>`
 
-`netcraft <netcraft>`__
+:ref:`netcraft <netcraft>`
 
-`wafw00f <wafw00f>`__
+:ref:`wafw00f <wafw00f>`
 
-`nikto <nikto>`__
+:ref:`nikto <nikto>`
 
 *******************
 References

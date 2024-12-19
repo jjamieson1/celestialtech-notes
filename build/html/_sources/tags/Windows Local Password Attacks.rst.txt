@@ -8,20 +8,20 @@ Status:
 Description
 **************
 
-`Attacking the SAM <Attacking the SAM>`__
------------------------------------------
+:ref:`Attacking the SAM <Attacking the SAM>`
+----------------------------------------------
 
-`Attacking LSASS <Attacking LSASS>`__
--------------------------------------
+:ref:`Attacking LSASS <Attacking LSASS>`
+------------------------------------------
 
-` Attacking AD and NTDS.dit < Attacking AD and NTDS.dit>`__
------------------------------------------------------------
-
-`Linux local password attacks <Linux local password attacks>`__
+:ref:`Attacking AD and NTDS.dit <Attacking AD and NTDS.dit>`
 ---------------------------------------------------------------
 
-`Windows Lateral Movement <Windows Lateral Movement>`__
--------------------------------------------------------
+:ref:`Linux local password attacks <Linux local password attacks>`
+--------------------------------------------------------------------
+
+:ref:`Windows Lateral Movement <Windows Lateral Movement>`
+-----------------------------------------------------------
 
 References
 *************

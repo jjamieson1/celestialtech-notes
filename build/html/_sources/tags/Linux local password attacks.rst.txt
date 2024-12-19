@@ -75,13 +75,13 @@ Example 1: grepping in files like /var/log/\*
 
 .. code-block:: console
 
-   for i in $(ls /var/log/* 2>/dev/null);do GREP=$(grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null); if [[ $GREP ]];then echo -e "\n#### Log file: " $i; grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null;fi;done
+   for i in $(ls /var/log 2>/dev/null);do GREP=$(grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null); if [[ $GREP ]];then echo -e "\n#### Log file: " $i; grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null;fi;done
 
 Looking in memory and cache
 =============================
 
 Example 1: Using
-:doc: `mimpenguin <https://github.com/huntergregal/mimipenguin>` to look at
+mimpenguin https://github.com/huntergregal/mimipenguin to look at
 credentials stored in browsers ( requires root)
 
 .. code-block:: console
@@ -99,8 +99,8 @@ Example 1: Getting the password for Mozilla
 
    cat .mozilla/firefox/1bplpd86.default-release/logins.json | jq .
 
-There is a tool called `Firefox Decrypt <Firefox Decrypt>`__ that can
-crack passwords and also `lazagne <lazagne>`__ using the browser option
+There is a tool called :ref:`Firefox Decrypt <Firefox Decrypt>` that can
+crack passwords and also :ref:`lazagne <lazagne>` using the browser option
 
 Passwd, Shadow and Opasswd
 ===========================
@@ -119,7 +119,7 @@ The shadow password hashing algorithm can be determined by this format?
 The Opasswd file, requires root permission to read, holds old passwords
 that the PAM module uses to prevent users from using old passwords.
 
-Example 1: Un-shadowing the ``/etc/passwd`` file
+Example 1: Un-shadowing the `/etc/passwd` file
 
 .. code-block:: console
 

@@ -494,13 +494,13 @@ Link
 Crédits
 -------
 
--  `@Jenaye_fr <https://twitter.com/Jenaye_fr>`__
--  `LeDocteurDesBits <https://github.com/LeDocteurDesBits>`__
--  `michmich1000 <https://github.com/michmich1000>`__
--  `@Zabannn <https://twitter.com/Zabannn>`__
--  `@noraj_rawsec <https://twitter.com/noraj_rawsec>`__
--  `@lapinousexy <https://github.com/lap1nou>`__
--  `@djnn <https://github.com/bogdzn>`__
+-  `@Jenaye_fr https://twitter.com/Jenaye_fr
+-  `LeDocteurDesBits <https://github.com/LeDocteurDesBits
+-  `michmich1000 https://github.com/michmich1000
+-  `@Zabannn https://twitter.com/Zabannn
+-  `@noraj_rawsec https://twitter.com/noraj_rawsec
+-  `@lapinousexy https://github.com/lap1nou
+-  `@djnn https://github.com/bogdzn
 
 Pro tips : A shellcode going through 3 open-source packers will have more chance to get detected than a manual obfuscation
 --------------------------------------------------------------------------------------------------------------------------

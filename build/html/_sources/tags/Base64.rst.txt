@@ -6,7 +6,7 @@ File integrity
 ****************
 
 To verify a file has not changed after encoding it on system1 and
-decoding it on system2 is to use `md5sum <md5sum>`__
+decoding it on system2 is to use :ref:`md5sum <md5sum>`
 
 | Example:
 | To get the sum from you public key
@@ -48,7 +48,7 @@ As you can see the md5 sum is the same, and the file has not mutated.
 Encoding on Windows
 ********************
 
-Using `powershell <powershell>`__ you can encode a file with:
+Using :ref:`powershell <powershell>` you can encode a file with:
 
 .. code-block:: console
 

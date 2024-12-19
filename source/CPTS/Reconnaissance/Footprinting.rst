@@ -25,5 +25,5 @@ Consider the following:
 
 References
 ************
-See :doc:`Active Scanning <../../OFSEC/recon/Active Scanning>` for information about OSINT and passive measures.
+See :ref:`Active Scanning` for information about OSINT and passive measures.
 

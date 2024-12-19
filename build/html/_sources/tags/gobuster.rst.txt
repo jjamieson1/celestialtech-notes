@@ -6,9 +6,10 @@ gobuster
 
 Status:
 
-Tags: `Certified Penetration Tester <Certified Penetration Tester>`__
-`Footprinting <Footprinting>`__
-`Information Gathering <Information Gathering>`__
+Tags: 
+:ref:`Certified Penetration Tester <Certified Penetration Tester>`
+:ref:`Footprinting <Footprinting>`
+:ref:`Information Gathering <Information Gathering>`
 
 *****************
 Description
@@ -40,7 +41,7 @@ Example 2: Targeting a virtual host
 
    gobuster vhost -u http://94.237.51.74:56507 -w ~/HTB/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain
 
-`Resource securitynewspaper <https://www.securitynewspaper.com/2019/11/04/bruteforce-any-website-with-gobuster-step-by-step-guide/>`__
+Resource securitynewspaper https://www.securitynewspaper.com/2019/11/04/bruteforce-any-website-with-gobuster-step-by-step-guide/
 
 
 *****************
