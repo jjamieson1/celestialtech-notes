@@ -33,8 +33,23 @@ See more on AD in the module:  :ref:`Introduction to Active Directory`
 :ref:`LLMNR/NBT-NS Poisoning - from Linux`
 ********************************************
 
-:ref:`LLMNR/NBT-NS Poisoning - from Windows`
+:ref:`llmnr-nbt-ns poisoning - from windows`
 ************************************************
+
+:ref:`Password Spraying`
+****************************
+
+:ref:`Enumerating and Retrieving Password Policies`
+******************************************************
+
+:ref:`Internal Password Spraying from Linux`
+***********************************************
+
+:ref:`Internal Password Spraying from Windows` 
+***********************************************
+
+
+
 
 
 
@@ -46,7 +61,7 @@ Tools of the trade
 - :ref:`sharpview` see above
 - :ref:`sharpHound` The C# data collector to gather information from Active Directory about varying AD objects such as users, groups, computers, ACLs, GPOs, user and computer attributes, user sessions, and more. The tool produces JSON files which can then be ingested into the BloodHound GUI tool for analysis.
 - :ref:`bloodhound.py` Used to visually map out AD relationships and help plan attack paths that may otherwise go unnoticed. Uses the SharpHound PowerShell or C# ingestor to gather data to later be imported into the BloodHound JavaScript (Electron) application with a Neo4j database for graphical analysis of the AD environment.
-- :ref:`kerberute` A tool written in Go that uses Kerberos Pre-Authentication to enumerate Active Directory accounts, perform password spraying, and brute-forcing.
+- :ref:`kerbrute` A tool written in Go that uses Kerberos Pre-Authentication to enumerate Active Directory accounts, perform password spraying, and brute-forcing.
 - :ref:`impacket` 	A collection of tools written in Python for interacting with network protocols. The suite of tools contains various scripts for enumerating and attacking Active Directory.
 - :ref:`responder` Responder is a purpose-built tool to poison LLMNR, NBT-NS, and MDNS, with many different functions.
 - :ref:`inveigh` Similar to Responder, a PowerShell tool for performing various network spoofing and poisoning attacks.

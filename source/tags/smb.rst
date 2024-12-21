@@ -25,11 +25,11 @@ If more information is needed, there is a tool called
 
 Other useful tools for enumeration:
 
--  :ref:`SMBMap <SMBMap>`
+-  :ref:`smbmap`
 
--  :ref:`CrackMapExec <CrackMapExec>`
+-  :ref:`crackmapexec`
 
--  :ref:`enum4linux-ng <enum4linux-ng>`
+-  :ref:`enum4linux-ng`
 
 smbclient
 *********

@@ -38,10 +38,10 @@ Identifying users
 
 When no initial user is provided, there are techniques to identify users to work with:
 
-Kerberute
+Kerbrute
 =========
 
-See installation and usage :ref: `../../tags/kerberute`
+See installation and usage :ref: `../../tags/kerbrute`
 
 From Kerbrute we now have a list of usernames we can use in a password spray attack. 
 

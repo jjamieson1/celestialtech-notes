@@ -26,7 +26,7 @@ Example
 3. The host then broadcasts out to the entire network asking for resolutuion.
 4. The responder program responds that it is the printer it is looking for.
 5. The host attempts to authenticate to responder, and the hash is captured.
-6.  The hash is cracked offline or used in a SMB Relay attack.
+6. The hash is cracked offline or used in a SMB Relay attack.
 
 Tools for poisoning
 ====================

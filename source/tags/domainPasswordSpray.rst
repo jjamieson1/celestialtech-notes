@@ -14,7 +14,11 @@ DomainPasswordSpray is a tool written in PowerShell to perform a password spray 
 
 Installation
 ************
-See link below
+
+.. code-block:: console
+
+    git clone https://github.com/dafthack/DomainPasswordSpray
+
 
 
 References

@@ -14,7 +14,7 @@ Installation
 .. code-block:: console
 
      sudo git clone https://github.com/ropnop/kerbrute.git
-     cd kerberute
+     cd kerbrute
      make linux 
      ## To make for all platforms use make all binaries found in dist folder
 

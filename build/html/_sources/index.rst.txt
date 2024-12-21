@@ -71,7 +71,11 @@ industry exams, and I also use them as references during engagements.
    CPTS/Initial Access/Shells and Payloads
    CPTS/Initial Access/Attacking Common Services
    CPTS/Initial Access/Active Directory Enumeration Attacks
-
+   CPTS/Initial Access/Password Spraying
+   CPTS/Initial Access/Enumerating and Retrieving Password Policies
+   CPTS/Initial Access/Internal Password Spraying from Linux
+   CPTS/Initial Access/Internal Password Spraying from Windows
+   
 .. toctree::
    :maxdepth: 1
    :caption: Lateral Movement
