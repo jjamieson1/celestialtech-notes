@@ -53,6 +53,22 @@ Example:  impacket-psexec
     
     impacket-psexec administrator:'Password123!'@10.10.110.17
 
+    impacket-psexec inlanefreight.local/wley:'transporter@4'@172.16.5.125  
+
+impacket-wmiexec
+=================
+Wmiexec.py utilizes a semi-interactive shell where commands are executed through Windows Management Instrumentation (:ref:`wmi`)
+This utility creates the least amount of noise.
+
+Example:
+
+.. code-block:: bash
+
+    impacket-wmiexec inlanefreight.local/wley:'transporter@4'@172.16.5.5  
+
+.. note:: Everytime a command is issued it spawns a new cms.exe process.  This may create detection risk.
+
+
 References
 *****************
 https://academy.hackthebox.com/module/147/section/1638

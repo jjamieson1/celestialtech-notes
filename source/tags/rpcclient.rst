@@ -18,43 +18,48 @@ Example:
 
 Once connected these commands can be run:
 
-**Query**
+``srvinfo`` Server information.
 
-**Description**
+``enumdomains`` Enumerate all domains that are deployed in the network.
 
-``srvinfo``
+``querydominfo`` Provides domain, server, and user information of deployed domains.
 
-Server information.
+``netshareenumall`` Enumerates all available shares.
 
-``enumdomains``
+``netsharegetinfo <share>`` Provides information about a specific share.
 
-Enumerate all domains that are deployed in the network.
+``enumdomusers`` Enumerates all domain users.
 
-``querydominfo``
+.. code-block:: bash
 
-Provides domain, server, and user information of deployed domains.
+   rpcclient $> enumdomusers
 
-``netshareenumall``
+   user:[administrator] rid:[0x1f4]
+   user:[guest] rid:[0x1f5]
+   user:[krbtgt] rid:[0x1f6]
+   user:[lab_adm] rid:[0x3e9]
+   <SNIP>
 
-Enumerates all available shares.
+``queryuser <RID>`` Provides information about a specific user.
 
-``netsharegetinfo <share>``
+``setuserinfo2`` user level ‘password’ Set the password of user with operating control
 
-Provides information about a specific share.
+RPCClient User Enumeration By RID
+**********************************
 
-``enumdomusers``
+.. code-block:: bash
 
-Enumerates all domain users.
+   queryuser 0x457
 
-``queryuser <RID>``
+   User Name   :   htb-student
+   Full Name   :   Htb Student
+   Home Drive  :
+   <SNIP>
 
-Provides information about a specific user.
 
-``setuserinfo2`` user level ‘password’ Set the password of user with
-operating control
 
 Brute forcing RID’s
--------------------
+********************
 
 You can use the above command in a loop:
 

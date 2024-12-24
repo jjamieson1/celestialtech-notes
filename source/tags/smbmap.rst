@@ -51,6 +51,23 @@ Example 1: Download
 
    smbmap -H 10.129.14.128 --download "notes\note.txt"
 
+SMBMap To Check Access
+=======================
+
+.. code-block:: bash
+
+   smbmap -u username -p password -d INLANEFREIGHT.LOCAL -H 172.16.5.5
+
+
+SMBMap Recursive List Of All Directories
+=========================================
+
+.. code-block:: bash
+
+    smbmap -u username -p password -d INLANEFREIGHT.LOCAL -H 172.16.5.5 -R 'Department Shares' --dir-only
+
+
+
 References
 ************
 https://academy.hackthebox.com/module/116/section/1167

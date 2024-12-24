@@ -8,7 +8,7 @@ Status:
 Description
 ****************
 
-Used to enumerate and attack SMB
+CME is used to enumerate and attack SMB
 
 Installation
 *****************
@@ -19,11 +19,12 @@ example: Installation:
 
    snap install --edge crackmapexe
 
-Enumerate SMB
-***************
 
-Authenticate with credentials
-********************************
+CME authentication 
+********************
+
+CME Authenticate with credentials
+==================================
 
 Example: With Creds and domain
 
@@ -42,8 +43,8 @@ Example: With Creds and domain
    SMB         10.129.248.196  445    WINMEDIUM        IPC$            READ            Remote IPC
    SMB         10.129.248.196  445    WINMEDIUM        Users           READ         
 
-Authenticating with the hash
-*******************************
+CME Authenticating with the hash
+==================================
 
 .. code-block:: console
 
@@ -58,11 +59,57 @@ Often the same local administrator password is used on all servers, if
 this is found you can recommend a :ref:`LAPS <LAPS>` solution to create
 random passwords.
 
-Attacking SMB
+
+CME - Domain User Enumeration
+*******************************
+
+CME Listing Loggedon Users
+=============================
+
+Example 3: Listing logged in users
+
+.. code-block:: console
+
+   crackmapexec smb 10.10.110.0/24 -u administrator -p 'Password123!' --loggedon-users
+
+CME Listing users
+====================
+
+.. code-block:: console
+
+   sudo crackmapexec smb 172.16.5.5 -u username -p password --users
+
+
+CME - Domain Group Enumeration
+================================
+
+.. code-block:: console
+
+    sudo crackmapexec smb 172.16.5.5 -u username -p password --groups
+
+
+CME Share Searching
+*********************
+
+Example:  Listing shares available to that user
+
+.. code-block:: bash
+
+   sudo crackmapexec smb 172.16.5.5 -u username -p password --shares
+
+Example: Using recursive listing on a share with spider plus
+
+.. code-block:: bash
+
+   sudo crackmapexec smb 172.16.5.5 -u username -p password -M spider_plus --share 'Department Shares'
+   head -n 10 /tmp/cme_spider_plus/172.16.5.5.json
+
+
+CME Attacking SMB
 *****************
 
-Attacking WinRM with list attacks
-************************************
+CME Attacking WinRM with list attacks
+=======================================
 
 Example 1: Attacking :ref:`winrm`
 
@@ -71,7 +118,7 @@ Example 1: Attacking :ref:`winrm`
    crackmapexec winrm 10.129.42.197 -u user.list -d . -p password.list
 
 Attacking SMB with lists
-**************************
+===========================
 
 Example 2: Using a user list and static password
 
@@ -79,14 +126,7 @@ Example 2: Using a user list and static password
 
    crackmapexec smb 10.10.110.17 -u /tmp/userlist.txt -p 'Company01!' --local-auth
 
-Listing Users
-*****************
 
-Example 3: Listing logged in users
-
-.. code-block:: console
-
-   crackmapexec smb 10.10.110.0/24 -u administrator -p 'Password123!' --loggedon-users
 
 Extracting the SAM
 ***********************

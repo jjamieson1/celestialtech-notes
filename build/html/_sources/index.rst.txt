@@ -75,6 +75,9 @@ industry exams, and I also use them as references during engagements.
    CPTS/Initial Access/Enumerating and Retrieving Password Policies
    CPTS/Initial Access/Internal Password Spraying from Linux
    CPTS/Initial Access/Internal Password Spraying from Windows
+   CPTS/Initial Access/Enumerating Security Controls
+   CPTS/Initial Access/Credentialed Enumeration - from Linux
+   CPTS/Initial Access/Credentialed Enumeration - from Windows
    
 .. toctree::
    :maxdepth: 1
@@ -223,6 +226,7 @@ industry exams, and I also use them as references during engagements.
    tags/recon-ng
    tags/reconSpider
    tags/responder
+   tags/rid
    tags/rpc
    tags/rsync
    tags/rpcclient
@@ -240,6 +244,7 @@ industry exams, and I also use them as references during engagements.
    tags/secretsdump.py
    tags/setspn.exe
    tags/shells
+   tags/sid
    tags/smbmap
    tags/SMTP
    tags/smtp-user-enum

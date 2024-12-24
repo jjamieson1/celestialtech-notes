@@ -48,6 +48,15 @@ See more on AD in the module:  :ref:`Introduction to Active Directory`
 :ref:`Internal Password Spraying from Windows` 
 ***********************************************
 
+:ref:`Enumerating Security Controls`
+**************************************
+
+:ref:`Credentialed Enumeration - from Linux`
+*********************************************
+
+:ref:`Credentialed Enumeration - from Windows`
+***********************************************
+
 
 
 
