@@ -14,6 +14,16 @@ Snaffler is a tool for pentesters and red teamers to help find delicious candy n
 
 It might also be useful for other people doing other stuff, but it is explicitly NOT meant to be an "audit" tool.
 
+.. note:: Snaffler requires that it be run from a domain-joined host or in a domain-user context.
+
+Usage 
+******
+
+Example: 
+
+.. code-block:: powershell
+
+    Snaffler.exe -s -d inlanefreight.local -o snaffler.log -v data
 
 
 References

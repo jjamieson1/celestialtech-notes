@@ -78,6 +78,9 @@ industry exams, and I also use them as references during engagements.
    CPTS/Initial Access/Enumerating Security Controls
    CPTS/Initial Access/Credentialed Enumeration - from Linux
    CPTS/Initial Access/Credentialed Enumeration - from Windows
+   CPTS/Initial Access/Living Off the Land
+   CPTS/Initial Access/Kerberoasting - from Linux
+   CPTS/Initial Access/Kerberoasting - from Windows
    
 .. toctree::
    :maxdepth: 1
@@ -92,7 +95,7 @@ industry exams, and I also use them as references during engagements.
    CPTS/Lateral Movement/Pivoting-Tunneling and Port Forwarding
 
 .. toctree:: 
-   :maxdepth: 1
+   :maxdepth: 0
    :caption: Glossary
 
    tags/Active Directory
@@ -132,6 +135,7 @@ industry exams, and I also use them as references during engagements.
    tags/dnsenum
    tags/dnsrecon
    tags/dnsx
+   tags/dsquery
    tags/ettercap
    tags/enum4linux-ng
    tags/Evasive testing
@@ -167,6 +171,7 @@ industry exams, and I also use them as references during engagements.
    tags/john
    tags/keytab
    tags/keytabextract.py
+   tags/kerberoast
    tags/kwprocessor
    tags/ldapsearch
    tags/lazagne

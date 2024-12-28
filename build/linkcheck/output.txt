@@ -1,8 +1,0 @@
-tags/Virtual Hosts.rst:31: [broken] ../../tags/gobuster: 
-tags/MSSQL.rst:26: [broken] SERVICE:raw-latex: 
-tags/Virtual Hosts.rst:33: [broken] ../../tags/feroxbuster: 
-tags/Virtual Hosts.rst:35: [broken] ../../tags/ffuf: 
-tags/gobuster.rst:42: [broken] http://94.237.51.74:56507: HTTPConnectionPool(host='94.237.51.74', port=56507): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7eeea8216210>: Failed to establish a new connection: [Errno 111] Connection refused'))
-CPTS/Reconnaissance/External Recon and Enumeration Principles.rst:48: [broken] http://dehashed.com/: 403 Client Error: Forbidden for url: https://dehashed.com/
-tags/wpscan.rst:19: [broken] http://94.237.62.154:58093: HTTPConnectionPool(host='94.237.62.154', port=58093): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7eeea8d69ae0>: Failed to establish a new connection: [Errno 111] Connection refused'))
-tags/responder.rst:11: [broken] http://support.microsoft.com/kb/163409: 404 Client Error: Not Found for url: https://support.microsoft.com/en-US/help/163409

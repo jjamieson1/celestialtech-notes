@@ -66,8 +66,6 @@ SMBMap Recursive List Of All Directories
 
     smbmap -u username -p password -d INLANEFREIGHT.LOCAL -H 172.16.5.5 -R 'Department Shares' --dir-only
 
-
-
 References
 ************
 https://academy.hackthebox.com/module/116/section/1167
