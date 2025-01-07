@@ -19,6 +19,15 @@ Installation
 
     git clone https://github.com/dafthack/DomainPasswordSpray
 
+Usage
+******
+
+.. code-block:: console
+
+    PS C:\htb> Import-Module .\DomainPasswordSpray.ps1
+    PS C:\htb> Invoke-DomainPasswordSpray -Password Welcome1 -OutFile spray_success -ErrorAction SilentlyContinue
+
+
 
 
 References

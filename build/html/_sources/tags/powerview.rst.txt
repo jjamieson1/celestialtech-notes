@@ -61,6 +61,28 @@ Let's examine some of PowerView's capabilities and see what data it returns. The
 `Get-DomainForeignGroupMember`	Enumerates groups with users outside of the group's domain and returns each foreign member
 `Get-DomainTrustMapping`	    Will enumerate all trusts for the current domain and any others seen.
 
+Installation
+****************
+
+Powerview needs to be imported and run as an administrator account 
+
+.. code-block:: powershell
+
+    git clone https://github.com/PowerShellMafia/PowerSploit
+
+.. code-block:: powershell
+
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+Disable Defender and import powerview
+
+.. code-block:: powershell
+
+    Set-MpPreference -DisableRealtimeMonitoring $true
+    cd PowerSploit/recon 
+    import-module powerview.ps1
+
 
 References
 **********

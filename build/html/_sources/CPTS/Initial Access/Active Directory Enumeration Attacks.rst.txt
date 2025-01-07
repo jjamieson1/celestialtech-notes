@@ -63,7 +63,32 @@ See more on AD in the module:  :ref:`Introduction to Active Directory`
 :ref:`Kerberoasting - from Linux`
 **********************************
 
+:ref:`Kerberoasting - from Windows`
+************************************
 
+:ref:`Access Control List (ACL) Abuse Primer` 
+***********************************************
+
+:ref:`ACL Enumeration`
+***************************
+
+:ref:`ACL Abuse Tactics`
+**************************
+
+:ref:`DCSync Attack` 
+***********************
+
+:ref:`Privileged Access`
+**************************
+
+:ref:`Kerberos Double Hop Problem`
+*************************************
+
+:ref:`Example Vulnerabilities`
+****************************************
+
+:ref:`Domain Trust Attack`
+*****************************
 
 
 

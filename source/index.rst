@@ -5,7 +5,8 @@ Celestial Security Documentation
    
 
 These are my personal notes that are a perpetual work in progress.  I use these notes to study for various 
-industry exams, and I also use them as references during engagements.
+industry exams, and I also use them as references during engagements.  These notes work for me, they connect ideas 
+in my head based on my experience/knowledge and will probably be absolutely worthless to anyone else. 
 
 .. toctree::
    :maxdepth: 1
@@ -81,7 +82,15 @@ industry exams, and I also use them as references during engagements.
    CPTS/Initial Access/Living Off the Land
    CPTS/Initial Access/Kerberoasting - from Linux
    CPTS/Initial Access/Kerberoasting - from Windows
+   CPTS/Initial Access/Access Control List (ACL) Abuse Primer
+   CPTS/Initial Access/ACL Enumeration
+   CPTS/Initial Access/ACL Abuse Tactics
+   CPTS/Initial Access/DCSync Attack
+   CPTS/Initial Access/Privileged Access
+   CPTS/Initial Access/Kerberos Double Hop Problem
+   CPTS/Initial Access/Example Vulnerabilities
    
+
 .. toctree::
    :maxdepth: 1
    :caption: Lateral Movement
@@ -169,6 +178,7 @@ industry exams, and I also use them as references during engagements.
    tags/inveigh
    tags/invoke-TheHash
    tags/john
+   tags/JuicyPotato
    tags/keytab
    tags/keytabextract.py
    tags/kerberoast
@@ -204,6 +214,7 @@ industry exams, and I also use them as references during engagements.
    tags/nopac.py
    tags/netstat
    tags/Non-evasive testing
+   tags/nuclei
    tags/O365spray
    tags/openssl
    tags/Oracle TNS
@@ -219,12 +230,15 @@ industry exams, and I also use them as references during engagements.
    tags/powershell
    tags/powerview
    tags/PowerShell Web Uploads
+   tags/PowerUpSQL
    tags/princeprocessor
+   tags/printspoofer
    tags/proxychains
    tags/psexec
    tags/psexec.py
    tags/PTES
    tags/pyenv
+   tags/pyshodan
    tags/raiseChild.py
    tags/r-services
    tags/rdp
@@ -232,6 +246,7 @@ industry exams, and I also use them as references during engagements.
    tags/reconSpider
    tags/responder
    tags/rid
+   tags/roguepotato
    tags/rpc
    tags/rsync
    tags/rpcclient
@@ -247,6 +262,7 @@ industry exams, and I also use them as references during engagements.
    tags/scrappy
    tags/sc.exe
    tags/secretsdump.py
+   tags/SelmpersonatePrivilege
    tags/setspn.exe
    tags/shells
    tags/sid

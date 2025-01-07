@@ -23,6 +23,15 @@ xfreerdp Usage
 
    xfreerdp /v:10.129.42.197 /u:user /p:password
 
+xfreerdp on HTB 
+*****************
+
+.. code-block:: bash
+
+   xfreerdp /v:10.129.4.230 /u:htb-student /p:Academy_student_AD! /dynamic-resolution /bpp:8 /async-update /auto-reconnect /compression
+
+You can either enable or disable the clipboard with +clipboard or -clipboard
+
 xfreerdp accessing with Pass the hash
 ***************************************
 

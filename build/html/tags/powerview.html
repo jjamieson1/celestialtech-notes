@@ -25,7 +25,7 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PowerShell Web Uploads" href="PowerShell%20Web%20Uploads.html" />
     <link rel="prev" title="powershell" href="powershell.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <link href="../_static/custom.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -113,6 +113,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Credentialed%20Enumeration%20-%20from%20Linux.html">Credentialed Enumeration - from Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Credentialed%20Enumeration%20-%20from%20Windows.html">Credentialed Enumeration - from Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Living%20Off%20the%20Land.html">Living Off the Land</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Kerberoasting%20-%20from%20Linux.html">Kerberoasting - from Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Kerberoasting%20-%20from%20Windows.html">Kerberoasting - from Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/Access%20Control%20List%20%28ACL%29%20Abuse%20Primer.html">Access Control List (ACL) Abuse Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CPTS/Initial%20Access/ACL%20Enumeration.html">ACL Enumeration</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
 <ul>
@@ -166,6 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dnsenum.html">dnsenum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dnsrecon.html">dnsrecon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dnsx.html">dnsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dsquery.html">dsquery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ettercap.html">ettercap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enum4linux-ng.html">enum4linux-ng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evasive%20testing.html">Evasive Testing</a></li>
@@ -250,6 +255,7 @@
 <li class="toctree-l1"><a class="reference internal" href="powershell.html">powershell</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">powerview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -414,6 +420,22 @@
 <cite>Get-DomainForeignUser</cite>         Enumerates users who are in groups outside of the user’s domain
 <cite>Get-DomainForeignGroupMember</cite>  Enumerates groups with users outside of the group’s domain and returns each foreign member
 <cite>Get-DomainTrustMapping</cite>            Will enumerate all trusts for the current domain and any others seen.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Powerview needs to be imported and run as an administrator account</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">PowerShellMafia</span><span class="p">/</span><span class="n">PowerSploit</span>
+</pre></div>
+</div>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</pre></div>
+</div>
+<p>Disable Defender and import powerview</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-MpPreference</span> <span class="n">-DisableRealtimeMonitoring</span> <span class="nv">$true</span>
+<span class="nb">cd </span><span class="n">PowerSploit</span><span class="p">/</span><span class="n">recon</span>
+<span class="nb">import-module</span> <span class="n">powerview</span><span class="p">.</span><span class="n">ps1</span>
+</pre></div>
+</div>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>

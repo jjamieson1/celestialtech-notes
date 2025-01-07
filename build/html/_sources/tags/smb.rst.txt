@@ -77,6 +77,28 @@ Example 1: Using a script scan
 
    sudo nmap 10.129.14.13 -sV -sC -p139,445
 
+
+Copy files from Windows
+***************************
+
+Using powershell map the share 
+
+.. code-block:: powershell
+
+   net use \\domain.or.ip\sharedfolder /user:[user] [pass] /persistent:no
+
+Then copy the items 
+
+.. code-block:: powershell
+
+   Copy-Item -Path "C:\localfolder\file.txt" -Destination "\\domain.or.ip\sharedfolder"
+
+Then disconnect the drive
+
+.. code-block:: powershell
+
+   net use \\domain.or.ip\sharedfolder /delete
+
 References
 ****************
 https://academy.hackthebox.com/module/24/section/160#questionsDiv
