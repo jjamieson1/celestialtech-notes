@@ -104,7 +104,7 @@ in my head based on my experience/knowledge and will probably be absolutely wort
    CPTS/Lateral Movement/Pivoting-Tunneling and Port Forwarding
 
 .. toctree:: 
-   :maxdepth: 0
+   :maxdepth: 1
    :caption: Glossary
 
    tags/Active Directory
