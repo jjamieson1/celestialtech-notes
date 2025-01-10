@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories from the field &mdash; Celestial Security Reference R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Web Proxies" href="../Using%20Web%20Proxies/Using%20Web%20Proxies.html" />
+    <link rel="prev" title="Additional AD Auditing techniques" href="Additional%20AD%20Auditing%20techniques.html" />
+    <link href="../../_static/custom.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Celestial Security Reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Hack the Box Certifications</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#cpts-description">CPTS Description</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#modules">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Overview/Penetration%20Testing%20Standards.html">Penetration Testing Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Using%20Web%20Proxies/Using%20Web%20Proxies.html">Using Web Proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Login%20Brute%20Forcing/Login%20Brute%20Forcing.html">Login Brute Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-web-applications-with-ffuf">Attacking Web Applications with <span class="xref std std-ref">ffuf</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#login-brute-forcing">Login Brute Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#sql-injection-fundamentals">SQL Injection Fundamentals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#sqlmap-essentials">SQLMap essentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#cross-site-scripting-xss">Cross site scripting (XSS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#file-inclusion"><span class="xref std std-ref">File Inclusion</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#file-upload-attacks">File Upload Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#command-injection">Command Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#web-attacks">Web Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-common-applications">Attacking Common Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#linux-privilege-escalation">Linux Privilege Escalation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#windows-privilege-escalation">Windows Privilege Escalation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#documentation-and-reporting">Documentation and Reporting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-enterprise-networks">Attacking Enterprise Networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CDSA/Certified%20Defensive%20Security%20Analyst.html">Certified Defensive Security Analyst</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html">Introduction to Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Types%20of%20Penetration%20testing.html">Types of Penetration testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Vulnerability%20Assessment.html">Vulnerability Assessment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#domain-information">Domain information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#staff">Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Meterpreter%20Tunneling%20and%20Port%20Forwarding.html">Meterpreter Tunneling and Port Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Socat%20Redirection%20with%20a%20Reverse%20Shell.html">Socat Redirection with a Reverse Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/RDP%20and%20SOCKS%20Tunneling%20with%20SocksOverRDP.html">RDP and SOCKS Tunneling with SocksOverRDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Remote%20Password%20Attacks.html">Remote Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html">Changing the user-agent to avoid detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Native%20File%20Transfer%20Powershell.html">Native File Transfer Powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Creating%20a%20secure%20upload%20server%20using%20Nginx.html">Creating a secure upload server using Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Hunting%20for%20Files.html">Hunting for Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Linux%20Pass%20the%20Ticket.html">Linux Pass the Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Index.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Celestial Security Reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+          <li class="breadcrumb-item"><a href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a></li>
+      <li class="breadcrumb-item active">Stories from the field</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Active Directory Enumeration and Attacks/Stories from the field.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stories-from-the-field">
+<h1>Stories from the field<a class="headerlink" href="#stories-from-the-field" title="Link to this heading"></a></h1>
+<p>Date: 2025-01-05 08:10:06</p>
+<p>Tags: <a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#active-directory-enumeration-attacks"><span class="std std-ref">Active Directory Enumeration Attacks</span></a></p>
+<p>Status: #new</p>
+<hr class="docutils" />
+<section id="scenarios">
+<h2>Scenarios<a class="headerlink" href="#scenarios" title="Link to this heading"></a></h2>
+<section id="scenario-1-waiting-on-an-admin">
+<h3>Scenario 1: Waiting on An Admin<a class="headerlink" href="#scenario-1-waiting-on-an-admin" title="Link to this heading"></a></h3>
+<p>During this engagement, I compromised a single host and gained SYSTEM level access. Because this was a domain-joined host, I was able to use this access to enumerate the domain. I went through all of the standard enumeration, but did not find much. There were Service Principal Names (SPNs) present within the environment, and I was able to perform a Kerberoasting attack and retrieve TGS tickets for a few accounts. I attempted to crack these with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a> and some of my standard wordlists and rules, but was unsuccessful at first. I ended up leaving a cracking job running overnight with a very large wordlist combined with the <a class="reference internal" href="../../tags/d3ad0ne.html#d3ad0ne"><span class="std std-ref">d3ad0ne</span></a> rule that ships with <a class="reference internal" href="../../tags/hashcat.html#hashcat"><span class="std std-ref">hashcat</span></a>. The next morning I had a hit on one ticket and retrieved the cleartext password for a user account. This account did not give me significant access, but it did give me write access on certain file shares. I used this access to drop SCF files around the shares and left Responder going. After a while, I got a single hit, the NetNTLMv2 hash of a user. I checked through the BloodHound output and noticed that this user was actually a domain admin! Easy day from here.</p>
+</section>
+<section id="scenario-2-spraying-the-night-away">
+<h3>Scenario 2: Spraying the night away<a class="headerlink" href="#scenario-2-spraying-the-night-away" title="Link to this heading"></a></h3>
+<p>Password spraying can be an extremely effective way to gain a foothold in a domain, but we must exercise great care not to lock out user accounts in the process. On one engagement, I found an SMB NULL session using the <a class="reference internal" href="../../tags/enum4linux-ng.html#enum4linux-ng"><span class="std std-ref">enum4linux-ng</span></a> tool and retrieved both a listing of all users from the domain, and the domain password policy. Knowing the password policy was crucial because I could ensure that I was staying within the parameters to not lock out any accounts and also knew that the policy was a minimum eight-character password and password complexity was enforced (meaning that a user’s password required 3/4 of special character, number, uppercase, or lower case number, i.e., Welcome1). I tried several common weak passwords such as Welcome1, Password1, Password123, Spring2018, etc. but did not get any hits. Finally, I made an attempt with <a class="reference external" href="mailto:Spring&#37;&#52;&#48;18">Spring<span>&#64;</span>18</a> and got a hit! Using this account, I ran <a class="reference internal" href="../../tags/bloodhound.html#bloodhound"><span class="std std-ref">bloodhound</span></a> and found several hosts where this user had local admin access. I noticed that a domain admin account had an active session on one of these hosts. I was able to use the Rubeus tool and extract the Kerberos TGT ticket for this domain user. From there, I was able to perform a pass-the-ticket attack and authenticate as this domain admin user. As a bonus, I was able to take over the trusting domain as well because the Domain Administrators group for the domain that I took over was a part of the Administrators group in the trusting domain via nested group membership, meaning I could use the same set of credentials to authenticate to the other domain with full administrative level access.</p>
+</section>
+<section id="scenario-3-fighting-in-the-dark">
+<h3>Scenario 3: Fighting in the Dark<a class="headerlink" href="#scenario-3-fighting-in-the-dark" title="Link to this heading"></a></h3>
+<p>I had tried all of my standard ways to obtain a foothold on this third engagement, and nothing had worked. I decided that I would use the <a class="reference internal" href="../../tags/kerbrute.html#kerbrute"><span class="std std-ref">kerbrute</span></a> tool to attempt to enumerate valid usernames and then, if I found any, attempt a targeted password spraying attack since I did not know the password policy and did not want to lock any accounts out. I used the linkedin2username tool (<a class="reference external" href="https://github.com/initstring/linkedin2username">https://github.com/initstring/linkedin2username</a>) to first mashup potential usernames from the company’s LinkedIn page. I combined this list with several username lists from the statistically-likely-usernames GitHub repo (<a class="reference external" href="https://github.com/insidetrust/statistically-likely-usernames">https://github.com/insidetrust/statistically-likely-usernames</a>) and, after using the userenum feature of <a class="reference internal" href="../../tags/kerbrute.html#kerbrute"><span class="std std-ref">kerbrute</span></a>, ended up with 516 valid users. I knew I had to tread carefully with password spraying, so I tried with the password Welcome2021 and got a single hit! Using this account, I ran the Python version of BloodHound from my attack host and found that all domain users had RDP access to a single box. I logged into this host and used the PowerShell tool DomainPasswordSpray to spray again. I was more confident this time around because I could a) view the password policy and b) the DomainPasswordSpray tool will remove accounts close to lockout from the target list. Being that I was authenticated within the domain, I could now spray with all domain users, which gave me significantly more targets. I tried again with the common password Fall2021 and got several hits, all for users not in my initial wordlist. I checked the rights for each of these accounts and found that one was in the Help Desk group, which had GenericAll rights over the Enterprise Key Admins group (<a class="reference external" href="https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#genericall">https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#genericall</a>). The Enterprise Key Admins group had GenericAll privileges over a domain controller, so I added the account I controlled to this group, authenticated again, and inherited these privileges. Using these rights, I performed the <a class="reference internal" href="../../tags/shadow%20credentials%20abusing.html#shadow-credentials-abusing"><span class="std std-ref">shadow credentials abusing</span></a> attack and retrieved the NT hash for the domain controller machine account. With this NT hash, I was then able to perform a DCSync attack and retrieve the NTLM password hashes for all users in the domain because a domain controller can perform replication, which is required for DCSync.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Additional%20AD%20Auditing%20techniques.html" class="btn btn-neutral float-left" title="Additional AD Auditing techniques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Using%20Web%20Proxies/Using%20Web%20Proxies.html" class="btn btn-neutral float-right" title="Using Web Proxies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, CelestialTech.ca.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

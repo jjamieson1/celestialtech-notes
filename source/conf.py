@@ -14,7 +14,7 @@ release = 'R1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx_rtd_dark_mode','sphinxcontrib.mermaid','sphinx.ext.autosectionlabel','myst_parser']
+extensions = ['sphinx_rtd_dark_mode','sphinxcontrib.mermaid','sphinx.ext.autosectionlabel','myst_parser', 'sphinx_tabs.tabs']
 pygments_style = ('solarized-dark')
 templates_path = ['_templates']
 exclude_patterns = []

@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privileged Access &mdash; Celestial Security Reference R1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3b1ff954"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Kerberos Double Hop Problem" href="Kerberos%20Double%20Hop%20Problem.html" />
+    <link rel="prev" title="DCSync Attack" href="DCSync%20Attack.html" />
+    <link href="../../_static/custom.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Celestial Security Reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Hack the Box Certifications</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#cpts-description">CPTS Description</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#modules">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Overview/Penetration%20Testing%20Standards.html">Penetration Testing Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Initial%20Access/Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Using%20Web%20Proxies/Using%20Web%20Proxies.html">Using Web Proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Login%20Brute%20Forcing/Login%20Brute%20Forcing.html">Login Brute Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-web-applications-with-ffuf">Attacking Web Applications with <span class="xref std std-ref">ffuf</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#login-brute-forcing">Login Brute Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#sql-injection-fundamentals">SQL Injection Fundamentals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#sqlmap-essentials">SQLMap essentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#cross-site-scripting-xss">Cross site scripting (XSS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#file-inclusion"><span class="xref std std-ref">File Inclusion</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#file-upload-attacks">File Upload Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#command-injection">Command Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#web-attacks">Web Attacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-common-applications">Attacking Common Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#linux-privilege-escalation">Linux Privilege Escalation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#windows-privilege-escalation">Windows Privilege Escalation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#documentation-and-reporting">Documentation and Reporting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#attacking-enterprise-networks">Attacking Enterprise Networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Certified%20Penetration%20Tester.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CDSA/Certified%20Defensive%20Security%20Analyst.html">Certified Defensive Security Analyst</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Offensive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OFSEC/recon/Active%20Scanning.html">Active Scanning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Introduction%20to%20Active%20Directory.html">Introduction to Active Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Types%20of%20Penetration%20testing.html">Types of Penetration testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview/Vulnerability%20Assessment.html">Vulnerability Assessment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reconnaissance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Penetration%20Testing%20Overview.html">Penetration Testing Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Network%20Enumeration%20with%20nmap.html">Network Enumeration with nmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Footprinting.html">Footprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html">Infrastructure Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#domain-information">Domain information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#cloud-resource-enumeration">Cloud Resource Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#online-tools-to-gather-information-about-a-domain">Online Tools to gather information about a domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Infrastructure%20Enumeration.html#staff">Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Host%20Enumeration.html">Host Based Enumeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/fingerprinting.html">fingerprinting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reconnaissance/Information%20Gathering.html">Information Gathering</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Initial Access</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/File%20Inclusion.html">File Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20Forwarding.html">SSH Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Dynamic%20Port%20Forwarding%20with%20SSH%20and%20SOCKS%20Tunneling.html">Dynamic Port Forwarding with SSH and SOCKS Tunneling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Remote-Reverse%20Port%20Forwarding%20with%20SSH.html">Remote-Reverse Port Forwarding with SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Meterpreter%20Tunneling%20and%20Port%20Forwarding.html">Meterpreter Tunneling and Port Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Socat%20Redirection%20with%20a%20Reverse%20Shell.html">Socat Redirection with a Reverse Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Socat%20Redirection%20with%20a%20Bind%20Shell.html">Socat Redirection with a Bind Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20for%20Windows%3A%20plink.exe.html">SSH for Windows: plink.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SSH%20Pivoting%20with%20Sshuttle.html">SSH Pivoting with Sshuttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Web%20Server%20Pivoting%20with%20Rpivot.html">Web Server Pivoting with Rpivot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Port%20Forwarding%20with%20Windows%20Netsh.html">Port Forwarding with Windows Netsh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/DNS%20Tunneling%20with%20Dnscat2.html">DNS Tunneling with Dnscat2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/SOCKS5%20Tunneling%20with%20Chisel.html">SOCKS5 Tunneling with Chisel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/ICMP%20Tunneling%20with%20SOCKS.html">ICMP Tunneling with SOCKS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/RDP%20and%20SOCKS%20Tunneling%20with%20SocksOverRDP.html">RDP and SOCKS Tunneling with SocksOverRDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Password%20Attacks.html">Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Remote%20Password%20Attacks.html">Remote Password Attacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Using%20the%20Metasploit%20Framework.html">Using the Metasploit Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Shells%20and%20Payloads.html">Shells and Payloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Initial%20Access/Attacking%20Common%20Services.html">Attacking Common Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lateral Movement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/File%20Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Changing%20the%20user-agent%20to%20avoid%20detection.html">Changing the user-agent to avoid detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Native%20File%20Transfer%20Powershell.html">Native File Transfer Powershell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Creating%20a%20secure%20upload%20server%20using%20Nginx.html">Creating a secure upload server using Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Hunting%20for%20Files.html">Hunting for Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Linux%20Pass%20the%20Ticket.html">Linux Pass the Ticket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lateral%20Movement/Pivoting-Tunneling%20and%20Port%20Forwarding.html">Pivoting-Tunneling and Port Forwarding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tags/Index.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Celestial Security Reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Certified%20Penetration%20Tester.html">Certified Penetration Tester</a></li>
+          <li class="breadcrumb-item"><a href="Active%20Directory%20Enumeration%20Attacks.html">Active Directory Enumeration Attacks</a></li>
+      <li class="breadcrumb-item active">Privileged Access</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/CPTS/Active Directory Enumeration and Attacks/Privileged Access.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="privileged-access">
+<h1>Privileged Access<a class="headerlink" href="#privileged-access" title="Link to this heading"></a></h1>
+<p>Date: 2025-01-04 14:58:22</p>
+<p>Status: #new</p>
+<p>Tags: <a class="reference internal" href="Active%20Directory%20Enumeration%20Attacks.html#active-directory-enumeration-attacks"><span class="std std-ref">Active Directory Enumeration Attacks</span></a></p>
+<hr class="docutils" />
+<section id="privileges-that-allow-lateral-movement">
+<h2>Privileges that allow lateral movement<a class="headerlink" href="#privileges-that-allow-lateral-movement" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>CanRDP - has the right to remote desktop (<a class="reference external" href="https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#canrdp">https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#canrdp</a>)</p></li>
+<li><p>CanPSRemote can use WinRM (<a class="reference external" href="https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#canpsremote">https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#canpsremote</a>)</p></li>
+<li><p>SQLAdmin Can login to SQL servers and run OS commands in the context of the SQL server service account. (<a class="reference external" href="https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#sqladmin">https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html#sqladmin</a>)</p></li>
+</ol>
+<p>172.16.5.225 /  htb-student:HTB_&#64;cademy_stdnt!</p>
+</section>
+<section id="finding-users-that-are-in-the-remote-desktop-users-group">
+<h2>Finding users that are in the Remote Desktop Users Group<a class="headerlink" href="#finding-users-that-are-in-the-remote-desktop-users-group" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-NetLocalGroupMember</span> <span class="n">-ComputerName</span> <span class="n">ACADEMY-EA-MS01</span> <span class="n">-GroupName</span> <span class="s2">&quot;Remote Desktop Users&quot;</span>
+
+<span class="n">ComputerName</span> <span class="p">:</span> <span class="n">ACADEMY-EA-MS01</span>
+<span class="n">GroupName</span>    <span class="p">:</span> <span class="n">Remote</span> <span class="n">Desktop</span> <span class="n">Users</span>
+<span class="n">MemberName</span>   <span class="p">:</span> <span class="n">INLANEFREIGHT</span><span class="p">\</span><span class="n">Domain</span> <span class="n">Users</span>
+<span class="n">SID</span>          <span class="p">:</span> <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">21</span><span class="p">-</span><span class="n">3842939050</span><span class="p">-</span><span class="n">3880317879</span><span class="p">-</span><span class="n">2865463114</span><span class="p">-</span><span class="n">513</span>
+<span class="n">IsGroup</span>      <span class="p">:</span> <span class="n">True</span>
+<span class="n">IsDomain</span>     <span class="p">:</span> <span class="n">UNKNOWN</span>
+</pre></div>
+</div>
+</section>
+<section id="finding-users-that-can-use-winrm">
+<h2>Finding users that can use <a class="reference internal" href="../../tags/winrm.html#winrm"><span class="std std-ref">winrm</span></a><a class="headerlink" href="#finding-users-that-can-use-winrm" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Get-NetLocalGroupMember</span> <span class="n">-ComputerName</span> <span class="n">ACADEMY-EA-MS01</span> <span class="n">-GroupName</span> <span class="s2">&quot;Remote Management Users&quot;</span>
+
+<span class="n">ComputerName</span> <span class="p">:</span> <span class="n">ACADEMY-EA-MS01</span>
+<span class="n">GroupName</span>    <span class="p">:</span> <span class="n">Remote</span> <span class="n">Management</span> <span class="n">Users</span>
+<span class="n">MemberName</span>   <span class="p">:</span> <span class="n">INLANEFREIGHT</span><span class="p">\</span><span class="n">forend</span>
+<span class="n">SID</span>          <span class="p">:</span> <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">21</span><span class="p">-</span><span class="n">3842939050</span><span class="p">-</span><span class="n">3880317879</span><span class="p">-</span><span class="n">2865463114</span><span class="p">-</span><span class="n">5614</span>
+<span class="n">IsGroup</span>      <span class="p">:</span> <span class="n">False</span>
+<span class="n">IsDomain</span>     <span class="p">:</span> <span class="n">UNKNOWN</span>
+</pre></div>
+</div>
+<p>You can also search Bloodhound for this information</p>
+<p>Cypher search</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]-&gt;(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]-&gt;(c:Computer) RETURN p2</span>
+</pre></div>
+</div>
+</section>
+<section id="connecting-to-the-winrm-service">
+<h2>Connecting to the WinRM service<a class="headerlink" href="#connecting-to-the-winrm-service" title="Link to this heading"></a></h2>
+<section id="establishing-a-winrm-session-from-powershell">
+<h3>Establishing a <a class="reference internal" href="../../tags/winrm.html#winrm"><span class="std std-ref">winrm</span></a> session from powershell<a class="headerlink" href="#establishing-a-winrm-session-from-powershell" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;Klmcargo2&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">System</span><span class="p">.</span><span class="n">Management</span><span class="p">.</span><span class="n">Automation</span><span class="p">.</span><span class="n">PSCredential</span> <span class="p">(</span><span class="s2">&quot;INLANEFREIGHT\forend&quot;</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">Enter-PSSession</span> <span class="n">-ComputerName</span> <span class="n">ACADEMY-EA-MS01</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
+
+<span class="p">[</span><span class="n">ACADEMY-EA-MS01</span><span class="p">]:</span> <span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">forend</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="n">hostname</span>
+<span class="n">ACADEMY-EA-MS01</span>
+<span class="p">[</span><span class="n">ACADEMY-EA-MS01</span><span class="p">]:</span> <span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">forend</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="nb">Exit-PSSession</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="connecting-using-evil-winrm">
+<h3>Connecting using <a class="reference internal" href="../../tags/evil-winrm.html#evil-winrm"><span class="std std-ref">evil-winrm</span></a><a class="headerlink" href="#connecting-using-evil-winrm" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>evil-winrm<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.129.201.234<span class="w"> </span>-u<span class="w"> </span>forend
+
+Enter<span class="w"> </span>Password:
+
+Evil-WinRM<span class="w"> </span>shell<span class="w"> </span>v3.3
+
+Warning:<span class="w"> </span>Remote<span class="w"> </span>path<span class="w"> </span>completions<span class="w"> </span>is<span class="w"> </span>disabled<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>ruby<span class="w"> </span>limitation:<span class="w"> </span>quoting_detection_proc<span class="o">()</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>unimplemented<span class="w"> </span>on<span class="w"> </span>this<span class="w"> </span>machine
+
+Data:<span class="w"> </span>For<span class="w"> </span>more<span class="w"> </span>information,<span class="w"> </span>check<span class="w"> </span>Evil-WinRM<span class="w"> </span>Github:<span class="w"> </span>https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info:<span class="w"> </span>Establishing<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>remote<span class="w"> </span>endpoint
+
+*Evil-WinRM*<span class="w"> </span>PS<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\f</span>orend.INLANEFREIGHT<span class="se">\D</span>ocuments&gt;<span class="w"> </span>hostname
+ACADEMY-EA-MS01
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sql-server-admin">
+<h2>SQL Server Admin<a class="headerlink" href="#sql-server-admin" title="Link to this heading"></a></h2>
+<p>Often SQL admin accounts have sysadmin privileges, and you can often get these accounts with responder of password spaying.  Another useful tool
+is <a class="reference internal" href="../../tags/snaffler.html#snaffler"><span class="std std-ref">snaffler</span></a> for finding SQL credentials in files.</p>
+<p>Using BloodHound to find SQL Admin rights</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]-&gt;(g1:Group)) MATCH p2=(u1)-[:SQLAdmin*1..]-&gt;(c:Computer) RETURN p2</span>
+</pre></div>
+</div>
+<section id="using-powerupsql-to-enumerate-mssql">
+<h3>Using <a class="reference internal" href="../../tags/powerupsql.html#powerupsql"><span class="std std-ref">PowerUpSQL</span></a> to Enumerate MSSQL<a class="headerlink" href="#using-powerupsql-to-enumerate-mssql" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="nb">cd </span><span class="p">.\</span><span class="n">PowerUpSQL</span><span class="p">\</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span>  <span class="nb">Import-Module</span> <span class="p">.\</span><span class="n">PowerUpSQL</span><span class="p">.</span><span class="n">ps1</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span>  <span class="nb">Get-SQLInstanceDomain</span>
+
+<span class="n">ComputerName</span>     <span class="p">:</span> <span class="n">ACADEMY-EA-DB01</span><span class="p">.</span><span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span>
+<span class="n">Instance</span>         <span class="p">:</span> <span class="n">ACADEMY-EA-DB01</span><span class="p">.</span><span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="n">LOCAL</span><span class="p">,</span><span class="n">1433</span>
+<span class="n">DomainAccountSid</span> <span class="p">:</span> <span class="n">1500000521000170152142291832437223174127203170152400</span>
+<span class="n">DomainAccount</span>    <span class="p">:</span> <span class="n">damundsen</span>
+<span class="n">DomainAccountCn</span>  <span class="p">:</span> <span class="n">Dana</span> <span class="n">Amundsen</span>
+<span class="n">Service</span>          <span class="p">:</span> <span class="n">MSSQLSvc</span>
+<span class="n">Spn</span>              <span class="p">:</span> <span class="n">MSSQLSvc</span><span class="p">/</span><span class="n">ACADEMY-EA-DB01</span><span class="p">.</span><span class="n">INLANEFREIGHT</span><span class="p">.</span><span class="k">LOCAL:</span><span class="n">1433</span>
+<span class="n">LastLogon</span>        <span class="p">:</span> <span class="n">4</span><span class="p">/</span><span class="n">6</span><span class="p">/</span><span class="n">2022</span> <span class="n">11</span><span class="p">:</span><span class="n">59</span> <span class="n">AM</span>
+</pre></div>
+</div>
+</section>
+<section id="using-powershell-to-test-mssql-instance">
+<h3>Using PowerShell to test MSSQL instance<a class="headerlink" href="#using-powershell-to-test-mssql-instance" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span>  <span class="nb">Get-SQLQuery</span> <span class="n">-Verbose</span> <span class="n">-Instance</span> <span class="s2">&quot;172.16.5.150,1433&quot;</span> <span class="n">-username</span> <span class="s2">&quot;inlanefreight\damundsen&quot;</span> <span class="n">-password</span> <span class="s2">&quot;SQL1234!&quot;</span> <span class="n">-query</span> <span class="s1">&#39;Select @@version&#39;</span>
+
+<span class="n">VERBOSE</span><span class="p">:</span> <span class="n">172</span><span class="p">.</span><span class="n">16</span><span class="p">.</span><span class="n">5</span><span class="p">.</span><span class="n">150</span><span class="p">,</span><span class="n">1433</span> <span class="p">:</span> <span class="n">Connection</span> <span class="n">Success</span><span class="p">.</span>
+
+<span class="n">Column1</span>
+<span class="p">-------</span>
+<span class="n">Microsoft</span> <span class="n">SQL</span> <span class="n">Server</span> <span class="n">2017</span> <span class="p">(</span><span class="n">RTM</span><span class="p">)</span> <span class="p">-</span> <span class="n">14</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1000</span><span class="p">.</span><span class="n">169</span> <span class="p">(</span><span class="n">X64</span><span class="p">)</span> <span class="p">...</span>
+</pre></div>
+</div>
+</section>
+<section id="connecting-from-linux-with-mssqlclient-py">
+<h3>Connecting from Linux with <a class="reference internal" href="../../tags/mssqlclient.py.html#mssqlclient-py"><span class="std std-ref">mssqlclient.py</span></a><a class="headerlink" href="#connecting-from-linux-with-mssqlclient-py" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Temen@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>mssqlclient.py<span class="w"> </span>INLANEFREIGHT/DAMUNDSEN@172.16.5.150<span class="w"> </span>-windows-auth
+
+Impacket<span class="w"> </span>v0.9.25.dev1+20220311.121550.1271d369<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2021</span><span class="w"> </span>SecureAuth<span class="w"> </span>Corporation
+
+Password:
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>Encryption<span class="w"> </span>required,<span class="w"> </span>switching<span class="w"> </span>to<span class="w"> </span>TLS
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENVCHANGE<span class="o">(</span>DATABASE<span class="o">)</span>:<span class="w"> </span>Old<span class="w"> </span>Value:<span class="w"> </span>master,<span class="w"> </span>New<span class="w"> </span>Value:<span class="w"> </span>master
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENVCHANGE<span class="o">(</span>LANGUAGE<span class="o">)</span>:<span class="w"> </span>Old<span class="w"> </span>Value:<span class="w"> </span>,<span class="w"> </span>New<span class="w"> </span>Value:<span class="w"> </span>us_english
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENVCHANGE<span class="o">(</span>PACKETSIZE<span class="o">)</span>:<span class="w"> </span>Old<span class="w"> </span>Value:<span class="w"> </span><span class="m">4096</span>,<span class="w"> </span>New<span class="w"> </span>Value:<span class="w"> </span><span class="m">16192</span>
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>INFO<span class="o">(</span>ACADEMY-EA-DB01<span class="se">\S</span>QLEXPRESS<span class="o">)</span>:<span class="w"> </span>Line<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>Changed<span class="w"> </span>database<span class="w"> </span>context<span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;master&#39;</span>.
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>INFO<span class="o">(</span>ACADEMY-EA-DB01<span class="se">\S</span>QLEXPRESS<span class="o">)</span>:<span class="w"> </span>Line<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>Changed<span class="w"> </span>language<span class="w"> </span>setting<span class="w"> </span>to<span class="w"> </span>us_english.
+<span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ACK:<span class="w"> </span>Result:<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Microsoft<span class="w"> </span>SQL<span class="w"> </span>Server<span class="w"> </span><span class="o">(</span><span class="m">140</span><span class="w"> </span><span class="m">3232</span><span class="o">)</span>
+<span class="o">[</span>!<span class="o">]</span><span class="w"> </span>Press<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>extra<span class="w"> </span>shell<span class="w"> </span>commands
+</pre></div>
+</div>
+</section>
+</section>
+<section id="navigating-sql">
+<h2>Navigating SQL<a class="headerlink" href="#navigating-sql" title="Link to this heading"></a></h2>
+<p>Once connected we can issue the <cite>help</cite> command to see what options are available to us.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SQL&gt; help</span>
+
+<span class="go">    lcd {path}                 - changes the current local directory to {path}</span>
+<span class="go">    exit                       - terminates the server process (and this session)</span>
+<span class="go">    enable_xp_cmdshell         - you know what it means</span>
+<span class="go">    disable_xp_cmdshell        - you know what it means</span>
+<span class="go">    xp_cmdshell {cmd}          - executes cmd using xp_cmdshell</span>
+<span class="go">    sp_start_job {cmd}         - executes cmd using the sql server agent (blind)</span>
+<span class="go">    ! {cmd}                    - executes a local shell cmd</span>
+</pre></div>
+</div>
+<section id="choosing-enable-xp-cmdshell">
+<h3>Choosing enable_xp_cmdshell<a class="headerlink" href="#choosing-enable-xp-cmdshell" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SQL&gt; enable_xp_cmdshell</span>
+
+<span class="go">[*] INFO(ACADEMY-EA-DB01\SQLEXPRESS): Line 185: Configuration option &#39;show advanced options&#39; changed from 0 to 1. Run the RECONFIGURE statement to install.</span>
+<span class="go">[*] INFO(ACADEMY-EA-DB01\SQLEXPRESS): Line 185: Configuration option &#39;xp_cmdshell&#39; changed from 0 to 1. Run the RECONFIGURE statement to install.</span>
+</pre></div>
+</div>
+<p><strong>now we have</strong> the ability to run commands in the format <cite>xp_cmdshell &lt;command&gt;</cite></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">xp_cmdshell whoami /priv</span>
+<span class="go">output</span>
+
+<span class="go">--------------------------------------------------------------------------------</span>
+
+<span class="go">NULL</span>
+
+<span class="go">PRIVILEGES INFORMATION</span>
+
+<span class="go">----------------------</span>
+
+<span class="go">NULL</span>
+
+<span class="go">Privilege Name                Description                               State</span>
+
+<span class="go">============================= ========================================= ========</span>
+
+<span class="go">SeAssignPrimaryTokenPrivilege Replace a process level token             Disabled</span>
+
+<span class="go">SeIncreaseQuotaPrivilege      Adjust memory quotas for a process        Disabled</span>
+
+<span class="go">SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled</span>
+
+<span class="go">SeManageVolumePrivilege       Perform volume maintenance tasks          Enabled</span>
+
+<span class="go">SeImpersonatePrivilege        Impersonate a client after authentication Enabled</span>
+
+<span class="go">SeCreateGlobalPrivilege       Create global objects                     Enabled</span>
+
+<span class="go">SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="DCSync%20Attack.html" class="btn btn-neutral float-left" title="DCSync Attack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Kerberos%20Double%20Hop%20Problem.html" class="btn btn-neutral float-right" title="Kerberos Double Hop Problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, CelestialTech.ca.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

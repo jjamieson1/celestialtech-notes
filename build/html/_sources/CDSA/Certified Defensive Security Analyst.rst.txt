@@ -16,6 +16,7 @@ The SOC Analyst Job Role Path is for newcomers to information security who aspir
 
    Incident Handling Process
    Security Monitoring and SIEM Fundamentals
+   SIEM Use Cases
    Windows Event Logs and Finding Evil
    JavaScript Deobfuscation
 
