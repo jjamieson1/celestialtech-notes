@@ -12,7 +12,7 @@ Tags: :ref:`certified penetration tester`, :ref:`login brute forcing`
 Types of Brute Force Attacks
 *******************************
 
-.. tabs::
+.. tabs:: Types of Brute force Attacks
 
    .. tab:: Apples
 
